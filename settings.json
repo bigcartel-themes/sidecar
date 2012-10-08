@@ -1,5 +1,11 @@
 {
   "name": "Sidecar",
+  "javascripts": [
+    "jquery.infinitescroll.min",
+    "jquery.isotope.min",
+    "jquery.fancybox.pack",
+    "store"
+  ],
   "images": [
     {
       "variable": "logo",
