@@ -44,16 +44,20 @@ var Store = {
       .ajaxComplete($.proxy(owner.finished, owner));
         
     // Search
+
+    var searchForm = $('#search_form');
+    var searchFormInput = searchForm.find('input');
+    var searchFormLabel = searchForm.find('label');
     
-    $('#search_form').click(function() {
-      $('#search_form input').show().focus();
-      $('#search_form label').hide();
+    searchForm.click(function() {
+      searchFormInput.show().focus();
+      searchFormLabel.hide();
       return false;
     });
       
-    $('#search_form input').blur(function() {
+    searchFormInput.blur(function() {
       $(this).hide();
-      $('#search_form label').show();
+      searchFormLabel.show();
       return false;
     });
     
