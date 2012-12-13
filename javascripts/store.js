@@ -111,11 +111,14 @@ var Store = {
     // Cart
     
     var cartTimer;
+    var cartForm = $('#cart_form')
     
-    $('#cart_form input, #cart_form select').each(function() {
+    cartForm.find('input, select').each(function() {
       var elm = $(this);
           elm.data('lastVal', elm.val());
-    }).live('keyup change', function() {
+    })
+
+    cartForm.on('keyup change', 'input, select', function() {
       var elm = $(this),
           val = elm.val();
       
@@ -130,7 +133,7 @@ var Store = {
       }
     });
     
-    $('.cart_item_remove a').live('click', function() {
+    $('.cart_item_remove').on('click', 'a', function() {
       owner.clearErrors();
       owner.working();
       
