@@ -9,7 +9,7 @@ var Store = {
   
   errors: [],  
   messages: {
-    addingToCart: 'Adding...',
+    addingToCart: 'Adding&hellip;',
     addedToCart: 'Added!'
   },
   
