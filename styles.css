@@ -112,6 +112,7 @@ img, input, textarea, button, submit, a,
   -moz-transition: opacity .2s ease, color .2s ease, background-color .2s ease;
   -webkit-transition: opacity .2s ease, color .2s ease, background-color .2s ease;
   outline: 0;
+  -webkit-transform: translateZ(0) !important;
   }
 
 /*============================================================
@@ -1786,6 +1787,133 @@ input:hover,input[type='text']:hover,input[type='textarea']:hover,textarea:hover
 ::-moz-placeholder {
    color: {{ theme.sidebar_link_rollover }}
   }
+
+/*============================================================
+ Mobile
+============================================================*/
+
+@media handheld, only screen and (max-width: 767px) {
+html {
+  -webkit-text-size-adjust: none;
+  }
+  
+#sidebar {
+  position: relative !important;
+  float: none;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  }
+
+#sidebar_holder {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  }
+  
+#sidebar header {
+  height: 150px;
+  }
+  
+#cart_nav_list {
+  position: absolute;
+  top: 55px;
+  right: 30px;
+  width: 125px;
+  border: none !important;  
+  }
+
+#sidebar_footer_clear,
+#product_nav_list,
+#page_nav_list {
+  display: none;
+  }
+  
+#main {
+  position: absolute;
+  top: 150px;
+  z-index: 99;
+  margin: 0;
+  padding: 0;  
+  }
+
+#home_page,
+#product_page,
+#product_detail_page,  
+#cart_page,
+.custom_page,
+#contact_page {
+  min-width: 320px;
+  max-width: 960px;
+  margin: 0 30px 0 30px;
+  padding: 0;
+  } 
+
+.overlay .product_info {
+  position: relative;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  text-align: center;
+  line-height: 1.1em;
+  font-weight: 700;
+  margin-top: 0px;
+  padding: 15px;
+  }
+
+.overlay a .product_info {
+  background-color: transparent;
+  color: {{ theme.link_color }};
+  }
+
+.overlay .product_name,
+.standard .product_name {
+  display: block;
+  line-height: 1.2em;
+  width: 100%;
+  margin: 0;
+  padding: 5px 0;
+  }
+
+.overlay .price,
+.overlay .product_info .sale {
+  display: block;
+  line-height: 1.2em;
+  font-weight: 400;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  }
+
+.overlay .product img {
+  text-align: center;
+  margin: 0 auto;
+  } 
+  
+.product {
+  position: relative !important;
+  margin: 0 auto !important;
+  float: none !important;
+  top: 0 !important;
+  left: 0 !important;
+  } 
+  
+.product, .product img {  
+{% if theme.product_list_size == 'medium' %}
+  max-width: 175px;
+{% elsif theme.product_list_size == 'large' %}
+  max-width: 300px;
+{% else %}
+  max-width: 300px;
+{% endif %}
+  }
+  
+#infscr-loading {
+  width: 100%;
+  left: 0;
+  }
+
+}
 
 /*============================================================
   Custom Styles - add and override styles below.
