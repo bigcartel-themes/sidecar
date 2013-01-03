@@ -1567,12 +1567,12 @@ h3#price.sale,
 /* Font ----------------------------------------*/
 
 *, body, form {
-  font-family: {{ theme.font | font_family_for_group }};
+  font-family: {{ theme.font | font_family }};
   }
 
 h1, h2, h3, h4, h5, h6,
 dl dt {
-  font-family: {{ theme.header_font | font_family_for_group }};
+  font-family: {{ theme.header_font | font_family }};
   }
   
 #content #description,
