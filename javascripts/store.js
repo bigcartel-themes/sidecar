@@ -9,7 +9,7 @@ var Store = {
   
   errors: [],  
   messages: {
-    addingToCart: 'Adding...',
+    addingToCart: 'Adding&hellip;',
     addedToCart: 'Added!'
   },
   
@@ -44,16 +44,20 @@ var Store = {
       .ajaxComplete($.proxy(owner.finished, owner));
         
     // Search
+
+    var searchForm = $('#search_form');
+    var searchFormInput = searchForm.find('input');
+    var searchFormLabel = searchForm.find('label');
     
-    $('#search_form').click(function() {
-      $('#search_form input').show().focus();
-      $('#search_form label').hide();
+    searchForm.click(function() {
+      searchFormInput.show().focus();
+      searchFormLabel.hide();
       return false;
     });
       
-    $('#search_form input').blur(function() {
+    searchFormInput.blur(function() {
       $(this).hide();
-      $('#search_form label').show();
+      searchFormLabel.show();
       return false;
     });
     
@@ -107,11 +111,14 @@ var Store = {
     // Cart
     
     var cartTimer;
+    var cartForm = $('#cart_form')
     
-    $('#cart_form input, #cart_form select').each(function() {
+    cartForm.find('input, select').each(function() {
       var elm = $(this);
           elm.data('lastVal', elm.val());
-    }).live('keyup change', function() {
+    })
+
+    cartForm.on('keyup change', 'input, select', function() {
       var elm = $(this),
           val = elm.val();
       
@@ -126,7 +133,7 @@ var Store = {
       }
     });
     
-    $('.cart_item_remove a').live('click', function() {
+    $('.cart_item_remove').on('click', 'a', function() {
       owner.clearErrors();
       owner.working();
       
@@ -161,40 +168,23 @@ var Store = {
   
   initProducts: function(products) {
     var owner = this;
-    
+
     products.imagesLoaded(function() {
       setTimeout(function() {
-        if(!owner.infiniteProducts) {
-          products.isotope(owner.isotopeOptions);
-          
-          if(!owner.inPreview) {
-            owner.infinite = $('#product_list.infinite').infinitescroll(owner.infiniteOptions, function(newProducts) {
-              owner.infiniteProducts = $(newProducts).hide();
-              owner.initProducts(products);
+
+        products.isotope(owner.isotopeOptions);  
+
+        if(owner.infiniteProducts) {
+          products.infinitescroll(owner.infiniteOptions, function(newProducts) {
+            var newProducts = $(newProducts);
+            newProducts.imagesLoaded(function() {
+              products.isotope('appended', $(newProducts));  
             });
-          }
-        } else {
-          products.isotope('appended', owner.infiniteProducts.show());
+          });  
         }
-        
-        if(owner.infinite && owner.infinite.length) {
-          owner.loadProductsIfTheresRoom();
-          
-          $(window).unbind('resize.infinite').bind('resize.infinite', function() {
-            clearTimeout(owner.infiniteResize);
-            owner.infiniteResize = setTimeout(function() {
-              owner.loadProductsIfTheresRoom();
-            }, 1000);                
-          });
-        }
+
       }, owner.inPreview ? 100 : 0);
     });
-  },
-  
-  loadProductsIfTheresRoom: function() {
-    if(this.infinite && !this.infiniteFinished && this.visible($('#product_list'))) {
-      this.infinite.infinitescroll('retrieve');
-    }
   },
   
   updateCart: function(cart) {
