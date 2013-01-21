@@ -604,6 +604,7 @@ b, strong {
   height: 100%;
   opacity: 0;
   padding: 0;
+  -webkit-transform: translateZ(0);
   }
 
 .overlay .product_info:hover {
@@ -1567,12 +1568,12 @@ h3#price.sale,
 /* Font ----------------------------------------*/
 
 *, body, form {
-  font-family: {{ theme.font | font_family }};
+  font-family: {{ theme.font | font_family_for_group }};
   }
 
 h1, h2, h3, h4, h5, h6,
 dl dt {
-  font-family: {{ theme.header_font | font_family }};
+  font-family: {{ theme.header_font | font_family_for_group }};
   }
   
 #content #description,
