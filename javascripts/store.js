@@ -174,14 +174,12 @@ var Store = {
 
         products.isotope(owner.isotopeOptions);  
 
-        if(owner.infiniteProducts) {
-          products.infinitescroll(owner.infiniteOptions, function(newProducts) {
-            var newProducts = $(newProducts);
-            newProducts.imagesLoaded(function() {
-              products.isotope('appended', $(newProducts));  
-            });
-          });  
-        }
+        products.infinitescroll(owner.infiniteOptions, function(newProducts) {
+          var newProducts = $(newProducts);
+          newProducts.imagesLoaded(function() {
+            products.isotope('appended', $(newProducts));  
+          });
+        });  
 
       }, owner.inPreview ? 100 : 0);
     });
