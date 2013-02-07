@@ -177,7 +177,7 @@ var Store = {
         products.infinitescroll(owner.infiniteOptions, function(newProducts) {
           var newProducts = $(newProducts);
           newProducts.imagesLoaded(function() {
-            products.isotope('appended', $(newProducts));  
+            products.isotope('appended', newProducts);
           });
         });  
 
