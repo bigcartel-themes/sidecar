@@ -168,22 +168,33 @@ var Store = {
   
   initProducts: function(products) {
     var owner = this;
+
+    // fix nearbottom method
+    $.extend($.infinitescroll.prototype,{
+    _nearbottom_sidecar: function infscr_nearbottom_facebook() {
+        var opts = this.options,
+        pixelsFromWindowBottomToBottom = 0 + jQuery(document).height() - (opts.binder.scrollTop()) - jQuery(window).height();
+
+        this._debug('math:', pixelsFromWindowBottomToBottom, opts.pixelsFromNavToBottom);
+        return (pixelsFromWindowBottomToBottom <= opts.bufferPx);
+      }
+    });
+
+    owner.infiniteOptions = $.extend(owner.infiniteOptions, {behavior: 'sidecar'})
     
     products.imagesLoaded(function() {
       setTimeout(function() {
-        if(!owner.infiniteProducts) {
-          products.isotope(owner.isotopeOptions);
-          
-          if(!owner.inPreview) {
-            owner.infinite = $('#product_list.infinite').infinitescroll(owner.infiniteOptions, function(newProducts) {
-              owner.infiniteProducts = $(newProducts).hide();
-              owner.initProducts(products);
-            });
-            owner.handleInfiniteOnResize()
-          }
-        } else {
-          products.isotope('appended', owner.infiniteProducts.show());
-        }
+        products.isotope(owner.isotopeOptions);
+        owner.infinite = $('#product_list.infinite').infinitescroll(owner.infiniteOptions, function(newProducts) {
+          var $newProducts = $(newProducts).css({ opacity: 0 });
+          owner.infiniteProducts = $newProducts
+          $newProducts.imagesLoaded(function() {
+            $newProducts.css({ opacity: 1 });
+            products.isotope('appended', $newProducts);
+          });
+        });
+
+        owner.handleInfiniteOnResize()
       }, owner.inPreview ? 100 : 0);
     });
   },
@@ -194,12 +205,14 @@ var Store = {
     if(owner.infinite && owner.infinite.length) {
       owner.loadProductsIfTheresRoom();
       
-      $(window).unbind('resize.infinite').bind('resize.infinite', function() {
+      $(window).off('resize.infinite').on('resize.infinite', function() {
         clearTimeout(owner.infiniteResize);
         owner.infiniteResize = setTimeout(function() {
           owner.loadProductsIfTheresRoom();
         }, 1000);                
       });
+
+      $(window).trigger('resize.infinite');
     }
   },
   
