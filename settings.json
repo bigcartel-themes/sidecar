@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "javascripts": [
     "jquery.infinitescroll.min",
     "jquery.isotope.min",
