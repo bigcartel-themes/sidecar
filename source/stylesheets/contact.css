@@ -1,0 +1,99 @@
+/*============================================================
+ Contact Page / Form Defaults
+============================================================*/
+
+#contact_page p {
+  font-size: 1.1em;
+  }
+
+text,
+input[type='text'],
+input[type='textarea'],
+textarea {
+  display: block;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid #bfbfbf;
+  text-align: left;
+  padding: 10px;
+  font-size: 1em;
+  }
+
+submit,
+input[type='submit'],
+button,
+input[type='button'] {
+  font-weight: 400;
+  border-style: none;
+  }
+
+#contact_form {
+  max-width: 390px;
+  }
+
+#contact_form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1.3em;
+  }
+
+#contact_form ul li {
+  width: 100%;
+  padding: 15px 0;
+  }
+
+#contact_form ul li:first-child {
+  padding: 0 0 15px;
+  }
+  
+#contact_form ul li p {
+  clear: both;
+  width: 100%;
+  margin: 0;
+  font-size: 1.1em;
+  }
+
+#contact_form ul li text,
+#contact_form ul li input[type='text'],
+#contact_form ul li textarea,
+#contact_form ul li input[type='textarea'] {
+  max-width: 370px;
+  width: 370px;
+  font-size: 1.1em;
+  }
+
+#contact_form ul li textarea,
+#contact_form ul li input[type='textarea'] {
+  height: 100px;
+  }
+
+#contact_form ul li#captcha_img input[type='text'],
+#contact_form ul li#captcha_img text {
+  display: block;
+  float: left;
+  max-width: 150px;
+  margin: 0 15px 15px 0;
+  }
+
+#captcha_img label {
+  margin-bottom: 3px;
+  }
+
+#captcha_img p {
+  margin-bottom: 15px !important;
+  }
+  
+#captcha_phrase {
+  float: left;
+  background: #fff;
+  text-align: center;
+  overflow: hidden;
+  margin: 0 15px 10px 0;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  }

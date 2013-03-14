@@ -1,12 +1,6 @@
 {
   "name": "Sidecar",
   "version": "1.0.13",
-  "javascripts": [
-    "jquery.infinitescroll.min",
-    "jquery.isotope.min",
-    "jquery.fancybox.pack",
-    "store"
-  ],
   "images": [
     {
       "variable": "logo",
@@ -24,7 +18,7 @@
       "variable": "header_font",
       "label": "Header Font",
       "default": "Helvetica"
-    },  
+    },
     {
       "variable": "font",
       "label": "Font",
