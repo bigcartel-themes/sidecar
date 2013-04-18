@@ -16,6 +16,7 @@ body
   -webkit-font-smoothing: subpixel-antialiased !important
 
 a
+  @extend %transition
   color: {{ theme.link_color }}
   text-decoration: none
 
@@ -142,12 +143,12 @@ aside
 
   nav
     section
-      border-top: 1px solid {{ theme.border_color }}
+      border-top: 1px solid {{ theme.sidebar_border_color }}
       padding: 10px 0
 
     .cart
       span
-        border-left: 1px solid {{ theme.border_color }}
+        border-left: 1px solid {{ theme.sidebar_border_color }}
         float: right
         font-size: 11px
         font-weight: normal
@@ -187,13 +188,17 @@ aside
       width: 79px
       height: 24px
 
+/* @end */
 
+/* @group main */
 
+.main
+  @extend %clearfix
+  padding: 60px 0
 
-
-
-
-
-
+  .page
+    margin: 0 60px 0 260px
+    min-width: 500px
+    width: auto
 
 /* @end */

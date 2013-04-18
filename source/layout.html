@@ -86,18 +86,15 @@
     </footer>
   </aside>
 
-  <div>
+  <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
     {% if page.category == 'custom' %}
-      <section>
         <div class="custom_page">
           <h1>{{ page.name }}</h1>
           {{ page_content | paragraphs }}
         </div>
       </section>
     {% else %}
-      <section class="theme_page {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
-        {{ page_content }}
-      </section>
+      {{ page_content }}
     {% endif %}
   </div>
 
