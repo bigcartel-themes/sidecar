@@ -4,6 +4,7 @@ build
 tmp
 log
 .bundle
+.sass-cache
 
 *.tmproj
 *.esproj
