@@ -12,72 +12,74 @@
 
 <body id="{{ page.permalink }}" class="{{ page.category }}">
   <aside>
-    <header>
-      <a href="/" title="{{ store.name | escape }}" class="{% if theme.logo != blank %} image {% else %} text {% endif %}" >
-        {% if theme.logo %}
-          <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
-        {% else %}
-          {{ store.name | escape }}
-        {% endif %}
-      </a>
-    </header>
+    <div>
+      <header>
+        <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
+          {% if theme.logo %}
+            <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+          {% else %}
+            {{ store.name | escape }}
+          {% endif %}
+        </a>
+      </header>
 
-    <nav>
-      <section>
-        <h2 class="title">
-          <a href="/cart" {% if page.full_url contains '/cart' %}class="current"{% endif %}>
-            Cart
-            <span>{{ cart.item_count }}</span>
-            <span>{{ cart.total | money_with_sign }}</span>
-          </a>
-        </h2>
-      </section>
-
-      <section>
-        <h2 class="title">
-          <a href="/products" {% if page.full_url contains '/products' %}class="current"{% endif %}>
-            Products
-          </a>
-        </h2>
-
-        {% if theme.show_search %}
-          <form action="/products" method="get">
-            <label for="search_field">Search&hellip;</label>
-            <input type="text" name="search" />
-          </form>
-        {% endif %}
-
-        <ul>
-          {% for category in categories.active %}
-            <li class="title page {% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
-          {% endfor %}
-        </ul>
-      </section>
-
-      {% if artists.active != blank %}
+      <nav>
         <section>
-          <h2 class="title">Artists</h2>
+          <h2 class="title">
+            <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
+              Cart
+              <span>{{ cart.total | money_with_sign }}</span>
+              <span>{{ cart.item_count }}</span>
+            </a>
+          </h2>
+        </section>
+
+        <section>
+          <h2 class="title">
+            <a href="/products" {% if page.full_url contains '/products' %}class="current"{% endif %}>
+              Products
+            </a>
+          </h2>
+
+          {% if theme.show_search %}
+            <form action="/products" method="get">
+              <label for="search_field">Search&hellip;</label>
+              <input type="text" name="search" />
+            </form>
+          {% endif %}
 
           <ul>
-            {% for artist in artists.active %}
-              <li class="page {% if page.full_url contains artist.url %}current{% endif %}">{{ artist | link_to }}</li>
+            {% for category in categories.active %}
+              <li class="page {% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
             {% endfor %}
           </ul>
         </section>
-      {% endif %}
 
-      <section>
-        <ul>
-          {% for page in pages.all %}
-            <li {% if page.full_url contains page.url %}class="current"{% endif %}>{{ page | link_to }}</li>
-          {% endfor %}
-          <li {% if page.url == '/contact' %}class="current"{% endif %}>{{ pages.contact | link_to }}</li>
-          {% if store.website != blank %}
-            <li><a href="{{ store.website }}">Back to Site</a></li>
-          {% endif %}
-        </ul>
-      </section>
-    </nav>
+        {% if artists.active != blank %}
+          <section>
+            <h2 class="title">Artists</h2>
+
+            <ul>
+              {% for artist in artists.active %}
+                <li class="page {% if page.full_url contains artist.url %}current{% endif %}">{{ artist | link_to }}</li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+
+        <section>
+          <ul>
+            {% for page in pages.all %}
+              <li class="title {% if page.full_url contains page.url %}current{% endif %}">{{ page | link_to }}</li>
+            {% endfor %}
+            <li class="title {% if page.url == '/contact' %}current{% endif %}">{{ pages.contact | link_to }}</li>
+            {% if store.website != blank %}
+              <li><a href="{{ store.website }}">Back to Site</a></li>
+            {% endif %}
+          </ul>
+        </section>
+      </nav>
+    </div>
 
     <footer>
       <cite>{{ bigcartel_credit }}</cite>

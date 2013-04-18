@@ -1,0 +1,201 @@
+/* @group base */
+
+*
+  @include box-sizing(border-box)
+
+body
+  background-color: {{ theme.background_color }}
+  {% if theme.background_image != blank %}
+  background-image: url({{ theme.background_image.url }})
+  background-repeat: repeat
+  {% endif %}
+  color: {{ theme.font_color }}
+  font-family: {{ theme.font | font_family_for_group }}
+  font-size: 62.5%
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: subpixel-antialiased !important
+
+a
+  color: {{ theme.link_color }}
+  text-decoration: none
+
+  &:hover
+    color: {{ theme.link_rollover }}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: {{ theme.header_font | font_family_for_group }}
+  font-weight: 400
+  margin-bottom: 30px
+
+h1
+  font-size: 21px
+  line-height: 1.3em
+
+h2
+  font-size: 18px
+
+h3
+  font-size: 16px
+
+h4
+  font-size: 14px
+
+h5
+  font-size: 12px
+
+h6
+  font-size: 11px
+
+p
+  margin-bottom: 15px
+
+sup,
+sub
+  font-size: .6em
+  vertical-align: text-top
+
+sub
+  vertical-align: text-bottom
+
+pre code,
+code
+  font-family: 'Courier New', Courier, Monospace !important
+  font-weight: 700
+
+blockquote
+  width: auto
+  font-style: italic
+  margin: 15px
+  padding: 10px
+
+  &:before,
+  &:after
+    display: inline
+    content: '\201C'
+    font-size: 1.2em
+
+  &:after
+    content: '\201D'
+
+small
+  display: block
+  font-size: 1.1em
+  font-weight: 400
+  margin-bottom: 15px
+
+i,
+em
+  font-style: italic
+
+blockquote p
+  display: inline
+
+b,
+strong
+  font-weight: 700
+
+/* @end */
+
+
+/* @group sidebar */
+
+aside
+  background-color: {{ theme.sidebar_color }}
+  float: left
+  height: 100%
+  padding: 57px 30px 0
+  position: {% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}
+  width: 209px
+  z-index: 100
+
+  > div
+    min-height: 100%
+    height: auto !important
+    height: 100%
+    margin-bottom: -94px
+
+    &:after
+      content: ""
+      display: block
+      height: 94px
+
+  a
+    color: {{ theme.sidebar_link_color }}
+
+    &:hover
+      color: {{ theme.sidebar_link_rollover }}
+
+  header
+    margin-bottom: 35px
+    overflow: hidden
+    width: 150px
+
+    .logo
+      display: block
+      font-size: 2.4em
+      font-weight: 700
+      line-height: 1.2em
+      word-wrap: break-word
+
+  nav
+    section
+      border-top: 1px solid {{ theme.border_color }}
+      padding: 10px 0
+
+    .cart
+      span
+        border-left: 1px solid {{ theme.border_color }}
+        float: right
+        font-size: 11px
+        font-weight: normal
+        @include inline-block
+        margin-left: 8px
+        padding-left: 8px
+
+        &:last-child
+          border-left: none
+
+
+    .title,
+    .title a
+      font-size: 12px
+      font-weight: bold
+      line-height: 1.9em
+      margin-bottom: 0
+
+    li
+      line-height: 1.9em
+
+    a
+      display: block
+      font-size: 11px
+
+  footer
+    height: 94px
+    padding: 40px 0 30px
+
+    cite a
+      background: url(#{"{{ 'bc_badge.png' | theme_image_url }}"}) no-repeat
+      display: block
+      float: left
+      text-indent: 100%
+      overflow: hidden
+      white-space: nowrap
+      width: 79px
+      height: 24px
+
+
+
+
+
+
+
+
+
+
+/* @end */
