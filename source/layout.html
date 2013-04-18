@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>
+  <title>{{ store.name }} &mdash; {{ page.name }}</title>
+  <meta charset="utf-8" />
+  <meta name="description" content="{{ page.meta_description }}" />
+  <meta name="keywords" content="{{ page.meta_keywords }}" />
+
+  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css" />
+
+  {{ head_content }}
+</head>
+
+<body id="{{ page.permalink }}" class="{{ page.category }}">
+  <aside>
+    <header>
+      <a href="/" title="{{ store.name | escape }}" class="{% if theme.logo != blank %} image {% else %} text {% endif %}" >
+        {% if theme.logo %}
+          <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+        {% else %}
+          {{ store.name | escape }}
+        {% endif %}
+      </a>
+    </header>
+
+    <nav>
+      <section>
+        <h2 class="title">
+          <a href="/cart" {% if page.full_url contains '/cart' %}class="current"{% endif %}>
+            Cart
+            <span>{{ cart.item_count }}</span>
+            <span>{{ cart.total | money_with_sign }}</span>
+          </a>
+        </h2>
+      </section>
+
+      <section>
+        <h2 class="title">
+          <a href="/products" {% if page.full_url contains '/products' %}class="current"{% endif %}>
+            Products
+          </a>
+        </h2>
+
+        {% if theme.show_search %}
+          <form action="/products" method="get">
+            <label for="search_field">Search&hellip;</label>
+            <input type="text" name="search" />
+          </form>
+        {% endif %}
+
+        <ul>
+          {% for category in categories.active %}
+            <li class="title page {% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      {% if artists.active != blank %}
+        <section>
+          <h2 class="title">Artists</h2>
+
+          <ul>
+            {% for artist in artists.active %}
+              <li class="page {% if page.full_url contains artist.url %}current{% endif %}">{{ artist | link_to }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endif %}
+
+      <section>
+        <ul>
+          {% for page in pages.all %}
+            <li {% if page.full_url contains page.url %}class="current"{% endif %}>{{ page | link_to }}</li>
+          {% endfor %}
+          <li {% if page.url == '/contact' %}class="current"{% endif %}>{{ pages.contact | link_to }}</li>
+          {% if store.website != blank %}
+            <li><a href="{{ store.website }}">Back to Site</a></li>
+          {% endif %}
+        </ul>
+      </section>
+    </nav>
+
+    <footer>
+      <cite>{{ bigcartel_credit }}</cite>
+    </footer>
+  </aside>
+
+  <div>
+    {% if page.category == 'custom' %}
+      <section>
+        <div class="custom_page">
+          <h1>{{ page.name }}</h1>
+          {{ page_content | paragraphs }}
+        </div>
+      </section>
+    {% else %}
+      <section class="theme_page {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
+        {{ page_content }}
+      </section>
+    {% endif %}
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+  <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
+  <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
+  <script type="text/javascript">
+    Store.isotopeOptions = {
+      transformsEnabled: false,
+      animationEngine : 'css',
+      itemSelector: '.product',
+      layoutMode: '{{ theme.product_list_layout }}',
+      masonry: {
+        columnWidth: {% if theme.product_list_size == 'medium' %}150{% elsif theme.product_list_size == 'large' %}240{% else %}420{% endif %},
+        gutterWidth: 30
+      }
+    };
+
+    Store.infiniteOptions = {
+      navSelector: '#pagination',
+      nextSelector: '#pagination a:first',
+      itemSelector: '#product_list .product',
+      loading: {
+        img: "",
+        msgText: "<p>Loading more products&hellip;</p>",
+        finishedMsg: "<p>You&#8217;ve reached the end.</p>"
+      }
+    };
+    {% if errors != blank %}
+    {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
+    {% endif %}
+  </script>
+
+</body>
+</html>
