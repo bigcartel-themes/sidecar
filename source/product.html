@@ -1,0 +1,89 @@
+<div class="page product_detail">
+  <div class="gallery">
+    <a href="{{ product.image | product_image_url }}" class="fancybox" rel="group">
+      <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}">
+    </a>
+    <ul>
+      {% for image in product.images offset:1 %}
+        <li>
+          <a href="{{ image | product_image_url }}" class="fancybox" rel="group">
+            <img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="detail">
+    <h1>{{ product.name }}</h1>
+    {% for artist in product.artists %}
+      {% if forloop.first %}<p class="artists"> by {% endif %}
+      {% if forloop.last and forloop.length > 1 %} and {% endif %}
+      {{ artist.name }}
+      {% if forloop.length > 2 %}, {% endif %}
+      {% if forloop.last %}</p>{% endif %}
+    {% endfor %}
+
+    {% case product.status %}
+      {% when 'sold-out' %}
+        <p class="price sold-out">
+          {{ product.default_price | money_with_sign }}
+          <i>/ Sold Out</i>
+        </p>
+
+      {% when 'coming-soon' %}
+        <p class="price coming-soon">
+          {{ product.default_price | money_with_sign }}
+          <i>/ Coming Soon</i>
+        </p>
+
+      {% when 'active' %}
+        <p class="price {% if product.on_sale %}sale{% endif %}">
+          {{ product.default_price | money_with_sign }}
+          {% if product.on_sale %}
+            <i>/ On Sale</i>
+          {% endif %}
+        </p>
+
+        <form method="post" action="/cart">
+          {% if product.has_default_option %}
+            {{ product.option | hidden_option_input }}
+          {% else %}
+            <p>
+              {{ product.options_in_stock | options_select }}
+            </p>
+          {% endif %}
+          <button id="add_to_cart" name="submit" type="submit" class="button ">Add to Cart</button>
+        </form>
+    {% endcase %}
+
+    {% if product.description != blank %}
+      {{ product.description | paragraphs }}
+    {% endif %}
+
+    {% if theme.show_inventory_bars %}
+      {% case product.status %}
+        {% when 'active' %}
+          <div class="availability">
+            <h5>Availability</h5>
+            <ul>
+              {% for option in product.options %}
+                <li>
+                  {% unless product.has_default_option %}
+                    {{ option.name }}
+                  {% endunless %}
+                  <i>
+                    {% if option.sold_out %}
+                      Sold Out
+                    {% else %}
+                      {{ option.inventory }}%
+                    {% endif %}
+                  </i>
+                  <b class="option" style="width:{{ option.inventory }}%;"><!--Inventory--></b>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+      {% endcase %}
+    {% endif %}
+  </div>
+</div>

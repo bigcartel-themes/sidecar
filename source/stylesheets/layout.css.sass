@@ -29,6 +29,7 @@ h3,
 h4,
 h5,
 h6
+  color: {{ theme.header_color }}
   font-family: {{ theme.header_font | font_family_for_group }}
   font-weight: 400
   margin-bottom: 30px
@@ -100,6 +101,29 @@ b,
 strong
   font-weight: 700
 
+hr
+  border-bottom: 1px solid {{ theme.border_color }}
+  height: 1px
+  margin: 15px 0
+  width: 100%
+
+.button
+  @extend %transition
+  background-color: {{ theme.link_color }}
+  @include border-radius(3px)
+  border: none
+  color: {{ theme.background_color }}
+  cursor: pointer
+  font-family: {{ theme.font }}
+  font-size: 11px
+  font-weight: 700
+  @include inline-block
+  padding: 11px 20px
+
+  &:hover
+    background-color: {{ theme.link_rollover }}
+    color: {{ theme.background_color }}
+
 /* @end */
 
 
@@ -126,7 +150,8 @@ aside
   a
     color: {{ theme.sidebar_link_color }}
 
-    &:hover
+    &:hover,
+    &.current
       color: {{ theme.sidebar_link_rollover }}
 
   header
@@ -140,6 +165,39 @@ aside
       font-weight: 700
       line-height: 1.2em
       word-wrap: break-word
+
+  form[name=search]
+    cursor: pointer
+    height: 20px
+    padding: 3px 0 5px
+    position: relative
+
+    &:hover label
+      color: {{ theme.sidebar_link_rollover }}
+
+    &.focus label
+      @include opacity(0)
+
+    label
+      @extend %transition
+      cursor: pointer
+      display: block
+      font-size: 11px
+      position: absolute
+      top: 4px
+      z-index: 1
+
+    input[type=text]
+      border: none
+      background: transparent
+      color: {{ theme.link_color }}
+      cursor: pointer
+      font-family: {{ theme.font | font_family_for_group }}
+      outline: none
+      margin: 0
+      padding: 0
+      position: relative
+      z-index: 2
 
   nav
     section
@@ -159,13 +217,18 @@ aside
         &:last-child
           border-left: none
 
-
     .title,
     .title a
+      color: {{ theme.sidebar_link_color }}
       font-size: 12px
       font-weight: bold
       line-height: 1.9em
       margin-bottom: 0
+
+    .title a
+      &:hover,
+      &.current
+        color: {{ theme.sidebar_link_rollover }}
 
     li
       line-height: 1.9em
@@ -173,6 +236,7 @@ aside
     a
       display: block
       font-size: 11px
+      line-height: 20px
 
   footer
     height: 94px
@@ -200,5 +264,9 @@ aside
     margin: 0 60px 0 260px
     min-width: 500px
     width: auto
+
+  h1
+    height: 60px
+    margin: 0
 
 /* @end */

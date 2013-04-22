@@ -1,4 +1,5 @@
 .products_list
+  @extend %clearfix
 
   .product
     float: left
@@ -17,12 +18,12 @@
         line-height: 1.2em
         margin: 0
 
+      .product_name
+        font-weight: bold
+
       .standard &
         font-weight: 700px
         padding: 15px
-
-        .product_name
-          font-weight: bold
 
         p
           padding-top: 5px

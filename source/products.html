@@ -1,4 +1,5 @@
-<div class="page home">
+<div class="page">
+  <h1>{{ page.name }}</h1>
   {% paginate products from products.all by 20 %}
 
     {% if products != blank %}

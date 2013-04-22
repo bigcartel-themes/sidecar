@@ -10,7 +10,7 @@
   {{ head_content }}
 </head>
 
-<body id="{{ page.permalink }}" class="{{ page.category }}">
+<body id="{{ page.permalink }}" class="{{ page.category }}" data-search="{{ theme.show_search }}">
   <aside>
     <div>
       <header>
@@ -36,21 +36,25 @@
 
         <section>
           <h2 class="title">
-            <a href="/products" {% if page.full_url contains '/products' %}class="current"{% endif %}>
+            <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
               Products
             </a>
           </h2>
 
           {% if theme.show_search %}
-            <form action="/products" method="get">
-              <label for="search_field">Search&hellip;</label>
-              <input type="text" name="search" />
+            <form action="/products" method="get" name="search">
+              <label for="search">Search&hellip;</label>
+              <input type="text" name="search" id="search">
             </form>
           {% endif %}
 
           <ul>
             {% for category in categories.active %}
-              <li class="page {% if page.full_url contains category.url %}current{% endif %}">{{ category | link_to }}</li>
+              <li>
+                <a href="{{ category.url }}" class="{% if page.full_url contains category.url %}current{% endif %}">
+                  {{ category.name }}
+                </a>
+              </li>
             {% endfor %}
           </ul>
         </section>
@@ -61,7 +65,11 @@
 
             <ul>
               {% for artist in artists.active %}
-                <li class="page {% if page.full_url contains artist.url %}current{% endif %}">{{ artist | link_to }}</li>
+                <li>
+                  <a href="{{ artist.url }}" class="page {% if page.full_url contains artist.url %}current{% endif %}">
+                    {{ artist.name }}
+                  </a>
+                </li>
               {% endfor %}
             </ul>
           </section>
@@ -70,9 +78,17 @@
         <section>
           <ul>
             {% for page in pages.all %}
-              <li class="title {% if page.full_url contains page.url %}current{% endif %}">{{ page | link_to }}</li>
+              <li>
+                <a href="{{ page.url }}" class="title {% if page.full_url contains page.url %}current{% endif %}">
+                  {{ page.name }}
+                </a>
+              </li>
             {% endfor %}
-            <li class="title {% if page.url == '/contact' %}current{% endif %}">{{ pages.contact | link_to }}</li>
+            <li>
+              <a href="{{ pages.contact.url }}" class="title {% if page.url == '/contact' %}current{% endif %}">
+                {{ pages.contact.name }}
+              </a>
+            </li>
             {% if store.website != blank %}
               <li><a href="{{ store.website }}">Back to Site</a></li>
             {% endif %}
