@@ -7,6 +7,7 @@ Store = window.Store =
 
   common: ->
     console.log 'SIDECAR TIME!'
+    $('.fancybox').fancybox();
     if $('body').data 'search' then @setupSearch()
 
   setupSearch: ->

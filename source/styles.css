@@ -11,6 +11,7 @@ Author: Big Cartel
 ------------------------------------------------------------*/
 
 /*
+ *= require_directory ./stylesheets/vendor
  *= require stylesheets/all
  */
 

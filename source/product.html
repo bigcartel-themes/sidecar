@@ -57,7 +57,9 @@
     {% endcase %}
 
     {% if product.description != blank %}
-      {{ product.description | paragraphs }}
+      <div class="description">
+        {{ product.description | paragraphs }}
+      </div>
     {% endif %}
 
     {% if theme.show_inventory_bars %}
