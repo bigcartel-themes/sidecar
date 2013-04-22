@@ -1,0 +1,100 @@
+%center-vertical
+  display: table-cell
+  height: 50px
+  vertical-align: middle
+
+.page.cart
+  max-width: 720px
+  min-width: 500px
+  margin: 0 60px 0 260px
+
+  form > ul
+    li
+      border-top: 1px solid {{ theme.border_color }}
+      height: 70px
+      padding: 10px
+
+    .cart_item
+      .product_image
+        background-position: center center
+        background-repeat: no-repeat
+        float: left
+        display: block
+        height: 50px
+        margin-right: 10px
+        overflow: hidden
+        text-indent: -9999px
+        width: 50px
+
+      div
+        float: left
+
+        &.detail
+          width: 55%
+
+        &.metrics
+          font-size: 11px
+
+      p
+        @extend %center-vertical
+        width: 60%
+
+        a
+          display: block
+          font-size: 11px
+          font-weight: 700
+          line-height: 14px
+
+      input[type=text]
+        margin: 8px 7px 0
+        text-align: center
+        width: 42px
+
+        &:focus
+          @include box-shadow(0 0 5px {{ theme.header_color }} inset)
+          outline: 0
+
+      div.remove
+        float: right
+
+        a
+          background: url(#{"{{ 'fancybox_sprite.png' | theme_image_url }}"}) -6px -6px no-repeat
+          display: block
+          height: 23px
+          overflow: hidden
+          text-indent: -9999px
+          width: 23px
+
+    .discount
+      padding-left: 37%
+
+      p
+        @extend %center-vertical
+
+      label
+        margin-left: 4px
+        font-weight: 700
+
+    .total
+      font-weight: 700
+      padding-left: 66%
+      width: 100%
+
+      p
+        @extend %center-vertical
+
+      b
+        font-size: 20px
+        margin-left: 6px
+
+      span
+        display: block
+        font-style: italic
+        font-weight: normal
+        margin-left: 35px
+
+    .submit
+      padding-left: 66%
+
+      button
+        margin: 10px 0 0 35px

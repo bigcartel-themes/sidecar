@@ -107,6 +107,10 @@ hr
   margin: 15px 0
   width: 100%
 
+/* @end */
+
+/* @group forms */
+
 .button
   @extend %transition
   background-color: {{ theme.link_color }}
@@ -123,6 +127,13 @@ hr
   &:hover
     background-color: {{ theme.link_rollover }}
     color: {{ theme.background_color }}
+
+input[type=text]
+  background: #fff
+  border: 1px solid #bfbfbf
+  @include border-radius(3px)
+  font-family: {{ theme.font }}
+  height: 32px
 
 /* @end */
 
