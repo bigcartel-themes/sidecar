@@ -24,17 +24,17 @@ Store = window.Store =
     searchForm.on 'blur', 'input', blur
 
   working: ->
-    $('body').addClass('working')
+    $('body').addClass 'working'
 
   finished: ->
-    $('body').removeClass('working')
+    $('body').removeClass 'working'
 
   clearErrors: ->
     console.log 'clearing errors'
 
   updateCart: (cart) ->
-    $('aside .cart .count').htmlHighlight(cart.item_count)
-    $('aside .cart .total').htmlHighlight(Format.money(cart.total, true, true))
+    $('aside .cart .count').htmlHighlight cart.item_count
+    $('aside .cart .total').htmlHighlight Format.money(cart.total, true, true)
 
 
 
