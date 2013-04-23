@@ -44,7 +44,7 @@
           {% endif %}
         </p>
 
-        <form method="post" action="/cart">
+        <form method="post" action="/cart" class="add">
           {% if product.has_default_option %}
             {{ product.option | hidden_option_input }}
           {% else %}
@@ -52,7 +52,7 @@
               {{ product.options_in_stock | options_select }}
             </p>
           {% endif %}
-          <button id="add_to_cart" name="submit" type="submit" class="button ">Add to Cart</button>
+          <button name="submit" type="submit" class="button add">Add to Cart</button>
         </form>
     {% endcase %}
 

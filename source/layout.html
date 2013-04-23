@@ -28,8 +28,8 @@
           <h2 class="title">
             <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
               Cart
-              <span>{{ cart.total | money_with_sign }}</span>
-              <span>{{ cart.item_count }}</span>
+              <span class="total">{{ cart.total | money_with_sign }}</span>
+              <span class="count">{{ cart.item_count }}</span>
             </a>
           </h2>
         </section>

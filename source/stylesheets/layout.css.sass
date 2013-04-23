@@ -15,6 +15,9 @@ body
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
+  &.working
+    cursor: progress !important
+
 a
   @extend %transition
   color: {{ theme.link_color }}
@@ -251,6 +254,12 @@ aside
         @include inline-block
         margin-left: 8px
         padding-left: 8px
+
+        .currency_sign
+          float: none
+          border: none
+          margin: 0
+          padding: 0
 
         &:last-child
           border-left: none
