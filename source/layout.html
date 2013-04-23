@@ -78,14 +78,14 @@
         <section>
           <ul>
             {% for page in pages.all %}
-              <li>
-                <a href="{{ page.url }}" class="title {% if page.full_url contains page.url %}current{% endif %}">
+              <li class="title">
+                <a href="{{ page.url }}" class="{% if page.full_url contains page.url %}current{% endif %}">
                   {{ page.name }}
                 </a>
               </li>
             {% endfor %}
-            <li>
-              <a href="{{ pages.contact.url }}" class="title {% if page.url == '/contact' %}current{% endif %}">
+            <li class="title">
+              <a href="{{ pages.contact.url }}" class="{% if page.url == '/contact' %}current{% endif %}">
                 {{ pages.contact.name }}
               </a>
             </li>
