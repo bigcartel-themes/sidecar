@@ -14,6 +14,21 @@
       height: 70px
       padding: 10px
 
+    .col1,
+    .col2
+      @extend %clearfix
+      float: left
+      height: 50px
+      width: 70%
+
+      > div
+        float: left
+
+    .col2
+      float: right
+      width: 28%
+
+
     .cart_item
       .product_image
         background-position: center center
@@ -26,18 +41,8 @@
         text-indent: -9999px
         width: 50px
 
-      div
-        float: left
-
-        &.detail
-          width: 55%
-
-        &.metrics
-          font-size: 11px
-
       p
         @extend %center-vertical
-        width: 60%
 
         a
           display: block
@@ -46,7 +51,8 @@
           line-height: 14px
 
       input[type=text]
-        margin: 8px 7px 0
+        float: right
+        margin: 8px 0 0
         text-align: center
         width: 42px
 
@@ -57,41 +63,46 @@
       div.remove
         float: right
 
-        a
-          background: url(#{"{{ 'fancybox_sprite.png' | theme_image_url }}"}) -6px -6px no-repeat
-          display: block
-          height: 23px
-          overflow: hidden
-          text-indent: -9999px
-          width: 23px
+      a.remove
+        background: url(#{"{{ 'fancybox_sprite.png' | theme_image_url }}"}) -6px -4px no-repeat
+        display: block
+        height: 23px
+        float: right
+        overflow: hidden
+        text-indent: -9999px
+        width: 23px
 
     .discount
-      padding-left: 37%
+      padding-top: 18px
 
       p
-        @extend %center-vertical
+        float: right
+
+      .col2
+        line-height: 28px
 
       label
-        margin-left: 4px
+        margin-right: 4px
         font-weight: 700
 
     .total
       font-weight: 700
-      padding-left: 66%
-      width: 100%
 
-      p
+      .col1 p
+        line-height: 50px
+        text-align: right
+        width: 100%
+
+      .col2 p
         @extend %center-vertical
 
       b
         font-size: 20px
-        margin-left: 6px
 
       span
         display: block
         font-style: italic
         font-weight: normal
-        margin-left: 35px
 
     .submit
       padding-left: 66%

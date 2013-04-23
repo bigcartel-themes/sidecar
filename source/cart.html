@@ -7,48 +7,55 @@
       <ul>
         {% for item in cart.items %}
           <li class="cart_item" data-item-id="{{ item.id }}">
-            <a href="{{ item.product.url }}" style="background-image: url({{ item.product.image | product_image_url size:"thumb" }}); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image">
-              {{ item.name }}
-            </a>
-
-            <div class="detail">
-              <p>
-                <a href="{{ item.product.url }}">
-                  {{ item.product.name }}
-                </a>
-                {% unless item.product.has_default_option %}
-                  {{ item.option.name }}
-                {% endunless %}
-                </span>
-              </p>
-            </div>
-
-            <div class="metrics">
+            <div class="col1">
+              <a href="{{ item.product.url }}" style="background-image: url({{ item.product.image | product_image_url size:"thumb" }}); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image">
+                {{ item.name }}
+              </a>
+              <div>
+                <p class="detail">
+                  <a href="{{ item.product.url }}">
+                    {{ item.product.name }}
+                  </a>
+                  {% unless item.product.has_default_option %}
+                    {{ item.option.name }}
+                  {% endunless %}
+                  </span>
+                </p>
+              </div>
               {{ item | item_quantity_input }}
-              {{ item.price | money_with_sign }}
             </div>
-
-            <div class="remove">
-              <p>
-                <a href="#" title="Remove item" class="remove">
-                  Remove
-                </a>
-              </p>
+            <div class="col2">
+              <div>
+                <p>
+                  {{ item.price | money_with_sign }}
+                </p>
+              </div>
+              <div class="remove">
+                <p>
+                  <a href="#" title="Remove item" class="remove">
+                    Remove
+                  </a>
+                </p>
+              </div>
             </div>
-
           </li>
         {% endfor %}
 
         <!-- if cart.discount.enabled -->
         {% if true %}
           <li class="discount">
+
             <!-- if cart.discount.pending -->
-            {% if false %}
-              <p>
-                <label for="cart_discount_code">Have a discount code?</label>
-                {{ cart.discount | discount_code_input }}
+            {% if true %}
+              <div class="col1">
+                <p>
+                  <label for="cart_discount_code">Have a discount code?</label>
+                  {{ cart.discount | discount_code_input }}
+                </p>
+              </div>
+              <div class="col2">
                 (optional)
-              </p>
+              </div>
             {% elsif cart.discount.free_shipping %}
               <label for="cart_discount_code"><p>{{ cart.discount.name }}</p></label>
             {% else %}
@@ -81,12 +88,19 @@
         {% endif %}
 
         <li class="total">
-          <p>
-            Total: <b>{{ cart.total | money_with_sign }}</b>
-            {% unless cart.shipping.enabled %}
-              <span>+ applicable shipping</span>
-            {% endunless %}
-          </p>
+          <div class="col1">
+            <p>
+              Total:
+            </p>
+          </div>
+          <div class="col2">
+            <p>
+              <b>{{ cart.total | money_with_sign }}</b>
+              {% unless cart.shipping.enabled %}
+                <span>+ applicable shipping</span>
+              {% endunless %}
+            </p>
+          </div>
         </li>
 
         <li class="submit">
