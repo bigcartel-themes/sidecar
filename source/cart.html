@@ -72,21 +72,30 @@
         {% if cart.shipping.enabled %}
           <li class="shipping">
             {% if cart.shipping.strict %}
-              {{ store.country | country_select }}
-
-              <label for="country">Shipping to:</label>
-              <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
-                {% unless cart.shipping.pending %}
-                  {{ cart.shipping.amount | money_with_sign }}
-                {% endunless %}
-              </p>
+              <div class="col1">
+                <p class="label">
+                  <label for="country">Shipping to:</label>
+                  {{ store.country | country_select }}
+                </p>
+              </div>
+              <div class="col2">
+                <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
+                  {% unless cart.shipping.pending %}
+                    {{ cart.shipping.amount | money_with_sign }}
+                  {% endunless %}
+                </p>
+              </div>
             {% else %}
-              <label>Shipping:</label>
-              <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
-                {% unless cart.shipping.pending %}
-                  {{ cart.shipping.amount | money_with_sign }}
-                {% endunless %}
-              </p>
+              <div class="col1">
+                <p class="label">Shipping:</p>
+              </div>
+              <div class="col2">
+                <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
+                  {% unless cart.shipping.pending %}
+                    {{ cart.shipping.amount | money_with_sign }}
+                  {% endunless %}
+                </p>
+              </div>
             {% endif %}
           </li>
         {% endif %}
