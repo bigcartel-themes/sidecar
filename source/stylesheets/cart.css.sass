@@ -28,6 +28,14 @@
       float: right
       width: 28%
 
+      p
+        @extend %center-vertical
+
+    .label
+      line-height: 50px
+      text-align: right
+      width: 100%
+
 
     .cart_item
       .product_image
@@ -73,25 +81,20 @@
         width: 23px
 
     .discount
-      padding-top: 18px
-
-      p
-        float: right
+      input[type=text]
+        padding: 0 10px
 
       .col2
         line-height: 28px
 
-      label
-        margin-right: 4px
+      .label
         font-weight: 700
 
     .total
       font-weight: 700
 
       .col1 p
-        line-height: 50px
-        text-align: right
-        width: 100%
+
 
       .col2 p
         @extend %center-vertical

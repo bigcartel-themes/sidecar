@@ -41,12 +41,10 @@
           </li>
         {% endfor %}
 
-        <!-- if cart.discount.enabled -->
-        {% if true %}
+        {% if cart.discount.enabled %}
           <li class="discount">
 
-            <!-- if cart.discount.pending -->
-            {% if true %}
+            {% if cart.discount.pending %}
               <div class="col1">
                 <p>
                   <label for="cart_discount_code">Have a discount code?</label>
@@ -57,10 +55,16 @@
                 (optional)
               </div>
             {% elsif cart.discount.free_shipping %}
-              <label for="cart_discount_code"><p>{{ cart.discount.name }}</p></label>
+              <div class="col1">
+                <p class="label">{{ cart.discount.name }}</p>
+              </div>
             {% else %}
-              <label for="cart_discount_code"><p>{{ cart.discount.name }}</p></label>
-              {{ cart.discount.amount | money_with_sign }}
+              <div class="col1">
+                <p class="label">{{ cart.discount.name }}ALL THE DISCOUNTS</p>
+              </div>
+              <div class="col2">
+                <p>{{ cart.discount.amount | money_with_sign }}</p>
+              </div>
             {% endif %}
           </li>
         {% endif %}
@@ -89,7 +93,7 @@
 
         <li class="total">
           <div class="col1">
-            <p>
+            <p class="label">
               Total:
             </p>
           </div>
