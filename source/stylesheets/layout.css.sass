@@ -128,12 +128,21 @@ hr
     background-color: {{ theme.link_rollover }}
     color: {{ theme.background_color }}
 
-input[type=text]
+input[type=text],
+textarea
   background: #fff
   border: 1px solid #bfbfbf
   @include border-radius(3px)
   font-family: {{ theme.font }}
   height: 32px
+  padding: 0 10px
+  outline: none
+
+  &:focus
+    @include box-shadow(0 0 5px {{ theme.header_color }} inset)
+
+textarea
+  padding: 10px
 
 /* @end */
 
