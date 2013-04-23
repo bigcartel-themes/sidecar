@@ -1,6 +1,5 @@
-//= require javascripts/jquery.isotope.min
-//= require javascripts/jquery.fancybox.pack
-//= require javascripts/jquery.htmlHighlight
+//= require_directory ./javascripts/vendor
+//= require_directory ./javascripts/lib
 
 //= require javascripts/store
 //= require javascripts/products
