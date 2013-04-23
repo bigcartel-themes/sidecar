@@ -7,11 +7,11 @@ Store = window.Store =
 
   common: ->
     console.log 'SIDECAR TIME!'
-    $('.fancybox').fancybox();
-    if $('body').data 'search' then @setupSearch()
+    $('.fancybox').fancybox()
+    $('body').data('search') is true and @setupSearch()
 
   setupSearch: ->
-    searchForm = $('form[name=search]')
+    searchForm = $('form.search')
 
     focus = ->
       searchForm.addClass 'focus'

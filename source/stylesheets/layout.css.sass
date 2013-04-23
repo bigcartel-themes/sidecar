@@ -198,7 +198,7 @@ aside
       line-height: 1.2em
       word-wrap: break-word
 
-  form[name=search]
+  form.search
     cursor: pointer
     height: 20px
     padding: 3px 0 5px
@@ -215,6 +215,7 @@ aside
       cursor: pointer
       display: block
       font-size: 11px
+      @include opacity(1)
       position: absolute
       top: 4px
       z-index: 1
@@ -226,11 +227,15 @@ aside
       cursor: pointer
       font-family: {{ theme.font | font_family_for_group }}
       height: auto
-      outline: none
+      outline: 0
       margin: 0
       padding: 0
       position: relative
+      width: 100%
       z-index: 2
+
+      &:focus
+        @include box-shadow(none)
 
   nav
     section
