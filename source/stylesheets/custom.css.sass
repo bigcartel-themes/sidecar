@@ -1,6 +1,48 @@
 .custom
-  p,
-  ul,
-  ol,
-  dl
-    font-size: 12px
+  .main
+    h1
+      height: 55px
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      margin-bottom: 15px
+
+    p,
+    ul,
+    ol,
+    dl
+      font-size: 12px
+      line-height: 18px
+
+    ol,
+    ul
+      padding-left: 2.5em
+      width: auto
+
+    ol
+      list-style: decimal
+
+    ul
+      list-style: disc
+
+    dl
+      dt
+        color: {{ theme.header_color }}
+        font-size: 15px
+        line-height: 18px
+        margin-bottom: 5px
+
+      dd
+        margin-bottom: 15px
+
+    img,
+    object,
+    video,
+    audio,
+    iframe,
+    embed
+      max-width: 720px
+      margin: 15px 0
