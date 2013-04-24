@@ -18,6 +18,12 @@ body
   &.working
     cursor: progress !important
 
+::selection
+  background-color: {{ theme.highlight_color }}
+
+::-moz-selection
+  background-color: {{ theme.highlight_color }}
+
 a
   @extend %transition
   color: {{ theme.link_color }}
