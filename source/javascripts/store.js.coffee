@@ -49,7 +49,7 @@ Store = window.Store =
 
     elm = $("<div class='errors' style='display:none;cursor:pointer'><ul><li>#{error}</li></ul></div>")
 
-    if $('.main h1').length then elm.insertAfter('.main h1:first') else elm.prependTO('.main > div:first')
+    if $('.main h1').length then elm.insertAfter('.main h1:first') else elm.prependTo('.main > div:first')
 
     elm.on 'click', ($.proxy @clearErrors, @)
 
