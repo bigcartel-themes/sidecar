@@ -1,10 +1,24 @@
 .products_list
   @extend %clearfix
 
+  .product,
+  .product img
+    {% if theme.product_list_size == 'medium' %}
+    max-width: 120px
+    {% elsif theme.product_list_size == 'large' %}
+    max-width: 210px
+    {% else %}
+    max-width: 390px
+    {% endif %}
+
   .product
     float: left
     margin: 0 30px 30px 0
+    overflow: hidden
     position: relative
+
+    a
+      display: block
 
     .overlay &:hover .product_info
       @include opacity(1)
