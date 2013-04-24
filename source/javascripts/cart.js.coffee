@@ -7,6 +7,7 @@ Store.cart = window.Store.cart =
     @form.find('input, select').each @setDefaultVal
     @form.on 'keyup change', '[name*="cart[update]"]', ($.proxy @handleItemUpdate, @)
     @form.on 'click', 'a.remove', ($.proxy @handleItemRemove, @)
+    @form.on 'submit', ($.proxy @handleCheckout, @)
 
   setDefaultVal: ->
     elm = $(@)
@@ -76,6 +77,27 @@ Store.cart = window.Store.cart =
       $('.cart_shipping_value').toggle(!cart.shipping.pending).htmlHighlight Format.money(cart.shipping.amount, true, true)
       $('#country').toggle cart.shipping.strict
 
-
   updateTotal: (cart) ->
     $('.total_price', @form).htmlHighlight(Format.money cart.total, true, true)
+
+  handleCheckout: (e) ->
+    e.preventDefault()
+
+    return false if @working
+    @working = true
+
+    $(e.target).find('button[type=submit]').html 'Checkout Out&hellip;'
+    @super.working()
+
+    params = @form.serialize() + "&checkout=1"
+
+    $.post @form.attr('action'), params, (response) =>
+      nextForm = $('form', response)
+
+      if nextForm.length is 0
+        @form.replaceWith $('form#cart_form', response)
+      else if nextForm.is('#checkout_form')
+        nextForm.hide().appendTo('body').submit()
+      else
+        @form.replaceWith nextForm
+        @working = false

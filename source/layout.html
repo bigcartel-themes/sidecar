@@ -11,107 +11,109 @@
 </head>
 
 <body id="{{ page.permalink }}" class="{{ page.category }}" data-search="{{ theme.show_search }}">
-  <aside>
-    <div>
-      <header>
-        <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
-          {% if theme.logo %}
-            <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
-          {% else %}
-            {{ store.name | escape }}
-          {% endif %}
-        </a>
-      </header>
+  <div class="wrapper">
+    <aside>
+      <div>
+        <header>
+          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
+            {% if theme.logo %}
+              <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+            {% else %}
+              {{ store.name | escape }}
+            {% endif %}
+          </a>
+        </header>
 
-      <nav>
-        <section>
-          <h2 class="title">
-            <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
-              Cart
-              <span class="total">{{ cart.total | money_with_sign }}</span>
-              <span class="count">{{ cart.item_count }}</span>
-            </a>
-          </h2>
-        </section>
-
-        <section>
-          <h2 class="title">
-            <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
-              Products
-            </a>
-          </h2>
-
-          {% if theme.show_search %}
-            <form action="/products" method="get" class="search">
-              <label for="search">Search&hellip;</label>
-              <input type="text" name="search" id="search">
-            </form>
-          {% endif %}
-
-          <ul>
-            {% for category in categories.active %}
-              <li>
-                <a href="{{ category.url }}" class="{% if page.full_url contains category.url %}current{% endif %}">
-                  {{ category.name }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </section>
-
-        {% if artists.active != blank %}
+        <nav>
           <section>
-            <h2 class="title">Artists</h2>
+            <h2 class="title">
+              <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
+                Cart
+                <span class="total">{{ cart.total | money_with_sign }}</span>
+                <span class="count">{{ cart.item_count }}</span>
+              </a>
+            </h2>
+          </section>
+
+          <section>
+            <h2 class="title">
+              <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
+                Products
+              </a>
+            </h2>
+
+            {% if theme.show_search %}
+              <form action="/products" method="get" class="search">
+                <label for="search">Search&hellip;</label>
+                <input type="text" name="search" id="search">
+              </form>
+            {% endif %}
 
             <ul>
-              {% for artist in artists.active %}
+              {% for category in categories.active %}
                 <li>
-                  <a href="{{ artist.url }}" class="page {% if page.full_url contains artist.url %}current{% endif %}">
-                    {{ artist.name }}
+                  <a href="{{ category.url }}" class="{% if page.full_url contains category.url %}current{% endif %}">
+                    {{ category.name }}
                   </a>
                 </li>
               {% endfor %}
             </ul>
           </section>
-        {% endif %}
 
-        <section>
-          <ul>
-            {% for page in pages.all %}
+          {% if artists.active != blank %}
+            <section>
+              <h2 class="title">Artists</h2>
+
+              <ul>
+                {% for artist in artists.active %}
+                  <li>
+                    <a href="{{ artist.url }}" class="page {% if page.full_url contains artist.url %}current{% endif %}">
+                      {{ artist.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+
+          <section>
+            <ul>
+              {% for page in pages.all %}
+                <li class="title">
+                  <a href="{{ page.url }}" class="{% if page.full_url contains page.url %}current{% endif %}">
+                    {{ page.name }}
+                  </a>
+                </li>
+              {% endfor %}
               <li class="title">
-                <a href="{{ page.url }}" class="{% if page.full_url contains page.url %}current{% endif %}">
-                  {{ page.name }}
+                <a href="{{ pages.contact.url }}" class="{% if page.url == '/contact' %}current{% endif %}">
+                  {{ pages.contact.name }}
                 </a>
               </li>
-            {% endfor %}
-            <li class="title">
-              <a href="{{ pages.contact.url }}" class="{% if page.url == '/contact' %}current{% endif %}">
-                {{ pages.contact.name }}
-              </a>
-            </li>
-            {% if store.website != blank %}
-              <li><a href="{{ store.website }}">Back to Site</a></li>
-            {% endif %}
-          </ul>
+              {% if store.website != blank %}
+                <li><a href="{{ store.website }}">Back to Site</a></li>
+              {% endif %}
+            </ul>
+          </section>
+        </nav>
+      </div>
+
+      <footer>
+        <cite>{{ bigcartel_credit }}</cite>
+      </footer>
+    </aside>
+
+    <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
+      {% if page.category == 'custom' %}
+          <div class="page custom">
+            <h1>{{ page.name }}</h1>
+            {{ page_content | paragraphs }}
+          </div>
         </section>
-      </nav>
+      {% else %}
+        {{ page_content }}
+      {% endif %}
     </div>
-
-    <footer>
-      <cite>{{ bigcartel_credit }}</cite>
-    </footer>
-  </aside>
-
-  <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
-    {% if page.category == 'custom' %}
-        <div class="page custom">
-          <h1>{{ page.name }}</h1>
-          {{ page_content | paragraphs }}
-        </div>
-      </section>
-    {% else %}
-      {{ page_content }}
-    {% endif %}
   </div>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>

@@ -4,6 +4,15 @@
     <form method="post" id="cart_form" action="/cart">
       <h1>Cart</h1>
 
+      {% if errors != blank %}
+        <ul class="errors">
+          {% for error in errors %}
+            <li>{% if forloop.length != 1 %}&bull; {% endif %}{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+
       <ul>
         {% for item in cart.items %}
           <li class="cart_item" data-item-id="{{ item.id }}">
@@ -41,12 +50,10 @@
           </li>
         {% endfor %}
 
-        <!-- if cart.discount.enabled -->
-        {% if true %}
+        {% if cart.discount.enabled %}
           <li class="discount">
 
-            <!-- if cart.discount.pending -->
-            {% if true %}
+            {% if cart.discount.pending %}
               <div class="col1">
                 <p class="label">
                   <label for="cart_discount_code">Have a discount code?</label>
