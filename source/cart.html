@@ -1,7 +1,7 @@
 <div class="page cart">
   {% unless cart.items == blank %}
 
-    <form method="post" action="/cart">
+    <form method="post" id="cart_form" action="/cart">
       <h1>Cart</h1>
 
       <ul>
@@ -26,13 +26,13 @@
             </div>
             <div class="col2">
               <div>
-                <p>
+                <p class="price">
                   {{ item.price | money_with_sign }}
                 </p>
               </div>
               <div class="remove">
                 <p>
-                  <a href="#" title="Remove item" class="remove">
+                  <a href="#" title="Remove item" class="remove" data-item-id="{{ item.id }}">
                     Remove
                   </a>
                 </p>
@@ -41,18 +41,22 @@
           </li>
         {% endfor %}
 
-        {% if cart.discount.enabled %}
+        <!-- if cart.discount.enabled -->
+        {% if true %}
           <li class="discount">
 
-            {% if cart.discount.pending %}
+            <!-- if cart.discount.pending -->
+            {% if true %}
               <div class="col1">
-                <p>
+                <p class="label">
                   <label for="cart_discount_code">Have a discount code?</label>
                   {{ cart.discount | discount_code_input }}
                 </p>
               </div>
               <div class="col2">
-                (optional)
+                <p class="value">
+                  (optional)
+                </p>
               </div>
             {% elsif cart.discount.free_shipping %}
               <div class="col1">
@@ -79,7 +83,7 @@
                 </p>
               </div>
               <div class="col2">
-                <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
+                <p class="cart_shipping_value" {% if cart.shipping.pending %} style="display:none"{% endif %}>
                   {% unless cart.shipping.pending %}
                     {{ cart.shipping.amount | money_with_sign }}
                   {% endunless %}
@@ -108,7 +112,7 @@
           </div>
           <div class="col2">
             <p>
-              <b>{{ cart.total | money_with_sign }}</b>
+              <b class="total_price">{{ cart.total | money_with_sign }}</b>
               {% unless cart.shipping.enabled %}
                 <span>+ applicable shipping</span>
               {% endunless %}
@@ -125,10 +129,10 @@
       </ul>
     </form>
 
-  {% else %}
-
+  {% endunless %}
+  <div class="cart_empty" {% if cart.items != blank %} style="display:none"{% endif %}>
     <h1>Your cart is empty</h1>
     <p>Sounds like a good time to <a href="/">start shopping</a>.</p>
+  </div>
 
-  {% endunless %}
 </div>

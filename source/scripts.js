@@ -5,3 +5,5 @@
 //= require javascripts/products
 //= require javascripts/product
 //= require javascripts/home
+//= require javascripts/cart
+//= require javascripts/contact

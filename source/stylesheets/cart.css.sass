@@ -78,6 +78,10 @@
         text-indent: -9999px
         width: 23px
 
+        &.loading
+          background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
+          @include animation(spin 1s infinite linear)
+
     .discount
       input[type=text]
         padding: 0 10px
@@ -101,6 +105,11 @@
         display: block
         font-style: italic
         font-weight: normal
+
+        &.currency_sign
+          display: inline
+          font-style: normal
+          font-weight: inherit
 
     .submit
       padding-left: 66%
