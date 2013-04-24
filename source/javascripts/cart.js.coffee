@@ -92,7 +92,7 @@ Store.cart = window.Store.cart =
     params = @form.serialize() + "&checkout=1"
 
     $.post @form.attr('action'), params, (response) =>
-      nextForm = $('form', response)
+      nextForm = $('form', response).not('.search')
 
       if nextForm.length is 0
         @form.replaceWith $('form#cart_form', response)

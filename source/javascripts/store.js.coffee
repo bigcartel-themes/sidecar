@@ -1,9 +1,9 @@
 Store = window.Store =
+  errors: []
+
   init: ->
     page = $('body').attr('id')
     @inPreview = /\/admin\/design/.test top.location.pathname
-    @errors = []
-
 
     @common()
     @[page] and typeof @[page]['init'] is 'function' and @[page]['init'](@)
@@ -42,10 +42,21 @@ Store = window.Store =
     $('body').removeClass 'working'
 
   error: (error) ->
-    console.log "i'm showing an error"
+    @clearErrors()
+    @finished()
+
+    if typeof error is 'object' then error = error.join '</li><li>' else return true
+
+    elm = $("<div class='errors' style='display:none;cursor:pointer'><ul><li>#{error}</li></ul></div>")
+
+    if $('.main h1').length then elm.insertAfter('.main h1:first') else elm.prependTO('.main > div:first')
+
+    elm.on 'click', ($.proxy @clearErrors, @)
+
+    elm.slideDown 'fast'
 
   clearErrors: ->
-    console.log 'clearing errors'
+    $('.errors').slideUp 'fast', -> $(@).remove()
 
   updateCart: (cart) ->
     $('aside .cart .count').htmlHighlight cart.item_count
