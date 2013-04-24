@@ -43,9 +43,9 @@ Store.cart = window.Store.cart =
     @super.updateCart cart
 
     if cart.item_count
-      @updateCartItems cart
-      @updateCartDiscount cart
-      @updateCartTotal cart
+      @updateItems cart
+      @updateDiscount cart
+      @updateTotal cart
     else
       @form.fadeOut 300, ->
         $(@).remove()
