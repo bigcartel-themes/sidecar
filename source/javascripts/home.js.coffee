@@ -1,3 +1,3 @@
 Store.home = window.Store.home =
-  init: ->
-    Store.products.init()
+  init: (_super) ->
+    Store.products.init _super
