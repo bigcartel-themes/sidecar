@@ -132,14 +132,9 @@
     };
 
     Store.infiniteOptions = {
-      navSelector: '#pagination',
-      nextSelector: '#pagination a:first',
-      itemSelector: '#product_list .product',
-      loading: {
-        img: "",
-        msgText: "<p>Loading more products&hellip;</p>",
-        finishedMsg: "<p>You&#8217;ve reached the end.</p>"
-      }
+      moreSelector: '.next',
+      itemSelector: '.products_list .product'
+
     };
     {% if errors != blank %}
       {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
