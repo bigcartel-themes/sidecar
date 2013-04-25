@@ -385,13 +385,13 @@ aside
 .main
   @extend %clearfix
   padding: 60px 0
-  @include transition(all .25s ease-out)
 
   @media screen and (max-width: $break-small)
     background-color: {{ theme.background_color }}
     left: 0
     padding: 0
     position: relative
+    @include transition(all .25s ease-out)
     width: 100%
     z-index: 2
 
@@ -482,5 +482,12 @@ aside
   h1
     height: 60px
     margin: 0
+
+    @media screen and (max-width: $break-small)
+      font-size: 16px
+      height: auto
+      margin-bottom: 0
+      padding-top: 24px
+      text-align: center
 
 /* @end */
