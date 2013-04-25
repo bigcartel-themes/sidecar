@@ -15,6 +15,9 @@ body
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
+  @media screen and (max-width: $break-small)
+    overflow-x: hidden
+
   &.working
     cursor: progress !important
 
@@ -186,6 +189,22 @@ textarea
 
 /* @end */
 
+/* @group responsive utility classes */
+
+.mobile-only
+  display: none
+
+  @media screen and (max-width: $break-small)
+    display: block
+
+.not-mobile
+  display: block
+
+  @media screen and (max-width: $break-small)
+    display: none
+
+/* @end */
+
 /* @group sidebar */
 
 aside
@@ -196,6 +215,14 @@ aside
   position: {% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}
   width: 209px
   z-index: 100
+
+  @media screen and (max-width: $break-small)
+    border-right: 1px solid {{ theme.sidebar_border_color }}
+    padding: 0 8px
+    position: absolute
+    width: 272px
+    z-index: 1
+
 
   > div
     min-height: 100%
@@ -218,6 +245,9 @@ aside
     overflow: hidden
     width: 150px
 
+    @media screen and (max-width: $break-small)
+      display: none
+
     .logo
       display: block
       font-size: 2.4em
@@ -230,6 +260,10 @@ aside
     height: 20px
     padding: 3px 0 5px
     position: relative
+
+    @media screen and (max-width: $break-small)
+      height: 28px
+      padding-top: 5px
 
     &:hover label
       color: {{ theme.sidebar_link_rollover }}
@@ -246,6 +280,10 @@ aside
       position: absolute
       top: 4px
       z-index: 1
+
+      @media screen and (max-width: $break-small)
+        font-size: 14px
+        top: 6px
 
     input[type=text]
       border: none
@@ -269,7 +307,13 @@ aside
       border-top: 1px solid {{ theme.sidebar_border_color }}
       padding: 10px 0
 
+      @media screen and (max-width: $break-small)
+        padding: 8px 8px
+
     .cart
+      @media screen and (max-width: $break-small)
+        height: 30px
+
       span
         border-left: 1px solid {{ theme.sidebar_border_color }}
         float: right
@@ -278,6 +322,9 @@ aside
         @include inline-block
         margin-left: 8px
         padding-left: 8px
+
+        @media screen and (max-width: $break-small)
+          font-size: 14px
 
         .currency_sign
           float: none
@@ -296,6 +343,10 @@ aside
       line-height: 1.9em
       margin-bottom: 0
 
+      @media screen and (max-width: $break-small)
+        color: {{ theme.link_color }}
+        font-size: 14px
+
     .title a
       &:hover,
       &.current
@@ -308,6 +359,10 @@ aside
       display: block
       font-size: 11px
       line-height: 20px
+
+      @media screen and (max-width: $break-small)
+        font-size: 14px
+        line-height: 29px
 
   footer
     height: 94px
@@ -330,11 +385,99 @@ aside
 .main
   @extend %clearfix
   padding: 60px 0
+  @include transition(all .25s ease-out)
+
+  @media screen and (max-width: $break-small)
+    background-color: {{ theme.background_color }}
+    left: 0
+    padding: 0
+    position: relative
+    width: 100%
+    z-index: 2
+
+    .show_menu &
+      @include translateX(272px)
+
+  header
+    @extend %clearfix
+    background-color: {{ theme.background_color }}
+    border-bottom: 1px solid {{ theme.sidebar_border_color }}
+    display: block
+    height: 48px
+    position: relative
+    text-align: center
+    width: 100%
+
+    @media screen and (min-width: $break-small)
+      display: none
+
+    .logo
+      color: {{ theme.header_color }}
+      font-size: 16px
+      font-weight: 700
+      left: 50%
+      line-height: 48px
+      margin-left: -75px
+      position: absolute
+      text-align: center
+      width: 150px
+
+    .cart
+      background: {{ theme.link_color }}
+      @include border-radius(16px)
+      color: {{ theme.background_color }}
+      display: block
+      float: right
+      font-size: 8px
+      height: 16px
+      line-height: 1
+      margin: 16px
+      padding: 3px 0
+      width: 16px
+      text-align: center
+
+    .menu
+      display: block
+      float: left
+      height: 48px
+      overflow: hidden
+      position: relative
+      text-indent: -9999px
+      width: 48px
+
+      b,
+      b:before,
+      b:after
+        background: {{ theme.link_color }}
+        display: block
+        height: 2px
+        left: 50%
+        margin: -1px 0 0 -6px
+        position: absolute
+        top: 50%
+        width: 12px
+
+      b:before,
+      b:after
+        content: ""
+
+      b:before
+        top: -3px
+
+      b:after
+        top: 5px
+
 
   .page
     margin: 0 60px 0 260px
     min-width: 500px
     width: auto
+
+    @media screen and (max-width: $break-medium)
+      min-width: 0
+
+    @media screen and (max-width: $break-small)
+      margin: 0
 
   h1
     height: 60px

@@ -1,11 +1,22 @@
 .product_detail
   padding-top: 60px
 
+  @media screen and (max-width: $break-small)
+    padding: 16px
+
   .gallery
     float: left
     max-width: 500px
     position: relative
     width: 65%
+
+    @media screen and (max-width: $break-medium)
+      float: none
+      margin-bottom: 25px
+      width: 100%
+
+    @media screen and (max-width: $break-small)
+      display: none
 
     > a img
       display: block
@@ -25,9 +36,22 @@
     max-width: 390px
     width: 30%
 
+    @media screen and (max-width: $break-medium)
+      float: none
+      margin-bottom: 25px
+      margin-left: 0
+      max-width: none
+      width: 100%
+
     h1
       height: auto
       margin-bottom: 10px
+
+      @media screen and (max-width: $break-small)
+        color: {{ theme.link_color }}
+        font-size: 16px
+        margin-bottom: 0
+        text-align: center
 
     .artists
       color: #fff
@@ -35,11 +59,22 @@
       line-height: 1.4
       margin-bottom: 0
 
+      @media screen and (max-width: $break-small)
+        color: {{ theme.font_color }}
+        line-height: 1.4
+        text-align: center
+
     .price
       color: #fff
       font-size: 16px
       font-weight: 700
       margin: 10px 0
+
+      @media screen and (max-width: $break-small)
+        font-size: 12px
+        font-weight: normal
+        margin: 0
+        text-align: center
 
       i
         font-style: normal
@@ -56,6 +91,16 @@
         max-width: 200px
         width: 100%
 
+        @media screen and (max-width: $break-small)
+          max-width: none
+          min-width: none
+
+      .button
+        @media screen and (max-width: $break-small)
+          display: block
+          width: 100%
+
+
     p
       font-size: 12px
       line-height: 18px
@@ -64,6 +109,15 @@
       border-top: 1px solid {{ theme.border_color }}
       margin-top: 15px
       padding-top: 15px
+
+      @media screen and (max-width: $break-small)
+        border-top: none
+        padding: 0 16px
+        text-align: center
+
+      img
+        margin-bottom: 20px
+        max-width: 100%
 
   .availability
     border-top: 1px solid {{ theme.border_color }}

@@ -1,6 +1,9 @@
 .products_list
   @extend %clearfix
 
+  @media screen and (max-width: $break-small)
+    padding-top: 32px
+
   .product,
   .product img
     {% if theme.product_list_size == 'medium' %}
@@ -17,6 +20,14 @@
     overflow: hidden
     position: relative
 
+    @media screen and (max-width: $break-small)
+      float: none
+      margin: 0 auto 32px
+      padding: 0 16px
+
+      img
+        max-width: 100%
+
     a
       display: block
 
@@ -26,14 +37,25 @@
     .product_info
       text-align: center
 
+      @media screen and (max-width: $break-small)
+        padding-top: 16px
+
       .product_name,
       p
         font-size: 11px
         line-height: 1.2em
         margin: 0
 
+        @media screen and (max-width: $break-small)
+          color: {{ theme.link_color }}
+          font-size: 12px
+          line-height: 1.4em
+
       .product_name
         font-weight: bold
+
+        @media screen and (max-width: $break-small)
+          font-weight: normal
 
       .standard &
         font-weight: 700px
@@ -42,38 +64,39 @@
         p
           padding-top: 5px
 
-      .overlay &
-        @extend %transition
-        background-color: {{ theme.link_color }}
-        color: {{ theme.background_color }}
-        height: 100%
-        left: 0
-        @include opacity(0)
-        position: absolute
-        top: 0
-        width: 100%
-
-        &:before
-          content: ''
-          @include inline-block
-          height: 100%
-          margin-right: -0.25em
-          vertical-align: middle
-
-        div
-          @include inline-block
-          vertical-align: middle
-
-        .product_name,
-        p
-          font-weight: 700
-          padding: 5px 30px
-
-        .product_name
+      @media screen and (min-width: $break-small)
+        .overlay &
+          @extend %transition
+          background-color: {{ theme.link_color }}
           color: {{ theme.background_color }}
+          height: 100%
+          left: 0
+          @include opacity(0)
+          position: absolute
+          top: 0
+          width: 100%
 
-        p
-          color: {{ theme.highlight_color }}
+          &:before
+            content: ''
+            @include inline-block
+            height: 100%
+            margin-right: -0.25em
+            vertical-align: middle
+
+          div
+            @include inline-block
+            vertical-align: middle
+
+          .product_name,
+          p
+            font-weight: 700
+            padding: 5px 30px
+
+          .product_name
+            color: {{ theme.background_color }}
+
+          p
+            color: {{ theme.highlight_color }}
 
 .pagination
   display: none

@@ -2,6 +2,7 @@ Store.products = window.Store.products =
   init: (_super) ->
     @super = _super
     @products = $('.products_list')
+    @useIsotope = $(window).width() > 480
 
     @products.imagesLoaded($.proxy @setupProducts, @)
     $(window).smartresize($.proxy @setupProducts, @)
@@ -12,7 +13,7 @@ Store.products = window.Store.products =
 
   setupProducts: ->
     @delayInPreview =>
-      @products.isotope @super.isotopeOptions
+      @useIsotope and @products.isotope @super.isotopeOptions
 
   prefillPage: ->
     if $(@super.infiniteOptions.moreSelector).length and $(window).height() - (@products.offset().top + @products.outerHeight()) > 0 then @fetchNextPage $.proxy(@prefillPage, @)
@@ -38,7 +39,8 @@ Store.products = window.Store.products =
     moreLink = $(@super.infiniteOptions.moreSelector, response)
 
     products.imagesLoaded =>
-      @products.append(products).isotope 'appended', products
+      @products.append(products)
+      @useIsotope and  @products.isotope 'appended', products
 
       if moreLink.length
         $(@super.infiniteOptions.moreSelector).replaceWith moreLink

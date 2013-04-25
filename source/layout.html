@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <head>
   <title>{{ store.name }} &mdash; {{ page.name }}</title>
-  <meta charset="utf-8" />
-  <meta name="description" content="{{ page.meta_description }}" />
-  <meta name="keywords" content="{{ page.meta_keywords }}" />
 
-  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1, width=device-width">
+  <meta name="description" content="{{ page.meta_description }}">
+  <meta name="keywords" content="{{ page.meta_keywords }}">
+
+  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
 
   {{ head_content }}
 </head>
@@ -104,6 +106,11 @@
     </aside>
 
     <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
+      <header>
+        <a href="/cart" class="cart">{{ cart.item_count }}</a>
+        <a href="#" class="menu">Menu<b></b></a>
+        <a href="/" title="{{ store.name | escape }}" class="logo">{{ store.name | escape }}</a>
+      </header>
       {% if page.category == 'custom' %}
           <div class="page custom">
             <h1>{{ page.name }}</h1>

@@ -9,6 +9,8 @@ Store = window.Store =
     @[page] and typeof @[page]['init'] is 'function' and @[page]['init'](@)
 
   common: ->
+    @setupMobileNav()
+    @hideUrlBar()
     $('body').data('search') is true and @setupSearch()
 
     $(document).ajaxSend(@working).ajaxComplete(@finished)
@@ -21,6 +23,17 @@ Store = window.Store =
 
     if @errors.length
       setTimeout $.proxy(@error, @, @errors), 500
+
+  setupMobileNav: ->
+    $('.main header .menu').on 'click', (e) ->
+      e.preventDefault()
+      $('body').toggleClass 'show_menu'
+
+  hideUrlBar: ->
+    window.addEventListener 'load', ->
+      setTimeout ->
+        window.scrollTo 0, 1
+      , 0
 
   setupSearch: ->
     searchForm = $('form.search')
