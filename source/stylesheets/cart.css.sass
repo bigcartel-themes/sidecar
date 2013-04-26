@@ -8,6 +8,14 @@
   min-width: 500px
   margin: 0 60px 0 260px
 
+  h1
+    display: none
+
+  @media screen and (max-width: $break-small)
+    max-width: none
+    min-width: 0
+    margin: 0
+
   form > ul
     li
       border-top: 1px solid {{ theme.border_color }}
@@ -51,6 +59,12 @@
         text-indent: -9999px
         width: 50px
 
+        @media screen and (max-width: $break-small)
+          width: 80px
+
+          img
+            max-width: 100% !important
+
       p
         @extend %center-vertical
 
@@ -65,6 +79,9 @@
         margin: 8px 0 0
         text-align: center
         width: 42px
+
+        @media screen and (max-width: $break-small)
+          display: none
 
       div.remove
         float: right
@@ -82,6 +99,13 @@
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
           @include animation(spin 1s infinite linear)
 
+        @media screen and (max-width: $break-small)
+          background: url(#{"{{ 'remove2x.png' | theme_image_url }}"}) 0 0 no-repeat
+          @include background-size(16px 16px)
+          height: 16px
+          margin-right: 6px
+          width: 16px
+
     .discount
       input[type=text]
         padding: 0 10px
@@ -95,16 +119,32 @@
     .total
       font-weight: 700
 
+      @media screen and (max-width: $break-small)
+        .col1,
+        .col2,
+        .label
+          display: inline
+          width: auto
+
+        .label
+          font-size: 12px
+
       .col2 p
         @extend %center-vertical
 
       b
         font-size: 20px
 
+        @media screen and (max-width: $break-small)
+          font-size: 12px
+
       span
         display: block
         font-style: italic
         font-weight: normal
+
+        @media screen and (max-width: $break-small)
+          display: inline
 
         &.currency_sign
           display: inline
@@ -114,5 +154,22 @@
     .submit
       padding-left: 66%
 
+      @media screen and (max-width: $break-small)
+        border: none
+        padding: 0 px
+
       button
         margin: 10px 0 0 35px
+
+        @media screen and (max-width: $break-small)
+          margin: 0
+          width: 100%
+
+  .cart_empty
+    @media screen and (max-width: $break-small)
+      h1
+        display: block
+        margin-bottom: 10px
+
+      p
+        text-align: center

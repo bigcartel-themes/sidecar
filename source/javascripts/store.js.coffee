@@ -72,7 +72,7 @@ Store = window.Store =
     $('.errors').slideUp 'fast', -> $(@).remove()
 
   updateCart: (cart) ->
-    $('aside .cart .count').htmlHighlight cart.item_count
+    $('aside .cart .count, .main header .cart').htmlHighlight cart.item_count
     $('aside .cart .total').htmlHighlight Format.money(cart.total, true, true)
 
   cookiesEnabled: ->
