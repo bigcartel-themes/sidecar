@@ -1,10 +1,20 @@
 form.contact
   max-width: 390px
 
+  @media screen and (max-width: $break-small)
+    max-width: none
+    padding: 16px
+
   li
+    @extend %clearfix
     border-top: 1px solid {{ theme.border_color }}
     margin-top: 15px
     padding-top: 15px
+
+    @media screen and (max-width: $break-small)
+      border: none
+      margin-top: 10px
+      padding-top: 0
 
     &:first-child
       border: none
@@ -16,6 +26,9 @@ form.contact
     font-size: 11px
     font-weight: 700
     margin-bottom: 10px
+
+    @media screen and (max-width: $break-small)
+      font-weight: normal
 
   input[type=text],
   textarea
@@ -33,5 +46,27 @@ form.contact
       margin: 0 15px 15px 0
       max-width: 150px
 
+      @media screen and (max-width: $break-small)
+        height: 51px
+        max-width: none
+        margin: 0 4% 0 0
+        width: 48%
+
+    b
+      @media screen and (max-width: $break-small)
+        background: #fff
+        @include border-radius(3px)
+        display: block
+        float: left
+        text-align: center
+        width: 48%
+
     img
       @include border-radius(3px)
+
+
+  button
+    @media screen and (max-width: $break-small)
+      display: block
+      margin-top: 32px
+      width: 100%
