@@ -20,7 +20,7 @@
       {% if forloop.last and forloop.length > 1 %} and {% endif %}
       {{ artist.name }}
       {% if forloop.length > 2 %}, {% endif %}
-      {% if forloop.last %}</p>{% endif %}
+      {% if forloop.last %} / </p>{% endif %}
     {% endfor %}
 
      {% case product.status %}
