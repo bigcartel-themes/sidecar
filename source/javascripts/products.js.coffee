@@ -28,6 +28,7 @@ Store.products = window.Store.products =
           offset: 'bottom-in-view'
 
   fetchNextPage: (callback) ->
+    @products.waypoint 'destroy'
     $.ajax
       url: $(@super.infiniteOptions.moreSelector).attr 'href'
       type: 'get'
@@ -50,6 +51,4 @@ Store.products = window.Store.products =
 
       if callback and typeof callback is 'function' then callback()
 
-
-
-
+      @setupWaypoints()
