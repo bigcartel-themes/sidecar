@@ -156,7 +156,7 @@ textarea
   @include border-radius(3px)
   font-family: {{ theme.font }}
   height: 32px
-  padding: 0 10px
+  padding: 6px 10px
   outline: none
 
   &:focus
@@ -416,14 +416,14 @@ aside
     @extend %clearfix
     background-color: {{ theme.background_color }}
     border-bottom: 1px solid {{ theme.sidebar_border_color }}
-    display: block
+    display: none
     height: 48px
     position: relative
     text-align: center
     width: 100%
 
-    @media screen and (min-width: $break-small)
-      display: none
+    @media screen and (max-width: $break-small)
+      display: block
 
     .logo
       color: {{ theme.header_color }}

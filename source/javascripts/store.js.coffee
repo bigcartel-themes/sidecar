@@ -30,10 +30,11 @@ Store = window.Store =
       $('body').toggleClass 'show_menu'
 
   hideUrlBar: ->
-    window.addEventListener 'load', ->
-      setTimeout ->
-        window.scrollTo 0, 1
-      , 0
+    if window.scrollTo and typeof window.scrollTo is 'function'
+      window.addEventListener 'load', ->
+        setTimeout ->
+          window.scrollTo 0, 1
+        , 0
 
   setupSearch: ->
     searchForm = $('form.search')
