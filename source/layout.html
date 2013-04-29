@@ -135,8 +135,6 @@
   <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
   <script type="text/javascript">
     Store.isotopeOptions = {
-      transformsEnabled: false,
-      animationEngine : 'best-available',
       itemSelector: '.product',
       layoutMode: '{{ theme.product_list_layout }}',
       masonry: {
@@ -148,8 +146,8 @@
     Store.infiniteOptions = {
       moreSelector: '.next',
       itemSelector: '.products_list .product'
-
     };
+
     {% if errors != blank %}
       {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
     {% endif %}
