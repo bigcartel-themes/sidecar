@@ -42,5 +42,6 @@ Store.products = window.Store.products =
           $(@super.infiniteOptions.moreSelector).replaceWith moreLink
         else
           $(@super.infiniteOptions.moreSelector).remove()
+          @scrollTrigger.waypoint 'destroy'
 
         callback and typeof callback is 'function' and callback()
