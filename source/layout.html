@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!--[if lt IE 8]><html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html> <!--<![endif]-->
 <head>
   <title>{{ store.name }} &mdash; {{ page.name }}</title>
 
@@ -34,7 +37,7 @@
           <section>
             <h2 class="title">
               <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
-                Cart
+                <b>Cart</b>
                 <span class="total">{{ cart.total | money_with_sign }}</span>
                 <span class="count">{{ cart.item_count }}</span>
               </a>

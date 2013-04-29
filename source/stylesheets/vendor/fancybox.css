@@ -88,7 +88,7 @@
 #fancybox-loading div {
   width: 44px;
   height: 44px;
-  background: url({{ 'fancybox_loading.gif' | theme_image_url }}) center center no-repeat;
+  background: url({{ 'loading_spinner.gif' | theme_image_url }}) center center no-repeat;
 }
 
 .fancybox-close {

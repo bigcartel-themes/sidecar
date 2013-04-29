@@ -323,8 +323,13 @@ aside
         padding: 8px 8px
 
     .cart
+      @extend %clearfix
+
       @media screen and (max-width: $break-small)
         height: 30px
+
+      b
+        float: left
 
       span
         border-left: 1px solid {{ theme.sidebar_border_color }}
@@ -339,8 +344,9 @@ aside
           font-size: 14px
 
         .currency_sign
-          float: none
           border: none
+          display: inline
+          float: left
           margin: 0
           padding: 0
 
