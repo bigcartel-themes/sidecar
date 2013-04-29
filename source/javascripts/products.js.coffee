@@ -14,11 +14,12 @@ Store.products = window.Store.products =
     @products.isotope options
 
   prefillPage: ->
-    url = $(@super.infiniteOptions.moreSelector).attr 'href'
-    if @products.height() + @products.offset().top < $(window).height() and url
-      @fetchNextPage url, ($.proxy @prefillPage, @)
-    else
-      @setupWaypoints()
+    unless $(@super.infiniteOptions.moreSelector).length is 0
+      url = $(@super.infiniteOptions.moreSelector).attr 'href'
+      if @products.height() + @products.offset().top < $(window).height()
+        @fetchNextPage url, ($.proxy @prefillPage, @)
+      else
+        @setupWaypoints()
 
   setupWaypoints: ->
     if @super.infiniteOptions
