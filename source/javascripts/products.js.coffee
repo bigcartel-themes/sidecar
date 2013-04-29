@@ -3,54 +3,44 @@ Store.products = window.Store.products =
     @super = _super
     @products = $('.products_list')
     @scrollTrigger = $(@super.infiniteOptions.paginationSelector)
-    @useIsotope = $(window).width() > 480
 
-    @products.imagesLoaded($.proxy @setupProducts, @)
-    $(window).smartresize($.proxy @setupProducts, @)
-    @prefillPage()
+    if @super.isotopeOptions and $(window).width() > 480
+      @products.imagesLoaded($.proxy @isotope, @, ($.extend { resizeable: false }, @super.isotopeOptions))
+      $(window).smartresize($.proxy @isotope, @, @super.isotopeOptions)
 
-  delayInPreview: (callback) ->
-    setTimeout callback, if @super.inPreview then 100 else 0
+    @super.infiniteOptions and @prefillPage()
 
-  setupProducts: ->
-    @delayInPreview =>
-      @useIsotope and @products.isotope @super.isotopeOptions
+  isotope: (options) ->
+    @products.isotope options
 
   prefillPage: ->
-    if $(@super.infiniteOptions.moreSelector).length and $(window).height() - (@products.offset().top + @products.outerHeight()) > 0 then @fetchNextPage $.proxy(@prefillPage, @)
+    url = $(@super.infiniteOptions.moreSelector).attr 'href'
+    if @products.height() + @products.offset().top < $(window).height() and url
+      @fetchNextPage url, ($.proxy @prefillPage, @)
     else
       @setupWaypoints()
 
-
   setupWaypoints: ->
-    if $(@super.infiniteOptions.moreSelector).length
-      @delayInPreview =>
-        @scrollTrigger.waypoint $.proxy(@fetchNextPage, @),
-          offset: '110%'
+    if @super.infiniteOptions
+      @scrollTrigger.waypoint $.proxy(@fetchNextPage, @, $(@super.infiniteOptions.moreSelector).attr('href')),
+        offset: '110%'
 
-  fetchNextPage: (callback) ->
-    @scrollTrigger.waypoint 'destroy'
-    console.log $(@super.infiniteOptions.moreSelector).attr 'href'
+  fetchNextPage: (url, callback) ->
     $.ajax
-      url: $(@super.infiniteOptions.moreSelector).attr 'href'
+      url: url
       type: 'get'
       dataType: 'html'
-      success: $.proxy @processPage, @, callback
+      success: $.proxy @parseResponse, @, callback
 
-  processPage: (callback, response) ->
-    products = $(@super.infiniteOptions.itemSelector, response)
+  parseResponse: (callback, response) ->
+    items = $(@super.infiniteOptions.itemSelector, response)
     moreLink = $(@super.infiniteOptions.moreSelector, response)
 
-    products.imagesLoaded =>
-      @products.append(products)
-      @useIsotope and  @products.isotope 'appended', products
+    items.imagesLoaded =>
+      @products.isotope 'insert', items, =>
+        if moreLink.length
+          $(@super.infiniteOptions.moreSelector).replaceWith moreLink
+        else
+          $(@super.infiniteOptions.moreSelector).remove()
 
-      if moreLink.length
-        $(@super.infiniteOptions.moreSelector).replaceWith moreLink
-      else
-        $(@super.infiniteOptions.moreSelector).remove()
-        @products.waypoint 'destroy'
-
-      if callback and typeof callback is 'function' then callback()
-
-      @setupWaypoints()
+        callback and typeof callback is 'function' and callback()
