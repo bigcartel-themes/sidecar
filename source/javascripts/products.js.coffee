@@ -2,6 +2,7 @@ Store.products = window.Store.products =
   init: (_super) ->
     @super = _super
     @products = $('.products_list')
+    @scrollTrigger = $(@super.infiniteOptions.paginationSelector)
     @useIsotope = $(window).width() > 480
 
     @products.imagesLoaded($.proxy @setupProducts, @)
@@ -24,11 +25,12 @@ Store.products = window.Store.products =
   setupWaypoints: ->
     if $(@super.infiniteOptions.moreSelector).length
       @delayInPreview =>
-        @products.waypoint $.proxy(@fetchNextPage, @),
-          offset: 'bottom-in-view'
+        @scrollTrigger.waypoint $.proxy(@fetchNextPage, @),
+          offset: '110%'
 
   fetchNextPage: (callback) ->
-    @products.waypoint 'destroy'
+    @scrollTrigger.waypoint 'destroy'
+    console.log $(@super.infiniteOptions.moreSelector).attr 'href'
     $.ajax
       url: $(@super.infiniteOptions.moreSelector).attr 'href'
       type: 'get'
