@@ -8,13 +8,11 @@ html
   height: 100%
 
 body
-  background-color: {{ theme.background_color }}
-  {% if theme.background_image != blank %}
-  background-image: url({{ theme.background_image.url }})
+  background-color: #{"{{ theme.background_color }}"}
+  background-image: #{"{% if theme.background_image != blank %} url({{ theme.background_image.url }}) {% else %} none {% endif %}"}
   background-repeat: repeat
-  {% endif %}
-  color: {{ theme.font_color }}
-  font-family: {{ theme.font | font_family_for_group }}
+  color: #{"{{ theme.font_color }}"}
+  font-family: #{"{{ theme.font | font_family_for_group }}"}
   font-size: 62.5%
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
@@ -31,18 +29,18 @@ body
   height: 100%
 
 ::selection
-  background-color: {{ theme.highlight_color }}
+  background-color: #{"{{ theme.highlight_color }}"}
 
 ::-moz-selection
-  background-color: {{ theme.highlight_color }}
+  background-color: #{"{{ theme.highlight_color }}"}
 
 a
   @extend %transition
-  color: {{ theme.link_color }}
+  color: #{"{{ theme.link_color }}"}
   text-decoration: none
 
   &:hover
-    color: {{ theme.link_rollover }}
+    color: #{"{{ theme.link_rollover }}"}
 
 h1,
 h2,
@@ -50,8 +48,8 @@ h3,
 h4,
 h5,
 h6
-  color: {{ theme.header_color }}
-  font-family: {{ theme.header_font | font_family_for_group }}
+  color: #{"{{ theme.header_color }}"}
+  font-family: #{"{{ theme.header_font | font_family_for_group }}"}
   font-weight: 400
   margin-bottom: 30px
 
@@ -123,7 +121,7 @@ strong
   font-weight: 700
 
 hr
-  border-bottom: 1px solid {{ theme.border_color }}
+  border-bottom: 1px solid #{"{{ theme.border_color }}"}
   height: 1px
   margin: 15px 0
   width: 100%
@@ -134,33 +132,33 @@ hr
 
 .button
   @extend %transition
-  background-color: {{ theme.link_color }}
+  background-color: #{"{{ theme.link_color }}"}
   @include border-radius(3px)
   border: none
-  color: {{ theme.background_color }}
+  color: #{"{{ theme.background_color }}"}
   cursor: pointer
-  font-family: {{ theme.font }}
+  font-family: #{"{{ theme.font }}"}
   font-size: 11px
   font-weight: 700
   @include inline-block
   padding: 11px 20px
 
   &:hover
-    background-color: {{ theme.link_rollover }}
-    color: {{ theme.background_color }}
+    background-color: #{"{{ theme.link_rollover }}"}
+    color: #{"{{ theme.background_color }}"}
 
 input[type=text],
 textarea
   background: #fff
   border: 1px solid #bfbfbf
   @include border-radius(3px)
-  font-family: {{ theme.font }}
+  font-family: #{"{{ theme.font }}"}
   height: 32px
   padding: 6px 10px
   outline: none
 
   &:focus
-    @include box-shadow(0 0 5px {{ theme.header_color }} inset)
+    @include box-shadow(0 0 5px #{"{{ theme.header_color }}"} inset)
 
   @media screen and (max-width: $break-small)
     height: 40px
@@ -173,9 +171,9 @@ textarea
 /* @group errors */
 
 .errors
-  background-color: {{ theme.highlight_color }}
+  background-color: #{"{{ theme.highlight_color }}"}
   @include border-radius(3px)
-  color: {{ theme.background_color }}
+  color: #{"{{ theme.background_color }}"}
   margin-bottom: 30px
 
   li
@@ -220,17 +218,17 @@ textarea
 /* @group sidebar */
 
 aside
-  background-color: {{ theme.sidebar_color }}
+  background-color: #{"{{ theme.sidebar_color }}"}
   float: left
   height: 100%
   padding: 57px 30px 0
-  position: {% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}
+  position: #{"{% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}"}
   @include translateZ(0)
   width: 209px
   z-index: 100
 
   @media screen and (max-width: $break-small)
-    border-right: 1px solid {{ theme.sidebar_border_color }}
+    border-right: 1px solid #{"{{ theme.sidebar_border_color }}"}
     padding: 0 8px
     position: absolute
     width: 272px
@@ -247,11 +245,11 @@ aside
       height: 94px
 
   a
-    color: {{ theme.sidebar_link_color }}
+    color: #{"{{ theme.sidebar_link_color }}"}
 
     &:hover,
     &.current
-      color: {{ theme.sidebar_link_rollover }}
+      color: #{"{{ theme.sidebar_link_rollover }}"}
 
   header
     margin-bottom: 35px
@@ -279,7 +277,7 @@ aside
       padding-top: 5px
 
     &:hover label
-      color: {{ theme.sidebar_link_rollover }}
+      color: #{"{{ theme.sidebar_link_rollover }}"}
 
     &.focus label
       @include opacity(0)
@@ -301,9 +299,9 @@ aside
     input[type=text]
       border: none
       background: transparent
-      color: {{ theme.link_color }}
+      color: #{"{{ theme.link_color }}"}
       cursor: pointer
-      font-family: {{ theme.font | font_family_for_group }}
+      font-family: #{"{{ theme.font | font_family_for_group }}"}
       height: auto
       outline: 0
       margin: 0
@@ -317,7 +315,7 @@ aside
 
   nav
     section
-      border-top: 1px solid {{ theme.sidebar_border_color }}
+      border-top: 1px solid #{"{{ theme.sidebar_border_color }}"}
       padding: 10px 0
 
       @media screen and (max-width: $break-small)
@@ -333,7 +331,7 @@ aside
         float: left
 
       span
-        border-left: 1px solid {{ theme.sidebar_border_color }}
+        border-left: 1px solid #{"{{ theme.sidebar_border_color }}"}
         float: right
         font-size: 11px
         font-weight: normal
@@ -356,20 +354,20 @@ aside
 
     .title,
     .title a
-      color: {{ theme.sidebar_link_color }}
+      color: #{"{{ theme.sidebar_link_color }}"}
       font-size: 12px
       font-weight: bold
       line-height: 1.9em
       margin-bottom: 0
 
       @media screen and (max-width: $break-small)
-        color: {{ theme.link_color }}
+        color: #{"{{ theme.link_color }}"}
         font-size: 14px
 
     .title a
       &:hover,
       &.current
-        color: {{ theme.sidebar_link_rollover }}
+        color: #{"{{ theme.sidebar_link_rollover }}"}
 
     li
       line-height: 1.9em
@@ -406,7 +404,7 @@ aside
   padding: 60px 0
 
   @media screen and (max-width: $break-small)
-    background-color: {{ theme.background_color }}
+    background-color: #{"{{ theme.background_color }}"}
     height: 100%
     left: 0
     min-height: 100%
@@ -421,8 +419,8 @@ aside
 
   header
     @extend %clearfix
-    background-color: {{ theme.background_color }}
-    border-bottom: 1px solid {{ theme.sidebar_border_color }}
+    background-color: #{"{{ theme.background_color }}"}
+    border-bottom: 1px solid #{"{{ theme.sidebar_border_color }}"}
     display: none
     height: 48px
     position: relative
@@ -433,7 +431,7 @@ aside
       display: block
 
     .logo
-      color: {{ theme.header_color }}
+      color: #{"{{ theme.header_color }}"}
       font-size: 16px
       font-weight: 700
       left: 50%
@@ -444,9 +442,9 @@ aside
       width: 150px
 
     .cart
-      background: {{ theme.link_color }}
+      background: #{"{{ theme.link_color }}"}
       @include border-radius(16px)
-      color: {{ theme.background_color }}
+      color: #{"{{ theme.background_color }}"}
       display: block
       float: right
       font-size: 8px
@@ -469,7 +467,7 @@ aside
       b,
       b:before,
       b:after
-        background: {{ theme.link_color }}
+        background: #{"{{ theme.link_color }}"}
         display: block
         height: 2px
         left: 50%

@@ -49,19 +49,19 @@
       margin-bottom: 10px
 
       @media screen and (max-width: $break-small)
-        color: {{ theme.link_color }}
+        color: #{"{{ theme.link_color }}"}
         font-size: 16px
         margin-bottom: 0
         padding: 0
 
     .artists
-      color: {{ theme.header_color }}
+      color: #{"{{ theme.header_color }}"}
       font-size: 12px
       line-height: 1.4
       margin-bottom: 0
 
       @media screen and (max-width: $break-small)
-        color: {{ theme.font_color }}
+        color: #{"{{ theme.font_color }}"}
         display: inline
         line-height: 1.4
 
@@ -69,7 +69,7 @@
           content: "/ "
 
     .price
-      color: {{ theme.header_color }}
+      color: #{"{{ theme.header_color }}"}
       font-size: 16px
       font-weight: 700
       margin: 10px 0
@@ -85,7 +85,7 @@
         font-size: 12px
 
     form
-      border-top: 1px solid {{ theme.border_color }}
+      border-top: 1px solid #{"{{ theme.border_color }}"}
       margin-top: 15px
       padding-top: 15px
 
@@ -110,7 +110,7 @@
       line-height: 18px
 
     .description
-      border-top: 1px solid {{ theme.border_color }}
+      border-top: 1px solid #{"{{ theme.border_color }}"}
       margin-top: 15px
       padding-top: 15px
 
@@ -123,7 +123,7 @@
         max-width: 100%
 
   .availability
-    border-top: 1px solid {{ theme.border_color }}
+    border-top: 1px solid #{"{{ theme.border_color }}"}
     padding-top: 15px
 
     h5
@@ -142,9 +142,9 @@
       position: relative
 
     b
-      background-color: {{ theme.link_color }}
+      background-color: #{"{{ theme.link_color }}"}
       @include border-radius(3px)
-      color: {{ theme.font_color }}
+      color: #{"{{ theme.font_color }}"}
       height: 20px
       left: 0
       @include opacity(0.1)

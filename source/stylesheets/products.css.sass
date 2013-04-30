@@ -9,13 +9,7 @@
 
   .product,
   .product img
-    {% if theme.product_list_size == 'medium' %}
-    max-width: 120px
-    {% elsif theme.product_list_size == 'large' %}
-    max-width: 210px
-    {% else %}
-    max-width: 390px
-    {% endif %}
+    max-width: #{"{% if theme.product_list_size == 'medium' %} 120px {% elsif theme.product_list_size == 'large' %} 210px {% else %} 390px {% endif %}"}
 
     @media screen and (max-width: $break-small)
       max-width: 100%
@@ -53,7 +47,7 @@
         margin: 0
 
         @media screen and (max-width: $break-small)
-          color: {{ theme.link_color }}
+          color: #{"{{ theme.link_color }}"}
           font-size: 12px
           line-height: 1.4em
 
@@ -72,8 +66,8 @@
 
       .overlay &
         @extend %transition
-        background-color: {{ theme.link_color }}
-        color: {{ theme.background_color }}
+        background-color: #{"{{ theme.link_color }}"}
+        color: #{"{{ theme.background_color }}"}
         height: 100%
         left: 0
         @include opacity(0)
@@ -98,10 +92,10 @@
           padding: 5px 30px
 
         .product_name
-          color: {{ theme.background_color }}
+          color: #{"{{ theme.background_color }}"}
 
         p
-          color: {{ theme.background_color }}
+          color: #{"{{ theme.background_color }}"}
 
 .pagination
   visibility: hidden
