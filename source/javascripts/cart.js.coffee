@@ -45,6 +45,7 @@ Store.cart = window.Store.cart =
     if cart.item_count
       @updateItems cart
       @updateDiscount cart
+      @updateShipping cart
       @updateTotal cart
     else
       @form.fadeOut 300, ->
