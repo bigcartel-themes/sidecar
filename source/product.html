@@ -45,12 +45,12 @@
         </p>
     {% endcase %}
 
-    {% if product.description != blank %}
-      <div class="description mobile-only">
-        <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}">
+    <div class="description mobile-only">
+      <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}">
+      {% if product.description != blank %}
         {{ product.description | paragraphs }}
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
 
     {% if product.status == 'active' %}
       <form method="post" action="/cart" class="add">
