@@ -48,6 +48,17 @@
 
 
     .cart_item
+      @media screen and (max-width: $break-small)
+        .col1
+          width: 78%
+
+          > div
+            max-width: 50%
+
+        .col2
+          width: 20%
+
+
       .product_image
         background-position: center center
         background-repeat: no-repeat
