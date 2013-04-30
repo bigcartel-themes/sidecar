@@ -8,6 +8,7 @@ Store.product = window.Store.product =
     @super = _super
     $('.fancybox').fancybox()
     @setupAddToCart()
+    @setupMobileGallery()
 
   setupAddToCart: ->
     @button = $ 'button.add'
@@ -40,3 +41,14 @@ Store.product = window.Store.product =
     setTimeout $.proxy(->
       @button.html(@messages.addToCart)
     , @), 3000
+
+  setupMobileGallery: ->
+    $('.mobile_gallery').on 'click', 'a', $.proxy(@setActiveImage, @)
+
+  setActiveImage: (e) ->
+    e.preventDefault()
+    elm = $(e.currentTarget)
+    img = $("<img src='#{elm.attr('href')}' class='mobile_gallery_viewer'>")
+    img.imagesLoaded =>
+      $('.mobile_gallery_viewer').replaceWith img
+    elm.closest('li').addClass('active').siblings().removeClass('active')
