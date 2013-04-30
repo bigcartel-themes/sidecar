@@ -1,17 +1,22 @@
 Store.products = window.Store.products =
+  breakPoint: 765
+
   init: (_super) ->
     @super = _super
     @products = $('.products_list')
     @scrollTrigger = $(@super.infiniteOptions.paginationSelector)
 
-    if @super.isotopeOptions and $(window).width() > 480
+    if @super.isotopeOptions and $(window).width() > @breakPoint
       @products.imagesLoaded($.proxy @isotope, @, ($.extend { resizeable: false }, @super.isotopeOptions))
       $(window).smartresize($.proxy @isotope, @, @super.isotopeOptions)
 
     @super.infiniteOptions and @prefillPage()
 
   isotope: (options) ->
-    @products.isotope options
+    if $(window).width() > @breakPoint
+      @products.isotope options
+    else
+      @products.isotope 'destroy'
 
   prefillPage: ->
     unless $(@super.infiniteOptions.moreSelector).length is 0
