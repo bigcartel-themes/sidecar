@@ -31,9 +31,10 @@ Store = window.Store =
 
   hideUrlBar: ->
     if window.scrollTo and typeof window.scrollTo is 'function'
-      window.addEventListener 'load', ->
-        setTimeout ->
+      window.addEventListener 'load', =>
+        setTimeout =>
           window.scrollTo 0, 1
+          if $('.main').height() < $('aside').outerHeight() then $('.main').height($('aside').outerHeight())
         , 0
 
   setupSearch: ->
