@@ -69,6 +69,9 @@ Store = window.Store =
     elm.on 'click', ($.proxy @clearErrors, @)
 
     elm.slideDown 'fast'
+    $('html, body').animate scrollTop: 0,
+      duration: 500
+      easing: 'swing'
 
   clearErrors: ->
     $('.errors').slideUp 'fast', -> $(@).remove()
