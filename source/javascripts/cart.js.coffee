@@ -67,10 +67,10 @@ Store.cart = window.Store.cart =
           elm.remove()
 
   updateDiscount: (cart) ->
-    if cart.discount and cart.discount.enabled
+    if cart.discount
       $('#cart_discount_code').fadeOut 300, -> $(this).remove()
       $('label[for=cart_discount_code]').htmlHighlight cart.discount.name
-      $('.discount .value').htmlHighlight if cart.discount.free_shipping then '' else Format.money(cart.discount.amount, true, true)
+      $('.discount .value').htmlHighlight(if cart.discount.free_shipping then '' else Format.money(cart.discount.amount, true, true))
 
   updateShipping: (cart) ->
     if cart.shipping

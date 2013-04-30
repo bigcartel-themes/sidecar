@@ -15,7 +15,7 @@ Store = window.Store =
 
     $(document).ajaxSend(@working).ajaxComplete(@finished)
 
-    API.onError = (error) ->
+    API.onError = (error) =>
       @error(error)
 
     unless @cookiesEnabled()
