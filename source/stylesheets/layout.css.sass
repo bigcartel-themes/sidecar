@@ -19,7 +19,7 @@ body
   -webkit-font-smoothing: subpixel-antialiased !important
 
   @media screen and (max-width: $break-small)
-    background-color: #{"{{ theme.sidebar_color }}"}
+    background-color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
     overflow-x: hidden
 
   &.working
@@ -235,7 +235,7 @@ aside
   @media screen and (max-width: $break-small)
     border-right: 1px solid #{"{{ theme.sidebar_border_color }}"}
     min-height: 100%
-    padding: 0 8px
+    padding: 0 32px
     position: absolute
     width: 272px
     z-index: 1
@@ -270,7 +270,8 @@ aside
     width: 150px
 
     @media screen and (max-width: $break-small)
-      display: none
+      margin: 14px 0
+      width: 100%
 
     .logo
       display: block
@@ -278,6 +279,9 @@ aside
       font-weight: 700
       line-height: 1.2em
       word-wrap: break-word
+
+      @media screen and (max-width: $break-small)
+        font-size: 16px
 
   form.search
     cursor: pointer
@@ -332,10 +336,7 @@ aside
       padding: 10px 0
 
       @media screen and (max-width: $break-small)
-        padding: 11px 8px 6px
-
-        &:first-child
-          border-top: none
+        padding: 11px 0 6px
 
     .cart
       @extend %clearfix
@@ -400,6 +401,9 @@ aside
     height: 94px
     padding: 40px 0 30px
 
+    @media screen and (max-width: $break-small)
+      display: none
+
     cite a
       background: url(#{"{{ 'bc_badge.png' | theme_image_url }}"}) no-repeat
       display: block
@@ -437,7 +441,7 @@ aside
 
   header
     @extend %clearfix
-    background-color: #{"{{ theme.background_color }}"}
+    background-color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
     border-bottom: 1px solid #{"{{ theme.sidebar_border_color }}"}
     display: none
     height: 48px
@@ -449,34 +453,35 @@ aside
       display: block
 
     .logo
-      color: #{"{{ theme.header_color }}"}
+      color: #{"{{ theme.sidebar_link_color }}"}
       font-size: 16px
       font-weight: 700
       left: 50%
       line-height: 48px
-      margin-left: -40%
+      margin-left: -35%
       overflow: hidden
-      padding: 0 50px
+      padding: 0
       position: absolute
       text-align: center
       text-overflow: ellipsis
       white-space: nowrap
-      width: 80%
+      width: 70%
 
 
     .cart
-      background: #{"{{ theme.link_color }}"}
+      background: #{"{{ theme.sidebar_link_color }}"}
       @include border-radius(16px)
       color: #{"{{ theme.background_color }}"}
       display: block
       float: right
-      font-size: 8px
-      height: 16px
-      line-height: 15px
-      margin: 16px
+      font-size: 10px
+      font-weight: bold
+      height: 24px
+      line-height: 24px
+      margin: 12px 16px
       padding: 0
-      width: 16px
       text-align: center
+      width: 24px
 
     .menu
       display: block
@@ -490,7 +495,7 @@ aside
       b,
       b:before,
       b:after
-        background: #{"{{ theme.link_color }}"}
+        background: #{"{{ theme.sidebar_link_color }}"}
         display: block
         height: 2px
         left: 50%
