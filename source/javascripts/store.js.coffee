@@ -34,7 +34,6 @@ Store = window.Store =
       window.addEventListener 'load', =>
         setTimeout =>
           window.scrollTo 0, 1
-          if $('.main').height() < $('aside').outerHeight() then $('.main').height($('aside').outerHeight())
         , 0
 
   setupSearch: ->
