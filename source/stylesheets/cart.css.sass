@@ -22,6 +22,10 @@
       height: 70px
       padding: 10px
 
+      @media screen and (max-width: $break-small)
+        &:first-child
+          border-top: none
+
     .col1,
     .col2
       @extend %clearfix
@@ -115,8 +119,18 @@
           width: 16px
 
     .discount
+      @media screen and (max-width: $break-small)
+        .col1,
+        .col2
+          float: left
+          width: auto
+
       input[type=text]
         padding: 0 10px
+
+        @media screen and (max-width: $break-small)
+          margin: 0 15px
+          width: 100px
 
       .col2
         line-height: 28px
@@ -124,10 +138,24 @@
       .label
         font-weight: 700
 
+        @media screen and (max-width: $break-small)
+          text-align: left
+
       .discount_amount
         line-height: 0
         position: relative
         top: -1px
+
+    .shipping
+      @media screen and (max-width: $break-small)
+        .col1,
+        .col2
+          float: left
+          width: auto
+
+        select
+          margin: 0 15px
+          width: 150px
 
     .total
       font-weight: 700
