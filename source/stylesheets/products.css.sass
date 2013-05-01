@@ -71,6 +71,7 @@
         @extend %transition
         background-color: #{"{{ theme.link_color }}"}
         color: #{"{{ theme.background_color }}"}
+        display: block
         height: 100%
         left: 0
         @include opacity(0)
@@ -78,27 +79,23 @@
         top: 0
         width: 100%
 
-        &:before
-          content: ''
-          @include inline-block
+        > div
+          display: table
           height: 100%
-          margin-right: -0.25em
-          vertical-align: middle
-
-        div
-          @include inline-block
-          vertical-align: middle
-
-        .product_name,
-        p
-          font-weight: 700
-          padding: 5px 30px
-
-        .product_name
-          color: #{"{{ theme.background_color }}"}
+          width: 100%
 
         p
-          color: #{"{{ theme.background_color }}"}
+          display: table-cell
+          height: 100%
+          width: 100%
+          vertical-align: middle
+
+          .product_name,
+          .sale,
+          .price
+            display: block
+            font-weight: 700
+            padding: 5px 30px
 
 .pagination
   visibility: hidden
