@@ -6,6 +6,7 @@
 body,
 html
   height: 100%
+  min-height: 100%
 
 body
   background-color: #{"{{ theme.background_color }}"}
@@ -19,7 +20,6 @@ body
 
   @media screen and (max-width: $break-small)
     background-color: #{"{{ theme.sidebar_color }}"}
-    background-image: none
     overflow-x: hidden
 
   &.working
@@ -28,10 +28,6 @@ body
 .wrapper
   min-height: 100%
   height: 100%
-
-  @media screen and (max-width: $break-small)
-    min-height: 0
-    height: auto
 
 ::selection
   background-color: #{"{{ theme.highlight_color }}"}
@@ -238,7 +234,7 @@ aside
 
   @media screen and (max-width: $break-small)
     border-right: 1px solid #{"{{ theme.sidebar_border_color }}"}
-    height: auto
+    min-height: 100%
     padding: 0 8px
     position: absolute
     width: 272px
@@ -420,12 +416,15 @@ aside
 
 .main
   @extend %clearfix
+  overflow: hidden
   padding: 60px 0
+  width: 100%
 
   @media screen and (max-width: $break-small)
     background-color: #{"{{ theme.background_color }}"}
     border-left: 1px solid #{"{{ theme.sidebar_border_color }}"}
     left: 0
+    min-height: 100%
     padding: 0
     position: relative
     @include transition(all .25s ease-out)
