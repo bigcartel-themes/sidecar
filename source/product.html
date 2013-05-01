@@ -13,6 +13,22 @@
       {% endfor %}
     </ul>
   </div>
+
+  <div class="gallery mobile_only">
+    <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
+    <ul class="mobile_gallery">
+      {% for image in product.images %}
+        {% if forloop.length > 1 %}
+          <li class="{% if forloop.first %}active{% endif %}">
+            <a href="{{ image | product_image_url }}">
+              <img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}">
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
   <div class="detail">
     <h1>{{ product.name }}</h1>
     {% for artist in product.artists %}
@@ -45,24 +61,6 @@
         </p>
     {% endcase %}
 
-    <div class="description mobile-only">
-      <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
-      <ul class="mobile_gallery">
-        {% for image in product.images %}
-          {% if forloop.length > 1 %}
-            <li class="{% if forloop.first %}active{% endif %}">
-              <a href="{{ image | product_image_url }}">
-                <img src="{{ image | product_image_url size:"thumb" }}" alt="Image of {{ product.name | escape }}">
-              </a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-      {% if product.description != blank %}
-        {{ product.description | paragraphs }}
-      {% endif %}
-    </div>
-
     {% if product.status == 'active' %}
       <form method="post" action="/cart" class="add">
         {% if product.has_default_option %}
@@ -77,7 +75,7 @@
     {% endif %}
 
     {% if product.description != blank %}
-      <div class="description not-mobile">
+      <div class="description">
         {{ product.description | paragraphs }}
       </div>
     {% endif %}

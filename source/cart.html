@@ -25,12 +25,12 @@
                   <a href="{{ item.product.url }}">
                     {{ item.product.name }}
                   </a>
-                  <span class="not-mobile">
+                  <span class="not_mobile">
                     {% unless item.product.has_default_option %}
                       {{ item.option.name }}
                     {% endunless %}
                   </span>
-                  <span class="mobile-only">
+                  <span class="mobile_only">
                     {% unless item.product.has_default_option %}
                       {{ item.option.name }} /
                     {% endunless %}
@@ -41,7 +41,7 @@
               {{ item | item_quantity_input }}
             </div>
             <div class="col2">
-              <div class="not-mobile">
+              <div class="not_mobile">
                 <p class="price">
                   {{ item.price | money_with_sign }}
                 </p>
