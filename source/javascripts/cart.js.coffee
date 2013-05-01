@@ -87,7 +87,7 @@ Store.cart = window.Store.cart =
     return false if @working
     @working = true
 
-    $(e.target).find('button[type=submit]').html 'Checkout Out&hellip;'
+    $(e.target).find('button[type=submit]').html 'Checking Out&hellip;'
     @super.working()
 
     params = @form.serialize() + "&checkout=1"
