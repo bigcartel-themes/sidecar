@@ -15,6 +15,7 @@ Store.product = window.Store.product =
     @form = $ 'form.add'
 
     @form.on 'submit', $.proxy @addToCart, @
+    $('body').on 'api.error', $.proxy @resolveError, @
 
   addToCart: (e) ->
     e.preventDefault()
@@ -31,8 +32,6 @@ Store.product = window.Store.product =
 
     Cart.addItem item, quantity, ($.proxy @finishAdding, @)
 
-    return false
-
   finishAdding: (cart) ->
     @super.finished()
     @super.updateCart(cart)
@@ -41,6 +40,10 @@ Store.product = window.Store.product =
     setTimeout $.proxy(->
       @button.html(@messages.addToCart)
     , @), 3000
+
+  resolveError: (e) ->
+    @button.html(@messages.addToCart).removeClass('disabled')
+    @super.finished()
 
   setupMobileGallery: ->
     $('.mobile_gallery').on 'click', 'a', $.proxy(@setActiveImage, @)

@@ -15,7 +15,7 @@ Store = window.Store =
 
     $(document).ajaxSend(@working).ajaxComplete(@finished)
 
-    API.onError = (error) =>
+    window.API.onError = (error) =>
       @error(error)
 
     unless @cookiesEnabled()
@@ -71,6 +71,8 @@ Store = window.Store =
     $('html, body').animate scrollTop: 0,
       duration: 500
       easing: 'swing'
+
+    $('body').trigger 'api.error'
 
   clearErrors: ->
     $('.errors').slideUp 'fast', -> $(@).remove()
