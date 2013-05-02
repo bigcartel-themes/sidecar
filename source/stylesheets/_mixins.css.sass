@@ -1,5 +1,6 @@
 %transition
-  @include transition(opacity .2s ease, color .2s ease, background-color .2s ease)
+  .loaded &
+    @include transition(opacity .2s ease, color .2s ease, background-color .2s ease)
 
 %clearfix
   zoom: 1

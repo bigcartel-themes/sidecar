@@ -8,6 +8,11 @@ Store = window.Store =
     @common()
     @[page] and typeof @[page]['init'] is 'function' and @[page]['init'](@)
 
+    setTimeout =>
+      $('body').addClass 'loaded'
+    , if @inPreview then 500 else 0
+
+
   common: ->
     @setupMobileNav()
     @hideUrlBar()
