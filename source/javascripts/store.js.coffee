@@ -59,7 +59,7 @@ Store = window.Store =
     @clearErrors()
     @finished()
 
-    if typeof error is 'object' then error = error.join '</li><li>' else return true
+    if Object.prototype.toString.call(error) is '[object Array]' then error = error.join '</li><li>' else return true
 
     elm = $("<div class='errors' style='display:none;cursor:pointer'><ul><li>#{error}</li></ul></div>")
 
