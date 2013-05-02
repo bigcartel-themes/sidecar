@@ -13,10 +13,8 @@ Store.products = window.Store.products =
     @super.infiniteOptions and @prefillPage()
 
   isotope: (options) ->
-    if $(window).width() > @breakPoint
-      @products.isotope options
-    else
-      @products.isotope 'destroy'
+    @products.isotope options
+    $(window).width() <= @breakPoint and @products.hasClass 'isotope' and @products.isotope 'destroy'
 
   prefillPage: ->
     unless $(@super.infiniteOptions.moreSelector).length is 0
