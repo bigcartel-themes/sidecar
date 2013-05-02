@@ -97,7 +97,7 @@
                 </p>
               </div>
               <div class="col2">
-                <p class="cart_shipping_value" {% if cart.shipping.pending %} style="display:none"{% endif %}>
+                <p class="cart_shipping_value not_mobile" {% if cart.shipping.pending %} style="display:none"{% endif %}>
                   {% unless cart.shipping.pending %}
                     {{ cart.shipping.amount | money_with_sign }}
                   {% endunless %}
@@ -115,6 +115,23 @@
                 </p>
               </div>
             {% endif %}
+          </li>
+        {% endif %}
+
+        {% if cart.shipping.enabled %}
+          <li class="shipping_total mobile_only">
+            <div class="col1">
+              <p class="label">
+                Shipping:
+              </p>
+            </div>
+            <div class="col2">
+              <p class="cart_shipping_value" {% if cart.shipping.pending %} style="display:none"{% endif %}>
+                {% unless cart.shipping.pending %}
+                  {{ cart.shipping.amount | money_with_sign }}
+                {% endunless %}
+              </p>
+            </div>
           </li>
         {% endif %}
 
