@@ -473,7 +473,7 @@ aside
     .cart
       background: #{"{{ theme.sidebar_link_color }}"}
       @include border-radius(16px)
-      color: #{"{{ theme.background_color }}"}
+      color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
       display: block
       float: right
       font-size: 10px
