@@ -39,11 +39,7 @@ body
 
 a
   @extend %transition
-  color: #{"{{ theme.link_color }}"}
   text-decoration: none
-
-  &:hover
-    color: #{"{{ theme.link_rollover }}"}
 
 h1,
 h2,
@@ -442,6 +438,13 @@ aside
 
     .show_menu &
       @include translateX(271px)
+
+  a,
+  a:visited
+    color: #{"{{ theme.link_color }}"}
+
+    &:hover
+      color: #{"{{ theme.link_rollover }}"}
 
   header
     @extend %clearfix
