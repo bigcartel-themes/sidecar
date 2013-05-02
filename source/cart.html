@@ -126,10 +126,8 @@
               </p>
             </div>
             <div class="col2">
-              <p class="cart_shipping_value" {% if cart.shipping.pending %} style="display:none"{% endif %}>
-                {% unless cart.shipping.pending %}
-                  {{ cart.shipping.amount | money_with_sign }}
-                {% endunless %}
+              <p class="cart_shipping_value">
+                {{ cart.shipping.amount | money_with_sign }}
               </p>
             </div>
           </li>

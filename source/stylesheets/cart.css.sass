@@ -202,6 +202,20 @@
           font-style: normal
           font-weight: inherit
 
+    .shipping_total
+      height: 60px
+      padding-bottom: 0
+
+      .col1,
+      .col2
+        height: 0
+
+      & + .total
+        @media screen and (max-width: $break-small)
+          border-top: none
+          padding-top: 0
+
+
     .submit
       padding-left: 66%
 
