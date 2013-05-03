@@ -249,7 +249,7 @@ aside
 
 
   > div
-    min-height: 100%
+    min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
     margin-bottom: -94px
 
     @media screen and (max-width: $break-small)
