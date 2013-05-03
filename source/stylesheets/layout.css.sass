@@ -134,12 +134,12 @@ hr
 
 /* @group forms */
 
-.button
+.main .button
   @extend %transition
   background-color: #{"{{ theme.link_color }}"}
   @include border-radius(3px)
   border: none
-  color: #{"{{ theme.background_color }}"}
+  color: #{"{{ theme.background_color }}"} !important
   cursor: pointer
   font-family: #{"{{ theme.font }}"}
   font-size: 11px
@@ -198,8 +198,10 @@ textarea
 /* @group standalone pages (maintenance, checkout, etc) */
 
 .standalone
-  margin: 120px auto
+  height: auto
+  margin: 0 auto
   max-width: 300px
+  padding-top: 120px
   text-align: center
 
   h2
