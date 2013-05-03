@@ -28,8 +28,25 @@ body
     cursor: progress !important
 
 .wrapper
-  min-height: 100%
   height: 100%
+  min-height: 100%
+  position: relative
+
+  @media screen and (min-width: $break-small)
+    &:after
+      background: #{"{{ theme.sidebar_color }}"}
+      content: ""
+      display: #{"{% if theme.fixed_sidebar %} none {% else %} block {% endif %}"}
+      height: 100%
+      left: 0
+      min-height: 100%
+      position: fixed
+      top: 0
+      width: 209px
+      z-index: 1
+
+      @media screen and (max-width: $break-small)
+        display: none
 
 ::selection
   background-color: #{"{{ theme.highlight_color }}"}
@@ -246,7 +263,7 @@ aside
 
 
   > div
-    min-height: 100%
+    min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
     margin-bottom: -94px
 
     @media screen and (max-width: $break-small)
