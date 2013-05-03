@@ -105,13 +105,18 @@
         float: right
 
       a.remove
-        background: url(#{"{{ 'fancybox_sprite.png' | theme_image_url }}"}) -6px -4px no-repeat
+        background: #fff
+        @include border-radius(23px)
+        color: #{"{{ theme.background_color }}"}
         display: block
-        height: 23px
+        height: 24px
         float: right
-        overflow: hidden
-        text-indent: -9999px
-        width: 23px
+        font-size: 18px
+        font-weight: bold
+        line-height: 1
+        padding: 2px 0
+        text-align: center
+        width: 24px
 
         &.loading
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
