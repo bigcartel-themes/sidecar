@@ -10,9 +10,6 @@ html
   min-height: 100%
   min-width: 200px
 
-  @media screen and (max-width: $break-small)
-    overflow-x: hidden
-
 body
   background-color: #{"{{ theme.background_color }}"}
   background-image: #{"{% if theme.background_image != blank %} url({{ theme.background_image.url }}) {% else %} none {% endif %}"}
@@ -249,7 +246,7 @@ aside
 
 
   > div
-    min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
+    min-height: 100%
     margin-bottom: -94px
 
     @media screen and (max-width: $break-small)
