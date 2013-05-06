@@ -15,6 +15,9 @@ Store = window.Store =
 
   common: ->
     @setupMobileNav()
+
+    $(window).smartresize @fixHeights
+    @fixHeights()
     @hideUrlBar()
     $('body').data('search') is true and @setupSearch()
 
@@ -28,6 +31,16 @@ Store = window.Store =
 
     if @errors.length
       setTimeout $.proxy(@error, @, @errors), 500
+
+  fixHeights: ->
+    m = $('.main .page')
+    m.css height: 'auto'
+    mh = m.outerHeight()
+    dh = $(document).height()
+
+    mh < dh and m.css height: dh
+
+
 
   setupMobileNav: ->
     $('.main header .menu').on 'click', (e) ->
