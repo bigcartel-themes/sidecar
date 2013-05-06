@@ -26,10 +26,12 @@ Store.products = window.Store.products =
 
   setupWaypoints: ->
     if @super.infiniteOptions
-      @scrollTrigger.waypoint $.proxy(@fetchNextPage, @, $(@super.infiniteOptions.moreSelector).attr('href')),
+      url = $(@super.infiniteOptions.moreSelector).attr('href')
+      url and @scrollTrigger.waypoint $.proxy(@fetchNextPage, @, url, $.proxy(@setupWaypoints, @)),
         offset: '110%'
 
   fetchNextPage: (url, callback) ->
+    @scrollTrigger.waypoint 'destroy'
     $.ajax
       url: url
       type: 'get'
