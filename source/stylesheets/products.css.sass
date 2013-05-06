@@ -11,13 +11,16 @@
   @extend %clearfix
 
   @media screen and (max-width: $break-small)
-    padding-top: 32px
+    padding: 32px
+
+  @media screen and (max-width: $break-extra-small)
+    padding: 32px 0 0
 
   .product,
   .product img
     max-width: #{"{% if theme.product_list_size == 'medium' %} 120px {% elsif theme.product_list_size == 'large' %} 210px {% else %} 390px {% endif %}"}
 
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-extra-small)
       max-width: 100%
 
   .product
@@ -27,8 +30,27 @@
     position: relative
 
     @media screen and (max-width: $break-small)
+      margin-right: 4%
+      text-align: center
+      width: 48%
+
+      &:nth-child(2n+1)
+        clear: left
+
+      &:nth-child(2n)
+        margin-right: 0
+
+      img
+        max-width: 100%
+
+    @media screen and (max-width: $break-extra-small)
       float: none
       margin: 0 32px 23px
+      max-width: none
+      width: auto
+
+      &:nth-child(2n)
+        margin-right: 32px
 
       img
         max-width: 100%
