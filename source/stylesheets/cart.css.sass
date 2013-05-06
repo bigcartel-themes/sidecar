@@ -116,6 +116,9 @@
         text-indent: -9999px
         width: 22px
 
+        .lt-ie9 &
+          background: url(#{"{{ 'remove1x.png' | theme_image_url }}"}) 0 0 no-repeat
+
         &.loading
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
           @include animation(spin 1s infinite linear)
