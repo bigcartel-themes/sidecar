@@ -73,6 +73,17 @@
   background-image: url({{ 'fancybox_sprite.png' | theme_image_url }});
 }
 
+.fancybox-close, .fancybox-prev span, .fancybox-next span {
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 22px 22px;
+  display: block;
+  height: 22px;
+  overflow: hidden;
+  text-indent: -999px;
+  width: 22px;
+}
+
 #fancybox-loading {
   position: fixed;
   top: 50%;
@@ -92,31 +103,14 @@
 }
 
 .fancybox-close {
-  background: #fff;
-  -webkit-border-radius: 24px;
-     -moz-border-radius: 24px;
-          border-radius: 24px;
+  background-image: url({{ 'remove.png' | theme_image_url }});
   position: absolute;
   top: 15px;
-  right: -22px;
-  width: 24px;
-  height: 24px;
+  right: -32px;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
   z-index: 8040;
-  text-align: center;
-}
-
-.fancybox-close:before {
-  color: {{ theme.background_color }};
-  content: "×";
-  font-size: 18px;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 2px 0;
-  width: 25px;
-  height: 25px;
 }
 
 .fancybox-nav {
@@ -140,45 +134,24 @@
 }
 
 .fancybox-nav span {
-  background: #000;
-  -webkit-border-radius: 24px;
-     -moz-border-radius: 24px;
-          border-radius: 24px;
   position: absolute;
   top: 50%;
-  width: 25px;
-  height: 25px;
-  margin-top: -12px;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
   cursor: pointer;
   z-index: 8040;
   visibility: hidden;
 }
 
-.fancybox-nav span:before {
-  color: #fff;
-  content: "→";
-  display: block;
-  font-size: 18px;
-  font-weight: bold;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 4px 0;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-}
-
 .fancybox-prev span {
-  left: 10px;
-}
-
-.fancybox-prev span:before {
-  content: "←";
+  background-image: url({{ 'left_arrow.png' | theme_image_url }});
+  left: 16px;
 }
 
 .fancybox-next span {
-  right: 10px;
+  background-image: url({{ 'right_arrow.png' | theme_image_url }});
+  right: 16px;
 }
 
 .fancybox-nav:hover span {

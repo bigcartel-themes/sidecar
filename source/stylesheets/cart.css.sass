@@ -108,18 +108,13 @@
         float: right
 
       a.remove
-        background: #fff
-        @include border-radius(23px)
-        color: #{"{{ theme.background_color }}"}
+        background: url(#{"{{ 'remove.png' | theme_image_url }}"}) 0 0 no-repeat
+        @include background-size(22px 22px)
         display: block
-        height: 24px
+        height: 22px
         float: right
-        font-size: 18px
-        font-weight: bold
-        line-height: 1
-        padding: 2px 0
-        text-align: center
-        width: 24px
+        text-indent: -9999px
+        width: 22px
 
         &.loading
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
