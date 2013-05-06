@@ -38,7 +38,7 @@ Store = window.Store =
     mh = m.outerHeight()
     dh = $(document).height()
 
-    mh < dh and m.css height: dh
+    mh < dh and m.css height: (dh - m.offset().top)
 
 
 
