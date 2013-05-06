@@ -125,12 +125,6 @@
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
           @include animation(spin 1s infinite linear)
 
-        @media screen and (max-width: $break-small)
-          background: url(#{"{{ 'remove2x.png' | theme_image_url }}"}) 0 0 no-repeat
-          @include background-size(16px 16px)
-          height: 16px
-          width: 16px
-
     .discount
       @media screen and (max-width: $break-small)
         .col1,
