@@ -450,6 +450,8 @@ aside
 
   @media screen and (max-width: $break-small)
     background-color: #{"{{ theme.background_color }}"}
+    background-image: #{"{% if theme.background_image != blank %} url({{ theme.background_image.url }}) {% else %} none {% endif %}"}
+    background-repeat: repeat
     border-left-color: #{"{{ theme.sidebar_border_color }}"}
     border-left-style: solid
     border-left-width: 1px
@@ -475,7 +477,7 @@ aside
 
   header
     @extend %clearfix
-    background-color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
+    background-color: #{"{{ theme.sidebar_color }}"}
     border-bottom-color: #{"{{ theme.sidebar_border_color }}"}
     border-bottom-style: solid
     border-bottom-width: 1px
