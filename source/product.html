@@ -1,5 +1,5 @@
 <div class="page product_detail">
-  <div class="gallery" style="max-width: {{ product.image.width }}px ">
+  <div class="gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
     <a href="{{ product.image | product_image_url }}" class="fancybox" rel="group">
       <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}">
     </a>
