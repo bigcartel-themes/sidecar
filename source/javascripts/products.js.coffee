@@ -9,20 +9,22 @@ Store.products = window.Store.products =
     if @super.isotopeOptions
       @defaultOptions = ($.extend { resizeable: false }, @super.isotopeOptions)
       @isotopeEnabled = false
+      @timer = null
       @products.imagesLoaded($.proxy @isotope, @, @defaultOptions)
       $(window).smartresize($.proxy @isotope, @, @defaultOptions)
 
     @super.infiniteOptions and @prefillPage()
 
   isotope: (options) ->
-    if $(window).width() >= @breakPoint
-      @products.isotope options
-      @isotopeEnabled = true
-    else
-      @isotopeEnabled and @products.isotope 'destroy' and setTimeout =>
-        @products.find('.product').removeAttr('style')
-      , 0
-      @isotopeEnabled = false
+    clearTimeout @timer
+    setTimeout =>
+      if $(window).width() >= @breakPoint
+        @products.isotope options
+        @isotopeEnabled = true
+      else
+        @isotopeEnabled and @products.isotope('destroy').find('.product').removeAttr('style')
+        @isotopeEnabled = false
+    , 150
 
   prefillPage: ->
     unless $(@super.infiniteOptions.moreSelector).length is 0
