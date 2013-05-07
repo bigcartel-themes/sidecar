@@ -6,9 +6,8 @@ Store.products = window.Store.products =
     @products = $('.products_list')
     @scrollTrigger = $(@super.infiniteOptions.paginationSelector)
 
-    if @super.isotopeOptions and $(window).width() > @breakPoint
-      @products.imagesLoaded($.proxy @isotope, @, ($.extend { resizeable: false }, @super.isotopeOptions))
-      $(window).smartresize($.proxy @isotope, @, @super.isotopeOptions)
+    @products.imagesLoaded($.proxy @isotope, @, ($.extend { resizeable: false }, @super.isotopeOptions))
+    $(window).smartresize($.proxy @isotope, @, @super.isotopeOptions)
 
     @super.infiniteOptions and @prefillPage()
 
