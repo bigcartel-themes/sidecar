@@ -43,11 +43,17 @@ Store.products = window.Store.products =
     moreLink = $(@super.infiniteOptions.moreSelector, response)
 
     items.imagesLoaded =>
-      @products.isotope 'insert', items, =>
-        if moreLink.length
-          $(@super.infiniteOptions.moreSelector).replaceWith moreLink
-        else
-          $(@super.infiniteOptions.moreSelector).remove()
-          @scrollTrigger.waypoint 'destroy'
+      if @products.hasClass 'isotope'
+        @products.isotope 'insert', items, $.proxy(@updateWaypoints, @, moreLink, callback)
+      else
+        @products.append items
+        @updateWaypoints moreLink, callback
 
-        callback and typeof callback is 'function' and callback()
+  updateWaypoints: (moreLink, callback) ->
+    if moreLink.length
+      $(@super.infiniteOptions.moreSelector).replaceWith moreLink
+    else
+      $(@super.infiniteOptions.moreSelector).remove()
+      @scrollTrigger.waypoint 'destroy'
+
+    callback and typeof callback is 'function' and callback()
