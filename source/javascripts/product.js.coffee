@@ -54,4 +54,5 @@ Store.product = window.Store.product =
     img = $("<img src='#{elm.attr('href')}' class='mobile_gallery_viewer'>")
     img.imagesLoaded =>
       $('.mobile_gallery_viewer').replaceWith img
+      @super.fixHeights()
     elm.closest('li').addClass('active').siblings().removeClass('active')
