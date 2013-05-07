@@ -17,7 +17,7 @@ Store = window.Store =
     @setupMobileNav()
 
     $(window).smartresize @fixHeights
-    @fixHeights()
+    $('body').imagesLoaded @fixHeights
     @hideUrlBar()
     $('body').data('search') is true and @setupSearch()
 
