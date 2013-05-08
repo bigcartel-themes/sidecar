@@ -17,6 +17,9 @@
       display: none
 
   form > ul
+    @media screen and (max-width: $break-small)
+      padding: 0 32px
+
     li
       border-top-color: #{"{{ theme.border_color }}"}
       border-top-style: solid
@@ -25,9 +28,10 @@
       padding: 10px
 
       @media screen and (max-width: $break-small)
-        height: 97px
+        height: auto
+        overflow: hidden
         padding: 23px 0 32px
-        margin: 0 32px
+        width: 100%
 
         &:first-child
           border-top: none
@@ -59,14 +63,19 @@
 
     .cart_item
       @media screen and (max-width: $break-small)
+        padding: 32px 0
+
         .col1
-          width: 78%
+          width: 90%
 
           > div
-            max-width: 50%
+            width: 70%
 
         .col2
-          width: 20%
+          width: 22px
+
+        .detail .mobile_only
+          line-height: 1.4
 
 
       .product_image
