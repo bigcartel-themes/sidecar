@@ -95,12 +95,6 @@
   height: 23px;
 }
 
-#fancybox-loading div {
-  width: 44px;
-  height: 44px;
-  background: url({{ 'loading_spinner.gif' | theme_image_url }}) center center no-repeat;
-}
-
 .fancybox-close {
   background-image: url({{ 'remove.png' | theme_image_url }});
   position: absolute;
