@@ -12,7 +12,7 @@ html
 
 body
   background-color: #{"{{ theme.background_color }}"}
-  background-image: #{"{% if theme.background_image != blank %} url({{ theme.background_image.url }}) {% else %} none {% endif %}"}
+  background-image: #{"{% if theme.background_image != blank %} url(\"{{ theme.background_image.url }}\") {% else %} none {% endif %}"}
   background-repeat: repeat
   color: #{"{{ theme.font_color }}"}
   font-family: #{"{{ theme.font | font_family_for_group }}"}

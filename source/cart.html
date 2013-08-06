@@ -17,7 +17,7 @@
         {% for item in cart.items %}
           <li class="cart_item" data-item-id="{{ item.id }}">
             <div class="col1">
-              <a href="{{ item.product.url }}" style="background-image: url({{ item.product.image | product_image_url size:"thumb" }}); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image">
+              <a href="{{ item.product.url }}" style="background-image: url(\"{{ item.product.image | product_image_url: "thumb" }}\"); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image">
                 {{ item.name }}
               </a>
               <div>
