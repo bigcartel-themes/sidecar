@@ -81,7 +81,7 @@
 }
 
 #fancybox-loading {
-  background-image: url({{ 'loading_spinner.gif' | theme_image_url }});
+  background-image: url("{{ 'loading_spinner.gif' | theme_image_url }}");
   position: fixed;
   top: 50%;
   left: 50%;
@@ -96,7 +96,7 @@
 }
 
 .fancybox-close {
-  background-image: url({{ 'remove.png' | theme_image_url }});
+  background-image: url("{{ 'remove.png' | theme_image_url }}");
   position: absolute;
   top: 15px;
   right: -32px;
@@ -107,7 +107,7 @@
 }
 
 .lt-ie9 .fancybox-close {
-  background: url({{ 'remove1x.png' | theme_image_url }}) 0 0 no-repeat;
+  background: url("{{ 'remove1x.png' | theme_image_url }}") 0 0 no-repeat;
 }
 
 .fancybox-nav {
@@ -117,7 +117,7 @@
   height: 100%;
   cursor: pointer;
   text-decoration: none;
-  background: transparent url({{ 'blank.gif' | theme_image_url }}); /* helps IE */
+  background: transparent url("{{ 'blank.gif' | theme_image_url }}"); /* helps IE */
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   z-index: 8040;
 }
@@ -142,22 +142,22 @@
 }
 
 .fancybox-prev span {
-  background-image: url({{ 'left_arrow.png' | theme_image_url }});
+  background-image: url("{{ 'left_arrow.png' | theme_image_url }}");
   left: 16px;
 }
 
 .lt-ie9 .fancybox-prev span {
-  background: url({{ 'left_arrow1x.png' | theme_image_url }}) 0 0 no-repeat;
+  background: url("{{ 'left_arrow1x.png' | theme_image_url }}") 0 0 no-repeat;
 }
 
 
 .fancybox-next span {
-  background-image: url({{ 'right_arrow.png' | theme_image_url }});
+  background-image: url("{{ 'right_arrow.png' | theme_image_url }}");
   right: 16px;
 }
 
 .lt-ie9 .fancybox-next span {
-  background: url({{ 'right_arrow1x.png' | theme_image_url }}) 0 0 no-repeat;
+  background: url("{{ 'right_arrow1x.png' | theme_image_url }}") 0 0 no-repeat;
 }
 
 .fancybox-nav:hover span {
@@ -187,7 +187,7 @@
   overflow: hidden;
   display: none;
   z-index: 8010;
-  background: url({{ 'fancybox_overlay.png' | theme_image_url }});
+  background: url("{{ 'fancybox_overlay.png' | theme_image_url }}");
 }
 
 .fancybox-overlay-fixed {
