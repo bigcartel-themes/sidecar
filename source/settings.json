@@ -133,7 +133,7 @@
   "checkout": {
     "optimize_legibility": "optimizeLegibility",
     "antialias_text": "antialiased",
-    "logo": "{{ logo }}",
+    "header_image": "{{ logo }}",
     "gutter_width": "15px",
     "background_image": "{{ background_image }}",
     "background_color": "{{ background_color }}",
