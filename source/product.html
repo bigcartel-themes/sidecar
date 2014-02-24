@@ -62,7 +62,8 @@
     {% endcase %}
 
     {% if product.status == 'active' %}
-      <form method="post" action="/cart" class="add">
+      <form method="post" action="/cart" class="add" accept-charset="utf8">
+        <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}

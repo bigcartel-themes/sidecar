@@ -1,7 +1,8 @@
 <div class="page cart">
   {% unless cart.items == blank %}
 
-    <form method="post" id="cart_form" action="/cart">
+    <form method="post" id="cart_form" action="/cart" accept-charset="utf8">
+      <input type="hidden" name="utf8" value='✓'>
       <h1>Cart</h1>
 
       {% if errors != blank %}
