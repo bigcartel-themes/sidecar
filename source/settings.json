@@ -171,7 +171,7 @@
         "input_focus_border_color": "#bfbfbf",
         "input_error_border_color": "#ea4859",
         "input_error_background_color": "#ffffff",
-        "label_color": "{{ font_color }}",
+        "label_color": "#999999",
         "label_font_weight": "700",
         "label_font_size": "11px",
         "label_text_transform": "normal",
