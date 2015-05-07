@@ -6,7 +6,7 @@
         {% for product in products %}
           <li class="product">
             <a href="{{ product.url }}">
-              <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url: theme.product_list_size }}">
+              <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 780  }}">
               <div class="product_info">
                 <div>
                   <p>
