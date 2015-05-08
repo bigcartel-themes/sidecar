@@ -52,7 +52,8 @@
             </h2>
 
             {% if theme.show_search %}
-              <form action="/products" method="get" class="search">
+              <form action="/products" method="get" class="search" accept-charset="utf8">
+                <input type="hidden" name="utf8" value='✓'>
                 <label for="search">Search&hellip;</label>
                 <input type="text" name="search" id="search">
               </form>
