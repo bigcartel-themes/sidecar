@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.5.12",
+    "version": "1.5.13",
     "images": [{
         "variable": "logo",
         "label": "Logo",
@@ -118,7 +118,7 @@
         "header_image": "{{ logo }}",
         "gutter_width": "15px",
         "background_image": "{{ background_image }}",
-        "background_color": "{{ background_color }}",
+        "background_color": "{{ sidebar_color }}",
         "title_font": "{{ font }}",
         "title_font_size": "24px",
         "title_font_weight": "700",
@@ -136,9 +136,10 @@
         "content_border_color": "transparent",
         "content_header_background_color": "transparent",
         "content_border_radius": "0",
-        "content_background_color": "transparent",
+        "content_background_color": "{{ background_color }}",
         "content_header_height": "120px",
         "content_width": "480px",
+        "content_banded": "true",
         "content_header_vertical_padding": "30px",
         "content_horizontal_padding": "0",
         "step_inactive_border_color": "{{ border_color }}",
