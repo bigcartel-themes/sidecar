@@ -130,7 +130,7 @@
         "body_font": "{{ font }}",
         "body_font_size": "11px",
         "content_color": "{{ font_color }}",
-        "content_header_color": "{{ font_color }}",
+        "content_header_color": "{{ sidebar_link_color }}",
         "content_border_width": "0",
         "content_header_font_size": "21px",
         "content_border_color": "transparent",
