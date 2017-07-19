@@ -5,7 +5,7 @@ Store.cart = window.Store.cart =
     @timer = null
 
     @form.find('input, select').each @setDefaultVal
-    @form.on 'keyup change', '[name*="cart[update]"], [name="cart[discount_code]"], [name="cart[shipping_country_id]"]', ($.proxy @handleItemUpdate, @)
+    @form.on 'blur change', '[name*="cart[update]"], [name="cart[discount_code]"], [name="cart[shipping_country_id]"]', ($.proxy @handleItemUpdate, @)
     @form.on 'click', 'a.remove', ($.proxy @handleItemRemove, @)
 
   setDefaultVal: ->
