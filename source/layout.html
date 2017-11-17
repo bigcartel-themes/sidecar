@@ -97,11 +97,33 @@
                   {{ pages.contact.name }}
                 </a>
               </li>
-              {% if store.website != blank %}
-                <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
-              {% endif %}
             </ul>
           </section>
+          
+          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+            <section>
+              <ul>
+                {% if theme.instagram_url != blank %}
+                  <li class="title"><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+                {% endif %}
+                {% if theme.twitter_url != blank %}
+                  <li class="title"><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+                {% endif %}
+                {% if theme.facebook_url != blank %}
+                  <li class="title"><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+                {% endif %}
+                {% if theme.pinterest_url != blank %}
+                  <li class="title"><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                {% endif %}
+                {% if theme.tumblr_url != blank %}
+                  <li class="title"><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                {% endif %}
+                {% if store.website != blank %}
+                  <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
+                {% endif %}
+              </ul>
+            </section>
+          {% endif %}
         </nav>
       </div>
 

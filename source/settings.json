@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.5.17",
+    "version": "1.6.0",
     "images": [{
         "variable": "logo",
         "label": "Logo",
@@ -111,6 +111,36 @@
         "type": "boolean",
         "default": false,
         "description": "Shows a search link in the sidebar"
+    },
+    {
+      "variable": "twitter_url",
+      "label": "Twitter URL",
+      "type": "text",
+      "description": "Ex: http://twitter.com/bigcartel"
+    },
+    {
+      "variable": "facebook_url",
+      "label": "Facebook URL",
+      "type": "text",
+      "description": "Ex: http://facebook.com/bigcartel"
+    },
+    {
+      "variable": "tumblr_url",
+      "label": "Tumblr URL",
+      "type": "text",
+      "description": "Ex: http://bigcartel.tumblr.com"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
     }],
     "checkout": {
         "optimize_legibility": "optimizeLegibility",
