@@ -5,7 +5,7 @@ Store.cart = window.Store.cart =
     @timer = null
 
     @form.find('input, select').each @setDefaultVal
-    @form.on 'blur change', '[name*="cart[update]"], [name="cart[discount_code]"], [name="cart[shipping_country_id]"]', ($.proxy @handleItemUpdate, @)
+    @form.on 'blur change', '[name*="cart[update]"]', ($.proxy @handleItemUpdate, @)
     @form.on 'click', 'a.remove', ($.proxy @handleItemRemove, @)
 
   setDefaultVal: ->
@@ -65,17 +65,6 @@ Store.cart = window.Store.cart =
         removed++
         elm.slideUp 'fast', ->
           elm.remove()
-
-  updateDiscount: (cart) ->
-    if cart.discount
-      $('#cart_discount_code').fadeOut 300, -> $(this).remove()
-      $('label[for=cart_discount_code]').htmlHighlight cart.discount.name
-      $('.discount .value').htmlHighlight(if cart.discount.free_shipping then '' else Format.money(cart.discount.amount, true, true))
-
-  updateShipping: (cart) ->
-    if cart.shipping
-      $('.cart_shipping_value').toggle(!cart.shipping.pending).htmlHighlight Format.money(cart.shipping.amount, true, true)
-      $('#country').toggle cart.shipping.strict
 
   updateTotal: (cart) ->
     $('.total_price', @form).htmlHighlight(Format.money cart.total, true, true)
