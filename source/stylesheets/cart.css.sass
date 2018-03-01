@@ -56,7 +56,7 @@
     .label
       font-size: 11px
       font-weight: 700
-      line-height: 50px
+      line-height: 56px
       text-align: right
       width: 100%
 
@@ -135,56 +135,7 @@
           background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
           @include animation(spin 1s infinite linear)
 
-    .discount
-      @media screen and (max-width: $break-small)
-        .col1,
-        .col2
-          float: left
-          width: auto
-		
-        .col2 
-          margin-left: 130px
-		  
-      input[type=text]
-        padding: 0 10px
-
-        @media screen and (max-width: $break-small)
-          margin: 0 15px
-          width: 100px
-
-      .col2
-        line-height: 28px
-
-      .label
-        font-weight: 700
-
-        @media screen and (max-width: $break-small)
-          text-align: left
-
-      .discount_amount
-        line-height: 0
-        position: relative
-        top: -1px
-
-    .shipping
-      @media screen and (max-width: $break-small)
-        .col1,
-        .col2
-          float: left
-          width: auto
-
-        .col1
-          text-align: left
-
-        .col2
-          display: none !important
-
-        select
-          margin: 0 15px
-          width: 150px
-
-    .total,
-    .shipping_total
+    .total
       font-weight: 700
 
       @media screen and (max-width: $break-small)
@@ -221,20 +172,6 @@
           display: inline
           font-style: normal
           font-weight: inherit
-
-    .shipping_total
-      height: 60px
-      padding-bottom: 0
-
-      .col1,
-      .col2
-        height: 0
-
-      & + .total
-        @media screen and (max-width: $break-small)
-          border-top: none
-          padding-top: 0
-
 
     .total_price
       line-height: 1.4
