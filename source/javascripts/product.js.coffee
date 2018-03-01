@@ -1,15 +1,15 @@
 Store.product = window.Store.product =
-  messages:
-    addToCart: 'Add to Cart'
-    addingToCart: 'Adding&hellip;'
-    addedToCart: 'Added!'
 
   init: (_super) ->
     @super = _super
     $('.fancybox').fancybox()
     @setupAddToCart()
     @setupMobileGallery()
-
+    
+    @addToCartMessage = @super.addToCartMessages.addToCart
+    @addingToCartMessage = @super.addToCartMessages.addingToCart
+    @addedToCartMessage = @super.addToCartMessages.addedToCart
+  
   setupAddToCart: ->
     @button = $ 'button.add'
     @form = $ 'form.add'
@@ -25,7 +25,7 @@ Store.product = window.Store.product =
     @super.working()
     @super.clearErrors()
 
-    @button.html(@messages.addingToCart).addClass('disabled')
+    @button.html(@addingToCartMessage).addClass('disabled')
 
     item = $('[name="cart[add][id]"]').val()
     quantity = $('[name="cart[add][quantity]"]').val()
@@ -35,14 +35,14 @@ Store.product = window.Store.product =
   finishAdding: (cart) ->
     @super.finished()
     @super.updateCart(cart)
-    @button.html(@messages.addedToCart).removeClass('disabled')
+    @button.html(@addedToCartMessage).removeClass('disabled')
 
     setTimeout $.proxy(->
-      @button.html(@messages.addToCart)
+      @button.html(@addToCartMessage)
     , @), 3000
 
   resolveError: (e) ->
-    @button.html(@messages.addToCart).removeClass('disabled')
+    @button.html(@addToCartMessage).removeClass('disabled')
     @super.finished()
 
   setupMobileGallery: ->
