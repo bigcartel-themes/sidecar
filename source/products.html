@@ -13,7 +13,7 @@
                   <p>
                     <span class="product_name">{{ product.name }}</span>
                     <span class="{% if product.on_sale %}sale{% else %}price{% endif %} {{ product.status }}">
-                      {{ product.default_price | money_with_sign }}
+                      {{ product.default_price | money: theme.money_format }}
                       {% case product.status %}
                         {% when 'sold-out' %} / Sold Out
                         {% when 'coming-soon' %} / Coming Soon

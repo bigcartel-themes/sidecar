@@ -35,7 +35,7 @@
                     {% unless item.product.has_default_option %}
                       {{ item.option.name }} /
                     {% endunless %}
-                    {{ item.quantity }} @ {{ item.price | money_with_sign }}
+                    {{ item.quantity }} @ {{ item.price | money: theme.money_format }}
                   </span>
                 </p>
               </div>
@@ -44,7 +44,7 @@
             <div class="col2">
               <div class="not_mobile">
                 <p class="price">
-                  {{ item.price | money_with_sign }}
+                  {{ item.price | money: theme.money_format }}
                 </p>
               </div>
               <div class="remove">
@@ -80,7 +80,7 @@
                 <p class="label">{{ cart.discount.name }}</p>
               </div>
               <div class="col2">
-                <p>{{ cart.discount.amount | money_with_sign }}</p>
+                <p>{{ cart.discount.amount | money: theme.money_format }}</p>
               </div>
             {% endif %}
           </li>
@@ -98,7 +98,7 @@
               <div class="col2">
                 <p class="cart_shipping_value not_mobile" {% if cart.shipping.pending %} style="display:none"{% endif %}>
                   {% unless cart.shipping.pending %}
-                    {{ cart.shipping.amount | money_with_sign }}
+                    {{ cart.shipping.amount | money: theme.money_format }}
                   {% endunless %}
                 </p>
               </div>
@@ -109,7 +109,7 @@
               <div class="col2">
                 <p{% if cart.shipping.pending %} style="display:none"{% endif %}>
                   {% unless cart.shipping.pending %}
-                    {{ cart.shipping.amount | money_with_sign }}
+                    {{ cart.shipping.amount | money: theme.money_format }}
                   {% endunless %}
                 </p>
               </div>
@@ -126,7 +126,7 @@
             </div>
             <div class="col2">
               <p class="cart_shipping_value">
-                {{ cart.shipping.amount | money_with_sign }}
+                {{ cart.shipping.amount | money: theme.money_format }}
               </p>
             </div>
           </li>
@@ -140,7 +140,7 @@
           </div>
           <div class="col2">
             <p>
-              <b class="total_price">{{ cart.total | money_with_sign }}</b>
+              <b class="total_price">{{ cart.total | money: theme.money_format }}</b>
               {% unless cart.shipping.enabled %}
                 <span>+ applicable shipping</span>
               {% endunless %}

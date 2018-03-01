@@ -113,6 +113,17 @@
         "description": "Shows a search link in the sidebar"
     },
     {
+      "variable": "money_format",
+      "label": "Price display",
+      "type": "select",
+      "options": [
+        ["Currency sign", "sign"],
+        ["Currency code with sign", "sign_and_code"]
+      ],
+      "default": "sign",
+      "description": "Sets the display of prices in your shop"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",

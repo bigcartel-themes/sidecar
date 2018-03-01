@@ -35,7 +35,7 @@
             <h2 class="title">
               <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
                 <b>Cart</b>
-                <span class="total">{{ cart.total | money_with_sign }}</span>
+                <span class="total">{{ cart.total | money: theme.money_format }}</span>
                 <span class="count">{{ cart.item_count }}</span>
               </a>
             </h2>
@@ -154,6 +154,18 @@
   <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
   <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
   <script type="text/javascript">
+    var formatMoney = Format.money;
+    Format.money = function(number) {
+      {% case theme.money_format %}
+      {% when 'sign' %}
+        return formatMoney(number, true, true, false);
+      {% when 'code' %}
+        return formatMoney(number, true, false, true);
+      {% when 'sign_and_code' %}
+        return formatMoney(number, true, true, true);
+      {% endcase %}
+    };
+    
     Store.isotopeOptions = {
       itemSelector: '.product',
       layoutMode: '{{ theme.product_list_layout }}',

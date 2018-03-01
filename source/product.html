@@ -42,19 +42,19 @@
      {% case product.status %}
       {% when 'sold-out' %}
         <p class="price sold-out">
-          {{ product.default_price | money_with_sign }}
+          {{ product.default_price | money: theme.money_format }}
           <i>/ Sold Out</i>
         </p>
 
       {% when 'coming-soon' %}
         <p class="price coming-soon">
-          {{ product.default_price | money_with_sign }}
+          {{ product.default_price | money: theme.money_format }}
           <i>/ Coming Soon</i>
         </p>
 
       {% when 'active' %}
         <p class="price {% if product.on_sale %}sale{% endif %}">
-          {{ product.default_price | money_with_sign }}
+          {{ product.default_price | money: theme.money_format }}
           {% if product.on_sale %}
             <i>/ On Sale</i>
           {% endif %}
