@@ -1,13 +1,13 @@
 <div class="page product_detail">
   <div class="gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
-    <a href="{{ product.image | product_image_url }}" class="fancybox" rel="group">
-      <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}">
+    <a href="{{ product.image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
+      <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="Image of {{ product.name | escape }}">
     </a>
     <ul>
       {% for image in product.images offset:1 %}
         <li>
-          <a href="{{ image | product_image_url }}" class="fancybox" rel="group">
-            <img src="{{ image | product_image_url: "thumb" }}" alt="Image of {{ product.name | escape }}">
+          <a href="{{ image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
+            <img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}">
           </a>
         </li>
       {% endfor %}
@@ -15,13 +15,13 @@
   </div>
 
   <div class="gallery mobile_only">
-    <img src="{{ product.image | product_image_url }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
+    <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
     <ul class="mobile_gallery">
       {% for image in product.images %}
         {% if forloop.length > 1 %}
           <li class="{% if forloop.first %}active{% endif %}">
-            <a href="{{ image | product_image_url }}">
-              <img src="{{ image | product_image_url: "thumb" }}" alt="Image of {{ product.name | escape }}">
+            <a href="{{ image | product_image_url | constrain: 1500 }}">
+              <img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}">
             </a>
           </li>
         {% endif %}
