@@ -44,7 +44,7 @@
           <section>
             <h2 class="title">
               <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
-                Products
+                {{ pages.products.name }}
               </a>
             </h2>
 
@@ -99,7 +99,7 @@
               </li>
             </ul>
           </section>
-          
+
           {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
             <section>
               <ul>
@@ -165,7 +165,7 @@
         return formatMoney(number, true, true, true);
       {% endcase %}
     };
-    
+
     Store.isotopeOptions = {
       itemSelector: '.product',
       layoutMode: '{{ theme.product_list_layout }}',
@@ -174,7 +174,7 @@
         gutterWidth: 30
       }
     };
-    
+
     Store.addToCartMessages = {
       addToCart: 'Add to Cart',
       addingToCart: 'Adding&hellip;',
