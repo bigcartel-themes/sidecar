@@ -1,196 +1,190 @@
 <!DOCTYPE html>
-<!--[if lt IE 8]><html class="lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]><html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--><html> <!--<![endif]-->
-<head>
-  <title>{{ page.name }} | {{ store.name }}</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html>
+  <head>
+    <title>{{ page.name }} | {{ store.name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
 
-  <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    {{ head_content }}
+  </head>
 
-  {{ head_content }}
-</head>
+  <body id="{{ page.permalink }}" class="{{ page.category }}" data-search="{{ theme.show_search }}">
+    <div class="wrapper">
+      <aside>
+        <div>
+          <header>
+            <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
+              {% if theme.logo %}
+                <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+              {% else %}
+                {{ store.name | escape }}
+              {% endif %}
+            </a>
+          </header>
 
-<body id="{{ page.permalink }}" class="{{ page.category }}" data-search="{{ theme.show_search }}">
-  <div class="wrapper">
-    <aside>
-      <div>
-        <header>
-          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
-            {% if theme.logo %}
-              <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
-            {% else %}
-              {{ store.name | escape }}
-            {% endif %}
-          </a>
-        </header>
-
-        <nav>
-          <section>
-            <h2 class="title">
-              <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
-                <b>Cart</b>
-                <span class="total">{{ cart.total | money: theme.money_format }}</span>
-                <span class="count">{{ cart.item_count }}</span>
-              </a>
-            </h2>
-          </section>
-
-          <section>
-            <h2 class="title">
-              <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
-                {{ pages.products.name }}
-              </a>
-            </h2>
-
-            {% if theme.show_search %}
-              <form action="/products" method="get" class="search" accept-charset="utf8">
-                <input type="hidden" name="utf8" value='✓'>
-                <label for="search">Search&hellip;</label>
-                <input type="text" name="search" id="search">
-              </form>
-            {% endif %}
-
-            <ul>
-              {% for category in categories.active %}
-                <li>
-                  <a href="{{ category.url }}" class="{% if page.full_url contains category.url %}current{% endif %}">
-                    {{ category.name }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </section>
-
-          {% if artists.active != blank %}
+          <nav>
             <section>
-              <h2 class="title">Artists</h2>
+              <h2 class="title">
+                <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
+                  <b>Cart</b>
+                  <span class="total">{{ cart.total | money: theme.money_format }}</span>
+                  <span class="count">{{ cart.item_count }}</span>
+                </a>
+              </h2>
+            </section>
+
+            <section>
+              <h2 class="title">
+                <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
+                  {{ pages.products.name }}
+                </a>
+              </h2>
+
+              {% if theme.show_search %}
+                <form action="/products" method="get" class="search" accept-charset="utf8">
+                  <input type="hidden" name="utf8" value='✓'>
+                  <label for="search">Search&hellip;</label>
+                  <input type="text" name="search" id="search">
+                </form>
+              {% endif %}
 
               <ul>
-                {% for artist in artists.active %}
+                {% for category in categories.active %}
                   <li>
-                    <a href="{{ artist.url }}" class="page {% if page.full_url contains artist.url %}current{% endif %}">
-                      {{ artist.name }}
+                    <a href="{{ category.url }}" class="{% if page.full_url contains category.url %}current{% endif %}">
+                      {{ category.name }}
                     </a>
                   </li>
                 {% endfor %}
               </ul>
             </section>
-          {% endif %}
 
-          <section>
-            <ul>
-              {% for page in pages.all %}
-                <li class="title">
-                  <a href="{{ page.url }}" class="{% if page.full_url contains page.url %}current{% endif %}">
-                    {{ page.name }}
-                  </a>
-                </li>
-              {% endfor %}
-              <li class="title">
-                <a href="{{ pages.contact.url }}" class="{% if page.url == '/contact' %}current{% endif %}">
-                  {{ pages.contact.name }}
-                </a>
-              </li>
-            </ul>
-          </section>
+            {% if artists.active != blank %}
+              <section>
+                <h2 class="title">Artists</h2>
 
-          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+                <ul>
+                  {% for artist in artists.active %}
+                    <li>
+                      <a href="{{ artist.url }}" class="page {% if page.full_url contains artist.url %}current{% endif %}">
+                        {{ artist.name }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </section>
+            {% endif %}
+
             <section>
               <ul>
-                {% if theme.instagram_url != blank %}
-                  <li class="title"><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
-                {% endif %}
-                {% if theme.twitter_url != blank %}
-                  <li class="title"><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
-                {% endif %}
-                {% if theme.facebook_url != blank %}
-                  <li class="title"><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
-                {% endif %}
-                {% if theme.pinterest_url != blank %}
-                  <li class="title"><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
-                {% endif %}
-                {% if theme.tumblr_url != blank %}
-                  <li class="title"><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
-                {% endif %}
-                {% if store.website != blank %}
-                  <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
-                {% endif %}
+                {% for page in pages.all %}
+                  <li class="title">
+                    <a href="{{ page.url }}" class="{% if page.full_url contains page.url %}current{% endif %}">
+                      {{ page.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+                <li class="title">
+                  <a href="{{ pages.contact.url }}" class="{% if page.url == '/contact' %}current{% endif %}">
+                    {{ pages.contact.name }}
+                  </a>
+                </li>
               </ul>
             </section>
-          {% endif %}
-        </nav>
+
+            {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+              <section>
+                <ul>
+                  {% if theme.instagram_url != blank %}
+                    <li class="title"><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+                  {% endif %}
+                  {% if theme.twitter_url != blank %}
+                    <li class="title"><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+                  {% endif %}
+                  {% if theme.facebook_url != blank %}
+                    <li class="title"><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+                  {% endif %}
+                  {% if theme.pinterest_url != blank %}
+                    <li class="title"><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                  {% endif %}
+                  {% if theme.tumblr_url != blank %}
+                    <li class="title"><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                  {% endif %}
+                  {% if store.website != blank %}
+                    <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
+                  {% endif %}
+                </ul>
+              </section>
+            {% endif %}
+          </nav>
+        </div>
+
+        <footer>
+          <cite>{{ bigcartel_credit }}</cite>
+        </footer>
+      </aside>
+
+      <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
+        <header>
+          <a href="/cart" class="cart">{{ cart.item_count }}</a>
+          <a href="#" class="menu">Menu<b></b></a>
+          <a href="/" title="{{ store.name | escape }}" class="logo">{{ store.name | escape }}</a>
+        </header>
+        {% if page.category == 'custom' %}
+            <div class="page custom">
+              <h1>{{ page.name }}</h1>
+              {{ page_content | paragraphs }}
+            </div>
+          </section>
+        {% else %}
+          {{ page_content }}
+        {% endif %}
       </div>
-
-      <footer>
-        <cite>{{ bigcartel_credit }}</cite>
-      </footer>
-    </aside>
-
-    <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
-      <header>
-        <a href="/cart" class="cart">{{ cart.item_count }}</a>
-        <a href="#" class="menu">Menu<b></b></a>
-        <a href="/" title="{{ store.name | escape }}" class="logo">{{ store.name | escape }}</a>
-      </header>
-      {% if page.category == 'custom' %}
-          <div class="page custom">
-            <h1>{{ page.name }}</h1>
-            {{ page_content | paragraphs }}
-          </div>
-        </section>
-      {% else %}
-        {{ page_content }}
-      {% endif %}
     </div>
-  </div>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-  <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
-  <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
-  <script type="text/javascript">
-    var formatMoney = Format.money;
-    Format.money = function(number) {
-      {% case theme.money_format %}
-      {% when 'sign' %}
-        return formatMoney(number, true, true, false);
-      {% when 'code' %}
-        return formatMoney(number, true, false, true);
-      {% when 'sign_and_code' %}
-        return formatMoney(number, true, true, true);
-      {% endcase %}
-    };
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
+    <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
+    <script type="text/javascript">
+      var formatMoney = Format.money;
+      Format.money = function(number) {
+        {% case theme.money_format %}
+        {% when 'sign' %}
+          return formatMoney(number, true, true, false);
+        {% when 'code' %}
+          return formatMoney(number, true, false, true);
+        {% when 'sign_and_code' %}
+          return formatMoney(number, true, true, true);
+        {% endcase %}
+      };
 
-    Store.isotopeOptions = {
-      itemSelector: '.product',
-      layoutMode: '{{ theme.product_list_layout }}',
-      masonry: {
-        columnWidth: {% if theme.product_list_size == 'medium' %}150{% elsif theme.product_list_size == 'large' %}240{% else %}420{% endif %},
-        gutterWidth: 30
-      }
-    };
+      Store.isotopeOptions = {
+        itemSelector: '.product',
+        layoutMode: '{{ theme.product_list_layout }}',
+        masonry: {
+          columnWidth: {% if theme.product_list_size == 'medium' %}150{% elsif theme.product_list_size == 'large' %}240{% else %}420{% endif %},
+          gutterWidth: 30
+        }
+      };
 
-    Store.addToCartMessages = {
-      addToCart: 'Add to Cart',
-      addingToCart: 'Adding&hellip;',
-      addedToCart: 'Added!'
-    };
+      Store.addToCartMessages = {
+        addToCart: 'Add to Cart',
+        addingToCart: 'Adding&hellip;',
+        addedToCart: 'Added!'
+      };
 
-    Store.infiniteOptions = {
-      paginationSelector: '.pagination',
-      moreSelector: '.next',
-      itemSelector: '.products_list .product'
-    };
+      Store.infiniteOptions = {
+        paginationSelector: '.pagination',
+        moreSelector: '.next',
+        itemSelector: '.products_list .product'
+      };
 
-    {% if errors != blank %}
-      {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
-    {% endif %}
-  </script>
+      {% if errors != blank %}
+        {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
+      {% endif %}
+    </script>
 
-</body>
+  </body>
 </html>
