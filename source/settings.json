@@ -75,6 +75,13 @@
         "default": "masonry",
         "description": "The arrangement of your products on the Home and Products pages"
     }, {
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 5,
+      "description": "The number of products displayed per page"
+    },{
         "variable": "product_list_size",
         "label": "Product List Image Size",
         "type": "select",
@@ -111,6 +118,14 @@
         "type": "boolean",
         "default": false,
         "description": "Shows a search link in the sidebar"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "money_format",
