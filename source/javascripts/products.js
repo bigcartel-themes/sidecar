@@ -11,7 +11,6 @@ Store.products = window.Store.products = {
       this.isotopeEnabled = false;
       this.timer = null;
       this.products.imagesLoaded($.proxy(this.isotope, this, this.defaultOptions));
-      $(window).smartresize($.proxy(this.isotope, this, this.defaultOptions));
     }
     return this["super"].infiniteOptions && this.prefillPage();
   },
