@@ -161,6 +161,10 @@ hr
   @include inline-block
   padding: 11px 20px
 
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
+
   &:hover
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
