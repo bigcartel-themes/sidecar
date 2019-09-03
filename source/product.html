@@ -57,7 +57,7 @@
     </p>
 
     {% if product.status == 'active' %}
-      <form method="post" class="product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
+      <form method="post" class="add product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
@@ -78,7 +78,7 @@
             </div>
           {% else %}
             <div class="select">
-              <select class="product_option_select" id="option" name="[cart][add][id]" aria-label="Select option">
+              <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select option">
                 <option value="0" disabled="disabled" selected>Select option</option>
                 {% for option in product.options %}
                   <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
