@@ -16,8 +16,6 @@ Store = window.Store = {
   },
   common: function() {
     this.setupMobileNav();
-    $(window).smartresize(this.fixHeights);
-    $('body').imagesLoaded(this.fixHeights);
     this.hideUrlBar();
     $('body').data('search') === true && this.setupSearch();
     $(document).ajaxSend(this.working).ajaxComplete(this.finished);
@@ -32,18 +30,6 @@ Store = window.Store = {
     if (this.errors.length) {
       return setTimeout($.proxy(this.error, this, this.errors), 500);
     }
-  },
-  fixHeights: function() {
-    var dh, m, mh;
-    m = $('.main .page');
-    m.css({
-      height: 'auto'
-    });
-    mh = m.outerHeight();
-    dh = $(document).height();
-    return mh < dh && m.css({
-      height: dh - m.offset().top
-    });
   },
   setupMobileNav: function() {
     return $('.main header .menu').on('click', function(e) {
@@ -129,3 +115,4 @@ Store = window.Store = {
 $(function() {
   return Store.init();
 });
+
