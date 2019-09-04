@@ -174,12 +174,6 @@
         addedToCart: 'Added!'
       };
 
-      Store.infiniteOptions = {
-        paginationSelector: '.pagination',
-        moreSelector: '.next',
-        itemSelector: '.products_list .product'
-      };
-
       {% if errors != blank %}
         {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
       {% endif %}

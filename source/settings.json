@@ -30,7 +30,7 @@
     }, {
         "variable": "font_color",
         "label": "Body Text",
-        "default": "#808080"
+        "default": "#afafaf"
     }, {
         "variable": "link_color",
         "label": "Buttons & Links",
@@ -54,7 +54,7 @@
     }, {
         "variable": "sidebar_link_color",
         "label": "Sidebar Links",
-        "default": "#808080"
+        "default": "#afafaf"
     }, {
         "variable": "sidebar_link_rollover",
         "label": "Sidebar Link Rollovers",
@@ -74,12 +74,20 @@
         ],
         "default": "masonry",
         "description": "The arrangement of your products on the Home and Products pages"
-    }, {
+    },
+    {
+      "variable": "featured_items",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 20,
+      "description": "The number of products featured on the Home page"
+    },{
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 5,
+      "default": 20,
       "description": "The number of products displayed per page"
     },{
         "variable": "product_list_size",
