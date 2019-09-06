@@ -31,11 +31,10 @@
         <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
         <div class="page-load-status">
           <div class="infinite-scroll-request">
-            <div class="spinner"></div>
-            <div class="loading-more">Loading Products...</div>
+            <div class="loading-more"><p>Loading...</p></div>
           </div>
-          <div class="infinite-scroll-last">You've reached the end.</div>
-          <div class="infinite-scroll-error">No more pages to load</div>
+          <div class="infinite-scroll-last infinite-scroll-message"><p>You've reached the end.</p></div>
+          <div class="infinite-scroll-error infinite-scroll-message"><p>No more pages to load.</p></div>
         </div>
       {% endif %}
     {% else %}
