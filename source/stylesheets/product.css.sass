@@ -16,57 +16,37 @@
     position: relative
     width: 65%
 
+    @media screen and (max-width: $break-small)
+      &.desktop-gallery
+        display: none
+
+    img
+      display: block
+      max-width: 100%
+      width: 100%
+
     @media screen and (max-width: $break-medium)
       float: none
       margin-bottom: 25px
       max-width: none
       width: 100%
 
-    @media screen and (max-width: $break-small)
-      display: none
-
-      &.mobile_only
-        display: block
-
-        img
-          display: block
-          max-width: 100%
-          margin: 0 auto
-
-        .mobile_gallery
-          text-align: center
-          margin-top: 16px
-
-          li
-            display: inline
-            margin: 8px 8px 8px 0
-            @include transition(all .15s linear)
-
-            img
-              display: inline
-              margin-bottom: 8px
-
-          .active
-            @include opacity(0.25)
-
-          img
-            max-width: 50px
-
-
-    > a img
-      display: block
-      margin: 0 auto
-      max-width: 100%
-
-      @media screen and (max-width: $break-medium)
-        margin: 0
-
-    > ul
+    ul
+      +flexbox
+      +justify-content(center)
+      margin: 10px -5px
       text-align: center
 
       li
-        @include inline-block
-        margin: 15px 15px 15px 0
+        @include transition(all .15s linear)
+        padding: 0 5px
+        max-width: 20%
+
+        @media screen and (max-width: $break-small)
+          max-width: 25%
+
+        &.active
+          @include opacity(0.25)
 
   .detail
     float: left
@@ -134,14 +114,16 @@
         width: 100%
 
         @media screen and (max-width: $break-small)
+          font-size: 13px
           max-width: none
           min-width: none
 
       .button
         @media screen and (max-width: $break-small)
           display: block
+          font-size: 13px
           margin: 0 0 16px
-          width: 50%
+          width: 100%
 
 
     p
