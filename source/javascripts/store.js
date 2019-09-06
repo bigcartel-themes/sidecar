@@ -16,7 +16,6 @@ Store = window.Store = {
   },
   common: function() {
     this.setupMobileNav();
-    this.hideUrlBar();
     $('body').data('search') === true && this.setupSearch();
     $(document).ajaxSend(this.working).ajaxComplete(this.finished);
     window.API.onError = (function(_this) {
@@ -36,17 +35,6 @@ Store = window.Store = {
       e.preventDefault();
       return $('body').toggleClass('show_menu');
     });
-  },
-  hideUrlBar: function() {
-    if (window.scrollTo && typeof window.scrollTo === 'function') {
-      return window.addEventListener('load', (function(_this) {
-        return function() {
-          return setTimeout(function() {
-            return window.scrollTo(0, 1);
-          }, 0);
-        };
-      })(this));
-    }
   },
   setupSearch: function() {
     var blur, focus, searchForm;
