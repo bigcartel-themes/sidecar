@@ -50,7 +50,6 @@ Store.product = window.Store.product = {
     img.imagesLoaded((function(_this) {
       return function() {
         $('.mobile_gallery_viewer').replaceWith(img);
-        return _this["super"].fixHeights();
       };
     })(this));
     return elm.closest('li').addClass('active').siblings().removeClass('active');
