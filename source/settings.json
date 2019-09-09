@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.7.2",
+    "version": "1.7.7",
     "images": [{
         "variable": "logo",
         "label": "Logo",
@@ -94,11 +94,11 @@
         "label": "Product List Image Size",
         "type": "select",
         "options": [
-            ["Small", "medium"],
-            ["Medium", "large"],
-            ["Large", ""]
+            ["Small", "small"],
+            ["Medium", "medium"],
+            ["Large", "large"]
         ],
-        "default": "large",
+        "default": "medium",
         "description": "The size of your product images on the Home and Products pages"
     }, {
         "variable": "show_overlay",
