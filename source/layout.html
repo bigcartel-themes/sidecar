@@ -159,13 +159,8 @@
         {% endcase %}
       };
 
-      Store.isotopeOptions = {
-        itemSelector: '.product',
+      Store.gridOptions = {
         layoutMode: '{{ theme.product_list_layout }}',
-        masonry: {
-          columnWidth: {% if theme.product_list_size == 'medium' %}150{% elsif theme.product_list_size == 'large' %}240{% else %}420{% endif %},
-          gutterWidth: 30
-        }
       };
 
       Store.addToCartMessages = {

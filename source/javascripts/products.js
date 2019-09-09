@@ -3,35 +3,51 @@ Store.products = window.Store.products = {
   init: function(_super) {
     this["super"] = _super;
     this.products = $('.products_list');
+    this.layoutMode = this["super"].gridOptions.layoutMode;
+    if (this.layoutMode == 'masonry') {
+      $('.products_list').addClass('masonry');
+      grid = document.querySelector('.masonry');
+      next_button = document.querySelector('.next-button')
+      var $grid = $('.masonry').masonry({
+        transitionDuration: '0.4s'
+      });
+      $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+      });
+      var msnry = $grid.data('masonry');
+      if (next_button) {
+        $grid.infiniteScroll({
+          outlayer: msnry,
+          append: '.product',
+          status: '.page-load-status',
+          hideNav: '.pagination',
+          path: '.next-button',
+          checkLastPage: true,
+          history: false,
+          prefill: true,
+          loadOnScroll: true
+        });
+      }
+    }
+    else {
+      $('.products_list').addClass('grid');
+      grid = document.querySelector('.products_list');
+      next_button = document.querySelector('.next-button')
+
+      if (next_button) {
+        $('.products_list').infiniteScroll({
+          append: '.product',
+          status: '.page-load-status',
+          hideNav: '.pagination',
+          path: '.next-button',
+          checkLastPage: true,
+          history: false,
+          prefill: true,
+          loadOnScroll: true
+        });
+      }
+    }
   }
 };
 
-//-------------------------------------//
-// init Masonry
 
-var $grid = $('.products_list').masonry({
-  itemSelector: '.product', // select none at first
-  // nicer reveal transition
-  visibleStyle: { transform: 'translateY(0)', opacity: 1 },
-  hiddenStyle: { transform: 'translateY(100px)', opacity: 0 },
-});
-
-// get Masonry instance
-var msnry = $grid.data('masonry');
-
-//-------------------------------------//
-// init Infinte Scroll
-
-$grid.infiniteScroll({
-  outlayer: msnry,
-  path: '.next-button',
-  append: '.product',
-  status: '.page-load-status',
-  hideNav: '.pagination',
-  path: '.next-button',
-  checkLastPage: true,
-  history: false,
-  prefill: true,
-  debug: true,
-  loadOnScroll: true
-});
