@@ -1,7 +1,6 @@
 <div class="page products">
   <h1>{{ page.name }}</h1>
-  {% paginate products from products.current by 20 %}
-
+  {% paginate products from products.current by theme.products_per_page %}
     {% if products != blank %}
       <ul class="products_list">
         {% for product in products %}
@@ -27,28 +26,19 @@
           </li>
         {% endfor %}
       </ul>
-
-      <p class="pagination">
-        {% if paginate.previous %}
-          {% if paginate.previous.is_link %}
-            <a href="{{ paginate.previous.url }}" class="previous circle">&larr; Previous</a>
-          {% endif %}
-        {% endif %}
-
-        {% if paginate.next %}
-          {% if paginate.next.is_link %}
-           <a href="{{ paginate.next.url }}" class="next circle">&rarr; Next</a>
-          {% endif %}
-        {% endif %}
-      </p>
-
+     {% if paginate.pages > 1 %}
+        <a class="button view-more-button" style="display: none">Load Products</a>
+        <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
+        <div class="page-load-status">
+          <div class="infinite-scroll-request">
+            <div class="loading-more"><p>Loading...</p></div>
+          </div>
+          <div class="infinite-scroll-last infinite-scroll-message"><p>You've reached the end.</p></div>
+          <div class="infinite-scroll-error infinite-scroll-message"><p>No more pages to load.</p></div>
+        </div>
+      {% endif %}
     {% else %}
-
-      <p class="alert noproducts">
-        No products found.
-      </p>
-
+      <p class="alert noproducts">No products found.</p>
     {% endif %}
-
   {% endpaginate %}
 </div>

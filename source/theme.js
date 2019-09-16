@@ -7,3 +7,4 @@
 //= require javascripts/home
 //= require javascripts/cart
 //= require javascripts/contact
+//= require javascripts/product-option-groups

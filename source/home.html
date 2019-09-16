@@ -1,6 +1,5 @@
 <div class="page home">
-  {% paginate products from products.all by 20 %}
-
+  {% paginate products from products.all by theme.featured_items %}
     {% if products != blank %}
       <ul class="products_list">
         {% for product in products %}

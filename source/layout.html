@@ -3,8 +3,7 @@
   <head>
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
 
     {{ head_content }}
@@ -144,7 +143,7 @@
       </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
     <script type="text/javascript">
@@ -160,13 +159,8 @@
         {% endcase %}
       };
 
-      Store.isotopeOptions = {
-        itemSelector: '.product',
+      Store.gridOptions = {
         layoutMode: '{{ theme.product_list_layout }}',
-        masonry: {
-          columnWidth: {% if theme.product_list_size == 'medium' %}150{% elsif theme.product_list_size == 'large' %}240{% else %}420{% endif %},
-          gutterWidth: 30
-        }
       };
 
       Store.addToCartMessages = {
@@ -175,16 +169,15 @@
         addedToCart: 'Added!'
       };
 
-      Store.infiniteOptions = {
-        paginationSelector: '.pagination',
-        moreSelector: '.next',
-        itemSelector: '.products_list .product'
-      };
-
       {% if errors != blank %}
         {% for error in errors %}Store.errors.push('{{ error }}');{% endfor %}
       {% endif %}
     </script>
-
+    {% if page.full_url contains '/product/' %}
+      <script>
+        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
+        Product.find('{{ product.permalink }}', processProduct)
+      </script>
+    {% endif %}
   </body>
 </html>

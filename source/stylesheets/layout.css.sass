@@ -48,12 +48,6 @@ body
       @media screen and (max-width: $break-small)
         display: none
 
-::selection
-  background-color: #{"{{ theme.highlight_color }}"}
-
-::-moz-selection
-  background-color: #{"{{ theme.highlight_color }}"}
-
 a
   @extend %transition
   text-decoration: none
@@ -161,7 +155,11 @@ hr
   @include inline-block
   padding: 11px 20px
 
-  &:hover
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
+
+  &:hover, &:focus
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
 
@@ -444,7 +442,6 @@ aside
 
 .main
   @extend %clearfix
-  overflow: hidden
   padding: 60px 0 0 0
   width: 100%
 
@@ -537,20 +534,20 @@ aside
         display: block
         height: 2px
         left: 50%
-        margin: -1px 0 0 -6px
+        margin: -1px 0 0 -11px
         position: absolute
         top: 50%
-        width: 12px
+        width: 21px
 
       b:before,
       b:after
         content: ""
 
       b:before
-        top: -3px
+        top: -6px
 
       b:after
-        top: 5px
+        top: 8px
 
 
   .page

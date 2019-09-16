@@ -1,11 +1,11 @@
 <div class="page product_detail">
-  <div class="gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
+  <div class="gallery desktop-gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
     <a href="{{ product.image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
       <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="Image of {{ product.name | escape }}">
     </a>
     <ul>
-      {% for image in product.images offset:1 %}
-        <li>
+      {% for image in product.images offset: 1 %}
+        <li{% if forloop.first %} active{% endif %}>
           <a href="{{ image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
             <img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}">
           </a>
@@ -13,7 +13,6 @@
       {% endfor %}
     </ul>
   </div>
-
   <div class="gallery mobile_only">
     <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
     <ul class="mobile_gallery">
@@ -28,7 +27,6 @@
       {% endfor %}
     </ul>
   </div>
-
   <div class="detail">
     <h1>{{ product.name }}</h1>
     {% for artist in product.artists %}
@@ -39,39 +37,55 @@
       {% if forloop.last %}</p>{% endif %}
     {% endfor %}
 
-     {% case product.status %}
-      {% when 'sold-out' %}
-        <p class="price sold-out">
-          {{ product.default_price | money: theme.money_format }}
+    <p class="price">
+      {% if product.variable_pricing %}
+        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+      {% else %}
+        {{ product.default_price | money: theme.money_format }}
+      {% endif %}
+      {% case product.status %}
+        {% when 'sold-out' %}
           <i>/ Sold Out</i>
-        </p>
-
-      {% when 'coming-soon' %}
-        <p class="price coming-soon">
-          {{ product.default_price | money: theme.money_format }}
+        {% when 'coming-soon' %}
           <i>/ Coming Soon</i>
-        </p>
-
-      {% when 'active' %}
-        <p class="price {% if product.on_sale %}sale{% endif %}">
-          {{ product.default_price | money: theme.money_format }}
-          {% if product.on_sale %}
-            <i>/ On Sale</i>
-          {% endif %}
-        </p>
-    {% endcase %}
+      {% endcase %}
+      {% if product.on_sale %}
+        <i>/ On Sale</i>
+      {% endif %}
+    </p>
 
     {% if product.status == 'active' %}
-      <form method="post" action="/cart" class="add" accept-charset="utf8">
+      <form method="post" class="add product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
-          <p>
-            {{ product.options_in_stock | options_select }}
-          </p>
+          {% if product.has_option_groups %}
+            <div class="product_option_groups">
+              <input id="option" name="cart[add][id]" type="hidden" value="0">
+              {% for option_group in product.option_groups %}
+                <div class="select">
+                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                    <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    {% for value in option_group.values %}
+                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="select">
+              <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select option">
+                <option value="0" disabled="disabled" selected>Select option</option>
+                {% for option in product.options %}
+                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
         {% endif %}
-        <button name="submit" type="submit" class="button add">Add to Cart</button>
+        <button class="button add add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out">Add to Cart</button>
       </form>
     {% endif %}
 

@@ -1,59 +1,54 @@
 .page.products
-  margin-right: 16px
+  margin: 0 30px 0 260px
 
   @media screen and (max-width: $break-small)
-    margin-right: 0
+    margin: 0
 
     h1
       padding-top: 23px
 
 .products_list
   @extend %clearfix
+  @include flexbox
+  @include flex-wrap(wrap)
+  margin: 0 -15px
+
+  &.grid
+    @include flexbox
+    @include flex-wrap(wrap)
 
   @media screen and (max-width: $break-small)
-    padding: 32px
+    margin: 32px 16px
 
   @media screen and (max-width: $break-extra-small)
-    padding: 32px 0 0
+    margin: 32px 0 0
 
-  .product,
-  .product img
-    max-width: #{"{% if theme.product_list_size == 'medium' %} 120px {% elsif theme.product_list_size == 'large' %} 210px {% else %} 390px {% endif %}"}
+  .product
+    max-width: #{"{% if theme.product_list_size == 'small' %} 150px {% elsif theme.product_list_size == 'medium' %} 240px {% else %} 420px {% endif %}"}
+    width: 100%
+
+    img
+      display: block
+      max-width: 100%
+      width: 100%
 
     @media screen and (max-width: $break-extra-small)
       max-width: 100%
 
   .product
-    float: left
-    margin: 0 30px 30px 0
+    padding: 0 15px 30px
     overflow: hidden
     position: relative
     @include translateZ(0)
 
-
     @media screen and (max-width: $break-small)
-      margin-right: 8%
-      max-width: none
-      text-align: center
-      width: 46%
-
-      &:nth-child(2n+1)
-        clear: left
-
-      &:nth-child(2n)
-        margin-right: 0
-
-      img
-        max-width: 100%
+      max-width: 50%
+      width: 50%
 
     @media screen and (max-width: $break-extra-small)
-      float: none
-      margin: 0 32px 23px
+      margin: 0 16px
       max-width: none
       width: auto
-
-      &:nth-child(2n)
-        margin-right: 32px
 
       img
         max-width: 100%
@@ -61,9 +56,10 @@
 
     a
       display: block
+      position: relative
       -webkit-font-smoothing: antialiased
 
-    .overlay &:hover .product_info
+    .overlay &:hover .product_info, .overlay &:focus .product_info
       @include opacity(1)
 
     .product_info
@@ -91,9 +87,11 @@
 
       .overlay &
         @extend %transition
+        @include flexbox
+        @include justify-content(center)
+        @include align-items(center)
         background-color: #{"{{ theme.link_color }}"}
         color: #{"{{ theme.background_color }}"}
-        display: block
         height: 100%
         left: 0
         @include opacity(0)
@@ -147,8 +145,21 @@
 
 
 .pagination
-  visibility: hidden
-  opacity: 0
-  float: right
-  margin-bottom: 60px
-  padding: 30px
+  display: none
+
+.page-load-status
+  font-size: 12px
+  letter-spacing: 2px
+  margin-top: 25px
+  text-align: center
+
+.infinite-scroll-message
+  display: none
+
+  p
+    @extend %transition
+    color: #{"{{ theme.text_color }}"}
+    font-family: #{"{{ theme.font }}"}
+    font-size: 11px
+    text-align: center
+    margin: 0 auto

@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.7.2",
+    "version": "1.8.0",
     "images": [{
         "variable": "logo",
         "label": "Logo",
@@ -30,7 +30,7 @@
     }, {
         "variable": "font_color",
         "label": "Body Text",
-        "default": "#808080"
+        "default": "#afafaf"
     }, {
         "variable": "link_color",
         "label": "Buttons & Links",
@@ -54,7 +54,7 @@
     }, {
         "variable": "sidebar_link_color",
         "label": "Sidebar Links",
-        "default": "#808080"
+        "default": "#afafaf"
     }, {
         "variable": "sidebar_link_rollover",
         "label": "Sidebar Link Rollovers",
@@ -74,16 +74,31 @@
         ],
         "default": "masonry",
         "description": "The arrangement of your products on the Home and Products pages"
-    }, {
+    },
+    {
+      "variable": "featured_items",
+      "label": "Featured products",
+      "type": "select",
+      "options": "0..100",
+      "default": 20,
+      "description": "The number of products featured on the Home page"
+    },{
+      "variable": "products_per_page",
+      "label": "Products per page",
+      "type": "select",
+      "options": "1..100",
+      "default": 20,
+      "description": "The number of products displayed per page"
+    },{
         "variable": "product_list_size",
         "label": "Product List Image Size",
         "type": "select",
         "options": [
-            ["Small", "medium"],
-            ["Medium", "large"],
-            ["Large", ""]
+            ["Small", "small"],
+            ["Medium", "medium"],
+            ["Large", "large"]
         ],
-        "default": "large",
+        "default": "medium",
         "description": "The size of your product images on the Home and Products pages"
     }, {
         "variable": "show_overlay",
@@ -111,6 +126,14 @@
         "type": "boolean",
         "default": false,
         "description": "Shows a search link in the sidebar"
+    },
+    {
+      "variable": "show_sold_out_product_options",
+      "label": "Show sold out product options",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows sold out product options in the Product page dropdowns",
+      "requires": "inventory"
     },
     {
       "variable": "money_format",
