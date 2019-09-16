@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.7.7",
+    "version": "1.8.0",
     "images": [{
         "variable": "logo",
         "label": "Logo",
