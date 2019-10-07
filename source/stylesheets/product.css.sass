@@ -2,10 +2,30 @@
   padding-top: 60px
 
   select
+    font-size: 12px
     margin-bottom: 18px
 
   .add-to-cart-button
     display: block
+    max-width: 200px
+    width: 100%
+
+  .reset-selection-button-container
+    max-width: 200px
+    text-align: center
+    width: 100%
+
+    @media screen and (max-width: $break-small)
+      max-width: 100%
+
+  button.reset-selection-button
+    display: none
+    height: auto
+    max-width: 100%
+    line-height: normal
+    margin: 20px auto 0
+    padding: 4px
+    width: auto
 
   @media screen and (max-width: $break-small)
     padding: 32px
@@ -120,9 +140,8 @@
 
       .button
         @media screen and (max-width: $break-small)
-          display: block
           font-size: 13px
-          margin: 0 0 16px
+          max-width: 100%
           width: 100%
 
     p

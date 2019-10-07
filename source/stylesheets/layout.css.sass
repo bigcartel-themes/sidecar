@@ -150,16 +150,29 @@ hr
   color: #{"{{ theme.background_color }}"} !important
   cursor: pointer
   font-family: #{"{{ theme.font }}"}
-  font-size: 11px
+  font-size: 12px
   font-weight: 700
   @include inline-block
   padding: 11px 20px
+  text-align: center
+
+  &.minimal-button
+    background: none
+    color: #{"{{ theme.link_color }}"} !important
+    border: none
+    font-size: 12px
+    padding: 0
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      color: #{"{{ theme.link_color }}"}
+      background: none
+      text-decoration: underline
 
   &:disabled, &.disabled
     cursor: not-allowed
     opacity: .3
 
-  &:hover, &:focus
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
 
