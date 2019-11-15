@@ -8,23 +8,23 @@
       <input type="hidden" name="utf8" value='✓'>
       <ul>
         <li>
-          <label>Your Name:</label>
+          <label for="name">Your Name:</label>
           {{ contact | contact_input: 'name' }}
         </li>
         <li>
-          <label>Your Email:</label>
+          <label for="email">Your Email:</label>
           {{ contact | contact_input: 'email' }}
         </li>
         <li>
-          <label>Subject:</label>
+          <label for="subject">Subject:</label>
           {{ contact | contact_input: 'subject' }}
         </li>
         <li>
-          <label>Message:</label>
+          <label for="message">Message:</label>
           {{ contact | contact_input: 'message' }}
         </li>
         <li class="captcha">
-          <label>Spam Check:</label>
+          <label for="captcha">Spam Check:</label>
           <p>Please enter the characters from the image.</p>
           {{ contact | contact_input: 'captcha' }}
           <b>{{ contact.captcha }}</b>
