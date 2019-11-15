@@ -6,33 +6,33 @@
     <h1>{{ page.name }}</h1>
     <form method="post" class="contact" action="/contact" accept-charset="utf8">
       <input type="hidden" name="utf8" value='✓'>
-      <ul>
-        <li>
+      <fieldset>
+        <p class="contact-field">
           <label for="name">Your Name:</label>
           {{ contact | contact_input: 'name' }}
-        </li>
-        <li>
+        </p>
+        <p class="contact-field">
           <label for="email">Your Email:</label>
           {{ contact | contact_input: 'email' }}
-        </li>
-        <li>
+        </p>
+        <p class="contact-field">
           <label for="subject">Subject:</label>
           {{ contact | contact_input: 'subject' }}
-        </li>
-        <li>
+        </p>
+        <p class="contact-field">
           <label for="message">Message:</label>
           {{ contact | contact_input: 'message' }}
-        </li>
-        <li class="captcha">
+        </p>
+        <p class="contact-field captcha">
           <label for="captcha">Spam Check:</label>
-          <p>Please enter the characters from the image.</p>
+          <span class="captcha-instructions">Please enter the characters from the image.</span>
           {{ contact | contact_input: 'captcha' }}
           <b>{{ contact.captcha }}</b>
-        </li>
-        <li>
+        </p>
+        <p class="contact-field">
           <button id="contact_button" type="submit" name="submit" class="button" tabindex="6">Send Message</button>
-        </li>
-      </ul>
+        </p>
+      </fieldset>
     </form>
   {% endif %}
 </div>
