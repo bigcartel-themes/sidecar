@@ -112,14 +112,14 @@
                   {% unless product.has_default_option %}
                     {{ option.name }}
                   {% endunless %}
-                  <i>
+                  <span class="inventory-status">
                     {% if option.sold_out %}
                       Sold Out
                     {% else %}
                       {{ option.inventory }}%
                     {% endif %}
-                  </i>
-                  <b class="option" style="width:{{ option.inventory }}%;"><!--Inventory--></b>
+                  </span>
+                  <span class="inventory-level-background" style="width:{{ option.inventory }}%;"></span>
                 </li>
               {% endfor %}
             </ul>

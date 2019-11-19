@@ -2,16 +2,16 @@
   padding-top: 60px
 
   select
-    font-size: 12px
+    font-size: 16px
     margin-bottom: 18px
 
   .add-to-cart-button
     display: block
-    max-width: 200px
+    max-width: 240px
     width: 100%
 
   .reset-selection-button-container
-    max-width: 200px
+    max-width: 240px
     text-align: center
     width: 100%
 
@@ -20,6 +20,7 @@
 
   button.reset-selection-button
     display: none
+    font-size: 14px
     height: auto
     max-width: 100%
     line-height: normal
@@ -105,7 +106,7 @@
 
     .price
       color: #{"{{ theme.header_color }}"}
-      font-size: 16px
+      font-size: 19px
       font-weight: 700
       margin: 10px 0
 
@@ -130,7 +131,7 @@
       p,
       select
         min-width: 140px
-        max-width: 200px
+        max-width: 240px
         width: 100%
 
         @media screen and (max-width: $break-small)
@@ -171,38 +172,39 @@
     padding-top: 15px
 
     h5
+      font-size: 15px
       margin-bottom: 0
 
     ul
       margin-top: 15px
 
     li
+      +flexbox
+      font-size: 13px
       font-weight: 700
-      height: 20px
-      line-height: 20px
       margin-bottom: 5px
       width: 100%
-      padding: 0 5px
+      padding: 5px
       position: relative
 
-    b
+    .inventory-level-background
       background-color: #{"{{ theme.link_color }}"}
       @include border-radius(3px)
       color: #{"{{ theme.font_color }}"}
-      height: 20px
+      height: 100%
       left: 0
       @include opacity(0.1)
       position: absolute
       top: 0
 
-    i
+    .inventory-status
       font-style: normal
-      float: right
+      margin-left: auto
 
   #instant-checkout-button
     margin-top: 10px
     width: 100%
-    max-width: 200px
+    max-width: 240px
 
     @media screen and (max-width: $break-small)
       max-width: 100%
