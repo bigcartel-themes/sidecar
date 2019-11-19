@@ -11,7 +11,7 @@
 
   <body id="{{ page.permalink }}" class="{{ page.category }}" data-search="{{ theme.show_search }}">
     <div class="wrapper">
-      <aside>
+      <aside class="sidebar">
         <div>
           <header>
             <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
@@ -23,23 +23,23 @@
             </a>
           </header>
 
-          <nav>
+          <nav role="navigation" aria-label="Main">
             <section>
-              <h2 class="title">
+              <div class="title">
                 <a href="/cart" class="cart {% if page.full_url contains '/cart' %}current{% endif %}">
                   <b>Cart</b>
                   <span class="total">{{ cart.total | money: theme.money_format }}</span>
                   <span class="count">{{ cart.item_count }}</span>
                 </a>
-              </h2>
+              </div>
             </section>
 
             <section>
-              <h2 class="title">
+              <div class="title">
                 <a href="/products" class="{% if page.full_url contains '/products' %}current{% endif %}">
                   {{ pages.products.name }}
                 </a>
-              </h2>
+              </div>
 
               {% if theme.show_search %}
                 <form action="/products" method="get" class="search" accept-charset="utf8">
@@ -62,7 +62,7 @@
 
             {% if artists.active != blank %}
               <section>
-                <h2 class="title">Artists</h2>
+                <div class="title">Artists</div>
 
                 <ul>
                   {% for artist in artists.active %}
@@ -121,11 +121,11 @@
         </div>
 
         <footer>
-          <cite>{{ bigcartel_credit }}</cite>
+          <div class="bigcartel-credit">{{ bigcartel_credit }}</div>
         </footer>
       </aside>
 
-      <div class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
+      <main class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
         <header>
           <a href="/cart" class="cart">{{ cart.item_count }}</a>
           <a href="#" class="menu">Menu<b></b></a>
@@ -140,7 +140,7 @@
         {% else %}
           {{ page_content }}
         {% endif %}
-      </div>
+      </main>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>

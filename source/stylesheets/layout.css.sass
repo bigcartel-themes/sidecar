@@ -251,7 +251,7 @@ textarea
 
 /* @group sidebar */
 
-aside
+.sidebar
   background-color: #{"{{ theme.sidebar_color }}"}
   float: left
   height: 100%
@@ -435,7 +435,7 @@ aside
     height: 94px
     padding: 40px 0 30px
 
-    cite a
+    .bigcartel-credit a
       background: url(#{"{{ 'bc_badge.png' | theme_image_url }}"}) no-repeat
       @include background-size(100% 100%)
       display: block
