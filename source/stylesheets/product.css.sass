@@ -179,28 +179,27 @@
       margin-top: 15px
 
     li
+      +flexbox
       font-size: 13px
       font-weight: 700
-      height: 20px
-      line-height: 20px
       margin-bottom: 5px
       width: 100%
-      padding: 0 5px
+      padding: 5px
       position: relative
 
-    b
+    .inventory-level-background
       background-color: #{"{{ theme.link_color }}"}
       @include border-radius(3px)
       color: #{"{{ theme.font_color }}"}
-      height: 20px
+      height: 100%
       left: 0
       @include opacity(0.1)
       position: absolute
       top: 0
 
-    i
+    .inventory-status
       font-style: normal
-      float: right
+      margin-left: auto
 
   #instant-checkout-button
     margin-top: 10px
