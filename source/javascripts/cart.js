@@ -69,6 +69,6 @@ Store.cart = window.Store.cart = {
     });
   },
   updateTotal: function(cart) {
-    return $('.total_price', this.form).htmlHighlight(Format.money(cart.total, true, true));
+    return $('.cart_subtotal_amount', this.form).htmlHighlight(Format.money(cart.total, true, true));
   }
 };
