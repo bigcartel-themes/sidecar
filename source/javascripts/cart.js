@@ -5,7 +5,7 @@ Store.cart = window.Store.cart = {
     this.timer = null;
     this.form.find('input, select').each(this.setDefaultVal);
     this.form.on('blur change', '[name*="cart[update]"]', $.proxy(this.handleItemUpdate, this));
-    return this.form.on('click', 'a.remove', $.proxy(this.handleItemRemove, this));
+    return this.form.on('click', '.remove-item', $.proxy(this.handleItemRemove, this));
   },
   setDefaultVal: function() {
     var elm;
@@ -58,7 +58,8 @@ Store.cart = window.Store.cart = {
       id = Number(elm.data('item-id'));
       item = cart.items[index - removed];
       if (item && id === item.id) {
-        return elm.find('.price').htmlHighlight(Format.money(item.price, true, true));
+        elm.find('.cart_item_price_update').htmlHighlight(Format.money(item.price, true, true));
+        elm.find('.cart_item_quantity_update').htmlHighlight(item.quantity);
       } else {
         removed++;
         return elm.slideUp('fast', function() {
