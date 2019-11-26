@@ -1,9 +1,9 @@
 <div class="page cart">
+  <h1>Cart</h1>
   {% unless cart.items == blank %}
 
     <form method="post" id="cart_form" action="/cart" accept-charset="utf8">
       <input type="hidden" name="utf8" value='✓'>
-      <h1>Cart</h1>
 
       {% if errors != blank %}
         <ul class="errors">
@@ -13,75 +13,60 @@
         </ul>
       {% endif %}
 
-
-      <ul>
+      <ul class="cart_items">
         {% for item in cart.items %}
           <li class="cart_item" data-item-id="{{ item.id }}">
-            <div class="col1">
-              <a href="{{ item.product.url }}" style="background-image: url('{{ item.product.image | product_image_url: "thumb" }}'); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image">
-                {{ item.name }}
+            <div class="cart_product_image">
+              <a title="{{ item.name | escape }}" href="{{ item.product.url }}" style="background-image: url('{{ item.product.image | product_image_url: "thumb" }}'); background-size: {% if item.product.image.width < item.product.image.height %}auto 50px;{% else %}50px auto;{% endif %}" class="product_image"></a>
+            </div>
+            <div class="cart_product_detail">
+              <a href="{{ item.product.url }}">
+                {{ item.product.name }}
               </a>
-              <div>
-                <p class="detail">
-                  <a href="{{ item.product.url }}">
-                    {{ item.product.name }}
-                  </a>
-                  <span class="not_mobile">
-                    {% unless item.product.has_default_option %}
-                      {{ item.option.name }}
-                    {% endunless %}
-                  </span>
-                  <span class="mobile_only">
-                    {% unless item.product.has_default_option %}
-                      {{ item.option.name }} /
-                    {% endunless %}
-                    {{ item.quantity }} @ {{ item.price | money: theme.money_format }}
-                  </span>
-                </p>
-              </div>
+              <span class="not_mobile">
+                {% unless item.product.has_default_option %}
+                  {{ item.option.name }}
+                {% endunless %}
+              </span>
+              <span class="mobile_only">
+                {% unless item.product.has_default_option %}
+                  {{ item.option.name }} /
+                {% endunless %}
+                <span class="cart_item_quantity_update">{{ item.quantity }}</span> @ <span class="cart_item_price_update">{{ item.price | money: theme.money_format }}</span>
+              </span>
+            </div>
+
+            <div class="cart_item_quantity">
+              <label class="item-quantity-label" for="item_{{ item.id }}_qty">Quantity</label>
               {{ item | item_quantity_input }}
             </div>
-            <div class="col2">
-              <div class="not_mobile">
-                <p class="price">
-                  {{ item.price | money: theme.money_format }}
-                </p>
-              </div>
-              <div class="remove">
-                <p>
-                  <a href="#" title="Remove item" class="remove" data-item-id="{{ item.id }}">&times;</a>
-                </p>
-              </div>
+
+            <div class="cart_item_price not_mobile">
+              <span class="cart_item_price_update">{{ item.price | money: theme.money_format }}</span>
+            </div>
+
+            <div class="cart_item_remove">
+              <button title="Remove item" class="remove-item" data-item-id="{{ item.id }}">&times;</button>
             </div>
           </li>
         {% endfor %}
-
-        <li class="total">
-          <div class="col1">
-            <p class="label">
-              Subtotal:
-            </p>
-          </div>
-          <div class="col2">
-            <p>
-              <b class="total_price">{{ cart.total | money: theme.money_format }}</b>
-            </p>
-          </div>
-        </li>
-
-        <li class="submit">
-          <button type="submit" name="checkout" title="Checkout" class="button">
-            Checkout Now
-          </button>
-        </li>
-
       </ul>
+
+      <div class="cart_footer">
+        <div class="cart_subtotal">
+          <span class="cart_subtotal_label">Subtotal:</span>
+          <span class="cart_subtotal_amount">{{ cart.total | money: theme.money_format }}</span>
+        </div>
+        <div class="cart_submit">
+          <button type="submit" name="checkout" class="button">Checkout</button>
+        </div>
+      </div>
+
     </form>
 
   {% endunless %}
   <div class="cart_empty" {% if cart.items != blank %} style="display:none"{% endif %}>
-    <h1>Your cart is empty</h1>
-    <p>Sounds like a good time to <a href="/">start shopping</a>.</p>
+    <p>Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</p>
   </div>
 
 </div>
