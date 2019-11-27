@@ -261,7 +261,7 @@ textarea
   padding: 57px 30px 0
   position: #{"{% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}"}
   @include translateZ(0)
-  width: 209px
+  width: 239px
   z-index: 100
 
   @media screen and (max-width: $break-small)
@@ -384,7 +384,7 @@ textarea
       b
         float: left
 
-      span
+      .total, .count
         border-left-color: #{"{{ theme.sidebar_border_color }}"}
         border-left-style: solid
         border-left-width: 1px
