@@ -1,4 +1,5 @@
 <div class="page home">
+  <h1 class="visuallyhidden">Featured Products</h1>
   {% paginate products from products.all by theme.featured_items %}
     {% if products != blank %}
       <ul class="products_list">
