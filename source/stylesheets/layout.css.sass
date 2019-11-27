@@ -271,7 +271,6 @@ textarea
     width: 272px
     z-index: 1
 
-
   > div
     min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
     margin-bottom: -94px
@@ -301,7 +300,8 @@ textarea
     width: 150px
 
     @media screen and (max-width: $break-small)
-      margin: 14px 0
+      height: 55px
+      margin: 0 0
       width: 100%
 
     .logo
@@ -312,7 +312,8 @@ textarea
       word-wrap: break-word
 
       @media screen and (max-width: $break-small)
-        font-size: 16px
+        font-size: 18px
+        line-height: 55px
 
   form.search
     color: #{"{{ theme.sidebar_link_color }}"}
@@ -483,27 +484,29 @@ textarea
       color: #{"{{ theme.link_rollover }}"}
 
   header
-    @extend %clearfix
     background-color: #{"{{ theme.sidebar_color }}"}
     border-bottom-color: #{"{{ theme.sidebar_border_color }}"}
     border-bottom-style: solid
     border-bottom-width: 1px
     display: none
-    height: 48px
+    height: 55px
     position: relative
     text-align: center
     width: 100%
 
     @media screen and (max-width: $break-small)
-      display: block
+      +flexbox
+      +align-items(center)
+      +justify-content(space-between)
+      padding: 0 16px
 
     .logo
+      +transform(translateX(-50%))
       color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 16px
+      font-size: 18px
       font-weight: 700
       left: 50%
-      line-height: 48px
-      margin-left: -35%
+      line-height: 55px
       overflow: hidden
       padding: 0
       position: absolute
@@ -512,30 +515,27 @@ textarea
       white-space: nowrap
       width: 70%
 
-
     .cart
       background: #{"{{ theme.sidebar_link_color }}"}
-      @include border-radius(16px)
+      @include border-radius(50%)
       color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-      display: block
-      float: right
-      font-size: 10px
+      font-size: 14px
       font-weight: bold
-      height: 24px
-      line-height: 24px
-      margin: 12px 16px
+      height: 27px
+      line-height: 27px
       padding: 0
       text-align: center
-      width: 24px
+      width: 27px
 
     .menu
+      background: none
+      border: none
       display: block
-      float: left
-      height: 48px
-      overflow: hidden
+      height: 55px
+      left: -14px
+      padding: 10px
       position: relative
-      text-indent: -9999px
-      width: 48px
+      width: 55px
 
       b,
       b:before,
@@ -543,22 +543,20 @@ textarea
         background: #{"{{ theme.sidebar_link_color }}"}
         display: block
         height: 2px
-        left: 50%
-        margin: -1px 0 0 -11px
+        margin: 0
         position: absolute
         top: 50%
-        width: 21px
+        width: 27px
 
       b:before,
       b:after
         content: ""
 
       b:before
-        top: -6px
+        top: -8px
 
       b:after
         top: 8px
-
 
   .page
     margin: 0 60px 0 260px

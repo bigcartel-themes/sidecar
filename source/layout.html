@@ -127,9 +127,9 @@
 
       <main class="main {% if theme.show_overlay == 'On rollover' %}overlay{% else %}standard{% endif %}">
         <header>
-          <a href="/cart" class="cart">{{ cart.item_count }}</a>
-          <a href="#" class="menu">Menu<b></b></a>
-          <a href="/" title="{{ store.name | escape }}" class="logo">{{ store.name | escape }}</a>
+          <button class="menu" aria-label="Open menu"><b></b></button>
+          <a href="/" title="{{ store.name | escape }} Home" class="logo">{{ store.name | escape }}</a>
+          <a href="/cart" class="cart" aria-label="View cart">{{ cart.item_count }}</a>
         </header>
         {% if page.category == 'custom' %}
             <div class="page custom">
