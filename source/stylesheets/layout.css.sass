@@ -16,7 +16,7 @@ body
   background-repeat: repeat
   color: #{"{{ theme.font_color }}"}
   font-family: #{"{{ theme.font | font_family_for_group }}"}
-  font-size: 62.5%
+  font-size: 15px
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
@@ -64,7 +64,7 @@ h6
   margin-bottom: 30px
 
 h1
-  font-size: 2.6em
+  font-size: 26px
   line-height: 1.3em
 
 h2
@@ -87,7 +87,7 @@ p
 
 sup,
 sub
-  font-size: .6em
+  font-size: 12px
   vertical-align: text-top
 
 sub
@@ -108,14 +108,14 @@ blockquote
   &:after
     display: inline
     content: '\201C'
-    font-size: 1.2em
+    font-size: 14px
 
   &:after
     content: '\201D'
 
 small
   display: block
-  font-size: 1.1em
+  font-size: 13px
   font-weight: 400
   margin-bottom: 15px
 
@@ -227,7 +227,7 @@ textarea
 .standalone
   height: auto
   margin: 0 auto
-  max-width: 300px
+  max-width: 360px
   padding-top: 120px
   text-align: center
 
@@ -309,7 +309,7 @@ textarea
 
     .logo
       display: block
-      font-size: 2.4em
+      font-size: 24px
       font-weight: 700
       line-height: 1.2em
       word-wrap: break-word
@@ -581,9 +581,6 @@ textarea
       height: auto
       margin-bottom: 0
       padding: 13px 32px 0
-
-  .alert
-    font-size: 12px
 
     &.noproducts
       @media screen and (max-width: $break-small)
