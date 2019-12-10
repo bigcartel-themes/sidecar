@@ -16,7 +16,7 @@
           <header>
             <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
               {% if theme.logo %}
-                <img src="{{ theme.logo.url }}" alt="{{ store.name }}" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+                <img src="{{ theme.logo.url | constrain: 300 }}" alt="{{ store.name }}" />
               {% else %}
                 {{ store.name | escape }}
               {% endif %}
