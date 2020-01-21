@@ -268,11 +268,15 @@ textarea
     border-right-color: #{"{{ theme.sidebar_border_color }}"}
     border-right-style: solid
     border-right-width: 1px
+    display: none
     min-height: 100%
     padding: 0 32px
     position: absolute
     width: 272px
     z-index: 1
+
+    .show_menu &
+      display: block
 
   > div
     min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
@@ -303,8 +307,7 @@ textarea
     width: 150px
 
     @media screen and (max-width: $break-small)
-      height: 55px
-      margin: 0 0
+      margin: 14px 0
       width: 100%
 
     .logo
@@ -317,10 +320,6 @@ textarea
       img
         display: block
         width: 100%
-
-      @media screen and (max-width: $break-small)
-        font-size: 18px
-        line-height: 55px
 
   form.search
     color: #{"{{ theme.sidebar_link_color }}"}

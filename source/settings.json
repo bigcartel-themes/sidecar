@@ -1,6 +1,6 @@
 {
     "name": "Sidecar",
-    "version": "1.8.5",
+    "version": "1.8.6",
     "images": [{
         "variable": "logo",
         "label": "Logo",
@@ -111,7 +111,7 @@
         "variable": "fixed_sidebar",
         "label": "Fixed Sidebar",
         "type": "boolean",
-        "default": true,
+        "default": false,
         "description": "Keeps the sidebar stationary while the page scrolls"
     }, {
         "variable": "show_inventory_bars",
