@@ -2,16 +2,15 @@
   padding-top: 60px
 
   select
-    font-size: 12px
     margin-bottom: 18px
 
   .add-to-cart-button
     display: block
-    max-width: 200px
+    max-width: 240px
     width: 100%
 
   .reset-selection-button-container
-    max-width: 200px
+    max-width: 240px
     text-align: center
     width: 100%
 
@@ -86,32 +85,28 @@
       margin-bottom: 10px
 
       @media screen and (max-width: $break-small)
-        font-size: 16px
-        margin-bottom: 0
         padding: 0
 
     .artists
       color: #{"{{ theme.header_color }}"}
-      font-size: 12px
-      line-height: 1.4
+      font-size: 14px
+      line-height: 1.5
       margin-bottom: 0
 
       @media screen and (max-width: $break-small)
         display: inline
-        line-height: 1.4
 
         &:after
           content: "/ "
 
     .price
       color: #{"{{ theme.header_color }}"}
-      font-size: 16px
+      font-size: 19px
       font-weight: 700
       margin: 10px 0
 
       @media screen and (max-width: $break-small)
         display: inline
-        font-size: 12px
         font-weight: normal
         margin: 0
 
@@ -130,23 +125,17 @@
       p,
       select
         min-width: 140px
-        max-width: 200px
+        max-width: 240px
         width: 100%
 
         @media screen and (max-width: $break-small)
-          font-size: 13px
           max-width: none
           min-width: none
 
       .button
         @media screen and (max-width: $break-small)
-          font-size: 13px
           max-width: 100%
           width: 100%
-
-    p
-      font-size: 12px
-      line-height: 18px
 
   .description
     border-top-color: #{"{{ theme.border_color }}"}
@@ -170,39 +159,40 @@
     margin-top: 15px
     padding-top: 15px
 
-    h5
+    .availability-header
+      font-size: 15px
       margin-bottom: 0
 
     ul
       margin-top: 15px
 
     li
+      +flexbox
+      font-size: 13px
       font-weight: 700
-      height: 20px
-      line-height: 20px
       margin-bottom: 5px
       width: 100%
-      padding: 0 5px
+      padding: 5px
       position: relative
 
-    b
+    .inventory-level-background
       background-color: #{"{{ theme.link_color }}"}
       @include border-radius(3px)
       color: #{"{{ theme.font_color }}"}
-      height: 20px
+      height: 100%
       left: 0
       @include opacity(0.1)
       position: absolute
       top: 0
 
-    i
+    .inventory-status
       font-style: normal
-      float: right
+      margin-left: auto
 
   #instant-checkout-button
     margin-top: 10px
     width: 100%
-    max-width: 200px
+    max-width: 240px
 
     @media screen and (max-width: $break-small)
       max-width: 100%

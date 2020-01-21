@@ -1,26 +1,26 @@
 <div class="page product_detail">
   <div class="gallery desktop-gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
     <a href="{{ product.image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
-      <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="Image of {{ product.name | escape }}">
+      <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="{{ product.name | escape }}">
     </a>
     <ul>
       {% for image in product.images offset: 1 %}
         <li{% if forloop.first %} active{% endif %}>
           <a href="{{ image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
-            <img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}">
+            <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
           </a>
         </li>
       {% endfor %}
     </ul>
   </div>
   <div class="gallery mobile_only">
-    <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="Image of {{ product.name | escape }}" class="mobile_gallery_viewer">
+    <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="{{ product.name | escape }}" class="mobile_gallery_viewer">
     <ul class="mobile_gallery">
       {% for image in product.images %}
         {% if forloop.length > 1 %}
           <li class="{% if forloop.first %}active{% endif %}">
             <a href="{{ image | product_image_url | constrain: 1500 }}">
-              <img src="{{ image | product_image_url | constrain: 300 }}" alt="Image of {{ product.name | escape }}">
+              <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
             </a>
           </li>
         {% endif %}
@@ -85,11 +85,11 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add add-to-cart-button" name="submit" type="submit" title="Add to Cart" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
+        <button class="button add add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
         {{ store | instant_checkout_button: 'light', '36px' }}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
-            <button class="button minimal-button reset-selection-button" title="Reset selection" type="reset">Reset selection</button>
+            <button class="button minimal-button reset-selection-button" type="reset">Reset selection</button>
           </div>
         {% endif %}
       </form>
@@ -105,21 +105,21 @@
       {% case product.status %}
         {% when 'active' %}
           <div class="availability">
-            <h5>Availability</h5>
+            <h2 class="availability-header">Availability</h2>
             <ul>
               {% for option in product.options %}
                 <li>
                   {% unless product.has_default_option %}
                     {{ option.name }}
                   {% endunless %}
-                  <i>
+                  <span class="inventory-status">
                     {% if option.sold_out %}
                       Sold Out
                     {% else %}
                       {{ option.inventory }}%
                     {% endif %}
-                  </i>
-                  <b class="option" style="width:{{ option.inventory }}%;"><!--Inventory--></b>
+                  </span>
+                  <span class="inventory-level-background" style="width:{{ option.inventory }}%;"></span>
                 </li>
               {% endfor %}
             </ul>

@@ -16,7 +16,7 @@ body
   background-repeat: repeat
   color: #{"{{ theme.font_color }}"}
   font-family: #{"{{ theme.font | font_family_for_group }}"}
-  font-size: 62.5%
+  font-size: 15px
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
@@ -64,7 +64,7 @@ h6
   margin-bottom: 30px
 
 h1
-  font-size: 21px
+  font-size: 26px
   line-height: 1.3em
 
 h2
@@ -87,7 +87,7 @@ p
 
 sup,
 sub
-  font-size: .6em
+  font-size: 12px
   vertical-align: text-top
 
 sub
@@ -108,14 +108,14 @@ blockquote
   &:after
     display: inline
     content: '\201C'
-    font-size: 1.2em
+    font-size: 14px
 
   &:after
     content: '\201D'
 
 small
   display: block
-  font-size: 1.1em
+  font-size: 13px
   font-weight: 400
   margin-bottom: 15px
 
@@ -150,17 +150,17 @@ hr
   color: #{"{{ theme.background_color }}"} !important
   cursor: pointer
   font-family: #{"{{ theme.font }}"}
-  font-size: 12px
+  font-size: 15px
   font-weight: 700
   @include inline-block
-  padding: 11px 20px
+  padding: 14px 20px
   text-align: center
 
   &.minimal-button
     background: none
     color: #{"{{ theme.link_color }}"} !important
     border: none
-    font-size: 12px
+    font-size: 14px
     padding: 0
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
@@ -176,6 +176,9 @@ hr
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
 
+select
+  font-size: 16px
+
 input[type=text],
 textarea
   background: #fff
@@ -184,7 +187,6 @@ textarea
   font-family: #{"{{ theme.font }}"}
   height: 32px
   padding: 6px 10px
-  outline: none
 
   &:focus
     @include box-shadow(0 0 5px #{"{{ theme.header_color }}"} inset)
@@ -210,7 +212,7 @@ textarea
 
 
   li
-    font-size: 11px
+    font-size: 13px
     font-weight: 700
     height: auto !important
     line-height: 1.3em
@@ -225,7 +227,7 @@ textarea
 .standalone
   height: auto
   margin: 0 auto
-  max-width: 300px
+  max-width: 360px
   padding-top: 120px
   text-align: center
 
@@ -252,26 +254,29 @@ textarea
 
 /* @group sidebar */
 
-aside
+.sidebar
   background-color: #{"{{ theme.sidebar_color }}"}
   float: left
   height: 100%
   padding: 57px 30px 0
   position: #{"{% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}"}
   @include translateZ(0)
-  width: 209px
+  width: 239px
   z-index: 100
 
   @media screen and (max-width: $break-small)
     border-right-color: #{"{{ theme.sidebar_border_color }}"}
     border-right-style: solid
     border-right-width: 1px
+    display: none
     min-height: 100%
     padding: 0 32px
     position: absolute
     width: 272px
     z-index: 1
 
+    .show_menu &
+      display: block
 
   > div
     min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
@@ -307,7 +312,7 @@ aside
 
     .logo
       display: block
-      font-size: 2.4em
+      font-size: 24px
       font-weight: 700
       line-height: 1.2em
       word-wrap: break-word
@@ -315,9 +320,6 @@ aside
       img
         display: block
         width: 100%
-
-      @media screen and (max-width: $break-small)
-        font-size: 16px
 
   form.search
     color: #{"{{ theme.sidebar_link_color }}"}
@@ -340,14 +342,13 @@ aside
       @extend %transition
       cursor: pointer
       display: block
-      font-size: 11px
+      font-size: 14px
       @include opacity(1)
       position: absolute
-      top: 4px
+      top: 2px
       z-index: 1
 
       @media screen and (max-width: $break-small)
-        font-size: 14px
         top: 6px
 
     input[type=text]
@@ -386,12 +387,12 @@ aside
       b
         float: left
 
-      span
+      .total, .count
         border-left-color: #{"{{ theme.sidebar_border_color }}"}
         border-left-style: solid
         border-left-width: 1px
         float: right
-        font-size: 11px
+        font-size: 14px
         font-weight: normal
         @include inline-block
         margin-left: 8px
@@ -413,7 +414,7 @@ aside
     .title,
     .title a
       color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 12px
+      font-size: 15px
       font-weight: bold
       line-height: 1.9em
       margin-bottom: 0
@@ -431,18 +432,17 @@ aside
 
     a
       display: block
-      font-size: 11px
-      line-height: 20px
+      font-size: 14px
+      line-height: 24px
 
       @media screen and (max-width: $break-small)
-        font-size: 14px
         line-height: 29px
 
   footer
     height: 94px
     padding: 40px 0 30px
 
-    cite a
+    .bigcartel-credit a
       background: url(#{"{{ 'bc_badge.png' | theme_image_url }}"}) no-repeat
       @include background-size(100% 100%)
       display: block
@@ -490,27 +490,29 @@ aside
       color: #{"{{ theme.link_rollover }}"}
 
   header
-    @extend %clearfix
     background-color: #{"{{ theme.sidebar_color }}"}
     border-bottom-color: #{"{{ theme.sidebar_border_color }}"}
     border-bottom-style: solid
     border-bottom-width: 1px
     display: none
-    height: 48px
+    height: 55px
     position: relative
     text-align: center
     width: 100%
 
     @media screen and (max-width: $break-small)
-      display: block
+      +flexbox
+      +align-items(center)
+      +justify-content(space-between)
+      padding: 0 16px
 
     .logo
+      +transform(translateX(-50%))
       color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 16px
+      font-size: 18px
       font-weight: 700
       left: 50%
-      line-height: 48px
-      margin-left: -35%
+      line-height: 55px
       overflow: hidden
       padding: 0
       position: absolute
@@ -519,30 +521,27 @@ aside
       white-space: nowrap
       width: 70%
 
-
     .cart
       background: #{"{{ theme.sidebar_link_color }}"}
-      @include border-radius(16px)
+      @include border-radius(50%)
       color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-      display: block
-      float: right
-      font-size: 10px
+      font-size: 14px
       font-weight: bold
-      height: 24px
-      line-height: 24px
-      margin: 12px 16px
+      height: 27px
+      line-height: 27px
       padding: 0
       text-align: center
-      width: 24px
+      width: 27px
 
     .menu
+      background: none
+      border: none
       display: block
-      float: left
-      height: 48px
-      overflow: hidden
+      height: 55px
+      left: -14px
+      padding: 10px
       position: relative
-      text-indent: -9999px
-      width: 48px
+      width: 55px
 
       b,
       b:before,
@@ -550,22 +549,20 @@ aside
         background: #{"{{ theme.sidebar_link_color }}"}
         display: block
         height: 2px
-        left: 50%
-        margin: -1px 0 0 -11px
+        margin: 0
         position: absolute
         top: 50%
-        width: 21px
+        width: 27px
 
       b:before,
       b:after
         content: ""
 
       b:before
-        top: -6px
+        top: -8px
 
       b:after
         top: 8px
-
 
   .page
     margin: 0 60px 0 260px
@@ -584,16 +581,22 @@ aside
     margin: 0
 
     @media screen and (max-width: $break-small)
-      font-size: 16px
       height: auto
       margin-bottom: 0
       padding: 13px 32px 0
 
-  .alert
-    font-size: 12px
-
     &.noproducts
       @media screen and (max-width: $break-small)
         padding: 20px 32px
+
+.visuallyhidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
 
 /* @end */

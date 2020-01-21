@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<head>
-  <title>{{ page.name }} | {{ store.name }}</title>
-  <meta charset="utf-8" />
-  <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css" />
-  {{ head_content }}
-</head>
-<body class="standalone">
-  <div>
-    <h2>We&#8217;re working on our site at the moment.</h2>
-    <p>Please check back soon.</p>
-  </div>
-</body>
+<html>
+  <head>
+    <title>{{ page.name }} | {{ store.name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
+    {{ head_content }}
+  </head>
+  <body class="standalone">
+    <main>
+      <h1>We're working on our site at the moment.</h1>
+      <p>Please check back soon.</p>
+    </main>
+  </body>
 </html>

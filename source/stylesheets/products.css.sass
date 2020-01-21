@@ -59,66 +59,50 @@
       position: relative
       -webkit-font-smoothing: antialiased
 
-    .overlay &:hover .product_info, .overlay &:focus .product_info
-      @include opacity(1)
+      .overlay &:hover .product_info, .overlay &:focus .product_info
+        @include opacity(1)
 
     .product_info
-      font-weight: 700px
-      padding: 15px
+      font-size: 14px
+      font-weight: 700
+      line-height: 1.5em
+      padding: 15px 0
       text-align: center
 
       span
-        font-size: 11px
-        line-height: 1.2em
         margin: 0
 
       @media screen and (max-width: $break-small)
         color: #{"{{ theme.link_color }}"}
-        font-size: 12px
-        line-height: 1.4em
         padding-top: 16px
 
       .product_name
         display: block
         font-weight: bold
 
-      p
-        padding-top: 5px
-
       .overlay &
         @extend %transition
         @include flexbox
         @include justify-content(center)
         @include align-items(center)
+        @include flex-direction(column)
         background-color: #{"{{ theme.link_color }}"}
         color: #{"{{ theme.background_color }}"}
         height: 100%
         left: 0
         @include opacity(0)
+        padding: 15px
         position: absolute
         top: 0
         width: 100%
 
-        > div
-          display: table
-          height: 100%
-          width: 100%
+        .product_name,
+        .sale,
+        .price
+          font-weight: 700
 
-        p
-          display: table-cell
-          height: 100%
-          width: 100%
-          vertical-align: middle
-
-          .product_name,
-          .sale,
-          .price
-            display: block
-            font-weight: 700
-            padding: 5px 30px
-
-            @media screen and (max-width: $break-small)
-              color: #{"{{ theme.background_color }}"}
+          @media screen and (max-width: $break-small)
+            color: #{"{{ theme.background_color }}"}
 
         @media screen and (max-width: $break-small)
           background-color: transparent
@@ -126,29 +110,26 @@
           padding: 5px 0
           position: static
 
-          > div,
-          p
+          > div
             display: block
             height: auto
             margin-bottom: 0
             width: auto
 
-          p
-            .product_name,
-            .sale,
-            .price
-              color: #{"{{ theme.link_color }}"}
-              padding: 5px 0 0
+          .product_name,
+          .sale,
+          .price
+            color: #{"{{ theme.link_color }}"}
+            padding: 5px 0 0
 
-            .product_name
-              font-weight: bold
+          .product_name
+            font-weight: bold
 
 
 .pagination
   display: none
 
 .page-load-status
-  font-size: 12px
   letter-spacing: 2px
   margin-top: 25px
   text-align: center
@@ -160,6 +141,5 @@
     @extend %transition
     color: #{"{{ theme.text_color }}"}
     font-family: #{"{{ theme.font }}"}
-    font-size: 11px
     text-align: center
     margin: 0 auto

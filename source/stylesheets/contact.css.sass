@@ -13,7 +13,7 @@ form.contact
     max-width: none
     padding: 16px
 
-  li
+  .contact-field
     @extend %clearfix
     border-top-color: #{"{{ theme.border_color }}"}
     border-top-style: solid
@@ -33,18 +33,26 @@ form.contact
 
   label
     display: block
-    font-size: 11px
+    font-size: 14px
     font-weight: 700
     margin-bottom: 10px
 
   input[type=text],
   textarea
+    font-size: 14px
     width: 100%
 
   textarea
     height: 100px
 
   .captcha
+    margin-bottom: 0
+
+    .captcha-instructions
+      display: block
+      font-size: 13px
+      margin-bottom: 15px
+
     label
       margin-bottom: 3px
 

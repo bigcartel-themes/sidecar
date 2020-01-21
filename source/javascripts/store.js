@@ -86,8 +86,8 @@ Store = window.Store = {
     });
   },
   updateCart: function(cart) {
-    $('aside .cart .count, .main header .cart').htmlHighlight(cart.item_count);
-    return $('aside .cart .total').htmlHighlight(Format.money(cart.total, true, true));
+    $('.sidebar .cart .count, .main header .cart').htmlHighlight(cart.item_count);
+    return $('.sidebar .cart .total').htmlHighlight(Format.money(cart.total, true, true));
   },
   cookiesEnabled: function() {
     var cookieEnabled;

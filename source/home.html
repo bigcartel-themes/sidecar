@@ -1,24 +1,21 @@
 <div class="page home">
+  <h1 class="visuallyhidden">Featured Products</h1>
   {% paginate products from products.all by theme.featured_items %}
     {% if products != blank %}
       <ul class="products_list">
         {% for product in products %}
           <li class="product">
             <a href="{{ product.url }}">
-              <img alt="Image of {{ product.name | escape }}" src="{{ product.image | product_image_url | constrain: 780  }}">
+              <img alt="" src="{{ product.image | product_image_url | constrain: 780  }}">
               <div class="product_info">
-                <div>
-                  <p>
-                    <span class="product_name">{{ product.name }}</span>
-                    <span class="{% if product.on_sale %}sale{% else %}price{% endif %} {{ product.status }}">
-                      {{ product.default_price | money: theme.money_format }}
-                      {% case product.status %}
-                        {% when 'sold-out' %} / Sold Out
-                        {% when 'coming-soon' %} / Coming Soon
-                        {% when 'active' %} {% if product.on_sale %} / On Sale{% endif %}
-                      {% endcase %}
-                    </span>
-                  </p>
+                <div class="product_name">{{ product.name }}</div>
+                <div class="{% if product.on_sale %}sale{% else %}price{% endif %} {{ product.status }}">
+                  {{ product.default_price | money: theme.money_format }}
+                  {% case product.status %}
+                    {% when 'sold-out' %} / Sold Out
+                    {% when 'coming-soon' %} / Coming Soon
+                    {% when 'active' %} {% if product.on_sale %} / On Sale{% endif %}
+                  {% endcase %}
                 </div>
               </div>
             </a>
