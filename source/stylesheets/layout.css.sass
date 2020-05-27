@@ -16,7 +16,7 @@ body
   background-repeat: repeat
   color: #{"{{ theme.font_color }}"}
   font-family: #{"{{ theme.font | font_family_for_group }}"}
-  font-size: 15px
+  font-size: 16px
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
@@ -150,7 +150,7 @@ hr
   color: #{"{{ theme.background_color }}"} !important
   cursor: pointer
   font-family: #{"{{ theme.font }}"}
-  font-size: 15px
+  font-size: 16px
   font-weight: 700
   @include inline-block
   padding: 14px 20px
@@ -270,7 +270,7 @@ textarea
     border-right-width: 1px
     display: none
     min-height: 100%
-    padding: 0 32px
+    padding: 0 24px
     position: absolute
     width: 272px
     z-index: 1
@@ -392,14 +392,11 @@ textarea
         border-left-style: solid
         border-left-width: 1px
         float: right
-        font-size: 14px
+        font-size: 16px
         font-weight: normal
         @include inline-block
         margin-left: 8px
         padding-left: 8px
-
-        @media screen and (max-width: $break-small)
-          font-size: 14px
 
         .currency_sign
           border: none
@@ -414,13 +411,10 @@ textarea
     .title,
     .title a
       color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 15px
+      font-size: 16px
       font-weight: bold
       line-height: 1.9em
       margin-bottom: 0
-
-      @media screen and (max-width: $break-small)
-        font-size: 14px
 
     .title a
       &:hover,
@@ -436,6 +430,7 @@ textarea
       line-height: 24px
 
       @media screen and (max-width: $break-small)
+        font-size: 15px
         line-height: 29px
 
   footer
@@ -525,20 +520,20 @@ textarea
       background: #{"{{ theme.sidebar_link_color }}"}
       @include border-radius(50%)
       color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-      font-size: 14px
+      font-size: 15px
       font-weight: bold
-      height: 27px
-      line-height: 27px
+      height: 34px
+      line-height: 34px
       padding: 0
       text-align: center
-      width: 27px
+      width: 34px
 
     .menu
       background: none
       border: none
       display: block
       height: 55px
-      left: -14px
+      left: -10px
       padding: 10px
       position: relative
       width: 55px
