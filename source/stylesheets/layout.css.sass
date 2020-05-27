@@ -324,7 +324,7 @@ textarea
   form.search
     color: #{"{{ theme.sidebar_link_color }}"}
     cursor: pointer
-    height: 20px
+    height: 24px
     padding: 3px 0 5px
     position: relative
 
@@ -342,7 +342,7 @@ textarea
       @extend %transition
       cursor: pointer
       display: block
-      font-size: 14px
+      font-size: 16px
       @include opacity(1)
       position: absolute
       top: 2px
@@ -357,6 +357,7 @@ textarea
       color: #{"{{ theme.link_color }}"}
       cursor: pointer
       font-family: #{"{{ theme.font | font_family_for_group }}"}
+      font-size: 16px
       height: auto
       outline: 0
       margin: 0
@@ -369,6 +370,9 @@ textarea
         @include box-shadow(none)
 
   nav
+    font-size: 16px
+    line-height: 1.25em
+
     section
       border-top-color: #{"{{ theme.sidebar_border_color }}"}
       border-top-style: solid
@@ -392,7 +396,6 @@ textarea
         border-left-style: solid
         border-left-width: 1px
         float: right
-        font-size: 16px
         font-weight: normal
         @include inline-block
         margin-left: 8px
@@ -413,8 +416,10 @@ textarea
       color: #{"{{ theme.sidebar_link_color }}"}
       font-size: 16px
       font-weight: bold
-      line-height: 1.9em
-      margin-bottom: 0
+      padding: 3px 0
+
+    .title:not(:last-child)
+      margin-bottom: 2px
 
     .title a
       &:hover,
@@ -422,16 +427,11 @@ textarea
         color: #{"{{ theme.sidebar_link_rollover }}"}
 
     li
-      line-height: 1.9em
 
     a
       display: block
-      font-size: 14px
-      line-height: 24px
+      padding: 4px 0
 
-      @media screen and (max-width: $break-small)
-        font-size: 15px
-        line-height: 29px
 
   footer
     height: 94px
@@ -578,11 +578,11 @@ textarea
     @media screen and (max-width: $break-small)
       height: auto
       margin-bottom: 0
-      padding: 13px 32px 0
+      padding: 13px 16px 0
 
     &.noproducts
       @media screen and (max-width: $break-small)
-        padding: 20px 32px
+        padding: 20px 16px
 
 .visuallyhidden
   border: 0
