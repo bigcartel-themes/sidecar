@@ -13,11 +13,10 @@
       padding-top: 23px
 
   .cart_items
-    font-size: 15px
 
     @media screen and (max-width: $break-small)
       margin-top: 32px
-      padding: 0 32px
+      padding: 0 16px
 
     .cart_item
       +flexbox
@@ -38,6 +37,10 @@
         height: 70px
         width: 70px
 
+        @media screen and (max-width: $break-small)
+          height: 60px
+          width: 60px
+
         img
           object-fit: cover
           width: 100%
@@ -49,7 +52,6 @@
 
         @media screen and (max-width: $break-small)
           padding: 0 30px 0 15px
-          width: 57%
 
       .item-quantity-label
         border: 0
@@ -75,27 +77,35 @@
         .remove-item
           background: url(#{"{{ 'remove.png' | theme_image_url }}"}) 0 0 no-repeat
           border: none
-          @include background-size(22px 22px)
+          @include background-size(24px 24px)
           cursor: pointer
-          height: 22px
+          height: 24px
           text-indent: -9999px
-          width: 22px
+          width: 24px
+
+          @media screen and (max-width: $break-small)
+            height: 28px
+            width: 28px
+            @include background-size(28px 28px)
 
           &.loading
             background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
             @include animation(spin 1s infinite linear)
+            @include background-size(24px 24px)
+
+            @media screen and (max-width: $break-small)
+              @include background-size(28px 28px)
 
   .cart_footer
 
     @media screen and(max-width: $break-small)
-      padding: 0 32px
+      padding: 0 16px
       width: 100%
 
   .cart_subtotal
     +flexbox
     +align-items(center)
     border-top: 1px solid #{"{{ theme.border_color }}"}
-    font-size: 15px
     padding: 20px 10px
 
     @media screen and (max-width: $break-small)
@@ -103,7 +113,7 @@
 
   .cart_subtotal_label
     text-align: right
-    width: calc(50px + 55% + 45px)
+    width: calc(50px + 55% + 65px)
 
     @media screen and (max-width: $break-small)
       text-align: left
