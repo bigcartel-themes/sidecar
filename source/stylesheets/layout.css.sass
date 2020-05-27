@@ -385,28 +385,33 @@ textarea
         padding: 11px 0 6px
 
     .cart
-      @extend %clearfix
+      +flexbox
 
       @media screen and (max-width: $break-small)
         height: 30px
 
       b
-        float: left
+        order: 1
+
+      .total
+        margin-left: 8px
+        order: 3
+
+      .count
+        margin-left: auto
+        order: 2
 
       .total, .count
         border-left-color: #{"{{ theme.sidebar_border_color }}"}
         border-left-style: solid
         border-left-width: 1px
-        float: right
         font-weight: normal
         @include inline-block
-        margin-left: 8px
         padding-left: 8px
 
         .currency_sign
           border: none
           display: inline
-          float: left
           margin: 0
           padding: 0
 
