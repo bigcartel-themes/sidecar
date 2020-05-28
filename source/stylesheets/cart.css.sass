@@ -26,22 +26,22 @@
       font-size: 16px
       padding: 10px
 
-      @media screen and (max-width: $break-small)
-        padding: 23px 0 32px
+      @media screen and (max-width: $break-medium)
+        padding: 10px 0
         width: 100%
 
       .cart_product_image_link
-        background-position: center center
-        background-repeat: no-repeat
         display: block
         height: 70px
+        overflow: hidden
         width: 70px
 
-        @media screen and (max-width: $break-small)
+        @media screen and (max-width: $break-medium)
           height: 60px
           width: 60px
 
         img
+          height: 100%
           object-fit: cover
           width: 100%
 
@@ -50,8 +50,12 @@
         padding: 0 50px 0 20px
         width: 55%
 
+        @media screen and (max-width: $break-medium)
+          width: 50%
+
         @media screen and (max-width: $break-small)
           padding: 0 30px 0 15px
+          width: 55%
 
       .item-quantity-label
         border: 0
@@ -109,16 +113,16 @@
     border-top: 1px solid #{"{{ theme.border_color }}"}
     padding: 20px 10px
 
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-medium)
       padding: 20px 0
 
   .cart_subtotal_label
     text-align: right
     width: calc(70px + 55% + 50px)
 
-    @media screen and (max-width: $break-small)
-      text-align: left
-      width: auto
+    @media screen and (max-width: $break-medium)
+      text-align: right
+      width: 100%
 
   .cart_subtotal_amount
     font-size: 24px
@@ -133,6 +137,10 @@
     border-top: 1px solid #{"{{ theme.border_color }}"}
     padding: 20px
     padding-left: calc(70px + 55% + 66px)
+
+    @media screen and (max-width: $break-medium)
+      padding: 20px 0
+      text-align: right
 
     @media screen and (max-width: $break-small)
       border-top: none
