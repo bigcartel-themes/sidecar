@@ -16,7 +16,7 @@ body
   background-repeat: repeat
   color: #{"{{ theme.font_color }}"}
   font-family: #{"{{ theme.font | font_family_for_group }}"}
-  font-size: 15px
+  font-size: 16px
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
@@ -150,10 +150,10 @@ hr
   color: #{"{{ theme.background_color }}"} !important
   cursor: pointer
   font-family: #{"{{ theme.font }}"}
-  font-size: 15px
+  font-size: 16px
   font-weight: 700
   @include inline-block
-  padding: 14px 20px
+  padding: 14px 32px
   text-align: center
 
   &.minimal-button
@@ -181,6 +181,8 @@ select
 
 input[type=text],
 textarea
+  appearance: none
+  -webkit-appearance: none
   background: #fff
   border: 1px solid #bfbfbf
   @include border-radius(3px)
@@ -202,20 +204,19 @@ textarea
 /* @group errors */
 
 .errors
-  background-color: #{"{{ theme.highlight_color }}"}
+  background-color: #950f1e
   @include border-radius(3px)
-  color: #{"{{ theme.background_color }}"}
+  color: #ffffff
   margin-bottom: 30px
 
   @media screen and (max-width: $break-small)
     margin: 16px 0
 
-
   li
-    font-size: 13px
+    font-size: 16px
     font-weight: 700
     height: auto !important
-    line-height: 1.3em
+    line-height: 1.5em
     padding: 15px !important
 
 
@@ -270,7 +271,7 @@ textarea
     border-right-width: 1px
     display: none
     min-height: 100%
-    padding: 0 32px
+    padding: 0 24px
     position: absolute
     width: 272px
     z-index: 1
@@ -324,7 +325,7 @@ textarea
   form.search
     color: #{"{{ theme.sidebar_link_color }}"}
     cursor: pointer
-    height: 20px
+    height: 24px
     padding: 3px 0 5px
     position: relative
 
@@ -342,7 +343,7 @@ textarea
       @extend %transition
       cursor: pointer
       display: block
-      font-size: 14px
+      font-size: 16px
       @include opacity(1)
       position: absolute
       top: 2px
@@ -357,6 +358,7 @@ textarea
       color: #{"{{ theme.link_color }}"}
       cursor: pointer
       font-family: #{"{{ theme.font | font_family_for_group }}"}
+      font-size: 16px
       height: auto
       outline: 0
       margin: 0
@@ -369,6 +371,9 @@ textarea
         @include box-shadow(none)
 
   nav
+    font-size: 16px
+    line-height: 1.25em
+
     section
       border-top-color: #{"{{ theme.sidebar_border_color }}"}
       border-top-style: solid
@@ -379,32 +384,33 @@ textarea
         padding: 11px 0 6px
 
     .cart
-      @extend %clearfix
+      +flexbox
 
       @media screen and (max-width: $break-small)
         height: 30px
 
       b
-        float: left
+        order: 1
+
+      .total
+        margin-left: 8px
+        order: 3
+
+      .count
+        margin-left: auto
+        order: 2
 
       .total, .count
         border-left-color: #{"{{ theme.sidebar_border_color }}"}
         border-left-style: solid
         border-left-width: 1px
-        float: right
-        font-size: 14px
         font-weight: normal
         @include inline-block
-        margin-left: 8px
         padding-left: 8px
-
-        @media screen and (max-width: $break-small)
-          font-size: 14px
 
         .currency_sign
           border: none
           display: inline
-          float: left
           margin: 0
           padding: 0
 
@@ -414,13 +420,12 @@ textarea
     .title,
     .title a
       color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 15px
+      font-size: 16px
       font-weight: bold
-      line-height: 1.9em
-      margin-bottom: 0
+      padding: 3px 0
 
-      @media screen and (max-width: $break-small)
-        font-size: 14px
+    .title:not(:last-child)
+      margin-bottom: 2px
 
     .title a
       &:hover,
@@ -428,15 +433,11 @@ textarea
         color: #{"{{ theme.sidebar_link_rollover }}"}
 
     li
-      line-height: 1.9em
 
     a
       display: block
-      font-size: 14px
-      line-height: 24px
+      padding: 4px 0
 
-      @media screen and (max-width: $break-small)
-        line-height: 29px
 
   footer
     height: 94px
@@ -525,20 +526,20 @@ textarea
       background: #{"{{ theme.sidebar_link_color }}"}
       @include border-radius(50%)
       color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-      font-size: 14px
+      font-size: 15px
       font-weight: bold
-      height: 27px
-      line-height: 27px
+      height: 34px
+      line-height: 34px
       padding: 0
       text-align: center
-      width: 27px
+      width: 34px
 
     .menu
       background: none
       border: none
       display: block
       height: 55px
-      left: -14px
+      left: -10px
       padding: 10px
       position: relative
       width: 55px
@@ -583,11 +584,11 @@ textarea
     @media screen and (max-width: $break-small)
       height: auto
       margin-bottom: 0
-      padding: 13px 32px 0
+      padding: 13px 16px 0
 
     &.noproducts
       @media screen and (max-width: $break-small)
-        padding: 20px 32px
+        padding: 20px 16px
 
 .visuallyhidden
   border: 0

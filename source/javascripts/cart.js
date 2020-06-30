@@ -4,7 +4,7 @@ Store.cart = window.Store.cart = {
     this.form = $('#cart_form');
     this.timer = null;
     this.form.find('input, select').each(this.setDefaultVal);
-    this.form.on('blur change', '[name*="cart[update]"]', $.proxy(this.handleItemUpdate, this));
+    this.form.on('keydown change', '[name*="cart[update]"]', $.proxy(this.handleItemUpdate, this));
     return this.form.on('click', '.remove-item', $.proxy(this.handleItemRemove, this));
   },
   setDefaultVal: function() {
@@ -24,11 +24,20 @@ Store.cart = window.Store.cart = {
   handleItemUpdate: function(e) {
     var elm, val;
     elm = $(e.currentTarget);
+    eventType = e.type;
     val = elm.val();
     if (!(val === '' || val === elm.data('defaultVal'))) {
       clearTimeout(this.timer);
-      return this.timer = setTimeout($.proxy(this.processItemUpdate, this, elm, val), 500);
+      if (eventType == 'keydown' && e.keyCode == 13) {
+        e.preventDefault();
+        this.timer = setTimeout($.proxy(this.processItemUpdate, this, elm, val), 20);
+        return false;
+      }
+      else {
+        return this.timer = setTimeout($.proxy(this.processItemUpdate, this, elm, val), 20);
+      }
     }
+
   },
   processItemUpdate: function(elm, val) {
     elm.data('defaultVal', val);

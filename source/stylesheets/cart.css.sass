@@ -13,32 +13,35 @@
       padding-top: 23px
 
   .cart_items
-    font-size: 15px
 
     @media screen and (max-width: $break-small)
       margin-top: 32px
-      padding: 0 32px
+      padding: 0 16px
 
     .cart_item
       +flexbox
       +justify-content(flex-start)
       +align-items(center)
       border-top: 1px solid #{"{{ theme.border_color }}"}
-      font-size: 15px
+      font-size: 16px
       padding: 10px
 
-      @media screen and (max-width: $break-small)
-        padding: 23px 0 32px
+      @media screen and (max-width: $break-medium)
+        padding: 10px 0
         width: 100%
 
       .cart_product_image_link
-        background-position: center center
-        background-repeat: no-repeat
         display: block
-        height: 50px
-        width: 50px
+        height: 70px
+        overflow: hidden
+        width: 70px
+
+        @media screen and (max-width: $break-medium)
+          height: 60px
+          width: 60px
 
         img
+          height: 100%
           object-fit: cover
           width: 100%
 
@@ -47,9 +50,12 @@
         padding: 0 50px 0 20px
         width: 55%
 
+        @media screen and (max-width: $break-medium)
+          width: 50%
+
         @media screen and (max-width: $break-small)
           padding: 0 30px 0 15px
-          width: 57%
+          width: 55%
 
       .item-quantity-label
         border: 0
@@ -62,9 +68,10 @@
         width: 1px
 
       input[type=text]
-        font-size: 15px
+        font-size: 16px
+        height: 36px
         text-align: center
-        width: 42px
+        width: 50px
 
       .cart_item_price
         padding-left: 20px
@@ -75,39 +82,47 @@
         .remove-item
           background: url(#{"{{ 'remove.png' | theme_image_url }}"}) 0 0 no-repeat
           border: none
-          @include background-size(22px 22px)
+          @include background-size(24px 24px)
           cursor: pointer
-          height: 22px
+          height: 24px
           text-indent: -9999px
-          width: 22px
+          width: 24px
+
+          @media screen and (max-width: $break-small)
+            height: 28px
+            width: 28px
+            @include background-size(28px 28px)
 
           &.loading
             background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
             @include animation(spin 1s infinite linear)
+            @include background-size(24px 24px)
+
+            @media screen and (max-width: $break-small)
+              @include background-size(28px 28px)
 
   .cart_footer
 
     @media screen and(max-width: $break-small)
-      padding: 0 32px
+      padding: 0 16px
       width: 100%
 
   .cart_subtotal
     +flexbox
     +align-items(center)
     border-top: 1px solid #{"{{ theme.border_color }}"}
-    font-size: 15px
     padding: 20px 10px
 
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-medium)
       padding: 20px 0
 
   .cart_subtotal_label
     text-align: right
-    width: calc(50px + 55% + 45px)
+    width: calc(70px + 55% + 50px)
 
-    @media screen and (max-width: $break-small)
-      text-align: left
-      width: auto
+    @media screen and (max-width: $break-medium)
+      text-align: right
+      width: 100%
 
   .cart_subtotal_amount
     font-size: 24px
@@ -121,7 +136,11 @@
   .cart_submit
     border-top: 1px solid #{"{{ theme.border_color }}"}
     padding: 20px
-    padding-left: calc(50px + 55% + 62px)
+    padding-left: calc(70px + 55% + 66px)
+
+    @media screen and (max-width: $break-medium)
+      padding: 20px 0
+      text-align: right
 
     @media screen and (max-width: $break-small)
       border-top: none
@@ -132,7 +151,7 @@
         width: 60%
 
   .cart_empty
-    font-size: 15px
+    font-size: 16px
 
     @media screen and (max-width: $break-small)
       h1
@@ -141,4 +160,4 @@
 
       p
         line-height: 1.5em
-        padding: 23px 32px
+        padding: 23px 16px

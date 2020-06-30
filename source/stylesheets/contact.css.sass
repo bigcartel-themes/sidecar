@@ -1,13 +1,17 @@
 #contact
+  .errors
+    max-width: 600px
+
   @media screen and (max-width: $break-small)
     h1
       padding: 16px 16px 0
 
     .errors
       margin: 16px 16px 0
+      max-width: 100%
 
 form.contact
-  max-width: 390px
+  max-width: 600px
 
   @media screen and (max-width: $break-small)
     max-width: none
@@ -23,34 +27,39 @@ form.contact
 
     @media screen and (max-width: $break-small)
       border: none
-      margin-top: 10px
+      margin-top: 20px
       padding-top: 0
+
+      &:last-child
+        margin-top: 0
 
     &:first-child
       border: none
       margin: 0
       padding: 0
 
+
   label
     display: block
-    font-size: 14px
+    font-size: 16px
     font-weight: 700
     margin-bottom: 10px
 
   input[type=text],
   textarea
-    font-size: 14px
+    height: 44px
+    font-size: 16px
     width: 100%
 
   textarea
-    height: 100px
+    height: 140px
 
   .captcha
     margin-bottom: 0
 
     .captcha-instructions
       display: block
-      font-size: 13px
+      font-size: 14px
       margin-bottom: 15px
 
     label
@@ -58,11 +67,10 @@ form.contact
 
     input
       float: left
-      margin: 0 15px 15px 0
+      margin: 0 15px 0 0
       max-width: 150px
 
       @media screen and (max-width: $break-small)
-        height: 51px
         max-width: none
         margin: 0 4% 0 0
         width: 48%
@@ -74,10 +82,11 @@ form.contact
         display: block
         float: left
         text-align: center
-        width: 48%
 
     img
       @include border-radius(3px)
+      display: block
+      height: 44px
 
 
   button
