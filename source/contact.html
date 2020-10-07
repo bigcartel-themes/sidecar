@@ -24,10 +24,7 @@
           {{ contact | contact_input: 'message' }}
         </p>
         <p class="contact-field captcha">
-          <label for="captcha">Spam Check:</label>
-          <span class="captcha-instructions">Please enter the characters from the image.</span>
-          {{ contact | contact_input: 'captcha' }}
-          <b>{{ contact.captcha }}</b>
+          <div class="recaptcha-note">{{ contact.recaptcha }}</div>
         </p>
         <p class="contact-field">
           <button id="contact_button" type="submit" name="submit" class="button" tabindex="6">Send Message</button>
