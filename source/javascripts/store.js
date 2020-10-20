@@ -5,7 +5,7 @@ Store = window.Store = {
   init: function() {
     var page;
     page = $('body').attr('id');
-    this.inPreview = /\/admin\/design/.test(top.location.pathname);
+    this.inPreview = /http(s?):\/\/draft-+\w+\.bigcartel\.(test|biz|com)/.test(window.origin)||(/\/admin\/design/.test(top.location.pathname));
     this.common();
     this[page] && typeof this[page]['init'] === 'function' && this[page]['init'](this);
     return setTimeout((function(_this) {

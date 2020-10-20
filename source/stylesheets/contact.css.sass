@@ -38,7 +38,6 @@ form.contact
       margin: 0
       padding: 0
 
-
   label
     display: block
     font-size: 16px
@@ -57,37 +56,10 @@ form.contact
   .captcha
     margin-bottom: 0
 
-    .captcha-instructions
-      display: block
-      font-size: 14px
-      margin-bottom: 15px
-
-    label
-      margin-bottom: 3px
-
-    input
-      float: left
-      margin: 0 15px 0 0
-      max-width: 150px
-
-      @media screen and (max-width: $break-small)
-        max-width: none
-        margin: 0 4% 0 0
-        width: 48%
-
-    b
-      @media screen and (max-width: $break-small)
-        background: #fff
-        @include border-radius(3px)
-        display: block
-        float: left
-        text-align: center
-
-    img
-      @include border-radius(3px)
-      display: block
-      height: 44px
-
+  .recaptcha-note
+    display: block
+    font-size: 14px
+    margin-bottom: 15px
 
   button
     @media screen and (max-width: $break-small)
