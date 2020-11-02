@@ -1,26 +1,78 @@
 <div class="page product_detail">
   <div class="gallery desktop-gallery">
     <a href="{{ product.image | product_image_url | constrain: 2000 }}" class="fancybox" data-fancybox="gallery">
-      <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="{{ product.name | escape }}">
+      <img
+        alt="{{ product.name | escape }}"
+        class="product-image primary-product-image blur-up lazyload"
+        src="{{ product.image | product_image_url | constrain: 100 }}"
+        data-srcset="
+          {{ product.image | product_image_url | constrain: 400 }} 400w,
+          {{ product.image | product_image_url | constrain: 550 }} 550w,
+          {{ product.image | product_image_url | constrain: 800 }} 800w,
+          {{ product.image | product_image_url | constrain: 1050 }} 1050w,
+          {{ product.image | product_image_url | constrain: 1300 }} 1300w,
+          {{ product.image | product_image_url | constrain: 1700 }} 1700w,
+          {{ product.image | product_image_url | constrain: 1900 }} 1900w,
+          {{ product.image | product_image_url | constrain: 2100 }} 2100w,
+        "
+        data-sizes="auto"
+      >
     </a>
     <ul>
       {% for image in product.images offset: 1 %}
         <li{% if forloop.first %} active{% endif %}>
           <a href="{{ image | product_image_url | constrain: 2000 }}" class="fancybox" data-fancybox="gallery">
-            <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
+            <img
+              alt="{{ product.name | escape }}"
+              class="product-image secondary-product-image blur-up lazyload"
+              src="{{ image | product_image_url | constrain: 100 }}"
+              data-srcset="
+                {{ image | product_image_url | constrain: 400 }} 400w,
+                {{ image | product_image_url | constrain: 550 }} 550w,
+                {{ image | product_image_url | constrain: 800 }} 800w,
+                {{ image | product_image_url | constrain: 1050 }} 1050w,
+              "
+              data-sizes="auto"
+            >
           </a>
         </li>
       {% endfor %}
     </ul>
   </div>
   <div class="gallery mobile_only">
-    <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="{{ product.name | escape }}" class="mobile_gallery_viewer">
+    <img
+      alt="{{ product.name | escape }}"
+      class="product-image primary-product-image blur-up lazyload mobile_gallery_viewer"
+      src="{{ product.image | product_image_url | constrain: 100 }}"
+      data-srcset="
+        {{ product.image | product_image_url | constrain: 400 }} 400w,
+        {{ product.image | product_image_url | constrain: 550 }} 550w,
+        {{ product.image | product_image_url | constrain: 800 }} 800w,
+        {{ product.image | product_image_url | constrain: 1050 }} 1050w,
+        {{ product.image | product_image_url | constrain: 1300 }} 1300w,
+        {{ product.image | product_image_url | constrain: 1700 }} 1700w,
+        {{ product.image | product_image_url | constrain: 1900 }} 1900w,
+        {{ product.image | product_image_url | constrain: 2100 }} 2100w,
+      "
+      data-sizes="auto"
+    >
     <ul class="mobile_gallery">
       {% for image in product.images %}
         {% if forloop.length > 1 %}
           <li class="{% if forloop.first %}active{% endif %}">
             <a href="{{ image | product_image_url | constrain: 1500 }}">
-              <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
+              <img
+                alt="{{ product.name | escape }}"
+                class="product-image secondary-product-image blur-up lazyload"
+                src="{{ image | product_image_url | constrain: 100 }}"
+                data-srcset="
+                  {{ image | product_image_url | constrain: 400 }} 400w,
+                  {{ image | product_image_url | constrain: 550 }} 550w,
+                  {{ image | product_image_url | constrain: 800 }} 800w,
+                  {{ image | product_image_url | constrain: 1050 }} 1050w,
+                "
+                data-sizes="auto"
+              >
             </a>
           </li>
         {% endif %}

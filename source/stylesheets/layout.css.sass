@@ -594,4 +594,11 @@ textarea
   position: absolute
   width: 1px
 
+.blur-up
+  +transition(filter .1s)
+  filter: blur(5px)
+
+  &.lazyloaded
+    filter: blur(0)
+
 /* @end */
