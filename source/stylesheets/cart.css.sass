@@ -37,8 +37,8 @@
         width: 70px
 
         @media screen and (max-width: $break-medium)
-          height: 60px
-          width: 60px
+          height: 55px
+          width: 55px
 
         img
           height: 100%
@@ -79,27 +79,42 @@
       .cart_item_remove
         margin-left: auto
 
-        .remove-item
-          background: url(#{"{{ 'remove.png' | theme_image_url }}"}) 0 0 no-repeat
+        .remove-item-button
+          +flexbox
+          +align-items(center)
+          +justify-content(center)
+          appearance: none
+          background: none
           border: none
-          @include background-size(24px 24px)
           cursor: pointer
-          height: 24px
-          text-indent: -9999px
-          width: 24px
+          height: 44px
+          width: 44px
 
-          @media screen and (max-width: $break-small)
-            height: 28px
-            width: 28px
-            @include background-size(28px 28px)
+          .cart-icon
+            display: block
+            fill: #{"{{ theme.text_color }}"}
+
+            &:hover, &:focus
+              fill: #{"{{ theme.link_color }}"}
+
+            &.remove-icon
+              height: 20px
+              width: 20px
+              z-index: 1
+
+            &.loading-icon
+              height: 30px
+              display: none
+              width: 30px
 
           &.loading
-            background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
-            @include animation(spin 1s infinite linear)
-            @include background-size(24px 24px)
 
-            @media screen and (max-width: $break-small)
-              @include background-size(28px 28px)
+            .remove-icon
+              display: none
+
+            .loading-icon
+              display: block
+
 
   .cart_footer
 
