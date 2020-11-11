@@ -148,15 +148,10 @@ hr
 .main .button
   @extend %transition
   background-color: #{"{{ theme.link_color }}"}
-  @include border-radius(3px)
-  border: none
   color: #{"{{ theme.background_color }}"} !important
-  cursor: pointer
-  font-family: #{"{{ theme.font }}"}
-  font-size: 16px
   font-weight: 700
   @include inline-block
-  padding: 14px 32px
+  padding: 0 32px
   text-align: center
 
   &.minimal-button
@@ -179,17 +174,81 @@ hr
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
 
-select
+button, input, textarea, select
+  +appearance(none)
+  +border-radius(3px)
+  background: none
+  border: none
+  color: #{"{{ theme.text_color }}"}
+  cursor: pointer
+  font-family: #{"{{ theme.font }}"}
   font-size: 16px
+  height: 50px
+  line-height: 50px
+  padding: 0
+
+.select
+  border: 1px solid #{"{{ theme.text_color }}"}
+  @include border-radius(3px)
+  height: 44px
+  line-height: 44px
+  margin-bottom: 10px
+  max-width: 100%
+  padding: 0
+  position: relative
+  width: 100%
+
+  select
+    appearance: none
+    border: none
+    height: 100%
+    line-height: inherit
+    padding: 0 66px 0 12px
+    position: relative
+    width: 100%
+    z-index: 2
+
+    option
+      background-color: #FFFFFF
+      color: #000
+
+      &:disabled
+        background-color: #FFFFFF
+        color: graytext
+
+    &:focus
+      box-shadow: none
+
+    &::-ms-expand
+      display: none
+
+  svg
+    fill: #{"{{ theme.text_color }}"}
+    height: 8px
+    margin-top: -2px
+    position: absolute
+    right: 14px
+    top: 50%
+    width: 13px
+    z-index: 1
+
+  &:hover, &:active, &:focus, &:focus-within
+    color: #{"{{ theme.link_rollover }}"}
+    border-color: #{"{{ theme.link_rollover }}"}
+
+    select
+      color: #{"{{ theme.link_rollover }}"}
+
+      option:disabled
+        color: graytext
+
+    svg
+      fill: #{"{{ theme.link_rollover }}"}
+
 
 input[type=text],
 textarea
-  appearance: none
-  -webkit-appearance: none
-  background: #fff
-  border: 1px solid #bfbfbf
-  @include border-radius(3px)
-  font-family: #{"{{ theme.font }}"}
+  border: 1px solid #{"{{ theme.text_color }}"}
   height: 32px
   padding: 6px 10px
 
@@ -304,12 +363,10 @@ textarea
 
   header
     margin-bottom: 35px
-    overflow: hidden
-    width: 150px
+    width: 100%
 
     @media screen and (max-width: $break-small)
       margin: 14px 0
-      width: 100%
 
     .logo
       display: block
@@ -359,10 +416,11 @@ textarea
       cursor: pointer
       font-family: #{"{{ theme.font | font_family_for_group }}"}
       font-size: 16px
-      height: auto
+      height: 32px
       margin: 0
-      padding: 0
+      padding: 0 4px
       position: relative
+      top: -8px
       width: 100%
       z-index: 2
 
