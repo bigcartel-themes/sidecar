@@ -30,12 +30,10 @@
       width: 100%
 
   .product
-    max-width: #{"{% if theme.product_list_size == 'small' %} 170px {% elsif theme.product_list_size == 'medium' %} 300px {% else %} 420px {% endif %}"}
+    max-width: #{"{% if theme.product_list_size == 'small' %} 220px {% elsif theme.product_list_size == 'medium' %} 340px {% else %} 460px {% endif %}"}
     width: 100%
     padding: 0 15px 30px
-    overflow: hidden
     position: relative
-    @include translateZ(0)
 
     @media screen and (max-width: $break-medium)
       max-width: #{"{% if theme.product_list_size == 'small' %} 33.333333% {% elsif theme.product_list_size == 'medium' %} 50% {% else %} 100% {% endif %}"}
@@ -114,12 +112,10 @@
           .product_name
             font-weight: bold
 
-
 .pagination
   display: none
 
 .page-load-status
-  letter-spacing: 2px
   margin-top: 25px
   text-align: center
 
