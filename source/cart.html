@@ -70,7 +70,7 @@
       </ul>
 
       <div class="cart_footer">
-        <div class="cart_subtotal">
+        <div class="cart_subtotal" aria-live="polite" aria-atomic="true">
           <span class="cart_subtotal_label">Subtotal:</span>
           <span class="cart_subtotal_amount">{{ cart.total | money: theme.money_format }}</span>
         </div>
