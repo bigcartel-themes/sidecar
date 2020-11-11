@@ -1,10 +1,10 @@
 {
     "name": "Sidecar",
-    "version": "1.9.12",
+    "version": "1.9.13",
     "images": [{
         "variable": "logo",
         "label": "Logo",
-        "description": "Good for an image up to 150 pixels wide"
+        "description": "Good for an image up to 180 pixels wide"
     }, {
         "variable": "background_image",
         "label": "Background Image",
@@ -22,47 +22,47 @@
     "colors": [{
         "variable": "background_color",
         "label": "Background",
-        "default": "#222222"
+        "default": "#FFFFFF"
     }, {
         "variable": "header_color",
         "label": "Header Text",
-        "default": "#FFFFFF"
+        "default": "#000000"
     }, {
         "variable": "font_color",
         "label": "Body Text",
-        "default": "#afafaf"
+        "default": "#000000"
     }, {
         "variable": "link_color",
         "label": "Buttons & Links",
-        "default": "#76BFAF"
+        "default": "#374DCA"
     }, {
         "variable": "link_rollover",
         "label": "Button & Link Rollovers",
-        "default": "#A6F0E0"
+        "default": "#273896"
     }, {
         "variable": "border_color",
         "label": "Lines",
-        "default": "#2B2B2B"
+        "default": "#666666"
     }, {
         "variable": "highlight_color",
         "label": "Sale, Sold & Soon Text",
-        "default": "#FFFFFF"
+        "default": "#DC6730"
     }, {
         "variable": "sidebar_color",
         "label": "Sidebar Background",
-        "default": "transparent"
+        "default": "#FFFFFF"
     }, {
         "variable": "sidebar_link_color",
         "label": "Sidebar Links",
-        "default": "#afafaf"
+        "default": "#000000"
     }, {
         "variable": "sidebar_link_rollover",
         "label": "Sidebar Link Rollovers",
-        "default": "#A6F0E0"
+        "default": "#374DCA"
     }, {
         "variable": "sidebar_border_color",
         "label": "Sidebar Lines",
-        "default": "#2B2B2B"
+        "default": "#666666"
     }],
     "options": [{
         "variable": "product_list_layout",
