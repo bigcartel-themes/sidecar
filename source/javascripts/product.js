@@ -1,7 +1,9 @@
 Store.product = window.Store.product = {
   init: function(_super) {
     this["super"] = _super;
-    $('.fancybox').fancybox();
+    $('[data-fancybox="gallery"]').fancybox({
+      loop: true
+    });
     this.setupAddToCart();
     this.setupMobileGallery();
     this.addToCartMessage = this["super"].addToCartMessages.addToCart;

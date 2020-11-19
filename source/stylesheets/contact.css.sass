@@ -19,9 +19,6 @@ form.contact
 
   .contact-field
     @extend %clearfix
-    border-top-color: #{"{{ theme.border_color }}"}
-    border-top-style: solid
-    border-top-width: 1px
     margin-top: 15px
     padding-top: 15px
 
@@ -47,11 +44,13 @@ form.contact
   input[type=text],
   textarea
     height: 44px
+    line-height: 44px
     font-size: 16px
     width: 100%
 
   textarea
     height: 140px
+    line-height: 1.5em
 
   .captcha
     margin-bottom: 0
