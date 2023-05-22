@@ -48,29 +48,14 @@
             </div>
 
             <div class="cart_item_remove">
-              <button aria-label="Remove item" title="Remove item" class="remove-item-button" data-item-id="{{ item.id }}" type="button">
-
-                <svg class="cart-icon remove-icon" aria-hidden="true" height="16" viewBox="0 0 512 512" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M437.5 386.6L306.9 256l130.6-130.6c14.1-14.1 14.1-36.8 0-50.9-14.1-14.1-36.8-14.1-50.9 0L256 205.1 125.4 74.5c-14.1-14.1-36.8-14.1-50.9 0-14.1 14.1-14.1 36.8 0 50.9L205.1 256 74.5 386.6c-14.1 14.1-14.1 36.8 0 50.9 14.1 14.1 36.8 14.1 50.9 0L256 306.9l130.6 130.6c14.1 14.1 36.8 14.1 50.9 0 14-14.1 14-36.9 0-50.9z"/></svg>
-
-                <svg class="cart-icon loading-icon" aria-hidden="true" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 50 50" xml:space="preserve">
-                  <path d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
-                    <animateTransform attributeType="xml"
-                      attributeName="transform"
-                      type="rotate"
-                      from="0 25 25"
-                      to="360 25 25"
-                      dur="0.6s"
-                      repeatCount="indefinite"/>
-                  </path>
-                </svg>
-              </button>
+              <button aria-label="Remove item" title="Remove item" class="remove-item" data-item-id="{{ item.id }}" type="button">&times;</button>
             </div>
           </li>
         {% endfor %}
       </ul>
 
       <div class="cart_footer">
-        <div class="cart_subtotal" aria-live="polite" aria-atomic="true">
+        <div class="cart_subtotal">
           <span class="cart_subtotal_label">Subtotal:</span>
           <span class="cart_subtotal_amount">{{ cart.total | money: theme.money_format }}</span>
         </div>

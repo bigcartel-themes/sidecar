@@ -5,7 +5,7 @@ Store.cart = window.Store.cart = {
     this.timer = null;
     this.form.find('input, select').each(this.setDefaultVal);
     this.form.on('keydown change', '[name*="cart[update]"]', $.proxy(this.handleItemUpdate, this));
-    return this.form.on('click', '.remove-item-button', $.proxy(this.handleItemRemove, this));
+    return this.form.on('click', '.remove-item', $.proxy(this.handleItemRemove, this));
   },
   setDefaultVal: function() {
     var elm;
