@@ -65,23 +65,29 @@
               <input id="option" name="cart[add][id]" type="hidden" value="0">
               {% for option_group in product.option_groups %}
                 <div class="select">
-                  <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
-                    <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
-                    {% for value in option_group.values %}
-                      <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
-                    {% endfor %}
-                  </select>
+                  <div class="select-wrapper">
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
+                      <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                      {% for value in option_group.values %}
+                        <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                      {% endfor %}
+                    </select>
+                    <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="14"><path d="M14 1h-1c0-1 0-1 0 0L7 6 1 1c0-1 0-1 0 0H0v1l7 6 7-6V1Z"></path></svg>
+                  </div>
                 </div>
               {% endfor %}
             </div>
           {% else %}
             <div class="select">
-              <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select option">
-                <option value="0" disabled="disabled" selected>Select option</option>
-                {% for option in product.options %}
-                  <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
-                {% endfor %}
-              </select>
+              <div class="select-wrapper">
+                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant">
+                  <option value="0" disabled="disabled" selected>Select variant</option>
+                  {% for option in product.options %}
+                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                  {% endfor %}
+                </select>
+                <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="14"><path d="M14 1h-1c0-1 0-1 0 0L7 6 1 1c0-1 0-1 0 0H0v1l7 6 7-6V1Z"></path></svg>
+              </div>
             </div>
           {% endif %}
         {% endif %}
