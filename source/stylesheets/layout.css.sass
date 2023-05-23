@@ -42,7 +42,7 @@ body
       min-height: 100%
       position: fixed
       top: 0
-      width: 209px
+      width: 239px
       z-index: 1
 
       @media screen and (max-width: $break-small)
@@ -153,15 +153,19 @@ hr
   font-size: 16px
   font-weight: 700
   @include inline-block
-  padding: 14px 32px
+  padding: 0 32px
+  height: 50px
   text-align: center
 
   &.minimal-button
     background: none
+    border-radius: 0
     color: #{"{{ theme.link_color }}"} !important
     border: none
     font-size: 14px
     padding: 0
+    height: auto
+    outline-offset: 4px
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
       color: #{"{{ theme.link_color }}"}
@@ -176,28 +180,50 @@ hr
     background-color: #{"{{ theme.link_rollover }}"}
     color: #{"{{ theme.background_color }}"}
 
-select
-  font-size: 16px
-
 input[type=text],
 textarea
   appearance: none
   -webkit-appearance: none
-  background: #fff
-  border: 1px solid #bfbfbf
+  background: #{"{{ theme.background_color }}"}
+  border: 1px solid #{"{{ theme.border_color }}"}
   @include border-radius(3px)
   font-family: #{"{{ theme.font }}"}
   height: 32px
   padding: 6px 10px
-
-  &:focus
-    @include box-shadow(0 0 5px #{"{{ theme.header_color }}"} inset)
 
   @media screen and (max-width: $break-small)
     height: 40px
 
 textarea
   padding: 10px
+
+.select-wrapper
+  @include border-radius(3px)
+  border: 1px solid #{"{{ theme.border_color }}"}
+  position: relative
+  height: 48px
+
+  select
+    @include border-radius(3px)
+    appearance: none
+    -webkit-appearance: none
+    border: none
+    background: none
+    color: inherit
+    font-family: #{"{{ theme.font }}"}
+    font-size: 16px
+    width: 100%
+    padding: 0 32px 0 12px
+    height: 100%
+    text-overflow: ellipsis
+
+  svg
+    position: absolute
+    right: 12px
+    height: 8px
+    top: 50%
+    transform: translateY(-50%)
+    pointer-events: none
 
 /* @end */
 
@@ -262,7 +288,7 @@ textarea
   padding: 57px 30px 0
   position: #{"{% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}"}
   @include translateZ(0)
-  width: 239px
+  width: 240px
   z-index: 100
 
   @media screen and (max-width: $break-small)
@@ -305,7 +331,6 @@ textarea
   header
     margin-bottom: 35px
     overflow: hidden
-    width: 150px
 
     @media screen and (max-width: $break-small)
       margin: 14px 0
@@ -360,15 +385,12 @@ textarea
       font-family: #{"{{ theme.font | font_family_for_group }}"}
       font-size: 16px
       height: auto
-      outline: 0
       margin: 0
       padding: 0
       position: relative
       width: 100%
       z-index: 2
-
-      &:focus
-        @include box-shadow(none)
+      outline-offset: 4px
 
   nav
     font-size: 16px
@@ -432,8 +454,6 @@ textarea
       &.current
         color: #{"{{ theme.sidebar_link_rollover }}"}
 
-    li
-
     a
       display: block
       padding: 4px 0
@@ -443,16 +463,24 @@ textarea
     height: 94px
     padding: 40px 0 30px
 
-    .bigcartel-credit a
-      background: url(#{"{{ 'bc_badge.png' | theme_image_url }}"}) no-repeat
-      @include background-size(100% 100%)
-      display: block
-      float: left
-      text-indent: 100%
-      overflow: hidden
-      white-space: nowrap
-      width: 79px
-      height: 24px
+.bigcartel-credit
+  font-size: 14px
+  line-height: 1em
+  display: flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+
+  &__text
+    font-weight: bold
+    position: relative
+
+  &__lockup
+    display: block
+    fill: currentColor
+    padding-top: 1px
+    width: 80px
 
 /* @end */
 

@@ -16,7 +16,7 @@
           <header>
             <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
               {% if theme.logo %}
-                <img src="{{ theme.logo.url | constrain: 300 }}}}" alt="{{ store.name }} Home" {% if theme.logo.width > 150 %}width="150"{% endif %} />
+                <img src="{{ theme.logo.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo.width > 180 %}width="180"{% endif %} />
               {% else %}
                 {{ store.name | escape }}
               {% endif %}
@@ -121,7 +121,7 @@
         </div>
 
         <footer>
-          <div class="bigcartel-credit">{{ bigcartel_credit }}</div>
+          {{ powered_by_big_cartel }}
         </footer>
       </aside>
 
@@ -132,11 +132,10 @@
           <a href="/cart" class="cart" aria-label="View cart">{{ cart.item_count }}</a>
         </header>
         {% if page.category == 'custom' %}
-            <div class="page custom">
-              <h1>{{ page.name }}</h1>
-              {{ page_content | paragraphs }}
-            </div>
-          </section>
+          <div class="page custom">
+            <h1>{{ page.name }}</h1>
+            {{ page_content | paragraphs }}
+          </div>
         {% else %}
           {{ page_content }}
         {% endif %}

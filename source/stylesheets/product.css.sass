@@ -1,16 +1,16 @@
 .product_detail
   padding-top: 60px
 
-  select
-    margin-bottom: 18px
+  .select-wrapper
+    margin-bottom: 15px
 
   .add-to-cart-button
     display: block
-    max-width: 240px
+    max-width: 300px
     width: 100%
 
   .reset-selection-button-container
-    max-width: 240px
+    max-width: 300px
     text-align: center
     width: 100%
 
@@ -113,7 +113,7 @@
       i
         color: #{"{{ theme.highlight_color }}"}
         font-style: normal
-        font-size: 12px
+        font-size: 14px
 
     form
       border-top-color: #{"{{ theme.border_color }}"}
@@ -123,9 +123,9 @@
       padding-top: 15px
 
       p,
-      select
+      .select-wrapper
         min-width: 140px
-        max-width: 240px
+        max-width: 300px
         width: 100%
 
         @media screen and (max-width: $break-small)
@@ -192,7 +192,7 @@
   #instant-checkout-button
     margin-top: 10px
     width: 100%
-    max-width: 240px
+    max-width: 300px
 
     @media screen and (max-width: $break-small)
       max-width: 100%
