@@ -1,43 +1,55 @@
 <div class="page product_detail">
-  <div class="gallery desktop-gallery" style="max-width: {% if product.image.width > 500 %}{{ product.image.width }}{% else %}500{% endif %}px ">
-    <a href="{{ product.image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
-      <img src="{{ product.image | product_image_url | constrain: 1500  }}" alt="{{ product.name | escape }}">
-    </a>
-    <ul>
-      {% for image in product.images offset: 1 %}
-        <li{% if forloop.first %} active{% endif %}>
-          <a href="{{ image | product_image_url | constrain: 2000 }}" class="fancybox" rel="group">
-            <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="gallery mobile_only">
-    <img src="{{ product.image | product_image_url | constrain: 1500 }}" alt="{{ product.name | escape }}" class="mobile_gallery_viewer">
-    <ul class="mobile_gallery">
-      {% for image in product.images %}
-        {% if forloop.length > 1 %}
-          <li class="{% if forloop.first %}active{% endif %}">
-            <a href="{{ image | product_image_url | constrain: 1500 }}">
-              <img src="{{ image | product_image_url | constrain: 300 }}" alt="{{ product.name | escape }}">
-            </a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+  <div class="gallery">
+    {% if product.images.size > 1 %}
+      <div class="f-carousel" id="myCarousel">
+        {% for image in product.images %}
+          <div
+            class="f-carousel__slide"
+            data-thumb-src="{{ image | product_image_url | constrain: 200 }}"
+            data-fancybox="gallery"
+            data-src="{{ image | product_image_url | constrain: 2000 }}"
+          >
+            <img
+              class="product-image"
+              data-lazy-src="{{ image | product_image_url | constrain: 1500 }}"
+            >
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="single-image">
+        <a href="{{ product.image | product_image_url | constrain: 2000 }}" data-fancybox="gallery">
+          <img
+            alt="{{ product.name | escape }}"
+            class="product-image lazyload"
+            src="{{ product.image | product_image_url | constrain: 100 }}"
+            width="800"
+            data-srcset="
+              {{ product.image | product_image_url | constrain: 400 }} 400w,
+              {{ product.image | product_image_url | constrain: 550 }} 550w,
+              {{ product.image | product_image_url | constrain: 800 }} 800w,
+              {{ product.image | product_image_url | constrain: 1050 }} 1050w,
+              {{ product.image | product_image_url | constrain: 1300 }} 1300w,
+              {{ product.image | product_image_url | constrain: 1700 }} 1700w,
+              {{ product.image | product_image_url | constrain: 1900 }} 1900w,
+            "
+            data-sizes="auto"
+          >
+        </a>
+      </div>
+    {% endif %}
   </div>
   <div class="detail">
     <h1>{{ product.name }}</h1>
     {% for artist in product.artists %}
-      {% if forloop.first %}<p class="artists"> by {% endif %}
+      {% if forloop.first %}<div class="artists"> by {% endif %}
       {% if forloop.last and forloop.length > 1 %} and {% endif %}
       {{ artist.name }}
       {% if forloop.length > 2 %}, {% endif %}
-      {% if forloop.last %}</p>{% endif %}
+      {% if forloop.last %}</div>{% endif %}
     {% endfor %}
 
-    <p class="price">
+    <div class="price">
       {% if product.variable_pricing %}
         {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
       {% else %}
@@ -52,11 +64,12 @@
       {% if product.on_sale %}
         <i>/ On Sale</i>
       {% endif %}
-    </p>
+    </div>
 
     {% if product.status == 'active' %}
       <form method="post" class="add product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
+        {{ product | product_quantity_input, 1, 'product-quantity' }}
         {% if product.has_default_option %}
           {{ product.option | hidden_option_input }}
         {% else %}
@@ -66,8 +79,8 @@
               {% for option_group in product.option_groups %}
                 <div class="select">
                   <div class="select-wrapper">
-                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}">
-                      <option value="0" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                      <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
                       {% for value in option_group.values %}
                         <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
                       {% endfor %}
@@ -80,8 +93,8 @@
           {% else %}
             <div class="select">
               <div class="select-wrapper">
-                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant">
-                  <option value="0" disabled="disabled" selected>Select variant</option>
+                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
+                  <option value="" disabled="disabled" selected>Select variant</option>
                   {% for option in product.options %}
                     <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
                   {% endfor %}
@@ -91,7 +104,21 @@
             </div>
           {% endif %}
         {% endif %}
-        <button class="button add add-to-cart-button" name="submit" type="submit" data-add-title="Add to Cart" data-sold-title="Sold out"{% if product.has_default_option %}{% else %}disabled="disabled"{% endif %}>Add to Cart</button>
+
+        <button class="button add-to-cart-button" name="submit" type="submit" data-adding-text="Adding..." data-added-text="Added!" data-add-title="Add to Cart" data-sold-title="Sold out">
+          <svg class="loader" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+          <span class="button-text">Add to Cart</span>
+        </button>
+        <div class="product-form-cart-linker">
+          <div class="product-form-cart-linker-slider">
+            <a class="product-form-cart-linker-link" href="/cart">
+              <span class="product-form-cart-link-text">Go to Cart</span>
+              <svg aria-hidden="true" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+            </a>
+          </div>
+        </div>
+
+
         {{ store | instant_checkout_button: 'light', '36px' }}
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
@@ -102,7 +129,7 @@
     {% endif %}
 
     {% if product.description != blank %}
-      <div class="description">
+      <div class="product-description body-text">
         {{ product.description | paragraphs }}
       </div>
     {% endif %}

@@ -1,56 +1,103 @@
 /* @group base */
 
 *
-  @include box-sizing(border-box)
+  box-sizing: border-box
   -webkit-font-smoothing: antialiased
 
 body,
 html
   height: 100%
   min-height: 100%
-  min-width: 200px
 
 body
-  background-color: #{"{{ theme.background_color }}"}
+  background-color: $background-color
   background-image: #{"{% if theme.background_image != blank %} url(\"{{ theme.background_image.url }}\") {% else %} none {% endif %}"}
   background-repeat: repeat
-  color: #{"{{ theme.font_color }}"}
-  font-family: #{"{{ theme.font | font_family_for_group }}"}
+  color: $body-text-color
+  font-family: $body-font
   font-size: 16px
+  line-height: 1.2em
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
   @media screen and (max-width: $break-small)
-    background-color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-    overflow-x: hidden
+    &.show_menu
+      overflow: hidden
+
+      &:after
+        content: ""
+        position: fixed
+        height: 100vh
+        width: 100vw
+        background: $background-color
+        display: block
+        opacity: .5
+        z-index: 1
+        left: 0
+        top: 0
 
   &.working
     cursor: progress !important
 
 .wrapper
+  display: grid
+  grid-template-columns: 244px 1fr
   height: 100%
   min-height: 100%
   position: relative
 
-  @media screen and (min-width: $break-small)
-    &:after
-      background: #{"{{ theme.sidebar_color }}"}
-      content: ""
-      display: #{"{% if theme.fixed_sidebar %} none {% else %} block {% endif %}"}
-      height: 100%
-      left: 0
-      min-height: 100%
-      position: fixed
-      top: 0
-      width: 239px
-      z-index: 1
+  @media screen and (max-width: $break-small)
+    grid-template-columns: 1fr
 
-      @media screen and (max-width: $break-small)
-        display: none
+.announcement-message
+  background-color: $announcement-background-color
+  color: $announcement-text-color
+  display: none
+  line-height: 1.2em
+  padding: 16px 144px
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+  @media screen and (max-width: $break-medium)
+    padding: 16px 64px
+
+  &.visible
+    display: block
+
+.button.announcement-message-close
+  transform: translateY(-50%)
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  background: none
+  height: 32px
+  padding: 0
+  position: absolute
+  right: 16px
+  top: 50%
+  width: 32px
+
+  @media screen and (max-width: $break-small)
+    right: 8px
+
+  &:hover, &:focus
+    background: none !important
+    opacity: .7
+
+    svg
+      fill: $announcement-text-color
+
+  svg
+    display: block
+    fill: $announcement-text-color
+    height: 14px
+    width: 14px
 
 a
-  @extend %transition
   text-decoration: none
+  text-underline-offset: 2px
 
 h1,
 h2,
@@ -58,10 +105,10 @@ h3,
 h4,
 h5,
 h6
-  color: #{"{{ theme.header_color }}"}
-  font-family: #{"{{ theme.header_font | font_family_for_group }}"}
+  color: $header-text-color
+  font-family: $header-font
   font-weight: 400
-  margin-bottom: 30px
+  margin-bottom: 32px
 
 h1
   font-size: 26px
@@ -83,7 +130,7 @@ h6
   font-size: 11px
 
 p
-  margin-bottom: 15px
+  margin-bottom: 16px
 
 sup,
 sub
@@ -101,7 +148,7 @@ code
 blockquote
   width: auto
   font-style: italic
-  margin: 15px
+  margin: 16px
   padding: 10px
 
   &:before,
@@ -117,7 +164,7 @@ small
   display: block
   font-size: 13px
   font-weight: 400
-  margin-bottom: 15px
+  margin-bottom: 16px
 
 i,
 em
@@ -131,63 +178,97 @@ strong
   font-weight: 700
 
 hr
-  border-bottom-color: #{"{{ theme.border_color }}"}
+  border-bottom-color: $border-color
   border-bottom-style: solid
   border-bottom-width: 1px
   height: 1px
-  margin: 15px 0
+  margin: 16px 0
   width: 100%
 
 /* @end */
 
 /* @group forms */
 
-.main .button
-  @extend %transition
-  background-color: #{"{{ theme.link_color }}"}
-  @include border-radius(3px)
+.button, select, input, textarea
+  +appearance(none)
+  font-size: 1em
+  background: none
   border: none
-  color: #{"{{ theme.background_color }}"} !important
+  font-family: $body-font
+  font-size: 1em
+
+.button
+  transition: background-color .2s linear
+  background-color: $button-background-color
+  border-radius: $border-radius
+  color: $button-text-color
   cursor: pointer
-  font-family: #{"{{ theme.font }}"}
   font-size: 16px
   font-weight: 700
-  @include inline-block
   padding: 0 32px
   height: 50px
   text-align: center
+  display: grid
+  grid-template-rows: 1fr
+  align-items: center
+  justify-content: center
+
+  &.adding
+    .button-text
+      opacity: 0
+      visibility: hidden
+
+    .loader
+      opacity: 1
+      visibility: visible
+
+  .button-text
+    grid-area: 1 / 1
+    place-self: center
+    opacity: 1
+    visibility: visible
+    transition: opacity .2s linear, visibility .2s linear
+
+  .loader
+    grid-area: 1 / 1
+    place-self: center
+    opacity: 0
+    visibility: hidden
+    animation: spin .7s linear infinite
+    transition: opacity .2s linear, visibility .2s linear
+    -webkit-transform: translate(0px,0px)
 
   &.minimal-button
     background: none
     border-radius: 0
-    color: #{"{{ theme.link_color }}"} !important
+    color: $link-color
     border: none
-    font-size: 14px
+    font-size: .925em
     padding: 0
     height: auto
     outline-offset: 4px
+    text-align: center
+    text-decoration: underline
+    transition: color .2s ease
+    width: 100%
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-      color: #{"{{ theme.link_color }}"}
+      color: $link-hover-color
       background: none
-      text-decoration: underline
 
   &:disabled, &.disabled
     cursor: not-allowed
     opacity: .3
 
   &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-    background-color: #{"{{ theme.link_rollover }}"}
-    color: #{"{{ theme.background_color }}"}
+    background-color: $button-background-hover-color
+    color: $button-text-color
 
 input[type=text],
 textarea
-  appearance: none
-  -webkit-appearance: none
-  background: #{"{{ theme.background_color }}"}
-  border: 1px solid #{"{{ theme.border_color }}"}
-  @include border-radius(3px)
-  font-family: #{"{{ theme.font }}"}
+  background: $background-color
+  border: 1px solid $border-color
+  border-radius: $border-radius
   height: 32px
   padding: 6px 10px
 
@@ -198,19 +279,13 @@ textarea
   padding: 10px
 
 .select-wrapper
-  @include border-radius(3px)
-  border: 1px solid #{"{{ theme.border_color }}"}
+  border-radius: $border-radius
+  border: 1px solid $border-color
   position: relative
   height: 48px
 
   select
-    @include border-radius(3px)
-    appearance: none
-    -webkit-appearance: none
-    border: none
-    background: none
     color: inherit
-    font-family: #{"{{ theme.font }}"}
     font-size: 16px
     width: 100%
     padding: 0 32px 0 12px
@@ -231,35 +306,17 @@ textarea
 
 .errors
   background-color: #950f1e
-  @include border-radius(3px)
+  border-radius: $border-radius
   color: #ffffff
-  margin-bottom: 30px
+  margin-bottom: 32px
 
   @media screen and (max-width: $break-small)
     margin: 16px 0
 
   li
-    font-size: 16px
     font-weight: 700
-    height: auto !important
     line-height: 1.5em
-    padding: 15px !important
-
-
-/* @end */
-
-
-/* @group standalone pages (maintenance, checkout, etc) */
-
-.standalone
-  height: auto
-  margin: 0 auto
-  max-width: 360px
-  padding-top: 120px
-  text-align: center
-
-  h2
-    margin-bottom: 10px
+    padding: 16px
 
 /* @end */
 
@@ -282,59 +339,65 @@ textarea
 /* @group sidebar */
 
 .sidebar
-  background-color: #{"{{ theme.sidebar_color }}"}
-  float: left
+  background-color: $sidebar-background-color
   height: 100%
-  padding: 57px 30px 0
-  position: #{"{% if theme.fixed_sidebar %} fixed {% else %} absolute {% endif %}"}
-  @include translateZ(0)
-  width: 240px
-  z-index: 100
+  padding: 60px 32px
+  transform: translateZ(0)
+  width: 244px
+
+  .sidebar-close
+    display: none
+
+    @media screen and (max-width: $break-small)
+      background-color: #{"{% if theme.sidebar_background_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_background_color }}{% endif %}"}
+      color: $sidebar-link-color
+      display: flex
+      height: 32px
+      padding: 0
+      position: absolute
+      right: 16px
+      top: 16px
+      width: 32px
+
+      svg
+        fill: currentColor
+        display: block
+        width: 16px
+        height: 16px
 
   @media screen and (max-width: $break-small)
-    border-right-color: #{"{{ theme.sidebar_border_color }}"}
+    border-right-color: $sidebar-border-color
     border-right-style: solid
     border-right-width: 1px
-    display: none
+    left: 0
     min-height: 100%
-    padding: 0 24px
-    position: absolute
-    width: 272px
-    z-index: 1
+    padding: 72px 32px 32px 32px
+    position: fixed
+    top: 0
+    width: 360px
+    z-index: 100
+    transform: translateX(-100%)
+    overflow-y: scroll
 
     .show_menu &
-      display: block
+      transition: transform .2s ease
+      transform: translateX(0)
 
-  > div
-    min-height: #{"{% if theme.fixed_sidebar %} 100% {% else %} 0 {% endif %}"}
-    margin-bottom: -94px
+      header, nav, footer
+        max-width: 244px
 
-    @media screen and (max-width: $break-small)
-      margin-bottom: 0
-      min-height: 0
+  a, .link
+    color: $sidebar-link-color
 
-    &:after
-      content: ""
-      display: block
-      height: 94px
-
-      @media screen and (max-width: $break-small)
-        display: none
-
-  a
-    color: #{"{{ theme.sidebar_link_color }}"}
-
-    &:hover,
-    &.current
-      color: #{"{{ theme.sidebar_link_rollover }}"}
+    &:hover
+      color: $sidebar-link-hover-color
+      text-decoration: underline
 
   header
-    margin-bottom: 35px
-    overflow: hidden
+    margin-bottom: 32px
 
     @media screen and (max-width: $break-small)
-      margin: 14px 0
-      width: 100%
+      display: none
 
     .logo
       display: block
@@ -347,121 +410,67 @@ textarea
         display: block
         width: 100%
 
-  form.search
-    color: #{"{{ theme.sidebar_link_color }}"}
+  .button--open-search
+    +appearance(none)
+    border: none
+    background: none
+    font-size: inherit
     cursor: pointer
-    height: 24px
-    padding: 3px 0 5px
-    position: relative
-
-    @media screen and (max-width: $break-small)
-      height: 28px
-      padding-top: 5px
-
-    &:hover label
-      color: #{"{{ theme.sidebar_link_rollover }}"}
-
-    &.focus label
-      @include opacity(0)
-
-    label
-      @extend %transition
-      cursor: pointer
-      display: block
-      font-size: 16px
-      @include opacity(1)
-      position: absolute
-      top: 2px
-      z-index: 1
-
-      @media screen and (max-width: $break-small)
-        top: 6px
-
-    input[type=text]
-      border: none
-      background: transparent
-      color: #{"{{ theme.link_color }}"}
-      cursor: pointer
-      font-family: #{"{{ theme.font | font_family_for_group }}"}
-      font-size: 16px
-      height: auto
-      margin: 0
-      padding: 0
-      position: relative
-      width: 100%
-      z-index: 2
-      outline-offset: 4px
+    line-height: inherit
+    text-align: left
+    width: 100%
 
   nav
-    font-size: 16px
-    line-height: 1.25em
+    font-size: 1em
+    line-height: 1.4em
+
+    @media screen and (max-width: $break-small)
+      font-size: 1.1em
 
     section
-      border-top-color: #{"{{ theme.sidebar_border_color }}"}
+      border-top-color: $sidebar-border-color
       border-top-style: solid
       border-top-width: 1px
-      padding: 10px 0
-
-      @media screen and (max-width: $break-small)
-        padding: 11px 0 6px
+      padding: 12px 0
 
     .cart
       +flexbox
+      gap: 8px
 
-      @media screen and (max-width: $break-small)
-        height: 30px
-
-      b
-        order: 1
-
-      .total
-        margin-left: 8px
-        order: 3
-
-      .count
-        margin-left: auto
-        order: 2
-
-      .total, .count
-        border-left-color: #{"{{ theme.sidebar_border_color }}"}
-        border-left-style: solid
-        border-left-width: 1px
+      .cart-total
+        border-left: 1px solid $sidebar-border-color
         font-weight: normal
-        @include inline-block
         padding-left: 8px
 
-        .currency_sign
-          border: none
-          display: inline
-          margin: 0
-          padding: 0
-
-        &:last-child
-          border-left: none
+      .cart-count
+        font-weight: normal
+        margin-left: auto
 
     .title,
     .title a
-      color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 16px
+      color: $sidebar-link-color
       font-weight: bold
-      padding: 3px 0
+      padding: 2px 0
 
     .title:not(:last-child)
       margin-bottom: 2px
 
     .title a
       &:hover,
-      &.current
-        color: #{"{{ theme.sidebar_link_rollover }}"}
+        color: $sidebar-link-hover-color
 
-    a
+    a, .link
       display: block
-      padding: 4px 0
+      padding: 2px 0
+      outline-offset: 4px
+      margin: 2px 0
 
+      @media screen and (max-width: $break-small)
+        padding: 4px 0
 
   footer
     height: 94px
-    padding: 40px 0 30px
+    padding: 40px 0 32px
 
 .bigcartel-credit
   font-size: 14px
@@ -487,136 +496,98 @@ textarea
 /* @group main */
 
 .main
-  @extend %clearfix
-  padding: 60px 0 0 0
+  padding: 60px 32px
   width: 100%
 
   @media screen and (max-width: $break-small)
-    background-color: #{"{{ theme.background_color }}"}
-    background-image: #{"{% if theme.background_image != blank %} url({{ theme.background_image.url }}) {% else %} none {% endif %}"}
-    background-repeat: repeat
-    border-left-color: #{"{{ theme.sidebar_border_color }}"}
-    border-left-style: solid
-    border-left-width: 1px
-    @include box-sizing(content-box)
-    left: 0
-    min-height: 100%
-    padding: 0
-    position: relative
-    @include transition(all .25s ease-out)
-    @include translateX(-1px)
-    width: 100%
-    z-index: 2
-
-    .show_menu &
-      @include translateX(271px)
+    padding: 24px 16px
 
   a,
   a:visited
-    color: #{"{{ theme.link_color }}"}
+    color: $link-color
 
     &:hover
-      color: #{"{{ theme.link_rollover }}"}
+      color: $link-hover-color
 
-  header
-    background-color: #{"{{ theme.sidebar_color }}"}
-    border-bottom-color: #{"{{ theme.sidebar_border_color }}"}
-    border-bottom-style: solid
-    border-bottom-width: 1px
-    display: none
-    height: 55px
-    position: relative
+.mobile-header
+  +align-items(center)
+  +justify-content(space-between)
+  background-color: $sidebar-background-color
+  border-bottom-color: $sidebar-border-color
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  display: none
+  gap: 16px
+  height: 72px
+  padding: 8px 16px
+  position: relative
+  text-align: center
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    +flexbox
+
+  .logo
+    color: $sidebar-link-color
+    font-size: 20px
+    font-weight: 700
+    display: flex
+    padding: 0
     text-align: center
-    width: 100%
+    width: 70%
+    justify-content: center
 
-    @media screen and (max-width: $break-small)
-      +flexbox
-      +align-items(center)
-      +justify-content(space-between)
-      padding: 0 16px
+    &.image
+      height: 100%
 
-    .logo
-      +transform(translateX(-50%))
-      color: #{"{{ theme.sidebar_link_color }}"}
-      font-size: 18px
-      font-weight: 700
-      left: 50%
-      line-height: 55px
-      overflow: hidden
-      padding: 0
-      position: absolute
-      text-align: center
-      text-overflow: ellipsis
-      white-space: nowrap
-      width: 70%
-
-    .cart
-      background: #{"{{ theme.sidebar_link_color }}"}
-      @include border-radius(50%)
-      color: #{"{% if theme.sidebar_color == 'transparent' %}{{theme.background_color }}{% else %}{{ theme.sidebar_color }}{% endif %}"}
-      font-size: 15px
-      font-weight: bold
-      height: 34px
-      line-height: 34px
-      padding: 0
-      text-align: center
-      width: 34px
-
-    .menu
-      background: none
-      border: none
-      display: block
-      height: 55px
-      left: -10px
-      padding: 10px
-      position: relative
-      width: 55px
-
-      b,
-      b:before,
-      b:after
-        background: #{"{{ theme.sidebar_link_color }}"}
+      img
         display: block
-        height: 2px
-        margin: 0
-        position: absolute
-        top: 50%
-        width: 27px
+        height: 100%
 
-      b:before,
-      b:after
-        content: ""
+  .cart
+    +flexbox
+    color: $sidebar-link-color
+    font-weight: bold
+    align-items: center
+    gap: 12px
+    font-size: 16px
 
-      b:before
-        top: -8px
+    svg
+      display: block
+      fill: currentColor
+      height: 20px
+      width: 20px
 
-      b:after
-        top: 8px
+  .menu
+    background: none
+    border: none
+    display: block
+    height: 42px
+    left: -8px
+    padding: 8px
+    position: relative
+    width: 42px
 
-  .page
-    margin: 0 60px 0 260px
-    min-width: 500px
-    padding-bottom: 60px
-    width: auto
-
-    @media screen and (max-width: $break-medium)
-      min-width: 0
-
-    @media screen and (max-width: $break-small)
+    b,
+    b:before,
+    b:after
+      background: $sidebar-link-color
+      display: block
+      height: 2px
       margin: 0
+      position: absolute
+      top: 50%
+      width: 27px
 
-  h1
-    height: 60px
-    margin: 0
+    b:before,
+    b:after
+      content: ""
 
-    @media screen and (max-width: $break-small)
-      height: auto
-      margin-bottom: 0
-      padding: 13px 16px 0
+    b:before
+      top: -8px
 
-    &.noproducts
-      @media screen and (max-width: $break-small)
-        padding: 20px 16px
+    b:after
+      top: 8px
 
 .visuallyhidden
   border: 0
@@ -629,3 +600,151 @@ textarea
   width: 1px
 
 /* @end */
+
+.alert-message
+  font-size: 16px
+  font-weight: normal
+
+  a
+    text-decoration: underline
+
+.body-text
+  line-height: 1.5em
+
+  a
+    text-decoration: underline
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    margin-bottom: 16px
+
+  ol,
+  ul
+    padding-left: 2.5em
+    width: auto
+
+  ol
+    list-style: decimal
+
+  ul
+    list-style: disc
+
+  img,
+  object,
+  video,
+  audio,
+  iframe,
+  embed
+    display: block
+    max-width: 100%
+
+#search-modal
+  opacity: 0
+  visibility: hidden
+  position: fixed
+  z-index: 999
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  background-color: rgba(0,0,0,.2)
+  transition: opacity 0.2s ease, visibility 0.2s ease
+
+#search-modal[aria-hidden="false"]
+  opacity: 1
+  visibility: visible
+
+.modal-content
+  position: absolute
+  top: 0
+  left: 50%
+  height: 250px
+  transform: translate(-50%, -100%)
+  background-color: $background-color
+  color: $body-text-color
+  text-align: center
+  transition: transform .2s ease, height .2s ease
+  width: 100%
+
+  .wrapper
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    height: 100%
+    padding: 32px
+    max-width: 800px
+    position: relative
+    margin: 0 auto
+
+  .search-form
+    display: grid
+    font-weight: bold
+    grid-template-rows: repeat(2, auto)
+    grid-template-columns: 1fr auto
+    column-gap: 16px
+    row-gap: 8px
+    width: 100%
+
+  .search-input
+    grid-row: 2/2
+    grid-column: 1/1
+    border-radius: $border-radius
+    background: $background-color
+    border: 2px solid $body-text-color
+    width: 100%
+    font-size: 1em
+    height: 44px
+    padding: 8px
+
+  .search-button
+    color: $button-text-color
+    background: $button-background-color
+    grid-row: 2/2
+    grid-column: 2/2
+    padding: 0 24px
+    height: 100%
+
+    svg
+      fill: currentColor
+      display: block
+
+  /* Style for the close button */
+  .close-modal
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0
+    font-size: 4em
+    cursor: pointer
+    width: 44px
+    height: 44px
+    background: none
+    border: none
+    appearance: none
+    margin-left: auto
+    color: $body-text-color
+    transition: color .2s ease
+
+    svg
+      display: block
+      fill: currentColor
+      height: 20px
+      width: 20px
+
+    &:hover, &:focus
+      color: $link-hover-color
+
+  label
+    text-align: left
+
+/* Styles for the modal animation */
+#search-modal[aria-hidden="false"] .modal-content
+  transform: translate(-50%, 0%)
+
+.preload *
+  transition: none !important
+  animation-duration: 0.001s

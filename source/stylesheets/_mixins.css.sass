@@ -1,45 +1,36 @@
-%transition
-  .loaded &
-    @include transition(opacity .2s ease, color .2s ease, background-color .2s ease)
-
-%clearfix
-  zoom: 1
-
-  &:after
-    display: block
-    visibility: hidden
-    height: 0
-    clear: both
-    content: "."
-
-
 @mixin animation($animation)
   -webkit-animation: $animation
-  -moz-animation: $animation
-  -o-animation: $animation
   animation: $animation
+
+@mixin appearance($appearance)
+  -webkit-appearance: $appearance
+  appearance: $appearance
+
+@mixin transform($transform...)
+  -webkit-transform: #{$transform}
+  -transform: #{$transform}
 
 @-webkit-keyframes spin
   0%
-    @include rotate(0deg)
+    transform: rotate(0deg)
   100%
-    @include rotate(360deg)
+    transform: rotate(360deg)
 
 @-moz-keyframes spin
   0%
-    @include rotate(0deg)
+    transform: rotate(0deg)
   100%
-    @include rotate(360deg)
+    transform: rotate(360deg)
 
 @-o-keyframes spin
   0%
-    @include rotate(0deg)
+    transform: rotate(0deg)
   100%
-    @include rotate(360deg)
+    transform: rotate(360deg)
 
 @keyframes spin
   0%
-    @include rotate(0deg)
+    transform: rotate(0deg)
   100%
-    @include rotate(360deg)
+    transform: rotate(360deg)
 

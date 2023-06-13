@@ -1,71 +1,41 @@
 .product_detail
-  padding-top: 60px
+  display: flex
+  flex-wrap: wrap
 
-  .select-wrapper
-    margin-bottom: 15px
+  @media screen and (max-width: $break-medium)
+    display: grid
 
-  .add-to-cart-button
-    display: block
-    max-width: 300px
+  .gallery
+    max-width: 55%
+    position: relative
     width: 100%
 
-  .reset-selection-button-container
-    max-width: 300px
-    text-align: center
-    width: 100%
-
-    @media screen and (max-width: $break-small)
+    @media screen and (max-width: $break-medium)
       max-width: 100%
 
-  button.reset-selection-button
-    display: none
-    height: auto
-    max-width: 100%
-    line-height: normal
-    margin: 20px auto 0
-    padding: 4px
-    width: auto
+.product_detail
 
-  @media screen and (max-width: $break-small)
-    padding: 24px 16px
+  h1
+    margin-bottom: 0
+    word-break: break-word
+
+  .reset-selection-button-container
+    display: none
 
   .gallery
     float: left
-    max-width: 500px
+    max-width: 800px
     position: relative
     width: 65%
 
-    @media screen and (max-width: $break-small)
-      &.desktop-gallery
-        display: none
-
-    img
-      display: block
-      max-width: 100%
-      width: 100%
-
     @media screen and (max-width: $break-medium)
       float: none
-      margin-bottom: 25px
-      max-width: none
+      margin-bottom: 24px
       width: 100%
 
-    ul
-      +flexbox
-      +justify-content(center)
-      margin: 10px -5px
-      text-align: center
-
-      li
-        @include transition(all .15s linear)
-        padding: 0 5px
-        max-width: 20%
-
-        @media screen and (max-width: $break-small)
-          max-width: 25%
-
-        &.active
-          @include opacity(0.25)
+    .single-image img
+      display: block
+      width: 100%
 
   .detail
     float: left
@@ -80,91 +50,71 @@
       max-width: none
       width: 100%
 
-    h1
-      height: auto
-      margin-bottom: 10px
-
-      @media screen and (max-width: $break-small)
-        padding: 0
-
     .artists
-      color: #{"{{ theme.header_color }}"}
+      color: $header-text-color
       font-size: 14px
       line-height: 1.5
       margin-bottom: 0
 
-      @media screen and (max-width: $break-small)
-        display: inline
-
-        &:after
-          content: "/ "
-
     .price
-      color: #{"{{ theme.header_color }}"}
+      color: $header-text-color
       font-size: 19px
       font-weight: 700
       margin: 10px 0
 
-      @media screen and (max-width: $break-small)
-        display: inline
-        font-weight: normal
-        margin: 0
-
       i
-        color: #{"{{ theme.highlight_color }}"}
+        color: $highlight-color
         font-style: normal
         font-size: 14px
 
-    form
-      border-top-color: #{"{{ theme.border_color }}"}
-      border-top-style: solid
-      border-top-width: 1px
-      margin-top: 15px
-      padding-top: 15px
+  #product-quantity
+    display: none
 
-      p,
-      .select-wrapper
-        min-width: 140px
-        max-width: 300px
-        width: 100%
-
-        @media screen and (max-width: $break-small)
-          max-width: none
-          min-width: none
-
-      .button
-        @media screen and (max-width: $break-small)
-          max-width: 100%
-          width: 100%
-
-  .description
-    border-top-color: #{"{{ theme.border_color }}"}
+  .product-form
+    border-top-color: $border-color
     border-top-style: solid
     border-top-width: 1px
-    margin-top: 15px
-    padding-bottom: 15px
-    padding-top: 15px
+    padding-top: 16px
+    display: grid
+    gap: 12px
+    padding-bottom: 4px
 
-    img
-      margin-bottom: 20px
+  .product_option_groups
+    display: grid
+    gap: 8px
+
+  .product-description
+    border-top-color: $border-color
+    border-top-style: solid
+    border-top-width: 1px
+    padding-bottom: 16px
+    padding-top: 16px
+
+    a
+      text-decoration: underline
+
+    img,
+    object,
+    video,
+    audio,
+    iframe,
+    embed
+      display: block
       max-width: 100%
 
-    *:last-child
-      margin-bottom: 0
-
   .availability
-    border-top-color: #{"{{ theme.border_color }}"}
+    border-top-color: $border-color
     border-top-style: solid
     border-top-width: 1px
-    margin-top: 15px
-    padding-top: 15px
+    margin-top: 16px
+    padding-top: 16px
 
     .availability-header
       font-size: 15px
       margin-bottom: 0
 
     ul
-      margin-top: 15px
+      margin-top: 16px
 
     li
       +flexbox
@@ -176,12 +126,12 @@
       position: relative
 
     .inventory-level-background
-      background-color: #{"{{ theme.link_color }}"}
-      @include border-radius(3px)
-      color: #{"{{ theme.font_color }}"}
+      background-color: $link-color
+      border-radius: $border-radius
+      color: $body-text-color
       height: 100%
       left: 0
-      @include opacity(0.1)
+      opacity: .1
       position: absolute
       top: 0
 
@@ -189,11 +139,52 @@
       font-style: normal
       margin-left: auto
 
-  #instant-checkout-button
-    margin-top: 10px
+.product-form-cart-linker
+  display: grid
+  grid-template-rows: 0fr
+  transition: grid-template-rows .2s ease
+
+  &.added
+    grid-template-rows: 1fr
+
+.product-form-cart-linker-slider
+  overflow: hidden
+
+a.product-form-cart-linker-link
+  border: 2px solid $link-color
+  border-radius: $border-radius
+  color: $link-color
+  font-family: $body-font
+  font-weight: 700
+  height: 50px
+  padding: 0 16px
+  display: flex
+  gap: 6px
+  justify-content: center
+  align-items: center
+  transition: border-color .2s ease, color .2s ease
+  margin-bottom: 12px
+
+  &:hover, &:focus
+    border: 2px solid $link-hover-color
+    color: $link-hover-color
+
+  .arrow
+    fill: currentColor
+    width: 12px
+    transform: rotate(-90deg)
+
+.f-carousel
+  display: block
+  margin: 0 auto
+  width: 100%
+
+.f-carousel__slide
+  display: flex
+  justify-content: center
+  align-items: center
+
+  img
+    display: block
+    height: auto
     width: 100%
-    max-width: 300px
-
-    @media screen and (max-width: $break-small)
-      max-width: 100%
-

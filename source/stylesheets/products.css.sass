@@ -1,134 +1,220 @@
-.page.products
-  margin: 0 30px 0 260px
+.product-list-container
+  position: relative
+
+.product-list
+  +align-items(flex-start)
+  display: grid
+  gap: 32px
+  margin: 0
+  width: 100%
+  grid-template-columns: repeat(auto-fill, minmax(250px,1fr ))
+
+  &.product-image-small
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr ))
+  &.product-image-medium
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr ))
+  &.product-image-large
+    grid-template-columns: repeat(auto-fill, minmax(350px,1fr ))
 
   @media screen and (max-width: $break-small)
-    margin: 0
+    grid-template-columns: repeat(2, 1fr) !important
+    column-gap: 16px
+    row-gap: 24px
 
-    h1
-      padding-top: 23px
+.prod-thumb
+  color: $body-text-color
+  display: block
+  font-size: 0
+  padding: 0
+  position: relative
+  text-decoration: none
+  vertical-align: middle
 
-.products_list
-  @include flexbox
-  @include flex-wrap(wrap)
-  margin: 0 -15px
+  &.under_image
+    &:hover
+      .prod-thumb-name
+        text-decoration: underline
 
-  &.grid
-    @include flexbox
-    @include flex-wrap(wrap)
+  &.rollover
+    margin-bottom: 0px
 
-  @media screen and (max-width: $break-small)
-    margin: 32px 16px
-
-  @media screen and (max-width: $break-extra-small)
-    margin: 32px 0 0
-
-  .product
-
-    img
-      display: block
-      max-width: 100%
-      width: 100%
-
-  .product
-    max-width: #{"{% if theme.product_list_size == 'small' %} 170px {% elsif theme.product_list_size == 'medium' %} 300px {% else %} 420px {% endif %}"}
-    width: 100%
-    padding: 0 15px 30px
-    overflow: hidden
-    position: relative
-    @include translateZ(0)
-
-    @media screen and (max-width: $break-medium)
-      max-width: #{"{% if theme.product_list_size == 'small' %} 33.333333% {% elsif theme.product_list_size == 'medium' %} 50% {% else %} 100% {% endif %}"}
-
-    @media screen and (max-width: $break-small)
-      max-width: #{"{% if theme.product_list_size == 'large' %} 100% {% else %} 50% {% endif %}"}
-
-    a
-      display: block
-      position: relative
-      -webkit-font-smoothing: antialiased
-
-      .overlay &:hover .product_info, .overlay &:focus .product_info
-        @include opacity(1)
-
-    .product_info
-      font-size: 14px
-      font-weight: 700
-      line-height: 1.5em
-      padding: 15px 0
-      text-align: center
-
-      span
-        margin: 0
-
-      @media screen and (max-width: $break-small)
-        color: #{"{{ theme.link_color }}"}
-        padding-top: 16px
-
-      .product_name
-        display: block
-        font-weight: bold
-
-      .overlay &
-        @extend %transition
-        @include flexbox
-        @include justify-content(center)
-        @include align-items(center)
-        @include flex-direction(column)
-        background-color: #{"{{ theme.link_color }}"}
-        color: #{"{{ theme.background_color }}"}
+    @media screen and (min-width: $break-small+1)
+      .prod-thumb-info
+        +flexbox
+        +align-items(center)
+        background: $button-background-color
         height: 100%
         left: 0
-        @include opacity(0)
-        padding: 15px
         position: absolute
         top: 0
+        transition: opacity .2s ease
         width: 100%
+        opacity: 0
 
-        .product_name,
-        .sale,
-        .price
-          font-weight: 700
+        *
+          color: $button-text-color
 
-          @media screen and (max-width: $break-small)
-            color: #{"{{ theme.background_color }}"}
+    &:hover, &:focus
+      .prod-thumb-info
+        opacity: 1
 
-        @media screen and (max-width: $break-small)
-          background-color: transparent
-          @include opacity(1)
-          padding: 5px 0
-          position: static
+.prod-thumb-container
+  position: relative
+  width: 100%
 
-          > div
-            display: block
-            height: auto
-            margin-bottom: 0
-            width: auto
+  @media screen and (min-width: $break-small + 1)
+    .rollover &
+      height: 100%
 
-          .product_name,
-          .sale,
-          .price
-            color: #{"{{ theme.link_color }}"}
-            padding: 5px 0 0
+.product-list-image-container
+  overflow: hidden
+  position: relative
 
-          .product_name
-            font-weight: bold
+  &.product-list-image-container-default:before
+    display: none
 
+  &:before
+    display: block
+    width: 100%
+    content: ""
+    padding-bottom: 100%
+    height: 0
+
+.product-list-image
+  transform: translate3d(0, 0, 0)
+  position: absolute
+  display: block
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+  &.grid-default
+    position: relative
+
+  &.grid-cover
+    object-fit: cover
+
+  &.grid-contain
+    object-fit: contain
+
+.prod-thumb-info
+  font-size: 16px
+  padding-top: 16px
+
+  @media screen and (max-width: $break-small)
+    padding-top: 8px
+
+.prod-thumb-info-headers
+  +flexbox
+  +justify-content(flex-start)
+  +flex-direction(column)
+  font-weight: bold
+  line-height: 1.25em
+  padding: 0
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+.prod-thumb-name
+  position: relative
+  overflow-wrap: break-word
+  word-break: break-word
+
+.prod-thumb-price
+  font-size: .9em
+  margin-top: 8px
 
 .pagination
-  display: none
+  display: grid
+  font-weight: normal
+  padding: 32px 0
+  +justify-content(center)
 
-.page-load-status
-  letter-spacing: 2px
-  margin-top: 25px
-  text-align: center
+  @media screen and (max-width: $break-small)
+    font-size: .875em
 
-.infinite-scroll-message
-  display: none
+.page-arrows
+  display: flex
+  border: 1px solid $border-color
+  border-radius: $border-radius
+  height: 46px
 
-  p
-    @extend %transition
-    color: #{"{{ theme.text_color }}"}
-    font-family: #{"{{ theme.font }}"}
+  .previous, .next
+    display: none
+
+.page-link
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  min-width: 100px
+  padding: 0 12px
+
+  @media screen and (max-width: $break-small)
+    min-width: 44px
+
+    span
+      display: none
+
+  svg
+    display: block
+    fill: currentColor
+    width: 12px
+
+  &--previous
+    border-right: 1px solid $border-color
+
+    svg
+      transform: rotate(90deg)
+
+  &--next
+    border-left: 1px solid $border-color
+
+    svg
+      transform: rotate(-90deg)
+
+  &.disabled
+    opacity: .5
+
+  &:not(.disabled)
+    &:hover, &:focus
+      text-decoration: underline
+
+.page-numbers
+  display: flex
+  align-items: center
+  justify-content: center
+
+  span, a
+    display: flex
+    cursor: pointer
+    align-items: center
+    justify-content: center
+    height: 100%
+    min-width: 44px
     text-align: center
-    margin: 0 auto
+
+    @media screen and (max-width: $break-small)
+      min-width: 40px
+
+    &.gap
+      opacity: .5
+      padding: 8px
+      min-width: 0
+
+    &.current
+      font-weight: bold
+
+    &:not(.current):not(.gap)
+      &:hover, &:focus
+        background: $button-background-hover-color
+        color: $button-text-color
+
+.blur-up
+  transition: filter .2s
+  filter: blur(5px)
+
+  &.lazyloaded
+    filter: blur(0)

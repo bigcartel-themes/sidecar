@@ -80,9 +80,6 @@ Array.prototype.count = function (filterMethod) {
   }, 0);
 };
 
-if ($('.product_option_select').length) {
-  disableAddButton();
-}
 $('.product_option_select').on('change',function() {
   var option_price = $(this).find("option:selected").attr("data-price");
   enableAddButton(option_price);
@@ -97,7 +94,7 @@ function enableAddButton(updated_price) {
   else {
     priceTitle = '';
   }
-  addButton.html(addButtonTitle + priceTitle);
+  addButton.find('.button-text').html(addButtonTitle + priceTitle);
 }
 
 function disableAddButton(type) {
@@ -109,7 +106,7 @@ function disableAddButton(type) {
   if (!addButton.is(":disabled")) {
     addButton.attr("disabled","disabled");
   }
-  addButton.html(addButtonTitle);
+  addButton.find('.button-text').html(addButtonTitle);
 }
 
 function enableSelectOption(select_option) {
@@ -151,10 +148,8 @@ function disableSelectOption(select_option, type) {
 
 function processProduct(product) {
   if (product.has_option_groups) {
-    disableAddButton("add-to-cart");
     setInitialProductOptionStatuses(product);
     $(".product_option_group").on('change',function() {
-      disableAddButton("add-to-cart");
       $('#option').val(0);
       processAvailableDropdownOptions(product, $(this));
     });
@@ -163,14 +158,13 @@ function processProduct(product) {
     }
   }
   if ($('.product_option_select').length) {
-    disableAddButton();
     if (show_sold_out_product_options === 'false') {
       $('option[disabled-type="sold-out"]').wrap('<span>');
     }
   }
   $('.reset-selection-button').on('click', function() {
-    disableAddButton("add-to-cart");
-    $(this).hide();
+    enableAddButton();
+    $('.reset-selection-button-container').fadeOut('fast');
     $(".product_option_group option").each(function(index,element) {
       if (element.value > 0) {
         enableSelectOption($(element));
@@ -389,7 +383,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
         $('#option').val(product_option.id);
         enableAddButton(product_option.price);
         if (num_option_groups > 1) {
-          $('.reset-selection-button').fadeIn('fast');
+          $('.reset-selection-button-container').fadeIn('fast');
         }
       }
       else {

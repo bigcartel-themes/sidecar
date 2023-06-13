@@ -1,0 +1,41 @@
+@import 'config'
+
+.maintenance-page
+  padding: 100px 20px
+
+  .maintenance-content
+    display: grid
+    height: auto
+    justify-content: center
+    gap: 48px
+    padding: 32px
+    margin: 0 auto
+    max-width: 600px
+    text-align: center
+    width: 100%
+
+    h1
+      font-size: 2em
+      margin: 0
+
+    .maintenance-message
+      font-size: 1.25em
+
+  .social-links
+    +flexbox
+    +justify-content(center)
+    gap: 24px
+
+    a
+      color: $body-text-color
+      display: block
+      padding: 4px
+
+      svg
+        display: block
+        fill: currentColor
+        height: 24px
+        width: 24px
+
+      &:hover, &:focus
+        color: $link-hover-color

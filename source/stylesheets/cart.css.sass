@@ -1,163 +1,170 @@
-.page.cart
-  max-width: 720px
-  min-width: 500px
-  margin: 0 60px 0 260px
-  width: auto
+#cart .page
+  max-width: 760px
 
   @media screen and (max-width: $break-small)
-    max-width: none
-    min-width: 0
-    margin: 0
+    max-width: 100%
 
-    h1
-      padding-top: 23px
+.cart-header
+  +flexbox
+  +align-items(center)
+  +justify-content(flex-start)
 
-  .cart_items
+  margin-bottom: 32px
 
-    @media screen and (max-width: $break-small)
-      margin-top: 32px
-      padding: 0 16px
+  h1
+    margin-bottom: 0
 
-    .cart_item
-      +flexbox
-      +justify-content(flex-start)
-      +align-items(center)
-      border-top: 1px solid #{"{{ theme.border_color }}"}
-      font-size: 16px
-      padding: 10px
+.continue-shopping
+  font-size: .925em
+  margin-left: auto
+  text-decoration: underline
 
-      @media screen and (max-width: $break-medium)
-        padding: 10px 0
-        width: 100%
+.cart-items
+  border-bottom: 1px solid $border-color
 
-      .cart_product_image_link
-        display: block
-        height: 70px
-        overflow: hidden
-        width: 70px
+.cart-item
+  display: grid
+  grid-template-columns: auto 1fr 148px auto
+  +justify-content(flex-start)
+  +align-items(flex-start)
+  border-top: 1px solid $border-color
+  padding: 16px 0
+  gap: 16px
 
-        @media screen and (max-width: $break-medium)
-          height: 60px
-          width: 60px
+  @media (max-width: $break-medium)
+    grid-template-columns: auto 1fr auto
+    grid-template-rows: repeat(2, auto)
 
-        img
-          height: 100%
-          object-fit: cover
-          width: 100%
+  .cart-item-image-holder
+    @media screen and (max-width: $break-medium)
+      grid-area: 1 / 1 / 3 / 2
 
-      .cart_product_detail
-        line-height: 25px
-        padding: 0 50px 0 20px
-        width: 55%
+  .cart-item-image-link
+    display: block
+    height: 88px
+    overflow: hidden
+    width: 88px
 
-        @media screen and (max-width: $break-medium)
-          width: 50%
-
-        @media screen and (max-width: $break-small)
-          padding: 0 30px 0 15px
-          width: 55%
-
-      .item-quantity-label
-        border: 0
-        clip: rect(0 0 0 0)
-        height: 1px
-        margin: -1px
-        overflow: hidden
-        padding: 0
-        position: absolute
-        width: 1px
-
-      input[type=text]
-        font-size: 16px
-        height: 36px
-        text-align: center
-        width: 50px
-
-      .cart_item_price
-        padding-left: 20px
-
-      .cart_item_remove
-        margin-left: auto
-
-        .remove-item
-          background: url(#{"{{ 'remove.png' | theme_image_url }}"}) 0 0 no-repeat
-          border: none
-          @include background-size(24px 24px)
-          cursor: pointer
-          height: 24px
-          text-indent: -9999px
-          width: 24px
-
-          @media screen and (max-width: $break-small)
-            height: 28px
-            width: 28px
-            @include background-size(28px 28px)
-
-          &.loading
-            background: url(#{"{{ 'loading.png' | theme_image_url }}"}) 0 0 no-repeat
-            @include animation(spin 1s infinite linear)
-            @include background-size(24px 24px)
-
-            @media screen and (max-width: $break-small)
-              @include background-size(28px 28px)
-
-  .cart_footer
-
-    @media screen and(max-width: $break-small)
-      padding: 0 16px
+    img
+      border-radius: $border-radius
+      height: 100%
+      object-fit: cover
       width: 100%
 
-  .cart_subtotal
+  .cart-item-detail
+    padding-right: 48px
+
+    @media (max-width: $break-medium)
+      grid-area: 1 / 2 / 2 / 3
+      padding-right: 0
+
+  .product-name
+    font-weight: bold
+    word-break: break-word
+
+  .option-name
+    margin-top: 8px
+
+  input
+    font-size: 1em
+    height: 100%
+    padding: 8px
+    text-align: center
+    width: 50px
+
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      display: none
+
+  .cart-qty
     +flexbox
     +align-items(center)
-    border-top: 1px solid #{"{{ theme.border_color }}"}
-    padding: 20px 10px
+    +justify-content(center)
+    +flex-direction(column)
+    width: 148px
 
-    @media screen and (max-width: $break-medium)
-      padding: 20px 0
+    @media (max-width: $break-medium)
+      +align-items(flex-start)
+      grid-area: 2 / 2 / 3 / 3
 
-  .cart_subtotal_label
+  .qty-holder
+    +flexbox
+    +align-items(center)
+    border: 1px solid $border-color
+    border-radius: $border-radius
+    gap: 8px
+    margin-bottom: 8px
+
+    &.disabled
+      > *
+        opacity: .7
+        cursor: not-allowed
+        user-select: none
+        pointer-events: none
+
+  .qty-button
+    +appearance(none)
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+    border: none
+    background: none
+    cursor: pointer
+    height: 40px
+    width: 40px
+
+  .cart-remove-item--link
+    +appearance(none)
+    display: inline-block
+    height: auto
+    padding: .5em
+    line-height: 1em
+    font-weight: normal
+    padding: 8px 16px
+    text-decoration: underline
+    width: auto
+
+    @media (max-width: $break-medium)
+      padding: 4px 0
+
+    @media (max-width: $break-small)
+      font-size: 1em
+
+  .cart-item-price
+    font-size: 1.25em
+    margin-left: auto
+    min-width: 140px
+    min-height: 42px
+    display: flex
+    justify-content: flex-end
+    align-items: center
     text-align: right
-    width: calc(70px + 55% + 50px)
 
     @media screen and (max-width: $break-medium)
-      text-align: right
-      width: 100%
+      font-size: 1.5em
+      min-height: 0
+      min-width: 0
+      grid-area: 1 / 3 / 2 / 4
 
-  .cart_subtotal_amount
-    font-size: 24px
-    padding-left: 18px
-    text-align: left
+.cart-footer
+  +flexbox
+  +flex-direction(column)
+  +align-items(flex-end)
+  margin-top: 2rem
+  gap: 2rem
 
-    @media screen and (max-width: $break-small)
-      margin-left: auto
-      text-align: right
+  @media (max-width: $break-small)
+    +align-items(center)
 
-  .cart_submit
-    border-top: 1px solid #{"{{ theme.border_color }}"}
-    padding: 20px
-    padding-left: calc(70px + 55% + 66px)
+.cart-subtotal
+  font-size: 1.5em
 
-    @media screen and (max-width: $break-medium)
-      padding: 20px 0
-      text-align: right
+  &__amount
+    padding-left: 8px
 
-    @media screen and (max-width: $break-small)
-      border-top: none
-      padding-left: 20px
-      text-align: center
+.button--checkout
+  height: 3rem
+  min-width: 10rem
+  padding: 0 4rem
 
-      button
-        width: 60%
-
-  .cart_empty
-    font-size: 16px
-
-    @media screen and (max-width: $break-small)
-      h1
-        margin-bottom: 10px
-        padding-top: 29px
-
-      p
-        line-height: 1.5em
-        padding: 23px 16px
+  @media (max-width: $break-small)
+    width: 100%
