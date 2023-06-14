@@ -42,13 +42,13 @@
             <div class="cart-qty">
               <div class="qty-holder" data-item-id="{{ item.id }}">
                 <button title="Decrease quantity of {{ item.product.name | escape }}" class="qty-button qty-button--decrease" data-func="decrease" type="button" data-item-id="{{ item.id }}">
-                  <svg viewBox="0 0 20 20" height="20" width="20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg>
+                  <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" height="20" width="20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg>
                 </button>
 
                 <input aria-label="Quantity of {{ item.product.name | escape }}" type="number" autocomplete="off" class="product-quantity" name="cart[update][{{ item.id }}]" min="0" value="{{ item.quantity }}" data-item-id="{{ item.id }}">
 
                 <button title="Increase quantity of {{ item.product.name | escape }}" class="qty-button qty-button--increase" data-func="increase" type="button" data-item-id="{{ item.id }}">
-                  <svg viewBox="0 0 20 20" height="20" width="20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg>
+                  <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" height="20" width="20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg>
                 </button>
               </div>
 

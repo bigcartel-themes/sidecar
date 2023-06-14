@@ -85,7 +85,6 @@ body
       fill: $announcement-text-color
 
   svg
-    display: block
     fill: $announcement-text-color
     height: 14px
     width: 14px
@@ -140,45 +139,11 @@ code
   font-family: 'Courier New', Courier, Monospace !important
   font-weight: 700
 
-blockquote
-  width: auto
-  font-style: italic
-  margin: 16px
-  padding: 10px
-
-  &:before,
-  &:after
-    display: inline
-    content: '\201C'
-    font-size: 14px
-
-  &:after
-    content: '\201D'
-
 small
   display: block
   font-size: 13px
   font-weight: 400
   margin-bottom: 16px
-
-i,
-em
-  font-style: italic
-
-blockquote p
-  display: inline
-
-b,
-strong
-  font-weight: 700
-
-hr
-  border-bottom-color: $border-color
-  border-bottom-style: solid
-  border-bottom-width: 1px
-  height: 1px
-  margin: 16px 0
-  width: 100%
 
 /* @end */
 
@@ -355,8 +320,6 @@ textarea
       width: 32px
 
       svg
-        fill: currentColor
-        display: block
         width: 16px
         height: 16px
 
@@ -402,7 +365,6 @@ textarea
       word-wrap: break-word
 
       img
-        display: block
         width: 100%
 
   .button--open-search
@@ -475,13 +437,13 @@ textarea
   gap: 8px
   outline-offset: 4px
   padding: 2px 0
+  text-decoration: none !important
 
   &__text
     font-weight: bold
     position: relative
 
   &__lockup
-    display: block
     fill: currentColor
     padding-top: 1px
     width: 80px
@@ -548,8 +510,6 @@ textarea
     font-size: 16px
 
     svg
-      display: block
-      fill: currentColor
       height: 20px
       width: 20px
 
@@ -627,15 +587,6 @@ textarea
   ul
     list-style: disc
 
-  img,
-  object,
-  video,
-  audio,
-  iframe,
-  embed
-    display: block
-    max-width: 100%
-
 #search-modal
   opacity: 0
   visibility: hidden
@@ -690,6 +641,7 @@ textarea
     border-radius: $border-radius
     background: $background-color
     border: 2px solid $body-text-color
+    font-weight: normal
     width: 100%
     font-size: 1em
     height: 44px
@@ -702,10 +654,6 @@ textarea
     grid-column: 2/2
     padding: 0 24px
     height: 100%
-
-    svg
-      fill: currentColor
-      display: block
 
   /* Style for the close button */
   .close-modal
@@ -725,8 +673,6 @@ textarea
     transition: color .2s ease
 
     svg
-      display: block
-      fill: currentColor
       height: 20px
       width: 20px
 
