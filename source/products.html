@@ -1,6 +1,6 @@
 <div class="page products">
   <h1>{% if page.full_url contains 'search=' %}Product search{% else %}{{ page.name }}{% endif %}</h1>
-  {% paginate products from products.current by theme.products_per_page order: sort_order %}
+  {% paginate products from products.current by theme.products_per_page %}
     {% if products != blank %}
       <div class="product-list-container">
         <div class="product-list product-image-{{ theme.product_grid_image_size }}" >
