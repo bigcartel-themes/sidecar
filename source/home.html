@@ -7,9 +7,8 @@
     </ul>
   {% endif %}
 
-  <h1>Featured Products</h1>
-
   {% if theme.featured_items > 0 %}
+    <h1>Featured products</h1>
     {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
       {% if products != blank %}
         <div class="product-list-container">

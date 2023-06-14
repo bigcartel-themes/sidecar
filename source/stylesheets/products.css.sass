@@ -2,7 +2,7 @@
   position: relative
 
 .product-list
-  +align-items(flex-start)
+  align-items: flex-start
   display: grid
   gap: 32px
   margin: 0
@@ -40,8 +40,8 @@
 
     @media screen and (min-width: $break-small+1)
       .prod-thumb-info
-        +flexbox
-        +align-items(center)
+        display: flex
+        align-items: center
         background: $button-background-color
         height: 100%
         left: 0
@@ -83,7 +83,6 @@
 .product-list-image
   transform: translate3d(0, 0, 0)
   position: absolute
-  display: block
   top: 0
   left: 0
   width: 100%
@@ -106,9 +105,9 @@
     padding-top: 8px
 
 .prod-thumb-info-headers
-  +flexbox
-  +justify-content(flex-start)
-  +flex-direction(column)
+  display: flex
+  justify-content: flex-start
+  flex-direction: column
   font-weight: bold
   line-height: 1.25em
   padding: 0
@@ -130,7 +129,7 @@
   display: grid
   font-weight: normal
   padding: 32px 0
-  +justify-content(center)
+  justify-content: center
 
   @media screen and (max-width: $break-small)
     font-size: .875em
@@ -159,7 +158,6 @@
       display: none
 
   svg
-    display: block
     fill: currentColor
     width: 12px
 

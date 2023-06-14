@@ -1,9 +1,5 @@
 /* @group base */
 
-*
-  box-sizing: border-box
-  -webkit-font-smoothing: antialiased
-
 body,
 html
   height: 100%
@@ -16,7 +12,6 @@ body
   color: $body-text-color
   font-family: $body-font
   font-size: 16px
-  line-height: 1.2em
   text-rendering: optimizeLegibility
   -webkit-font-smoothing: subpixel-antialiased !important
 
@@ -68,9 +63,9 @@ body
 
 .button.announcement-message-close
   transform: translateY(-50%)
-  +flexbox
-  +align-items(center)
-  +justify-content(center)
+  display: flex
+  align-items: center
+  justify-content: center
   background: none
   height: 32px
   padding: 0
@@ -236,7 +231,7 @@ hr
     visibility: hidden
     animation: spin .7s linear infinite
     transition: opacity .2s linear, visibility .2s linear
-    -webkit-transform: translate(0px,0px)
+    transform: translate(0px,0px)
 
   &.minimal-button
     background: none
@@ -434,7 +429,7 @@ textarea
       padding: 12px 0
 
     .cart
-      +flexbox
+      display: flex
       gap: 8px
 
       .cart-total
@@ -510,8 +505,8 @@ textarea
       color: $link-hover-color
 
 .mobile-header
-  +align-items(center)
-  +justify-content(space-between)
+  align-items: center
+  justify-content: space-between
   background-color: $sidebar-background-color
   border-bottom-color: $sidebar-border-color
   border-bottom-style: solid
@@ -525,7 +520,7 @@ textarea
   width: 100%
 
   @media screen and (max-width: $break-small)
-    +flexbox
+    display: flex
 
   .logo
     color: $sidebar-link-color
@@ -545,7 +540,7 @@ textarea
         height: 100%
 
   .cart
-    +flexbox
+    display: flex
     color: $sidebar-link-color
     font-weight: bold
     align-items: center
