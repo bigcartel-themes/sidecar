@@ -7,7 +7,7 @@ removeButtons?.forEach((removeButton) => {
     const item_id = parseInt(event.currentTarget.dataset.itemId);
     const new_value = 0;
     if (item_id > 0) {
-      Cart.updateItem(item_id, new_value, (cart) => {
+      Cart.removeItem(item_id, (cart) => {
         processUpdate('', item_id, new_value, cart);
       });
     }
