@@ -60,3 +60,11 @@ document.addEventListener('keydown', function (event) {
     closeSearch();
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  let contactFields = document.querySelectorAll('.contact-field input, .contact-field textarea');
+  contactFields.forEach(function(contactField) {
+    contactField.removeAttribute('tabindex');
+  });
+});
