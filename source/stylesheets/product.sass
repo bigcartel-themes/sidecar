@@ -1,20 +1,24 @@
 .product_detail
   display: flex
-  flex-wrap: wrap
+  column-gap: 64px
+
+  @media screen and (max-width: $break-extra-large)
+    column-gap: 32px
 
   @media screen and (max-width: $break-medium)
     display: grid
+    row-gap: 24px
 
   .gallery
-    max-width: 55%
+    max-width: 1000px
     position: relative
     width: 100%
 
     @media screen and (max-width: $break-medium)
-      margin-bottom: 24px
       max-width: 100%
 
     .product-image
+      height: auto
       width: 100%
 
     .product-slideshow
@@ -28,15 +32,13 @@
     .product-thumbnail-slideshow
       margin-top: 12px
 
-      @media screen and (max-width: $break-small)
-        padding: 0 12px
-
       ul
-        justify-content: center
+        justify-content: flex-start
 
       .splide__slide
         opacity: 0.8
         border: none !important
+        aspect-ratio: 1 / 1
 
         img
           border: 2px solid transparent !important
@@ -65,17 +67,13 @@
     margin-bottom: 8px
 
   .detail
-    float: left
-    margin-left: 5%
-    max-width: 390px
-    width: 30%
+    max-width: 380px
+    width: 100%
 
     @media screen and (max-width: $break-medium)
-      float: none
-      margin-bottom: 25px
-      margin-left: 0
-      max-width: none
-      width: 100%
+      margin-bottom: 24px
+      max-width: 100%
+
 
     .artists
       color: $header-text-color
@@ -190,17 +188,3 @@ a.product-form-cart-linker-link
   .arrow
     width: 12px
     transform: rotate(-90deg)
-
-.f-carousel
-  display: block
-  margin: 0 auto
-  width: 100%
-
-.f-carousel__slide
-  display: flex
-  justify-content: center
-  align-items: center
-
-  img
-    height: auto
-    width: 100%

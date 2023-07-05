@@ -7,19 +7,24 @@
   gap: 32px
   margin: 0
   width: 100%
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr ))
 
   &.product-image-small
     grid-template-columns: repeat(auto-fill, minmax(200px,1fr ))
   &.product-image-medium
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr ))
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr ))
+
+    @media screen and (max-width: $break-large)
+      grid-template-columns: repeat(auto-fill, minmax(210px,1fr ))
+
   &.product-image-large
     grid-template-columns: repeat(auto-fill, minmax(350px,1fr ))
 
+  @media screen and (max-width: $break-large)
+    gap: 24px
+
   @media screen and (max-width: $break-small)
     grid-template-columns: repeat(2, 1fr) !important
-    column-gap: 16px
-    row-gap: 24px
+    gap: 16px
 
 .prod-thumb
   color: $body-text-color
@@ -34,6 +39,9 @@
     &:hover
       .prod-thumb-name
         text-decoration: underline
+
+    .prod-thumb-info-headers
+      padding-bottom: 16px
 
   &.rollover
     margin-bottom: 0px
