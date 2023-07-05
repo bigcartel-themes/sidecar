@@ -252,18 +252,6 @@
       <script>
         var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
         Product.find('{{ product.permalink }}', processProduct)
-        Fancybox.bind("[data-fancybox]");
-        const container = document.getElementById("myCarousel");
-        if (container) {
-          const options = {
-            Dots: false,
-            fill: false,
-            Thumbs: {
-              type: "classic",
-            },
-          };
-          new Carousel(container, options, { Thumbs });
-        }
       </script>
     {% endif %}
   </body>

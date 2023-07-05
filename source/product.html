@@ -1,42 +1,66 @@
 <div class="page product_detail">
   <div class="gallery">
     {% if product.images.size > 1 %}
-      <div class="f-carousel" id="myCarousel">
-        {% for image in product.images %}
-          <div
-            class="f-carousel__slide"
-            data-thumb-src="{{ image | product_image_url | constrain: 200 }}"
-            data-fancybox="gallery"
-            data-src="{{ image | product_image_url | constrain: 2000 }}"
-          >
-            <img
-              class="product-image"
-              data-lazy-src="{{ image | product_image_url | constrain: 1500 }}"
-            >
+      <div class="splide product-slideshow" role="group" aria-label="{{ product.name | escape }} images">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for image in product.images %}
+                <li class="splide__slide">
+                  <img
+                    alt="Image of {{ product.name | escape }}"
+                    class="blur-up product-image lazyload"
+                    fetchpriority="high"
+                    src="{{ image | product_image_url | constrain: 200 }}"
+                    data-srcset="
+                      {{ image | product_image_url | constrain: 400 }} 400w,
+                      {{ image | product_image_url | constrain: 700 }} 700w,
+                      {{ image | product_image_url | constrain: 1000 }} 1000w,
+                      {{ image | product_image_url | constrain: 1400 }} 1400w,
+                      {{ image | product_image_url | constrain: 2000 }} 2000w,
+                    "
+                    data-sizes="auto"
+                  >
+                </li>
+              {% endfor %}
+            </ul>
           </div>
-        {% endfor %}
-      </div>
+        </div>
+        <div class="splide product-thumbnail-slideshow" role="group">
+          <div class="splide__track">
+            <ul class="splide__list">
+              {% for image in product.images %}
+                <li class="splide__slide">
+                  <img
+                  alt="Image of {{ product.name | escape }}"
+                  class="blur-up lazyload"
+                  src="{{ image | product_image_url | constrain: 30 }}"
+                  data-srcset="
+                    {{ image | product_image_url | constrain: 60 }} 60w,
+                    {{ image | product_image_url | constrain: 120 }} 120w,
+                    {{ image | product_image_url | constrain: 200 }} 200w,
+                  "
+                  data-sizes="auto"
+                  >
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
     {% else %}
-      <div class="single-image">
-        <a href="{{ product.image | product_image_url | constrain: 2000 }}" data-fancybox="gallery">
-          <img
-            alt="{{ product.name | escape }}"
-            class="product-image lazyload"
-            src="{{ product.image | product_image_url | constrain: 100 }}"
-            width="800"
-            data-srcset="
-              {{ product.image | product_image_url | constrain: 400 }} 400w,
-              {{ product.image | product_image_url | constrain: 550 }} 550w,
-              {{ product.image | product_image_url | constrain: 800 }} 800w,
-              {{ product.image | product_image_url | constrain: 1050 }} 1050w,
-              {{ product.image | product_image_url | constrain: 1300 }} 1300w,
-              {{ product.image | product_image_url | constrain: 1700 }} 1700w,
-              {{ product.image | product_image_url | constrain: 1900 }} 1900w,
-            "
-            data-sizes="auto"
-          >
-        </a>
-      </div>
+      <img
+        alt="Image of {{ product.name | escape }}"
+        class="blur-up product-image lazyload"
+        fetchpriority="high"
+        src="{{ product.image | product_image_url | constrain: 200 }}"
+        data-srcset="
+          {{ product.image | product_image_url | constrain: 400 }} 400w,
+          {{ product.image | product_image_url | constrain: 700 }} 700w,
+          {{ product.image | product_image_url | constrain: 1000 }} 1000w,
+          {{ product.image | product_image_url | constrain: 1400 }} 1400w,
+          {{ product.image | product_image_url | constrain: 2000 }} 2000w,
+        "
+        data-sizes="auto"
+      >
     {% endif %}
   </div>
   <div class="detail">
@@ -106,20 +130,20 @@
         {% endif %}
 
         <button class="button add-to-cart-button" name="submit" type="submit" data-adding-text="Adding..." data-added-text="Added!" data-add-title="Add to Cart" data-sold-title="Sold out">
-          <svg class="loader" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>
+          <svg aria-hidden="true" class="loader" width="24" fill="currentColor" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_P7sC{transform-origin:center;animation:spinner_svv2 2.5s infinite linear}@keyframes spinner_svv2{100%{transform:rotate(360deg)}}</style><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_P7sC"/></svg>
           <span class="button-text">Add to Cart</span>
         </button>
         <div class="product-form-cart-linker">
           <div class="product-form-cart-linker-slider">
             <a class="product-form-cart-linker-link" href="/cart">
               <span class="product-form-cart-link-text">Go to Cart</span>
-              <svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
+              <svg aria-hidden="true" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
             </a>
           </div>
         </div>
 
-
         {{ store | instant_checkout_button: 'light', '36px' }}
+
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
             <button class="button minimal-button reset-selection-button" type="reset">Reset selection</button>
