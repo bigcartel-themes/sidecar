@@ -27,7 +27,7 @@
     gap: 16px
 
 .prod-thumb
-  color: $body-text-color
+  color: var(--body-text-color)
   display: block
   padding: 0
   position: relative
@@ -49,7 +49,7 @@
       .prod-thumb-info
         display: flex
         align-items: center
-        background: $button-background-color
+        background: var(--button-background-color)
         height: 100%
         left: 0
         position: absolute
@@ -59,7 +59,7 @@
         opacity: 0
 
         *
-          color: $button-text-color
+          color: var(--button-text-color)
 
     &:hover, &:focus
       .prod-thumb-info
@@ -88,7 +88,7 @@
     height: 0
 
 .product-list-image
-  border-radius: $border-radius
+  border-radius: var(--border-radius)
   transform: translate3d(0, 0, 0)
   position: absolute
   top: 0
@@ -143,8 +143,8 @@
 
 .page-arrows
   display: flex
-  border: 1px solid $border-color
-  border-radius: $border-radius
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
   height: 46px
 
   .previous, .next
@@ -168,13 +168,13 @@
     width: 12px
 
   &--previous
-    border-right: 1px solid $border-color
+    border-right: 1px solid var(--border-color)
 
     svg
       transform: rotate(90deg)
 
   &--next
-    border-left: 1px solid $border-color
+    border-left: 1px solid var(--border-color)
 
     svg
       transform: rotate(-90deg)
@@ -213,8 +213,8 @@
 
     &:not(.current):not(.gap)
       &:hover, &:focus
-        background: $button-background-hover-color
-        color: $button-text-color
+        background: var(--button-background-hover-color)
+        color: var(--button-text-color)
 
 .blur-up
   transition: filter .2s

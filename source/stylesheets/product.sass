@@ -18,7 +18,7 @@
       max-width: 100%
 
     .product-image
-      border-radius: $border-radius
+      border-radius: var(--border-radius)
       height: auto
       width: 100%
 
@@ -37,23 +37,23 @@
         justify-content: flex-start
 
       .splide__slide
-        border-radius: $border-radius
+        border-radius: var(--border-radius)
         opacity: 0.8
         border: none !important
         aspect-ratio: 1 / 1
 
         img
-          border-radius: $border-radius
+          border-radius: var(--border-radius)
           border: 2px solid transparent !important
 
         &:hover
           img
-            border: 2px solid $link-hover-color !important
+            border: 2px solid var(--link-hover-color) !important
 
         &.is-active
           opacity: 1
           img
-            border: 2px solid $border-color !important
+            border: 2px solid var(--border-color) !important
 
         img
           width: 100%
@@ -79,18 +79,18 @@
 
 
     .artists
-      color: $header-text-color
+      color: var(--header-text-color)
       font-size: .875rem
       margin-bottom: 0
 
     .price
-      color: $header-text-color
+      color: var(--header-text-color)
       font-size: 1.125rem
       font-weight: 700
       margin: 10px 0
 
       i
-        color: $highlight-color
+        color: var(--highlight-color)
         font-style: normal
         font-size: .875rem
 
@@ -101,7 +101,7 @@
     margin-bottom: 8px
 
   .product-form
-    border-top-color: $border-color
+    border-top-color: var(--border-color)
     border-top-style: solid
     border-top-width: 1px
     padding-top: 16px
@@ -114,7 +114,7 @@
     gap: 8px
 
   .product-description
-    border-top-color: $border-color
+    border-top-color: var(--border-color)
     border-top-style: solid
     border-top-width: 1px
     padding-bottom: 16px
@@ -124,7 +124,7 @@
       text-decoration: underline
 
   .availability
-    border-top-color: $border-color
+    border-top-color: var(--border-color)
     border-top-style: solid
     border-top-width: 1px
     margin-top: 16px
@@ -147,9 +147,9 @@
       position: relative
 
     .inventory-level-background
-      background-color: $link-color
-      border-radius: $border-radius
-      color: $body-text-color
+      background-color: var(--link-color)
+      border-radius: var(--border-radius)
+      color: var(--body-text-color)
       height: 100%
       left: 0
       opacity: .1
@@ -172,10 +172,10 @@
   overflow: hidden
 
 a.product-form-cart-linker-link
-  border: 2px solid $link-color
-  border-radius: $border-radius
-  color: $link-color
-  font-family: $body-font
+  border: 2px solid var(--link-color)
+  border-radius: var(--border-radius)
+  color: var(--link-color)
+  font-family: var(--body-font)
   font-weight: 700
   height: 50px
   padding: 0 16px
@@ -187,8 +187,8 @@ a.product-form-cart-linker-link
   margin-bottom: 12px
 
   &:hover, &:focus
-    border: 2px solid $link-hover-color
-    color: $link-hover-color
+    border: 2px solid var(--link-hover-color)
+    color: var(--link-hover-color)
 
   .arrow
     width: 12px

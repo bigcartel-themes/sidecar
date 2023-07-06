@@ -6,7 +6,7 @@
 
 .cart-header
   display: flex
-  align-items: center
+  align-items: flex-end
   justify-content: flex-start
 
   margin-bottom: 32px
@@ -20,14 +20,14 @@
   text-decoration: underline
 
 .cart-items
-  border-bottom: 1px solid $border-color
+  border-bottom: 1px solid var(--border-color)
 
 .cart-item
   display: grid
   grid-template-columns: auto 1fr 148px auto
   justify-content: flex-start
   align-items: flex-start
-  border-top: 1px solid $border-color
+  border-top: 1px solid var(--border-color)
   padding: 16px 0
   gap: 16px
 
@@ -50,7 +50,7 @@
       width: 72px
 
     img
-      border-radius: $border-radius
+      border-radius: var(--border-radius)
       height: 100%
       object-fit: cover
       width: 100%
@@ -92,8 +92,8 @@
   .qty-holder
     display: flex
     align-items: center
-    border: 1px solid $border-color
-    border-radius: $border-radius
+    border: 1px solid var(--border-color)
+    border-radius: var(--border-radius)
     gap: 8px
     margin-bottom: 8px
 
@@ -106,7 +106,7 @@
 
   .qty-button
     +appearance(none)
-    color: $body-text-color
+    color: var(--body-text-color)
     display: flex
     align-items: center
     justify-content: center
