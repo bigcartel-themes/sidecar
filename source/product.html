@@ -120,7 +120,7 @@
               {% endfor %}
             </div>
           {% else %}
-            <div class="select">
+            <div class="select single-select">
               <div class="select-wrapper">
                 <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
                   <option value="" disabled="disabled" selected>Select variant</option>
@@ -142,12 +142,12 @@
         <div class="product-form-cart-linker">
           <div class="product-form-cart-linker-slider">
             <a class="product-form-cart-linker-link" href="/cart">
-              <span class="product-form-cart-link-text">Go to Cart</span>
+              <span class="product-form-cart-link-text">Go to cart</span>
               <svg aria-hidden="true" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
             </a>
           </div>
         </div>
-        {{ store | instant_checkout_button: 'dark', '44px' }}
+        {{ store | instant_checkout_button: 'dark', '48px' }}
 
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
