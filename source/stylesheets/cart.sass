@@ -15,7 +15,7 @@
     margin-bottom: 0
 
 .continue-shopping
-  font-size: .925em
+  font-size: .925rem
   margin-left: auto
   text-decoration: underline
 
@@ -45,6 +45,10 @@
     overflow: hidden
     width: 88px
 
+    @media screen and (max-width: $break-medium)
+      height: 72px
+      width: 72px
+
     img
       border-radius: $border-radius
       height: 100%
@@ -63,10 +67,9 @@
     word-break: break-word
 
   .option-name
-    margin-top: 8px
+    font-size: .925rem
 
   input
-    font-size: 1em
     height: 100%
     padding: 8px
     text-align: center
@@ -127,11 +130,8 @@
     @media (max-width: $break-medium)
       padding: 4px 0
 
-    @media (max-width: $break-small)
-      font-size: 1em
-
   .cart-item-price
-    font-size: 1.25em
+    font-size: 1.25rem
     margin-left: auto
     min-width: 140px
     min-height: 42px
@@ -141,7 +141,7 @@
     text-align: right
 
     @media screen and (max-width: $break-medium)
-      font-size: 1.5em
+      font-size: 1.3rem
       min-height: 0
       min-width: 0
       grid-area: 1 / 3 / 2 / 4
@@ -154,7 +154,7 @@
 .cart-subtotal
   display: flex
   gap: 16px
-  font-size: 1.5em
+  font-size: 1.5rem
   margin-left: auto
 
   @media screen and (max-width: $break-small)

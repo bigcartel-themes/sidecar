@@ -1,12 +1,13 @@
 const productForm = document.querySelector('.product-form');
 const addToCartButton = document.querySelector('.add-to-cart-button');
 const addToCartButtonText = addToCartButton?.querySelector('.button-text');
-let addText = '';
-addText = addToCartButtonText?.innerHTML;
 const addedText = addToCartButton?.dataset.addedText;
+let addText = '';
 productForm?.addEventListener('submit', function(e) {
   const itemID = document.querySelector("#option").value;
   const quantity = document.querySelector('#product-quantity').value;
+  addText = addToCartButtonText?.innerHTML;
+
   e.preventDefault();
   if (!addToCartButton.classList.contains('adding')) {
     if (quantity > 0 && itemID > 0) {

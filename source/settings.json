@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "1.10.7",
+  "version": "1.10.8",
   "images": [
     {
       "variable": "logo",
@@ -209,7 +209,7 @@
           "sign_and_code"
         ]
       ],
-      "default": "sign",
+      "default": "sign_and_code",
       "description": "Sets the display of prices in your shop"
     },
     {
