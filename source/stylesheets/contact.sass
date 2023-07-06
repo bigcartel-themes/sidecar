@@ -7,26 +7,12 @@
 form.contact
 
   .contact-field
-    margin-top: 16px
-    padding-top: 16px
-
-    @media screen and (max-width: $break-small)
-      border: none
-      margin-top: 20px
-      padding-top: 0
-
-      &:last-child
-        margin-top: 0
-
-    &:first-child
-      border: none
-      margin: 0
-      padding: 0
+    display: grid
+    gap: 8px
 
   label
     display: block
     font-weight: 700
-    margin-bottom: 10px
 
   input[type=text],
   textarea
@@ -42,13 +28,13 @@ form.contact
   .recaptcha-note
     display: block
     font-size: 14px
-    margin-bottom: 16px
+    padding: 16px 0
 
     a
       text-decoration: underline
 
   button
+    max-width: 300px
+
     @media screen and (max-width: $break-small)
-      display: block
-      margin-top: 32px
-      width: 60%
+      max-width: 100%

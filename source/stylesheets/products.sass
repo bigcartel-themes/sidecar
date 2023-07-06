@@ -29,7 +29,6 @@
 .prod-thumb
   color: $body-text-color
   display: block
-  font-size: 0
   padding: 0
   position: relative
   text-decoration: none
@@ -89,6 +88,7 @@
     height: 0
 
 .product-list-image
+  border-radius: $border-radius
   transform: translate3d(0, 0, 0)
   position: absolute
   top: 0
@@ -106,7 +106,6 @@
     object-fit: contain
 
 .prod-thumb-info
-  font-size: 16px
   padding-top: 16px
 
   @media screen and (max-width: $break-small)
