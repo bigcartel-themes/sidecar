@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "1.10.8",
+  "version": "1.10.10",
   "images": [
     {
       "variable": "logo",
@@ -70,11 +70,6 @@
       "variable": "border_color",
       "label": "Lines",
       "default": "#999999"
-    },
-    {
-      "variable": "highlight_color",
-      "label": "Sale, Sold & Soon Text",
-      "default": "#cf4200"
     },
     {
       "variable": "sidebar_background_color",
@@ -209,7 +204,7 @@
           "sign_and_code"
         ]
       ],
-      "default": "sign_and_code",
+      "default": "sign",
       "description": "Sets the display of prices in your shop"
     },
     {
@@ -254,7 +249,7 @@
     "title_font_size": "24px",
     "title_font_weight": "700",
     "title_color": "{{ sidebar_link_color }}",
-    "title_background_color": "{{ background_color }}",
+    "title_background_color": "{{ sidebar_background_color }}",
     "header_font": "{{ header_font }}",
     "body_font": "{{ font }}",
     "body_font_size": "16px",

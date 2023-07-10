@@ -9,7 +9,6 @@
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
 
   --border-color: #{'{{ theme.border_color }}'}
-  --highlight-color: #{'{{ theme.highlight_color }}'}
   --sidebar-background-color: #{'{{ theme.sidebar_background_color }}'}
   --sidebar-link-color: #{'{{ theme.sidebar_link_color }}'}
   --sidebar-link-hover-color: #{'{{ theme.sidebar_link_rollover }}'}
@@ -331,13 +330,13 @@ textarea
       height: 32px
       padding: 0
       position: absolute
-      right: 16px
-      top: 16px
+      right: 24px
+      top: 20px
       width: 32px
 
       svg
-        width: 16px
-        height: 16px
+        width: 18px
+        height: 18px
 
   @media screen and (max-width: $break-small)
     border-right-color: var(--sidebar-border-color)
@@ -348,7 +347,7 @@ textarea
     padding: 72px 32px 32px 32px
     position: fixed
     top: 0
-    width: 360px
+    width: 300px
     z-index: 100
     transform: translateX(-100%)
     overflow-y: scroll
@@ -356,9 +355,6 @@ textarea
     .show_menu &
       transition: transform .2s ease
       transform: translateX(0)
-
-      header, nav, footer
-        max-width: 244px
 
   a, .link
     color: var(--sidebar-link-color)
@@ -405,22 +401,27 @@ textarea
       padding: 12px 0
 
       &.sidebar-cart
-        padding: 8px 0
+        padding: 4px 0
 
-    .cart
-      align-items: center
-      line-height: normal
+    a.cart
+      align-items: flex-start
       display: flex
-      gap: 8px
+      column-gap: 12px
+      font-size: .975em
+      font-weight: normal
+      padding: 8px 0
+      margin: 0
+
+      .cart-icon
+        display: block
+        flex-shrink: 0
+        height: 22px
+        width: 20px
+
+      .cart-details
+        margin-left: auto
 
       .cart-total
-        border-left: 1px solid var(--sidebar-border-color)
-        font-weight: normal
-        padding-left: 8px
-
-      .cart-count
-        font-weight: normal
-        margin-left: auto
 
     .title,
     .title a
@@ -528,6 +529,7 @@ textarea
     gap: 12px
 
     svg
+      flex-shrink: 0
       height: 20px
       width: 20px
 

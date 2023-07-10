@@ -63,8 +63,11 @@ qtyButtons?.forEach((qtyButton) => {
 updateCartCounts = (cart) => {
   const sub_total = Format.money(cart.total, true, true);
   const item_count = cart.item_count;
+  const itemOrItems = Format.pluralize(item_count, 'item', 'items');
 
   const cartCountElements = document.querySelectorAll('.cart-count');
+  const cartCountWithTotal = document.querySelector('.cart-details');
+
   const cartTotal = document.querySelector('.cart-total');
   const cartSubtotal = document.querySelector('.cart-subtotal__amount');
 
@@ -72,6 +75,7 @@ updateCartCounts = (cart) => {
     htmlHighlight(element,item_count)
   });
 
+  if (cartCountWithTotal) { htmlHighlight(cartCountWithTotal, `${itemOrItems}, ${sub_total}`); }
   if (cartTotal) { htmlHighlight(cartTotal, sub_total); }
   if (cartSubtotal) { htmlHighlight(cartSubtotal, sub_total); }
 

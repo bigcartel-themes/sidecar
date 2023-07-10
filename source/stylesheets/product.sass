@@ -34,7 +34,7 @@
       margin-top: 12px
 
       ul
-        justify-content: flex-start
+
 
       .splide__slide
         border-radius: var(--border-radius)
@@ -48,12 +48,12 @@
 
         &:hover
           img
-            border: 2px solid var(--link-hover-color) !important
+            border: 2px solid var(--border-color) !important
 
         &.is-active
           opacity: 1
           img
-            border: 2px solid var(--border-color) !important
+            border: 2px solid var(--link-hover-color) !important
 
         img
           width: 100%
@@ -77,7 +77,6 @@
       margin-bottom: 24px
       max-width: 100%
 
-
     .artists
       color: var(--header-text-color)
       font-size: .875rem
@@ -87,12 +86,11 @@
       color: var(--header-text-color)
       font-size: 1.125rem
       font-weight: 700
-      margin: 10px 0
+      margin: 4px 0 12px
 
       i
-        color: var(--highlight-color)
         font-style: normal
-        font-size: .875rem
+        font-size: .925rem
 
   #product-quantity
     display: none
@@ -193,3 +191,37 @@ a.product-form-cart-linker-link
   .arrow
     width: 12px
     transform: rotate(-90deg)
+
+.splide__pagination
+  bottom: 16px
+  position: absolute
+  z-index: 1
+  background: rgba(0,0,0,.8)
+  border-radius: 18px
+  display: flex
+  align-items: center
+  justify-content: center
+  transform: translateX(-50%)
+  left: 50%
+  padding: 6px 12px
+  gap: 4px
+  right: auto
+
+  li
+    display: flex
+
+  .splide__pagination__page
+    opacity: 1
+    background: #909090
+    height: 6px
+    width: 6px
+
+    &.is-active
+      background: #FFF
+
+.splide__arrow
+  opacity: 0
+  transition: opacity .2s ease
+
+.splide:hover .splide__arrow
+  opacity: 1
