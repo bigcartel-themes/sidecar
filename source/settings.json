@@ -33,12 +33,12 @@
     },
     {
       "variable": "header_color",
-      "label": "Header Text",
+      "label": "Header text",
       "default": "#000000"
     },
     {
       "variable": "font_color",
-      "label": "Body Text",
+      "label": "Body text",
       "default": "#000000"
     },
     {
@@ -47,8 +47,8 @@
       "default": "#374DCA"
     },
     {
-      "variable": "link_rollover",
-      "label": "Link Rollovers",
+      "variable": "link_hover",
+      "label": "Link hover",
       "default": "#273896"
     },
     {
@@ -73,32 +73,32 @@
     },
     {
       "variable": "sidebar_background_color",
-      "label": "Sidebar Background",
+      "label": "Sidebar background",
       "default": "#FFFFFF"
     },
     {
       "variable": "sidebar_link_color",
-      "label": "Sidebar Links",
+      "label": "Sidebar links",
       "default": "#000000"
     },
     {
-      "variable": "sidebar_link_rollover",
-      "label": "Sidebar Link Rollovers",
+      "variable": "sidebar_link_hover",
+      "label": "Sidebar link hover",
       "default": "#374DCA"
     },
     {
       "variable": "sidebar_border_color",
-      "label": "Sidebar Lines",
+      "label": "Sidebar lines",
       "default": "#999999"
     },
     {
       "variable": "announcement_text_color",
-      "label": "Announcement Message Text",
+      "label": "Announcement message text",
       "default": "#FFFFFF"
     },
     {
       "variable": "announcement_background_color",
-      "label": "Announcement Message Background",
+      "label": "Announcement message background",
       "default": "#235575"
     }
   ],
@@ -161,7 +161,7 @@
       "label": "Product grid info",
       "type": "select",
       "options": [
-        ["Show on hover", "rollover"],
+        ["Show on hover", "hover"],
         ["Under image", "under_image"]
       ],
       "default": "under_image",
@@ -291,7 +291,7 @@
     "label_font_weight": "700",
     "label_text_transform": "normal",
     "button_text_transform": "normal",
-    "button_hover_background_color": "{{ link_rollover }}",
+    "button_hover_background_color": "{{ link_hover }}",
     "button_font_weight": "700",
     "button_color": "{{ background_color }}",
     "button_hover_color": "{{ background_color }}",
@@ -309,7 +309,7 @@
     "error_font_size": "16px",
     "link_color": "{{ link_color }}",
     "link_font_size": "16px",
-    "link_hover_color": "{{ link_rollover }}",
+    "link_hover_color": "{{ link_hover }}",
     "secondary_font_size": "16px",
     "summary_inactive_item_border_color": "{{ border_color }}",
     "summary_submit_background_color": "transparent",
