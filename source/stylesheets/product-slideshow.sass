@@ -32,6 +32,9 @@
   .splide__slide
     transition: height .2s ease
 
+    img
+      height: auto
+
   .splide__slide:not(.is-active)
     height: 0
 
@@ -48,20 +51,27 @@
       border-radius: var(--border-radius)
       border: 2px solid transparent !important
 
-    &:hover
-      img
-        border: 2px solid var(--border-color) !important
+    @media (hover: hover)
+      &:hover
+        img
+          border: 2px solid var(--border-color) !important
 
     &.is-active
       opacity: 1
+
       img
-        border: 2px solid var(--link-hover-color) !important
+        border: 2px solid var(--border-color) !important
 
     img
       width: 100%
       height: 100%
       object-fit: cover
 
+.product-thumbnail-slideshow.splide:not( .is-overflow ) .splide__list
+  justify-content: center
+
+.product-thumbnail-slideshow.splide:not( .is-overflow ) .splide__slide:last-child
+  margin: 0 !important
 
 .splide__arrow
   opacity: 0
@@ -76,9 +86,3 @@
 @media (hover: hover)
   .splide:hover .splide__arrow
     opacity: 1
-
-.splide:not( .is-overflow ) .splide__list
-  justify-content: center
-
-.splide:not( .is-overflow ) .splide__slide:last-child
-  margin: 0 !important
