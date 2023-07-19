@@ -8,18 +8,19 @@
   --button-background-color: #{'{{ theme.button_background_color }}'}
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
 
-  --border-color: #{'{{ theme.border_color }}'}
+  --border-color: #{'rgba(var(--primary-color-rgb), .4)'}
+  --border-color-dark: #{'rgba(var(--primary-color-rgb), .8)'}
   --sidebar-background-color: #{'{{ theme.sidebar_background_color }}'}
   --sidebar-link-color: #{'{{ theme.sidebar_link_color }}'}
   --sidebar-link-hover-color: #{'{{ theme.sidebar_link_hover }}'}
-  --sidebar-border-color: #{'{{ theme.sidebar_border_color }}'}
+  --sidebar-border-color: #{'rgba(var(--sidebar-border-color-rgb), .4)'}
   --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
   --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
 
   --header-font: #{'{{ theme.header_font | font_family }}'}
   --body-font: #{'{{ theme.font | font_family }}'}
 
-  --border-radius: 3px
+  --border-radius: #{'{{ theme.border_radius }}'}
 
 /* @group base */
 
@@ -339,9 +340,7 @@ textarea
         height: 18px
 
   @media screen and (max-width: $break-small)
-    border-right-color: var(--sidebar-border-color)
-    border-right-style: solid
-    border-right-width: 1px
+    border-right: 1px solid var(--sidebar-border-color)
     left: 0
     min-height: 100%
     padding: 72px 32px 32px 32px
@@ -395,9 +394,7 @@ textarea
       font-size: 1.1rem
 
     section
-      border-top-color: var(--sidebar-border-color)
-      border-top-style: solid
-      border-top-width: 1px
+      border-top: 1px solid var(--sidebar-border-color)
       padding: 12px 0
 
       &.sidebar-cart
@@ -703,7 +700,3 @@ textarea
 /* Styles for the modal animation */
 #search-modal[aria-hidden="false"] .modal-content
   transform: translate(-50%, 0%)
-
-.preload *
-  transition: none !important
-  animation-duration: 0.001s

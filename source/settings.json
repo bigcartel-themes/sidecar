@@ -67,11 +67,6 @@
       "default": "#273896"
     },
     {
-      "variable": "border_color",
-      "label": "Lines",
-      "default": "#999999"
-    },
-    {
       "variable": "sidebar_background_color",
       "label": "Sidebar background",
       "default": "#FFFFFF"
@@ -85,11 +80,6 @@
       "variable": "sidebar_link_hover",
       "label": "Sidebar link hover",
       "default": "#374DCA"
-    },
-    {
-      "variable": "sidebar_border_color",
-      "label": "Sidebar lines",
-      "default": "#999999"
     },
     {
       "variable": "announcement_text_color",
@@ -208,6 +198,19 @@
       "description": "Sets the display of prices in your shop"
     },
     {
+      "variable": "border_radius",
+      "label": "Border radius",
+      "type": "select",
+      "options": [
+        ["None", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the border radius on images, buttons, and more"
+    },
+    {
       "variable": "instagram_url",
       "label": "Instagram URL",
       "type": "text",
@@ -274,10 +277,10 @@
     "content_horizontal_padding": "0",
     "content_border_radius": "0",
     "content_background_color": "transparent",
-    "step_inactive_border_color": "{{ border_color }}",
+    "step_inactive_border_color": "{{ font_color }}",
     "step_header_text_transform": "normal",
     "step_border_width": "1px",
-    "step_border_color": "{{ border_color }}",
+    "step_border_color": "{{ font_color }}",
     "step_header_font_weight": "normal",
     "step_header_color": "{{ header_color }}",
     "step_inactive_header_color": "opacify({{ header_color }}, .55)",
@@ -323,19 +326,19 @@
     "link_font_size": "16px",
     "link_hover_color": "{{ link_hover }}",
     "secondary_font_size": "16px",
-    "summary_inactive_item_border_color": "{{ border_color }}",
+    "summary_inactive_item_border_color": "{{ font_color }}",
     "summary_submit_background_color": "transparent",
     "summary_inactive_color": "opacify({{ font_color }}, .55)",
-    "summary_submit_border_color": "{{ border_color }}",
+    "summary_submit_border_color": "{{ font_color }}",
     "summary_font_size": "16px",
     "summary_item_border_width": "1px",
     "summary_submit_border_width": "1px",
-    "summary_item_list_border_color": "{{ border_color }}",
+    "summary_item_list_border_color": "{{ font_color }}",
     "summary_inactive_secondary_color": "opacify({{ font_color }}, .55)",
     "summary_item_list_border_width": "2px",
-    "summary_item_border_color": "{{ border_color }}",
+    "summary_item_border_color": "{{ font_color }}",
     "summary_secondary_color": "{{ font_color }}",
     "summary_color": "{{ font_color }}",
-    "summary_inactive_item_list_border_color": "{{ border_color }}"
+    "summary_inactive_item_list_border_color": "{{ font_color }}"
   }
 }

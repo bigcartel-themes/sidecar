@@ -4,12 +4,12 @@
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">.preload * { transition: none !important;display: none !important } .transition-preload { transition: none !important }</style>
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
-
     {{ head_content }}
   </head>
 
-  <body id="{{ page.permalink }}" class="preload {{ page.category }}">
+  <body id="{{ page.permalink }}" class="transition-preload preload {{ page.category }}">
     {% if theme.show_search %}
       <div id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-label" aria-hidden="true">
         <div class="modal-content">
@@ -183,6 +183,14 @@
       </main>
     </div>
     <script>
+      const themeColors = {
+        backgroundColor: '{{ theme.background_color }}',
+        primaryColor: '{{ theme.font_color }}',
+        borderColor: '{{ theme.font_color }}',
+        sidebarBorderColor: '{{ theme.sidebar_link_color }}',
+        announcementTextColor: '{{ theme.announcement_text_color }}',
+        announcementBackgroundColor: '{{ theme.announcement_background_color }}',
+      }
       let themeOptions = {
         hasAnnouncement: {% if theme.announcement_message_text %}true{%else %}false{%endif %}
       }
