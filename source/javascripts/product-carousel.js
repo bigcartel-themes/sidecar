@@ -1,15 +1,15 @@
-var productSlideshowContainer = document.querySelector('.product-slideshow');
-var thumbnailSlideshowContainer = document.querySelector('.product-thumbnail-slideshow');
+var productSlideshowContainer = document.querySelector('.product-carousel');
+var thumbnailSlideshowContainer = document.querySelector('.product-thumbnail-carousel');
 
 if (productSlideshowContainer) {
-  var productSlideshow = new Splide( '.product-slideshow'  , {
+  var productSlideshow = new Splide( '.product-carousel'  , {
     rewind: true,
     keyboard: true,
     arrows: thumbnailSlideshowContainer ? true : false,
     pagination: thumbnailSlideshowContainer ? true : false,
   });
   if (thumbnailSlideshowContainer) {
-    var thumbnailSlideshow = new Splide( '.product-thumbnail-slideshow'  , {
+    var thumbnailSlideshow = new Splide( '.product-thumbnail-carousel'  , {
       fixedWidth  : '12%',
       fixedHeight : '12%',
       gap         : 16,

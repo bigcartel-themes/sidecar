@@ -1,7 +1,7 @@
 <div class="page product_detail">
   <div class="gallery">
     {% if product.images.size > 1 %}
-      <div class="splide product-slideshow" role="group" aria-label="{{ product.name | escape }} images">
+      <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
           <div class="splide__track">
             <ul class="splide__list">
               {% for image in product.images %}
@@ -30,7 +30,7 @@
             </ul>
           </div>
         </div>
-        <div class="splide product-thumbnail-slideshow" role="group">
+        <div class="splide product-thumbnail-carousel" role="group">
           <div class="splide__track">
             <ul class="splide__list">
               {% for image in product.images %}
