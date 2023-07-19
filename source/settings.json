@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "1.10.10",
+  "version": "1.10.12",
   "images": [
     {
       "variable": "logo",
@@ -208,6 +208,12 @@
       "description": "Sets the display of prices in your shop"
     },
     {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
+    },
+    {
       "variable": "twitter_url",
       "label": "Twitter URL",
       "type": "text",
@@ -220,22 +226,28 @@
       "description": "Ex: http://facebook.com/bigcartel"
     },
     {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
+    },
+    {
+      "variable": "youtube_url",
+      "label": "YouTube URL",
+      "type": "text",
+      "description": "Ex: https://www.youtube.com/channel/bigcartel"
+    },
+    {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
       "description": "Ex: http://bigcartel.tumblr.com"
     },
     {
-      "variable": "instagram_url",
-      "label": "Instagram URL",
+      "variable": "bandcamp_url",
+      "label": "Bandcamp URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
-    },
-    {
-      "variable": "pinterest_url",
-      "label": "Pinterest URL",
-      "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
+      "description": "Ex: http://bigcartel.bandcamp.com"
     }
   ],
   "checkout": {

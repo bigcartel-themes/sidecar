@@ -135,23 +135,29 @@
             </ul>
           </section>
 
-          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or store.website != blank %}
+          {% if theme.twitter_url != blank or theme.facebook_url != blank or theme.instagram_url != blank or theme.tumblr_url != blank or theme.pinterest_url != blank or theme.youtube_url != blank or theme.bandcamp_url != blank or store.website != blank %}
             <section class="sidebar-social">
               <ul>
                 {% if theme.instagram_url != blank %}
-                  <li class="title"><a target="_blank" title="Instagram" href="{{ theme.instagram_url }}">Instagram</a></li>
+                  <li class="title"><a target="_blank" href="{{ theme.instagram_url }}">Instagram</a></li>
                 {% endif %}
                 {% if theme.twitter_url != blank %}
-                  <li class="title"><a target="_blank" title="Twitter" href="{{ theme.twitter_url }}">Twitter</a></li>
+                  <li class="title"><a target="_blank" href="{{ theme.twitter_url }}">Twitter</a></li>
                 {% endif %}
                 {% if theme.facebook_url != blank %}
-                  <li class="title"><a target="_blank" title="Facebook" href="{{ theme.facebook_url }}">Facebook</a></li>
+                  <li class="title"><a target="_blank" href="{{ theme.facebook_url }}">Facebook</a></li>
                 {% endif %}
                 {% if theme.pinterest_url != blank %}
-                  <li class="title"><a target="_blank" title="Pinterest" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                  <li class="title"><a target="_blank" href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                {% endif %}
+                {% if theme.youtube_url != blank %}
+                  <li class="title"><a target="_blank" href="{{ theme.youtube_url }}">YouTube</a></li>
                 {% endif %}
                 {% if theme.tumblr_url != blank %}
-                  <li class="title"><a target="_blank" title="Tumblr" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                  <li class="title"><a target="_blank" href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                {% endif %}
+                {% if theme.bandcamp_url != blank %}
+                  <li class="title"><a target="_blank" href="{{ theme.bandcamp_url }}">Bandcamp</a></li>
                 {% endif %}
                 {% if store.website != blank %}
                   <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
