@@ -4,9 +4,7 @@ var thumbnailSlideshowContainer = document.querySelector('.product-thumbnail-sli
 if (productSlideshowContainer) {
   var productSlideshow = new Splide( '.product-slideshow'  , {
     rewind: true,
-    type: 'fade',
     keyboard: true,
-    lazyLoad: 'sequential',
     arrows: thumbnailSlideshowContainer ? true : false,
     pagination: thumbnailSlideshowContainer ? true : false,
   });
@@ -14,7 +12,7 @@ if (productSlideshowContainer) {
     var thumbnailSlideshow = new Splide( '.product-thumbnail-slideshow'  , {
       fixedWidth  : '12%',
       fixedHeight : '12%',
-      gap         : 10,
+      gap         : 16,
       rewind      : true,
       pagination  : false,
       isNavigation: true,
@@ -33,7 +31,6 @@ if (productSlideshowContainer) {
         },
       },
       arrows: false,
-      lazyLoad: 'sequential',
     });
     productSlideshow.sync( thumbnailSlideshow );
     productSlideshow.mount();
