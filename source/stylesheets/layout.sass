@@ -34,8 +34,9 @@ html
 
 body
   background-color: var(--background-color)
-  background-image: #{"{% if theme.background_image != blank %} url(\"{{ theme.background_image.url }}\") {% else %} none {% endif %}"}
+  background-image: #{"{% if theme.background_image != blank %} url(\"{{ theme.background_image.url | constrain: 200 }}\") {% else %} none {% endif %}"}
   background-repeat: repeat
+  background-size: 100px
   color: var(--body-text-color)
   font-family: var(--body-font)
   font-size: 1rem
@@ -515,6 +516,7 @@ textarea
       img
         display: block
         height: 100%
+        width: auto
 
   .cart
     display: flex
@@ -621,7 +623,7 @@ textarea
   position: absolute
   top: 0
   left: 50%
-  height: 250px
+  height: 160px
   transform: translate(-50%, -100%)
   background-color: var(--background-color)
   color: var(--body-text-color)
