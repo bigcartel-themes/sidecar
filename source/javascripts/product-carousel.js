@@ -10,12 +10,11 @@ if (productSlideshowContainer) {
   });
   if (thumbnailSlideshowContainer) {
     var thumbnailSlideshow = new Splide( '.product-thumbnail-carousel'  , {
-      fixedWidth  : '10%',
-      fixedHeight : '10%',
-      gap: '0',
+      fixedWidth  : '16%',
+      fixedHeight : '16%',
+      gap: '12px',
       rewind      : true,
       pagination  : false,
-      focus: 'center',
       updateOnMove: true,
       drag: 'free',
       isNavigation: true,
