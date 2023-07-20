@@ -10,26 +10,15 @@ if (productSlideshowContainer) {
   });
   if (thumbnailSlideshowContainer) {
     var thumbnailSlideshow = new Splide( '.product-thumbnail-carousel'  , {
-      fixedWidth  : '12%',
-      fixedHeight : '12%',
-      gap         : 16,
+      fixedWidth  : '10%',
+      fixedHeight : '10%',
+      gap: '0',
       rewind      : true,
       pagination  : false,
+      focus: 'center',
+      updateOnMove: true,
+      drag: 'free',
       isNavigation: true,
-      breakpoints : {
-        1600: {
-          fixedWidth : '15%',
-          fixedHeight: '15%',
-        },
-        1200: {
-          fixedWidth : '20%',
-          fixedHeight: '20%',
-        },
-        600: {
-          fixedWidth : '20%',
-          fixedHeight: '20%',
-        },
-      },
       arrows: false,
     });
     productSlideshow.sync( thumbnailSlideshow );
