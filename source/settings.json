@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "1.10.12",
+  "version": "1.10.13",
   "images": [
     {
       "variable": "logo",
@@ -32,6 +32,11 @@
       "default": "#FFFFFF"
     },
     {
+      "variable": "sidebar_background_color",
+      "label": "Sidebar background",
+      "default": "#FFFFFF"
+    },
+    {
       "variable": "header_color",
       "label": "Header text",
       "default": "#000000"
@@ -52,6 +57,16 @@
       "default": "#273896"
     },
     {
+      "variable": "sidebar_link_color",
+      "label": "Sidebar links",
+      "default": "#000000"
+    },
+    {
+      "variable": "sidebar_link_hover",
+      "label": "Sidebar link hover",
+      "default": "#374DCA"
+    },
+    {
       "variable": "button_text_color",
       "label": "Button text",
       "default": "#FFFFFF"
@@ -67,29 +82,14 @@
       "default": "#273896"
     },
     {
-      "variable": "sidebar_background_color",
-      "label": "Sidebar background",
-      "default": "#FFFFFF"
-    },
-    {
-      "variable": "sidebar_link_color",
-      "label": "Sidebar links",
-      "default": "#000000"
-    },
-    {
-      "variable": "sidebar_link_hover",
-      "label": "Sidebar link hover",
-      "default": "#374DCA"
+      "variable": "announcement_background_color",
+      "label": "Announcement message background",
+      "default": "#235575"
     },
     {
       "variable": "announcement_text_color",
       "label": "Announcement message text",
       "default": "#FFFFFF"
-    },
-    {
-      "variable": "announcement_background_color",
-      "label": "Announcement message background",
-      "default": "#235575"
     }
   ],
   "options": [
