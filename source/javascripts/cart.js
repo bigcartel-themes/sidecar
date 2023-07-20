@@ -75,7 +75,7 @@ updateCartCounts = (cart) => {
     htmlHighlight(element,item_count)
   });
 
-  if (cartCountWithTotal) { htmlHighlight(cartCountWithTotal, `${itemOrItems}, ${sub_total}`); }
+  if (cartCountWithTotal) { htmlHighlight(cartCountWithTotal, `${itemOrItems}: ${sub_total}`); }
   if (cartTotal) { htmlHighlight(cartTotal, sub_total); }
   if (cartSubtotal) { htmlHighlight(cartSubtotal, sub_total); }
 
