@@ -199,16 +199,16 @@
     },
     {
       "variable": "border_radius",
-      "label": "Border radius",
+      "label": "Rounded corners",
       "type": "select",
       "options": [
-        ["None", "0"],
+        ["Off", "0"],
         ["Small", "2px"],
         ["Medium", "4px"],
         ["Large", "8px"]
       ],
       "default": "4px",
-      "description": "Controls the border radius on images, buttons, and more"
+      "description": "Controls the rounded corner style on images and other site elements"
     },
     {
       "variable": "instagram_url",
