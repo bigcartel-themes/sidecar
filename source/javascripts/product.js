@@ -41,7 +41,18 @@ function resetProductForm() {
 var lightbox = new PhotoSwipeLightbox({
   gallery: '.gallery',
   children: 'a',
-  padding: { top: 100, bottom: 100, left: 100, right: 100 },
+  paddingFn: (viewportSize) => {
+    let paddingVal = 100;
+    if (viewportSize.x < 768) {
+      paddingVal = 16;
+    }
+    return {
+      top: paddingVal,
+      bottom: paddingVal,
+      left: paddingVal,
+      right: paddingVal
+    };
+  },
   bgOpacity: 1,
   pswpModule: PhotoSwipe
 });
