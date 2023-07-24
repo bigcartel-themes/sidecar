@@ -19,6 +19,7 @@ if (productSlideshowContainer) {
       drag: 'free',
       isNavigation: true,
       arrows: false,
+      lazyLoad: 'sequential',
     });
     productSlideshow.sync( thumbnailSlideshow );
     productSlideshow.mount();
