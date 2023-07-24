@@ -38,3 +38,11 @@ function resetProductForm() {
     addToCartButtonText.innerHTML = addText;
   }, 1500);
 }
+var lightbox = new PhotoSwipeLightbox({
+  gallery: '.gallery',
+  children: 'a',
+  padding: { top: 100, bottom: 100, left: 100, right: 100 },
+  bgOpacity: 1,
+  pswpModule: PhotoSwipe
+});
+lightbox.init();

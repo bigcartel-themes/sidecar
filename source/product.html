@@ -2,13 +2,14 @@
   <div class="gallery">
     {% if product.images.size > 1 %}
       <div class="splide product-carousel" role="group" aria-label="{{ product.name | escape }} images">
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% for image in product.images %}
-                {% assign image_width = image.width | times: 1.0 %}
-                {% assign image_height = image.height | times: 1.0 %}
-                {% assign aspect_ratio = image_width | divided_by: image_height %}
-                <li class="splide__slide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for image in product.images %}
+              {% assign image_width = image.width | times: 1.0 %}
+              {% assign image_height = image.height | times: 1.0 %}
+              {% assign aspect_ratio = image_width | divided_by: image_height %}
+              <li class="splide__slide">
+                <a class="gallery-link" href="{{ image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height| times: 2 }}" >
                   <img
                     alt="Image of {{ product.name | escape }}"
                     class="blur-up product-image lazyload"
@@ -25,47 +26,52 @@
                     height="{{ image.height }}"
                     data-sizes="auto"
                   >
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
-        <div class="splide product-thumbnail-carousel" role="group">
-          <div class="splide__track">
-            <ul class="splide__list">
-              {% for image in product.images %}
-                <li class="splide__slide">
-                  <img
-                  alt="Image of {{ product.name | escape }}"
-                  class="blur-up lazyload"
-                  src="{{ image | product_image_url | constrain: 30 }}"
-                  data-srcset="
-                    {{ image | product_image_url | constrain: 60 }} 60w,
-                    {{ image | product_image_url | constrain: 120 }} 120w,
-                    {{ image | product_image_url | constrain: 200 }} 200w,
-                  "
-                  data-sizes="auto"
-                  >
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+      </div>
+      <div class="splide product-thumbnail-carousel" role="group">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {% for image in product.images %}
+              <li class="splide__slide">
+                <img
+                alt="Image of {{ product.name | escape }}"
+                class="blur-up lazyload"
+                src="{{ image | product_image_url | constrain: 30 }}"
+                data-srcset="
+                  {{ image | product_image_url | constrain: 60 }} 60w,
+                  {{ image | product_image_url | constrain: 120 }} 120w,
+                  {{ image | product_image_url | constrain: 200 }} 200w,
+                "
+                data-sizes="auto"
+                >
+              </li>
+            {% endfor %}
+          </ul>
         </div>
+      </div>
     {% else %}
-      <img
-        alt="Image of {{ product.name | escape }}"
-        class="blur-up product-image lazyload"
-        fetchpriority="high"
-        src="{{ product.image | product_image_url | constrain: 200 }}"
-        data-srcset="
-          {{ product.image | product_image_url | constrain: 400 }} 400w,
-          {{ product.image | product_image_url | constrain: 700 }} 700w,
-          {{ product.image | product_image_url | constrain: 1000 }} 1000w,
-          {{ product.image | product_image_url | constrain: 1400 }} 1400w,
-          {{ product.image | product_image_url | constrain: 2000 }} 2000w,
-        "
-        data-sizes="auto"
-      >
+      {% assign image_width = image.width | times: 1.0 %}
+      {% assign image_height = image.height | times: 1.0 %}
+      <a class="gallery-link" href="{{ product.image | product_image_url | constrain: 2000 }}" data-pswp-width="{{ image_width | times: 2 }}" data-pswp-height="{{ image_height| times: 2 }}" >
+        <img
+          alt="Image of {{ product.name | escape }}"
+          class="blur-up product-image lazyload"
+          fetchpriority="high"
+          src="{{ product.image | product_image_url | constrain: 200 }}"
+          data-srcset="
+            {{ product.image | product_image_url | constrain: 400 }} 400w,
+            {{ product.image | product_image_url | constrain: 700 }} 700w,
+            {{ product.image | product_image_url | constrain: 1000 }} 1000w,
+            {{ product.image | product_image_url | constrain: 1400 }} 1400w,
+            {{ product.image | product_image_url | constrain: 2000 }} 2000w,
+          "
+          data-sizes="auto"
+        >
+      </a>
     {% endif %}
   </div>
   <div class="detail">
