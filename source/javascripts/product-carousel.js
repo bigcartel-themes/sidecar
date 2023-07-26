@@ -10,8 +10,14 @@ if (productSlideshowContainer) {
   });
   if (thumbnailSlideshowContainer) {
     var thumbnailSlideshow = new Splide( '.product-thumbnail-carousel'  , {
-      fixedWidth  : '16%',
-      fixedHeight : '16%',
+      fixedWidth  : '12%',
+      fixedHeight : '12%',
+      breakpoints: {
+        768: {
+          fixedWidth: '16%',
+          fixedHeight: '16%',
+        }
+      },
       gap: '12px',
       rewind      : true,
       pagination  : false,
