@@ -85,15 +85,17 @@
     a
       text-decoration: underline
 
+    p:last-child
+      margin-bottom: 0
+
   .availability
-    border-top-color: var(--border-color)
-    border-top-style: solid
-    border-top-width: 1px
-    margin-top: 16px
+    border-top: 1px solid var(--border-color)
     padding-top: 16px
+    margin-top: 16px
 
     .availability-header
       font-size: .925rem
+      font-weight: 700
       margin-bottom: 0
 
     ul
@@ -101,11 +103,10 @@
 
     li
       display: flex
-      font-size: .875rem
-      font-weight: 700
-      margin-bottom: 5px
+      font-size: .825rem
+      margin-bottom: 6px
       width: 100%
-      padding: 5px
+      padding: 2px 6px
       position: relative
 
     .inventory-level-background

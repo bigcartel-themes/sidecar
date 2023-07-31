@@ -7,7 +7,7 @@
   height: 100%
   top: 0
   left: 0
-  background-color: rgba(0,0,0,.2)
+  background-color: rgba(0,0,0,.4)
   transition: opacity 0.2s ease, visibility 0.2s ease
 
 #search-modal[aria-hidden="false"]
@@ -18,13 +18,17 @@
   position: absolute
   top: 0
   left: 50%
-  height: 160px
+  height: 240px
   transform: translate(-50%, -100%)
   background-color: var(--background-color)
+  border-bottom: 1px solid var(--sidebar-border-color)
   color: var(--body-text-color)
   text-align: center
   transition: transform .2s ease, height .2s ease
   width: 100%
+
+  @media screen and (max-width: $break-small)
+    height: 160px
 
   .wrapper
     display: flex
