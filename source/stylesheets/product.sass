@@ -1,0 +1,158 @@
+.product_detail
+  display: flex
+  column-gap: 64px
+
+  @media screen and (max-width: $break-extra-large)
+    column-gap: 32px
+
+  @media screen and (max-width: $break-medium)
+    display: grid
+    row-gap: 24px
+
+  .gallery
+    max-width: 1000px
+    position: relative
+    width: 100%
+
+    @media screen and (max-width: $break-medium)
+      max-width: 100%
+
+    .product-image
+      border-radius: var(--border-radius)
+      height: auto
+      width: 100%
+
+.product_detail
+
+  h1
+    margin-bottom: 0
+
+  .reset-selection-button-container
+    display: none
+    margin-bottom: 8px
+
+  .detail
+    max-width: 380px
+    width: 100%
+
+    @media screen and (max-width: $break-medium)
+      margin-bottom: 24px
+      max-width: 100%
+
+    .artists
+      color: var(--header-text-color)
+      font-size: .875rem
+      margin-bottom: 0
+
+    .price
+      color: var(--header-text-color)
+      font-size: 1.125rem
+      font-weight: 700
+      margin: 4px 0 12px
+
+      i
+        font-style: normal
+        font-size: .925rem
+
+  #product-quantity
+    display: none
+
+  #instant-checkout-button
+    margin-bottom: 8px
+
+  .product-form
+    border-bottom: 1px solid var(--border-color)
+    border-top: 1px solid var(--border-color)
+    padding-top: 16px
+    display: grid
+    padding-bottom: 4px
+
+  .single-select
+    margin-bottom: 12px
+
+  .add-to-cart-button
+    margin-bottom: 12px
+
+  .product_option_groups
+    display: grid
+    gap: 8px
+    margin-bottom: 12px
+
+  .product-description
+    padding-bottom: 16px
+    padding-top: 16px
+
+    a
+      text-decoration: underline
+
+    p:last-child
+      margin-bottom: 0
+
+  .availability
+    border-top: 1px solid var(--border-color)
+    padding-top: 16px
+    margin-top: 16px
+
+    .availability-header
+      font-size: .925rem
+      font-weight: 700
+      margin-bottom: 0
+
+    ul
+      margin-top: 16px
+
+    li
+      display: flex
+      font-size: .825rem
+      margin-bottom: 6px
+      width: 100%
+      padding: 2px 6px
+      position: relative
+
+    .inventory-level-background
+      background-color: var(--link-color)
+      border-radius: var(--border-radius)
+      color: var(--body-text-color)
+      height: 100%
+      left: 0
+      opacity: .1
+      position: absolute
+      top: 0
+
+    .inventory-status
+      font-style: normal
+      margin-left: auto
+
+.product-form-cart-linker
+  display: grid
+  grid-template-rows: 0fr
+  transition: grid-template-rows .2s ease
+
+  &.added
+    grid-template-rows: 1fr
+
+.product-form-cart-linker-slider
+  overflow: hidden
+
+a.product-form-cart-linker-link
+  border: 2px solid var(--link-color)
+  border-radius: var(--border-radius)
+  color: var(--link-color)
+  font-family: var(--body-font)
+  font-weight: 700
+  height: 50px
+  padding: 0 16px
+  display: flex
+  gap: 6px
+  justify-content: center
+  align-items: center
+  transition: border-color .2s ease, color .2s ease
+  margin-bottom: 12px
+
+  &:hover, &:focus
+    border: 2px solid var(--link-hover-color)
+    color: var(--link-hover-color)
+
+  .arrow
+    width: 12px
+    transform: rotate(-90deg)

@@ -1,0 +1,228 @@
+.product-list-container
+  position: relative
+
+.product-list
+  align-items: flex-start
+  display: grid
+  gap: 32px
+  margin: 0
+  width: 100%
+
+  &.product-image-small
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr ))
+  &.product-image-medium
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr ))
+
+    @media screen and (max-width: $break-large)
+      grid-template-columns: repeat(auto-fill, minmax(210px,1fr ))
+
+  &.product-image-large
+    grid-template-columns: repeat(auto-fill, minmax(350px,1fr ))
+
+  @media screen and (max-width: $break-large)
+    gap: 24px
+
+  @media screen and (max-width: $break-small)
+    grid-template-columns: repeat(2, 1fr) !important
+    gap: 16px
+
+.prod-thumb
+  color: var(--body-text-color)
+  display: block
+  padding: 0
+  position: relative
+  text-decoration: none
+  vertical-align: middle
+
+  &.under_image
+    &:hover
+      .prod-thumb-name
+        text-decoration: underline
+
+    .prod-thumb-info-headers
+      padding-bottom: 16px
+
+  &.hover
+    margin-bottom: 0px
+
+    @media screen and (min-width: $break-small+1)
+      .prod-thumb-info
+        border-radius: var(--border-radius)
+        display: flex
+        align-items: center
+        background: var(--button-background-color)
+        height: 100%
+        left: 0
+        padding: 0 16px
+        position: absolute
+        top: 0
+        transition: opacity .2s ease
+        width: 100%
+        opacity: 0
+
+        *
+          color: var(--button-text-color)
+
+    &:hover, &:focus
+      .prod-thumb-info
+        opacity: 1
+
+.prod-thumb-container
+  position: relative
+  width: 100%
+
+  @media screen and (min-width: $break-small + 1)
+    .hover &
+      height: 100%
+
+.product-list-image-container
+  overflow: hidden
+  position: relative
+
+  &.product-list-image-container-default:before
+    display: none
+
+  &:before
+    display: block
+    width: 100%
+    content: ""
+    padding-bottom: 100%
+    height: 0
+
+.product-list-image
+  border-radius: var(--border-radius)
+  transform: translate3d(0, 0, 0)
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+  &.grid-default
+    position: relative
+
+  &.grid-cover
+    object-fit: cover
+
+  &.grid-contain
+    object-fit: contain
+
+.prod-thumb-info
+  padding-top: 16px
+
+  @media screen and (max-width: $break-small)
+    padding-top: 8px
+
+.prod-thumb-info-headers
+  display: flex
+  justify-content: flex-start
+  flex-direction: column
+  font-weight: bold
+  line-height: 1.25em
+  padding: 0
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+.prod-thumb-name
+  position: relative
+  overflow-wrap: break-word
+  word-break: break-word
+
+.prod-thumb-price
+  font-size: .9em
+  margin-top: 8px
+
+.pagination
+  display: grid
+  font-size: 1rem
+  padding: 32px 0
+  justify-content: center
+  margin-top: 32px
+
+  @media screen and (max-width: $break-small)
+    margin-top: 8px
+
+.page-arrows
+  display: flex
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
+  height: 46px
+
+  .previous, .next
+    display: none
+
+.page-link
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  min-width: 100px
+  padding: 0 12px
+
+  @media screen and (max-width: $break-small)
+    min-width: 44px
+
+    span
+      display: none
+
+  svg
+    width: 12px
+
+  &--previous
+    border-right: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(90deg)
+
+  &--next
+    border-left: 1px solid var(--border-color)
+
+    svg
+      transform: rotate(-90deg)
+
+  &.disabled
+    opacity: .5
+
+  &:not(.disabled)
+    &:hover, &:focus
+      text-decoration: underline
+
+.page-numbers
+  display: flex
+  align-items: center
+  justify-content: center
+
+  span, a
+    display: flex
+    cursor: pointer
+    align-items: center
+    justify-content: center
+    height: 100%
+    min-width: 44px
+    text-align: center
+
+    @media screen and (max-width: $break-small)
+      min-width: 40px
+
+    &.gap
+      opacity: .5
+      padding: 8px
+      min-width: 0
+
+    &.current
+      font-weight: bold
+
+    &:not(.current):not(.gap)
+      &:hover, &:focus
+        background: var(--button-background-hover-color)
+        color: var(--button-text-color)
+
+.blur-up
+  transition: filter .2s
+  filter: blur(5px)
+  transform: translate3d(0, 0, 0)
+
+  &.lazyloaded
+    filter: blur(0)

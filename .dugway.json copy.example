@@ -4,7 +4,5 @@
   },
   "customization": {
     "background_color": "#336699",
-    "product_list_layout": "masonry",
-    "fixed_sidebar": false
   }
 }

@@ -1,40 +1,96 @@
 <div class="page products">
-  <h1>{{ page.name }}</h1>
+  <h1>{% if page.full_url contains 'search=' %}Product search{% else %}{{ page.name }}{% endif %}</h1>
   {% paginate products from products.current by theme.products_per_page %}
     {% if products != blank %}
-      <ul class="products_list">
-        {% for product in products %}
-          <li class="product">
-            <a href="{{ product.url }}">
-              <img alt="" src="{{ product.image | product_image_url | constrain: 780 }}">
-              <div class="product_info">
-                <div class="product_name">{{ product.name }}</div>
-                <div class="{% if product.on_sale %}sale{% else %}price{% endif %} {{ product.status }}">
-                  {{ product.default_price | money: theme.money_format }}
-                  {% case product.status %}
-                    {% when 'sold-out' %} / Sold Out
-                    {% when 'coming-soon' %} / Coming Soon
-                    {% when 'active' %} {% if product.on_sale %} / On Sale{% endif %}
-                  {% endcase %}
+      <div class="product-list-container">
+        <div class="product-list product-image-{{ theme.product_grid_image_size }}" >
+          {% for product in products %}
+            {% assign image_width = product.image.width | times: 1.0 %}
+            {% assign image_height = product.image.height | times: 1.0 %}
+            {% assign aspect_ratio = image_width | divided_by: image_height %}
+            {% assign product_status = '' %}
+            {% case product.status %}
+              {% when 'active' %}
+                {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+              {% when 'sold-out' %}
+                {% assign product_status = 'Sold out' %}
+              {% when 'coming-soon' %}
+                {% assign product_status = 'Coming soon' %}
+            {% endcase %}
+            {% capture image_class %}
+              {% if product.image.height > product.image.width %}
+                image-tall
+              {% elsif product.image.height < product.image.width %}
+                image-wide
+              {% else %}
+                image-square
+              {% endif %}
+            {% endcapture %}
+            <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <div class="prod-thumb-container">
+                <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
+                  <img
+                    alt=""
+                    class="blur-up product-list-image lazyload grid-{{ theme.grid_image_style }}"
+                    src="{{ product.image | product_image_url | constrain: 100 }}"
+                    {% unless theme.grid_image_style == 'default' %}data-aspectratio="{{ aspect_ratio }}"{% endunless %}
+                    data-srcset="
+                      {{ product.image | product_image_url | constrain: 350 }} 350w,
+                      {{ product.image | product_image_url | constrain: 400 }} 400w,
+                      {{ product.image | product_image_url | constrain: 500 }} 500w,
+                      {{ product.image | product_image_url | constrain: 650 }} 650w,
+                      {{ product.image | product_image_url | constrain: 800 }} 800w,
+                      {{ product.image | product_image_url | constrain: 1000 }} 1000w,
+                      {{ product.image | product_image_url | constrain: 1200 }} 1200w,
+                      {{ product.image | product_image_url | constrain: 1300 }} 1300w
+                    "
+                    data-sizes="auto"
+                  >
+                </div>
+              </div>
+              <div class="prod-thumb-info">
+                <div class="prod-thumb-background"></div>
+                <div class="prod-thumb-info-headers">
+                  <div class="prod-thumb-name">{{ product.name }}</div>
+                  <div class="prod-thumb-price">
+                    {% if product.variable_pricing %}
+                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                    {% else %}
+                      {{ product.default_price | money: theme.money_format }}
+                    {% endif %}
+                    {% if product_status != blank %}<span class="prod-thumb-status">/ {{ product_status }}</span>{% endif %}
+                  </div>
                 </div>
               </div>
             </a>
-          </li>
-        {% endfor %}
-      </ul>
-     {% if paginate.pages > 1 %}
-        <a class="button view-more-button" style="display: none">Load Products</a>
-        <div class="pagination"><a class="button next-button paginate-button" href="{{ paginate.next.url }}">{{ paginate.next.title }}</a></div>
-        <div class="page-load-status">
-          <div class="infinite-scroll-request">
-            <div class="loading-more"><p>Loading...</p></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+
+          <div class="page-arrows">
+            {% if paginate.previous.is_link %}
+              <a aria-label="Go to previous page" class="page-link page-link--previous" href="{{ paginate.previous.url }}"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>Previous</span></a>
+            {% else %}
+              <span class="page-link page-link--previous disabled"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>Previous</span></span>
+            {% endif %}
+
+            {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
+
+            {% if paginate.next.is_link %}
+              <a aria-label="Go to next page" class="page-link page-link--next" href="{{ paginate.next.url }}"><span>Next</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></a>
+            {% else %}
+              <span class="page-link page-link--next disabled"><span>Next</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></span>
+            {% endif %}
           </div>
-          <div class="infinite-scroll-last infinite-scroll-message"><p>You've reached the end.</p></div>
-          <div class="infinite-scroll-error infinite-scroll-message"><p>No more pages to load.</p></div>
+
         </div>
       {% endif %}
     {% else %}
-      <p class="alert noproducts">No products found.</p>
+      <div class="alert-message">
+        <div class="alert-message__text">No products found.</div>
+      </div>
     {% endif %}
   {% endpaginate %}
 </div>

@@ -1,83 +1,109 @@
-Store.cart = window.Store.cart = {
-  init: function(_super) {
-    this["super"] = _super;
-    this.form = $('#cart_form');
-    this.timer = null;
-    this.form.find('input, select').each(this.setDefaultVal);
-    this.form.on('keydown change', '[name*="cart[update]"]', $.proxy(this.handleItemUpdate, this));
-    return this.form.on('click', '.remove-item', $.proxy(this.handleItemRemove, this));
-  },
-  setDefaultVal: function() {
-    var elm;
-    elm = $(this);
-    return elm.data('defaultVal', elm.val());
-  },
-  handleItemRemove: function(e) {
-    var link;
-    e.preventDefault();
-    this["super"].clearErrors();
-    this["super"].working();
-    link = $(e.currentTarget);
-    link.addClass('loading');
-    return Cart.removeItem(link.data('item-id'), $.proxy(this.updateCart, this));
-  },
-  handleItemUpdate: function(e) {
-    var elm, val;
-    elm = $(e.currentTarget);
-    eventType = e.type;
-    val = elm.val();
-    if (!(val === '' || val === elm.data('defaultVal'))) {
-      clearTimeout(this.timer);
-      if (eventType == 'keydown' && e.keyCode == 13) {
-        e.preventDefault();
-        this.timer = setTimeout($.proxy(this.processItemUpdate, this, elm, val), 20);
-        return false;
-      }
-      else {
-        return this.timer = setTimeout($.proxy(this.processItemUpdate, this, elm, val), 20);
-      }
-    }
-
-  },
-  processItemUpdate: function(elm, val) {
-    elm.data('defaultVal', val);
-    this["super"].clearErrors();
-    this["super"].working();
-    return Cart.updateFromForm('cart_form', $.proxy(this.updateCart, this));
-  },
-  updateCart: function(cart) {
-    this["super"].finished();
-    this["super"].updateCart(cart);
-    if (cart.item_count) {
-      this.updateItems(cart);
-      return this.updateTotal(cart);
-    } else {
-      return this.form.fadeOut(300, function() {
-        $(this).remove();
-        return $('.cart_empty').fadeIn(300);
+const cartForm = document.querySelector('.cart-form');
+const qtyButtons = document.querySelectorAll('.qty-button');
+const qtyInputs = document.querySelectorAll('.product-quantity');
+const removeButtons = document.querySelectorAll('.cart-remove-item');
+removeButtons?.forEach((removeButton) => {
+  removeButton.addEventListener('click', (event) => {
+    const item_id = parseInt(event.currentTarget.dataset.itemId);
+    const new_value = 0;
+    if (item_id > 0) {
+      Cart.removeItem(item_id, (cart) => {
+        processUpdate('', item_id, new_value, cart);
       });
     }
-  },
-  updateItems: function(cart) {
-    var removed;
-    removed = 0;
-    return $('.cart_item[data-item-id]', this.form).each(function(index) {
-      var elm, id, item;
-      elm = $(this);
-      id = Number(elm.data('item-id'));
-      item = cart.items[index - removed];
-      if (item && id === item.id) {
-        elm.find('.cart_item_price_update').htmlHighlight(Format.money(item.price, true, true));
-        elm.find('.cart_item_quantity_update').htmlHighlight(item.quantity);
-      } else {
-        removed++;
-        return elm.slideUp('fast', function() {
-          return elm.remove();
+  })
+})
+qtyInputs?.forEach((qtyInput) => {
+  qtyInput.addEventListener('change', (event) => {
+    const input = event.target;
+    const item_id = parseInt(input.dataset.itemId);
+    const new_value = parseInt(input.value);
+    if (item_id > 0) {
+      Cart.updateItem(item_id, new_value, (cart) => {
+        processUpdate(input, item_id, new_value, cart);
+      });
+    }
+  })
+  qtyInput.addEventListener('keydown', (event) => {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      const item_id = parseInt(event.target.dataset.itemId);
+      const new_value = parseInt(event.target.value);
+      const input = event.target;
+      if (item_id > 0) {
+        Cart.updateItem(item_id, new_value, (cart) => {
+          processUpdate(input, item_id, new_value, cart);
         });
       }
-    });
-  },
-  updateTotal: function(cart) {
-    return $('.cart_subtotal_amount', this.form).htmlHighlight(Format.money(cart.total, true, true));
+    }
+  })
+})
+
+qtyButtons?.forEach((qtyButton) => {
+  qtyButton.addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    const item_id = parseInt(button.dataset.itemId);
+    const input = document.querySelector(".product-quantity[data-item-id='" + item_id + "']");
+    const current_val = input ? parseInt(input.value) : 0;
+    let new_value = 0;
+    if (item_id > 0) {
+      if (button.dataset.func == "decrease") {
+        new_value = current_val - 1;
+      }
+      if (button.dataset.func == "increase") {
+        new_value = current_val + 1;
+      }
+      Cart.updateItem(item_id, new_value, (cart) => {
+        processUpdate(input, item_id, new_value, cart);
+      });
+    }
+  })
+})
+
+updateCartCounts = (cart) => {
+  const sub_total = Format.money(cart.total, true, true);
+  const item_count = cart.item_count;
+  const itemOrItems = Format.pluralize(item_count, 'item', 'items');
+
+  const cartCountElements = document.querySelectorAll('.cart-count');
+  const cartCountWithTotal = document.querySelector('.cart-details');
+
+  const cartTotal = document.querySelector('.cart-total');
+  const cartSubtotal = document.querySelector('.cart-subtotal__amount');
+
+  cartCountElements.forEach((element) => {
+    htmlHighlight(element,item_count)
+  });
+
+  if (cartCountWithTotal) { htmlHighlight(cartCountWithTotal, `${itemOrItems}: ${sub_total}`); }
+  if (cartTotal) { htmlHighlight(cartTotal, sub_total); }
+  if (cartSubtotal) { htmlHighlight(cartSubtotal, sub_total); }
+
+}
+
+processUpdate = (input, item_id, new_val, cart) => {
+  if (cart.item_count == 0) {
+    location.reload();
+    return false;
   }
-};
+
+  document.querySelector('.errors')?.remove();
+
+  if (input) {
+    input.value = new_val;
+  }
+  updateCartCounts(cart);
+  if (new_val > 0) {
+    for (itemIndex = 0; itemIndex < cart.items.length; itemIndex++) {
+      if (cart.items[itemIndex].id == item_id) {
+        item_price = cart.items[itemIndex].price;
+        formatted_item_price = Format.money(item_price, true, true);
+        let priceElement = document.querySelector('.cart-item-price__update[data-item-id="'+item_id+'"]');
+        htmlHighlight(priceElement,formatted_item_price);
+      }
+    }
+  }
+  else {
+    document.querySelector('.cart-item[data-item-id="'+item_id+'"]').remove();
+  }
+}

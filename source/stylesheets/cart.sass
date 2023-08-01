@@ -1,0 +1,172 @@
+#cart .page
+  max-width: 760px
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+.cart-header
+  display: flex
+  align-items: flex-end
+  justify-content: flex-start
+
+  margin-bottom: 32px
+
+  h1
+    margin-bottom: 0
+
+.continue-shopping
+  font-size: .925rem
+  margin-left: auto
+  text-decoration: underline
+
+.cart-items
+  border-bottom: 1px solid var(--border-color)
+
+.cart-item
+  display: grid
+  grid-template-columns: auto 1fr 148px auto
+  justify-content: flex-start
+  align-items: flex-start
+  border-top: 1px solid var(--border-color)
+  padding: 16px 0
+  gap: 16px
+
+  @media (max-width: $break-medium)
+    grid-template-columns: auto 1fr auto
+    grid-template-rows: repeat(2, auto)
+
+  .cart-item-image-holder
+    @media screen and (max-width: $break-medium)
+      grid-area: 1 / 1 / 3 / 2
+
+  .cart-item-image-link
+    display: block
+    height: 88px
+    overflow: hidden
+    width: 88px
+
+    @media screen and (max-width: $break-medium)
+      height: 72px
+      width: 72px
+
+    img
+      border-radius: var(--border-radius)
+      height: 100%
+      object-fit: cover
+      width: 100%
+
+  .cart-item-detail
+    padding-right: 48px
+
+    @media (max-width: $break-medium)
+      grid-area: 1 / 2 / 2 / 3
+      padding-right: 0
+
+  .product-name
+    font-weight: bold
+    word-break: break-word
+
+  .option-name
+    font-size: .925rem
+
+  input
+    height: 100%
+    padding: 8px
+    text-align: center
+    width: 50px
+
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      display: none
+
+  .cart-qty
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 148px
+
+    @media (max-width: $break-medium)
+      align-items: flex-start
+      grid-area: 2 / 2 / 3 / 4
+
+  .qty-holder
+    display: flex
+    align-items: center
+    border: 1px solid var(--border-color)
+    border-radius: var(--border-radius)
+    gap: 8px
+    margin-bottom: 8px
+
+    &.disabled
+      > *
+        opacity: .7
+        cursor: not-allowed
+        user-select: none
+        pointer-events: none
+
+  .qty-button
+    +appearance(none)
+    color: var(--body-text-color)
+    display: flex
+    align-items: center
+    justify-content: center
+    border: none
+    background: none
+    cursor: pointer
+    height: 40px
+    width: 40px
+
+  .cart-remove-item--link
+    +appearance(none)
+    display: inline-block
+    height: auto
+    padding: .5em
+    line-height: 1em
+    font-weight: normal
+    padding: 8px 16px
+    text-decoration: underline
+    width: auto
+
+    @media (max-width: $break-medium)
+      padding: 4px 0
+
+  .cart-item-price
+    font-size: 1.25rem
+    margin-left: auto
+    min-width: 140px
+    min-height: 42px
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    text-align: right
+
+    @media screen and (max-width: $break-medium)
+      font-size: 1.3rem
+      min-height: 0
+      min-width: 0
+      grid-area: 1 / 3 / 2 / 4
+      margin-left: 0
+
+.cart-footer
+  display: grid
+  margin-top: 2rem
+  gap: 2rem
+
+.cart-subtotal
+  display: flex
+  gap: 16px
+  font-size: 1.5rem
+  margin-left: auto
+
+  @media screen and (max-width: $break-small)
+    margin: 0 auto
+
+.cart-submit
+  margin-left: auto
+  width: 240px
+
+  @media screen and (max-width: $break-small)
+    width: 100%
+
+  button
+    width: 100%

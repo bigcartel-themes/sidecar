@@ -1,57 +1,59 @@
-Store.product = window.Store.product = {
-  init: function(_super) {
-    this["super"] = _super;
-    $('.fancybox').fancybox();
-    this.setupAddToCart();
-    this.setupMobileGallery();
-    this.addToCartMessage = this["super"].addToCartMessages.addToCart;
-    this.addingToCartMessage = this["super"].addToCartMessages.addingToCart;
-    return this.addedToCartMessage = this["super"].addToCartMessages.addedToCart;
-  },
-  setupAddToCart: function() {
-    this.button = $('button.add');
-    this.form = $('form.add');
-    this.form.on('submit', $.proxy(this.addToCart, this));
-    return $('body').on('api.error', $.proxy(this.resolveError, this));
-  },
-  addToCart: function(e) {
-    var item, quantity;
-    e.preventDefault();
-    if (this.button.hasClass('disabled')) {
-      return false;
+const productForm = document.querySelector('.product-form');
+const addToCartButton = document.querySelector('.add-to-cart-button');
+const addToCartButtonText = addToCartButton?.querySelector('.button-text');
+const addedText = addToCartButton?.dataset.addedText;
+let addText = '';
+productForm?.addEventListener('submit', function(e) {
+  const itemID = document.querySelector("#option").value;
+  const quantity = document.querySelector('#product-quantity').value;
+  addText = addToCartButtonText?.innerHTML;
+
+  e.preventDefault();
+  if (!addToCartButton.classList.contains('adding')) {
+    if (quantity > 0 && itemID > 0) {
+      addToCartButton.classList.add('adding');
+      addToCartButton.blur();
+      Cart.addItem(itemID, quantity, (cart) => {
+        setTimeout(() => {
+          if (cart.total) {
+            addToCartButtonText.innerHTML = addedText;
+            addToCartButton.classList.remove('adding');
+            updateCartCounts(cart);
+            document.querySelector('.product-form-cart-linker').classList.add('added');
+            resetProductForm();
+          }
+          else {
+            addToCartButton.classList.remove('adding');
+            alert('Sorry, an error occurred. Please try again.');
+            resetProductForm();
+          }
+        }, 300);
+      });
     }
-    this["super"].working();
-    this["super"].clearErrors();
-    this.button.html(this.addingToCartMessage).addClass('disabled');
-    item = $('[name="cart[add][id]"]').val();
-    quantity = $('[name="cart[add][quantity]"]').val();
-    return Cart.addItem(item, quantity, $.proxy(this.finishAdding, this));
-  },
-  finishAdding: function(cart) {
-    this["super"].finished();
-    this["super"].updateCart(cart);
-    this.button.html(this.addedToCartMessage).removeClass('disabled');
-    return setTimeout($.proxy(function() {
-      return this.button.html(this.addToCartMessage);
-    }, this), 3000);
-  },
-  resolveError: function(e) {
-    this.button.html(this.addToCartMessage).removeClass('disabled');
-    return this["super"].finished();
-  },
-  setupMobileGallery: function() {
-    return $('.mobile_gallery').on('click', 'a', $.proxy(this.setActiveImage, this));
-  },
-  setActiveImage: function(e) {
-    var elm, img;
-    e.preventDefault();
-    elm = $(e.currentTarget);
-    img = $("<img src='" + (elm.attr('href')) + "' class='mobile_gallery_viewer'>");
-    img.imagesLoaded((function(_this) {
-      return function() {
-        $('.mobile_gallery_viewer').replaceWith(img);
-      };
-    })(this));
-    return elm.closest('li').addClass('active').siblings().removeClass('active');
   }
-};
+});
+
+function resetProductForm() {
+  setTimeout(() => {
+    addToCartButtonText.innerHTML = addText;
+  }, 1500);
+}
+var lightbox = new PhotoSwipeLightbox({
+  gallery: '.gallery',
+  children: 'a',
+  paddingFn: (viewportSize) => {
+    let paddingVal = 100;
+    if (viewportSize.x < 768) {
+      paddingVal = 16;
+    }
+    return {
+      top: paddingVal,
+      bottom: paddingVal,
+      left: paddingVal,
+      right: paddingVal
+    };
+  },
+  bgOpacity: 1,
+  pswpModule: PhotoSwipe
+});
+lightbox.init();

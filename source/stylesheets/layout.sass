@@ -1,0 +1,600 @@
+\:root
+  --background-color: #{'{{ theme.background_color }}'}
+  --header-text-color: #{'{{ theme.header_color }}'}
+  --body-text-color: #{'{{ theme.font_color }}'}
+  --link-color: #{'{{ theme.link_color }}'}
+  --link-hover-color: #{'{{ theme.link_hover }}'}
+  --button-text-color: #{'{{ theme.button_text_color }}'}
+  --button-background-color: #{'{{ theme.button_background_color }}'}
+  --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
+
+  --border-color: #{'rgba(var(--primary-color-rgb), .4)'}
+  --border-color-dark: #{'rgba(var(--primary-color-rgb), .8)'}
+  --sidebar-background-color: #{'{{ theme.sidebar_background_color }}'}
+  --sidebar-link-color: #{'{{ theme.sidebar_link_color }}'}
+  --sidebar-link-hover-color: #{'{{ theme.sidebar_link_hover }}'}
+  --sidebar-border-color: #{'rgba(var(--sidebar-border-color-rgb), .4)'}
+  --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
+  --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
+
+  --header-font: #{'{{ theme.header_font | font_family }}'}
+  --body-font: #{'{{ theme.font | font_family }}'}
+
+  --border-radius: #{'{{ theme.border_radius }}'}
+
+/* @group base */
+
+body,
+html
+  height: 100%
+  min-height: 100%
+
+html
+  font-size: 16px
+
+body
+  background-color: var(--background-color)
+  background-image: #{"{% if theme.background_image != blank %} url(\"{{ theme.background_image.url | constrain: 200 }}\") {% else %} none {% endif %}"}
+  background-repeat: repeat
+  background-size: 100px
+  color: var(--body-text-color)
+  font-family: var(--body-font)
+  font-size: 1rem
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: subpixel-antialiased !important
+
+  @media screen and (max-width: $break-small)
+    &.show_menu
+      overflow: hidden
+
+      &:after
+        content: ""
+        position: fixed
+        height: 100vh
+        width: 100vw
+        background: var(--background-color)
+        display: block
+        opacity: .5
+        z-index: 1
+        left: 0
+        top: 0
+
+.wrapper
+  display: grid
+  grid-template-columns: 244px 1fr
+  height: 100%
+  min-height: 100%
+  position: relative
+
+  @media screen and (max-width: $break-small)
+    grid-template-columns: 1fr
+
+.announcement-message
+  background-color: var(--announcement-background-color)
+  color: var(--announcement-text-color)
+  display: none
+  line-height: 1.2em
+  padding: 16px 144px
+  position: relative
+  text-align: center
+  width: 100%
+  z-index: 1
+
+  @media screen and (max-width: $break-medium)
+    padding: 16px 64px
+
+  &.visible
+    display: block
+
+.button.announcement-message-close
+  transform: translateY(-50%)
+  display: flex
+  align-items: center
+  justify-content: center
+  background: none
+  height: 32px
+  padding: 0
+  position: absolute
+  right: 16px
+  top: 50%
+  width: 32px
+
+  @media screen and (max-width: $break-small)
+    right: 8px
+
+  &:hover, &:focus
+    background: none !important
+    opacity: .7
+
+    svg
+      fill: var(--announcement-text-color)
+
+  svg
+    fill: var(--announcement-text-color)
+    height: 14px
+    width: 14px
+
+a
+  text-decoration: none
+  text-underline-offset: 2px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  color: var(--header-text-color)
+  font-family: var(--header-font)
+  font-weight: 400
+  margin-bottom: 32px
+
+h1
+  font-size: 1.5rem
+  line-height: 1.3em
+
+h2
+  font-size: 1.125rem
+
+h3
+  font-size: 1rem
+
+h4
+  font-size: .875rem
+
+h5
+  font-size: .75rem
+
+h6
+  font-size: .6875rem
+
+p
+  margin-bottom: 16px
+
+sup,
+sub
+  font-size: .875rem
+  vertical-align: text-top
+
+sub
+  vertical-align: text-bottom
+
+pre code,
+code
+  font-family: 'Courier New', Courier, Monospace !important
+  font-weight: 700
+
+small
+  display: block
+  font-size: .925rem
+  font-weight: 400
+  margin-bottom: 16px
+
+/* @end */
+
+/* @group forms */
+
+.button
+  transition: background-color .2s linear
+  background-color: var(--button-background-color)
+  border-radius: var(--border-radius)
+  color: var(--button-text-color)
+  cursor: pointer
+  font-weight: 700
+  padding: 0 32px
+  height: 54px
+  text-align: center
+  display: grid
+  grid-template-rows: 1fr
+  align-items: center
+  justify-content: center
+
+  &.adding
+    .button-text
+      opacity: 0
+      visibility: hidden
+
+    .loader
+      opacity: 1
+      visibility: visible
+
+  .button-text
+    grid-area: 1 / 1
+    place-self: center
+    opacity: 1
+    visibility: visible
+    transition: opacity .2s linear, visibility .2s linear
+
+  .loader
+    grid-area: 1 / 1
+    place-self: center
+    opacity: 0
+    visibility: hidden
+    animation: spin .7s linear infinite
+    transition: opacity .2s linear, visibility .2s linear
+
+  &.minimal-button
+    background: none
+    border-radius: 0
+    color: var(--link-color)
+    border: none
+    font-size: .925rem
+    padding: 0
+    height: auto
+    outline-offset: 4px
+    text-align: center
+    text-decoration: underline
+    transition: color .2s ease
+    width: 100%
+
+    &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      color: var(--link-hover-color)
+      background: none
+
+  &:disabled, &.disabled
+    cursor: not-allowed
+    opacity: .3
+
+  &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+    background-color: var(--button-background-hover-color)
+    color: var(--button-text-color)
+
+input[type=text],
+textarea
+  background: var(--background-color)
+  border: 1px solid var(--border-color)
+  border-radius: var(--border-radius)
+  height: 32px
+  padding: 6px 10px
+
+  @media screen and (max-width: $break-small)
+    height: 40px
+
+textarea
+  padding: 10px
+
+.select-wrapper
+  border-radius: var(--border-radius)
+  border: 1px solid var(--border-color)
+  position: relative
+  height: 48px
+
+  select
+    border-radius: var(--border-radius)
+    color: inherit
+    width: 100%
+    padding: 0 32px 0 12px
+    height: 100%
+    text-overflow: ellipsis
+
+  svg
+    position: absolute
+    right: 12px
+    height: 8px
+    top: 50%
+    transform: translateY(-50%)
+    pointer-events: none
+
+/* @end */
+
+/* @group errors */
+
+.errors
+  background-color: #950f1e
+  border-radius: var(--border-radius)
+  color: #ffffff
+  margin-bottom: 32px
+
+  @media screen and (max-width: $break-small)
+    margin: 16px 0
+
+  li
+    font-weight: 700
+    line-height: 1.5em
+    padding: 16px
+
+/* @end */
+
+/* @group responsive utility classes */
+
+.mobile_only
+  display: none
+
+  @media screen and (max-width: $break-small)
+    display: block
+
+.not_mobile
+  display: block
+
+  @media screen and (max-width: $break-small)
+    display: none
+
+/* @end */
+
+/* @group sidebar */
+
+.sidebar
+  background-color: var(--sidebar-background-color)
+  height: 100%
+  padding: 60px 32px
+  transform: translateZ(0)
+  width: 244px
+
+  .sidebar-close
+    display: none
+
+    @media screen and (max-width: $break-small)
+      color: var(--sidebar-link-color)
+      display: flex
+      height: 32px
+      padding: 0
+      position: absolute
+      right: 24px
+      top: 20px
+      width: 32px
+
+      svg
+        width: 18px
+        height: 18px
+
+  @media screen and (max-width: $break-small)
+    border-right: 1px solid var(--sidebar-border-color)
+    left: 0
+    min-height: 100%
+    padding: 72px 32px 32px 32px
+    position: fixed
+    top: 0
+    width: 300px
+    z-index: 100
+    transform: translateX(-100%)
+    overflow-y: scroll
+
+    .show_menu &
+      transition: transform .2s ease
+      transform: translateX(0)
+
+  a, .link
+    color: var(--sidebar-link-color)
+
+    &:hover
+      color: var(--sidebar-link-hover-color)
+      text-decoration: underline
+
+  header
+    margin-bottom: 32px
+
+    @media screen and (max-width: $break-small)
+      display: none
+
+    .logo
+      display: block
+      font-size: 1.5rem
+      font-weight: 700
+      line-height: 1.2em
+      word-wrap: break-word
+
+      img
+        width: 100%
+
+  .button--open-search
+    +appearance(none)
+    border: none
+    background: none
+    cursor: pointer
+    line-height: inherit
+    text-align: left
+    width: 100%
+
+  nav
+    line-height: 1.4em
+
+    @media screen and (max-width: $break-small)
+      font-size: 1.1rem
+
+    section
+      border-top: 1px solid var(--sidebar-border-color)
+      padding: 12px 0
+
+      &.sidebar-cart
+        padding: 4px 0
+
+    a.cart
+      align-items: flex-start
+      display: flex
+      column-gap: 12px
+      font-size: .975em
+      font-weight: normal
+      padding: 8px 0
+      margin: 0
+
+      .cart-icon
+        display: block
+        flex-shrink: 0
+        height: 22px
+        width: 20px
+
+      .cart-details
+        margin-left: auto
+
+    .title,
+    .title a
+      color: var(--sidebar-link-color)
+      font-weight: bold
+      padding: 2px 0
+
+    .title:not(:last-child)
+      margin-bottom: 2px
+
+    .title a
+      &:hover,
+        color: var(--sidebar-link-hover-color)
+
+    a, .link
+      display: block
+      padding: 2px 0
+      outline-offset: 4px
+      margin: 2px 0
+
+      @media screen and (max-width: $break-small)
+        padding: 4px 0
+
+  footer
+    height: 94px
+    padding: 40px 0 32px
+
+.bigcartel-credit
+  font-size: .875rem
+  line-height: 1em
+  display: flex
+  align-items: center
+  gap: 8px
+  outline-offset: 4px
+  padding: 2px 0
+  text-decoration: none !important
+
+  &__text
+    position: relative
+
+  &__lockup
+    fill: currentColor
+    padding-top: 1px
+    width: 80px
+
+/* @end */
+
+/* @group main */
+
+.main
+  padding: 60px 32px
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    padding: 24px 16px
+
+  a,
+  a:visited
+    color: var(--link-color)
+
+    &:hover
+      color: var(--link-hover-color)
+
+.mobile-header
+  align-items: center
+  justify-content: space-between
+  background-color: var(--sidebar-background-color)
+  border-bottom-color: var(--sidebar-border-color)
+  border-bottom-style: solid
+  border-bottom-width: 1px
+  display: none
+  gap: 16px
+  height: 72px
+  padding: 8px 16px
+  position: relative
+  text-align: center
+  width: 100%
+
+  @media screen and (max-width: $break-small)
+    display: flex
+
+  .logo
+    color: var(--sidebar-link-color)
+    font-size: 1.25rem
+    font-weight: 700
+    display: flex
+    padding: 0
+    text-align: center
+    width: 70%
+    justify-content: center
+
+    &.image
+      height: 100%
+
+      img
+        display: block
+        height: 100%
+        width: auto
+
+  .cart
+    display: flex
+    color: var(--sidebar-link-color)
+    font-weight: bold
+    align-items: center
+    gap: 12px
+
+    svg
+      flex-shrink: 0
+      height: 20px
+      width: 20px
+
+  .menu
+    background: none
+    border: none
+    display: block
+    height: 42px
+    left: -8px
+    padding: 8px
+    position: relative
+    width: 42px
+
+    b,
+    b:before,
+    b:after
+      background: var(--sidebar-link-color)
+      display: block
+      height: 2px
+      margin: 0
+      position: absolute
+      top: 50%
+      width: 27px
+
+    b:before,
+    b:after
+      content: ""
+
+    b:before
+      top: -8px
+
+    b:after
+      top: 8px
+
+.visuallyhidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
+
+/* @end */
+
+.alert-message
+  font-weight: normal
+
+  a
+    text-decoration: underline
+
+.body-text
+  line-height: 1.5em
+
+  a
+    text-decoration: underline
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    margin-bottom: 16px
+
+  ol,
+  ul
+    padding-left: 2.5em
+    width: auto
+
+  ol
+    list-style: decimal
+
+  ul
+    list-style: disc

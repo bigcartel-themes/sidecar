@@ -1,0 +1,41 @@
+#contact .page
+  max-width: 600px
+
+  @media screen and (max-width: $break-small)
+    max-width: 100%
+
+form.contact
+
+  .contact-field
+    display: grid
+    gap: 8px
+
+  label
+    display: block
+    font-weight: 700
+
+  input[type=text],
+  textarea
+    height: 44px
+    width: 100%
+
+  textarea
+    height: 140px
+    resize: vertical
+
+  .captcha
+    margin-bottom: 0
+
+  .recaptcha-note
+    display: block
+    font-size: .875rem
+    padding: 16px 0
+
+    a
+      text-decoration: underline
+
+  button
+    max-width: 300px
+
+    @media screen and (max-width: $break-small)
+      max-width: 100%

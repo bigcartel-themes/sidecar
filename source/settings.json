@@ -1,131 +1,176 @@
 {
-    "name": "Sidecar",
-    "version": "1.10.0",
-    "images": [{
-        "variable": "logo",
-        "label": "Logo",
-        "description": "Good for an image up to 180 pixels wide"
-    }, {
-        "variable": "background_image",
-        "label": "Background Image",
-        "description": "Adds a repeating background image"
-    }],
-    "fonts": [{
-        "variable": "header_font",
-        "label": "Header Font",
-        "default": "Helvetica"
-    }, {
-        "variable": "font",
-        "label": "Font",
-        "default": "Helvetica"
-    }],
-    "colors": [{
-        "variable": "background_color",
-        "label": "Background",
-        "default": "#FFFFFF"
-    }, {
-        "variable": "header_color",
-        "label": "Header Text",
-        "default": "#000000"
-    }, {
-        "variable": "font_color",
-        "label": "Body Text",
-        "default": "#000000"
-    }, {
-        "variable": "link_color",
-        "label": "Buttons & Links",
-        "default": "#374DCA"
-    }, {
-        "variable": "link_rollover",
-        "label": "Button & Link Rollovers",
-        "default": "#273896"
-    }, {
-        "variable": "border_color",
-        "label": "Lines",
-        "default": "#666666"
-    }, {
-        "variable": "highlight_color",
-        "label": "Sale, Sold & Soon Text",
-        "default": "#cf4200"
-    }, {
-        "variable": "sidebar_color",
-        "label": "Sidebar Background",
-        "default": "#FFFFFF"
-    }, {
-        "variable": "sidebar_link_color",
-        "label": "Sidebar Links",
-        "default": "#000000"
-    }, {
-        "variable": "sidebar_link_rollover",
-        "label": "Sidebar Link Rollovers",
-        "default": "#374DCA"
-    }, {
-        "variable": "sidebar_border_color",
-        "label": "Sidebar Lines",
-        "default": "#666666"
-    }],
-    "options": [{
-        "variable": "product_list_layout",
-        "label": "Product List Layout",
-        "type": "select",
-        "options": [
-            ["Masonry", "masonry"],
-            ["Rows", "fitRows"]
-        ],
-        "default": "masonry",
-        "description": "The arrangement of your products on the Home and Products pages"
+  "name": "Sidecar",
+  "version": "2.0.0",
+  "images": [
+    {
+      "variable": "logo",
+      "label": "Logo",
+      "description": "Good for an image up to 180 pixels wide"
+    },
+    {
+      "variable": "background_image",
+      "label": "Background Image",
+      "description": "Adds a repeating background image"
+    }
+  ],
+  "fonts": [
+    {
+      "variable": "header_font",
+      "label": "Header Font",
+      "default": "Helvetica"
+    },
+    {
+      "variable": "font",
+      "label": "Font",
+      "default": "Helvetica"
+    }
+  ],
+  "colors": [
+    {
+      "variable": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "sidebar_background_color",
+      "label": "Sidebar background",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "header_color",
+      "label": "Header text",
+      "default": "#000000"
+    },
+    {
+      "variable": "font_color",
+      "label": "Body text",
+      "default": "#000000"
+    },
+    {
+      "variable": "link_color",
+      "label": "Links",
+      "default": "#374DCA"
+    },
+    {
+      "variable": "link_hover",
+      "label": "Link hover",
+      "default": "#273896"
+    },
+    {
+      "variable": "sidebar_link_color",
+      "label": "Sidebar links",
+      "default": "#000000"
+    },
+    {
+      "variable": "sidebar_link_hover",
+      "label": "Sidebar link hover",
+      "default": "#374DCA"
+    },
+    {
+      "variable": "button_text_color",
+      "label": "Button text",
+      "default": "#FFFFFF"
+    },
+    {
+      "variable": "button_background_color",
+      "label": "Button background",
+      "default": "#374DCA"
+    },
+    {
+      "variable": "button_background_hover_color",
+      "label": "Button background hover",
+      "default": "#273896"
+    },
+    {
+      "variable": "announcement_background_color",
+      "label": "Announcement message background",
+      "default": "#235575"
+    },
+    {
+      "variable": "announcement_text_color",
+      "label": "Announcement message text",
+      "default": "#FFFFFF"
+    }
+  ],
+  "options": [
+    {
+      "variable": "announcement_message_text",
+      "label": "Announcement text",
+      "type": "text",
+      "description": "Displays an announcement message on the top of every page"
+    },
+    {
+      "variable": "maintenance_message",
+      "label": "Maintenance mode message",
+      "type": "text",
+      "description": "A message visitors see when your shop is in Maintenance Mode",
+      "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
       "variable": "featured_items",
       "label": "Featured products",
       "type": "select",
       "options": "0..100",
-      "default": 20,
+      "default": 24,
       "description": "The number of products featured on the Home page"
-    },{
+    },
+    {
       "variable": "products_per_page",
       "label": "Products per page",
       "type": "select",
       "options": "1..100",
-      "default": 20,
+      "default": 32,
       "description": "The number of products displayed per page"
-    },{
-        "variable": "product_list_size",
-        "label": "Product List Image Size",
-        "type": "select",
-        "options": [
-            ["Small", "small"],
-            ["Medium", "medium"],
-            ["Large", "large"]
-        ],
-        "default": "medium",
-        "description": "The size of your product images on the Home and Products pages"
-    }, {
-        "variable": "show_overlay",
-        "label": "Product List Info",
-        "type": "select",
-        "options": ["On rollover", "Under image"],
-        "default": "On rollover",
-        "description": "Shows a product's name & price on rollover or under the image"
-    }, {
-        "variable": "fixed_sidebar",
-        "label": "Fixed Sidebar",
-        "type": "boolean",
-        "default": false,
-        "description": "Keeps the sidebar stationary while the page scrolls"
-    }, {
-        "variable": "show_inventory_bars",
-        "label": "Show inventory bars",
-        "type": "boolean",
-        "default": false,
-        "description": "Shows a product's inventory amounts (when using inventory tracking)",
-        "requires": "inventory"
-    }, {
-        "variable": "show_search",
-        "label": "Show search",
-        "type": "boolean",
-        "default": false,
-        "description": "Shows a search link in the sidebar"
+    },
+    {
+      "variable": "product_grid_image_size",
+      "label": "Product grid image size",
+      "type": "select",
+      "options": [
+        ["Small", "small"],
+        ["Medium", "medium"],
+        ["Large", "large"]
+      ],
+      "default": "medium",
+      "description": "Sets the size of product image thumbnails"
+    },
+    {
+      "variable": "grid_image_style",
+      "label": "Product grid image style",
+      "type": "select",
+      "options": [
+        ["Default", "default"],
+        ["Fit to square", "contain"],
+        ["Crop to square", "cover"]
+      ],
+      "default": "cover",
+      "description": "Sets the display of thumbnail images"
+    },
+    {
+      "variable": "show_overlay",
+      "label": "Product grid info",
+      "type": "select",
+      "options": [
+        ["Show on hover", "hover"],
+        ["Under image", "under_image"]
+      ],
+      "default": "under_image",
+      "description": "Shows a product's name & price on hover, or under the image"
+    },
+    {
+      "variable": "show_inventory_bars",
+      "label": "Show inventory bars",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a product's inventory amounts (when using inventory tracking)",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": false,
+      "description": "Shows a search link in the sidebar"
     },
     {
       "variable": "show_sold_out_product_options",
@@ -140,11 +185,36 @@
       "label": "Price display",
       "type": "select",
       "options": [
-        ["Currency sign", "sign"],
-        ["Currency code with sign", "sign_and_code"]
+        [
+          "Currency sign",
+          "sign"
+        ],
+        [
+          "Currency code with sign",
+          "sign_and_code"
+        ]
       ],
       "default": "sign",
       "description": "Sets the display of prices in your shop"
+    },
+    {
+      "variable": "border_radius",
+      "label": "Rounded corners",
+      "type": "select",
+      "options": [
+        ["Off", "0"],
+        ["Small", "2px"],
+        ["Medium", "4px"],
+        ["Large", "8px"]
+      ],
+      "default": "4px",
+      "description": "Controls the rounded corner style on images and other site elements"
+    },
+    {
+      "variable": "instagram_url",
+      "label": "Instagram URL",
+      "type": "text",
+      "description": "Ex: http://instagram.com/bigcartel"
     },
     {
       "variable": "twitter_url",
@@ -159,109 +229,116 @@
       "description": "Ex: http://facebook.com/bigcartel"
     },
     {
+      "variable": "pinterest_url",
+      "label": "Pinterest URL",
+      "type": "text",
+      "description": "Ex: http://pinterest.com/bigcartel"
+    },
+    {
+      "variable": "youtube_url",
+      "label": "YouTube URL",
+      "type": "text",
+      "description": "Ex: https://www.youtube.com/channel/bigcartel"
+    },
+    {
       "variable": "tumblr_url",
       "label": "Tumblr URL",
       "type": "text",
       "description": "Ex: http://bigcartel.tumblr.com"
     },
     {
-      "variable": "instagram_url",
-      "label": "Instagram URL",
+      "variable": "bandcamp_url",
+      "label": "Bandcamp URL",
       "type": "text",
-      "description": "Ex: http://instagram.com/bigcartel"
-    },
-    {
-      "variable": "pinterest_url",
-      "label": "Pinterest URL",
-      "type": "text",
-      "description": "Ex: http://pinterest.com/bigcartel"
-    }],
-    "checkout": {
-        "optimize_legibility": "optimizeLegibility",
-        "antialias_text": "antialiased",
-        "header_image": "{{ logo }}",
-        "header_image_max_width": "150px",
-        "background_image": "{{ background_image }}",
-        "background_color": "{{ background_color }}",
-        "title_font": "{{ font }}",
-        "title_font_size": "24px",
-        "title_font_weight": "700",
-        "title_color": "{{ sidebar_link_color }}",
-        "title_background_color": "{{ background_color }}",
-        "header_font": "{{ header_font }}",
-        "body_font": "{{ font }}",
-        "body_font_size": "16px",
-        "content_color": "{{ font_color }}",
-        "content_header_color": "{{ font_color }}",
-        "content_border_width": "0",
-        "content_header_font_size": "21px",
-        "content_border_color": "transparent",
-        "content_header_background_color": "{{ background_color }}",
-        "content_horizontal_padding": "0",
-        "content_border_radius": "0",
-        "content_background_color": "transparent",
-        "step_inactive_border_color": "{{ border_color }}",
-        "step_header_text_transform": "normal",
-        "step_border_width": "1px",
-        "step_border_color": "{{ border_color }}",
-        "step_header_font_weight": "normal",
-        "step_header_color": "{{ header_color }}",
-        "step_inactive_header_color": "opacify({{ header_color }}, .55)",
-        "step_background_color": "{{ background_color }}",
-        "step_inactive_background_color": "transparent",
-        "step_header_font_size": "18px",
-        "step_border_style": "solid",
-        "step_header_font": "{{ header_font }}",
-        "input_focus_color": "#000000",
-        "input_height": "40px",
-        "input_background_color": "#ffffff",
-        "input_border_width": "1px",
-        "input_focus_background_color": "#ffffff",
-        "input_horizontal_padding": "10px",
-        "input_border_color": "#8e8e8e",
-        "input_color": "#000000",
-        "input_error_color": "#000000",
-        "input_border_radius": "3px",
-        "input_focus_border_color": "#000000",
-        "input_error_border_color": "#950f1e",
-        "input_error_background_color": "#ffffff",
-        "label_color": "#999999",
-        "label_font_weight": "700",
-        "label_text_transform": "normal",
-        "button_text_transform": "normal",
-        "button_hover_background_color": "{{ link_rollover }}",
-        "button_font_weight": "700",
-        "button_color": "{{ background_color }}",
-        "button_hover_color": "{{ background_color }}",
-        "button_position": "left",
-        "button_background_color": "{{ link_color }}",
-        "button_border_color": "",
-        "button_border_radius": "3px",
-        "button_hover_border_color": "",
-        "button_border_width": "0",
-        "error_background_color": "#950f1e",
-        "error_color": "#FFF",
-        "error_border_radius": "3px",
-        "error_border_color": "#950f1e",
-        "error_border_width": "1px",
-        "error_font_size": "16px",
-        "link_color": "{{ link_color }}",
-        "link_font_size": "16px",
-        "link_hover_color": "{{ link_rollover }}",
-        "secondary_font_size": "16px",
-        "summary_inactive_item_border_color": "{{ border_color }}",
-        "summary_submit_background_color": "transparent",
-        "summary_inactive_color": "opacify({{ font_color }}, .55)",
-        "summary_submit_border_color": "{{ border_color }}",
-        "summary_font_size": "16px",
-        "summary_item_border_width": "1px",
-        "summary_submit_border_width": "1px",
-        "summary_item_list_border_color": "{{ border_color }}",
-        "summary_inactive_secondary_color": "opacify({{ font_color }}, .55)",
-        "summary_item_list_border_width": "2px",
-        "summary_item_border_color": "{{ border_color }}",
-        "summary_secondary_color": "{{ font_color }}",
-        "summary_color": "{{ font_color }}",
-        "summary_inactive_item_list_border_color": "{{ border_color }}"
+      "description": "Ex: http://bigcartel.bandcamp.com"
     }
+  ],
+  "checkout": {
+    "optimize_legibility": "optimizeLegibility",
+    "antialias_text": "antialiased",
+    "header_image": "{{ logo }}",
+    "header_image_max_width": "150px",
+    "background_image": "{{ background_image }}",
+    "background_color": "{{ background_color }}",
+    "title_font": "{{ font }}",
+    "title_font_size": "24px",
+    "title_font_weight": "700",
+    "title_color": "{{ sidebar_link_color }}",
+    "title_background_color": "{{ sidebar_background_color }}",
+    "header_font": "{{ header_font }}",
+    "body_font": "{{ font }}",
+    "body_font_size": "16px",
+    "content_color": "{{ font_color }}",
+    "content_header_color": "{{ font_color }}",
+    "content_border_width": "0",
+    "content_header_font_size": "21px",
+    "content_border_color": "transparent",
+    "content_header_background_color": "{{ background_color }}",
+    "content_horizontal_padding": "0",
+    "content_border_radius": "0",
+    "content_background_color": "transparent",
+    "step_inactive_border_color": "{{ font_color }}",
+    "step_header_text_transform": "normal",
+    "step_border_width": "1px",
+    "step_border_color": "{{ font_color }}",
+    "step_header_font_weight": "normal",
+    "step_header_color": "{{ header_color }}",
+    "step_inactive_header_color": "opacify({{ header_color }}, .55)",
+    "step_background_color": "{{ background_color }}",
+    "step_inactive_background_color": "transparent",
+    "step_header_font_size": "18px",
+    "step_border_style": "solid",
+    "step_header_font": "{{ header_font }}",
+    "input_focus_color": "#000000",
+    "input_height": "40px",
+    "input_background_color": "#ffffff",
+    "input_border_width": "1px",
+    "input_focus_background_color": "#ffffff",
+    "input_horizontal_padding": "10px",
+    "input_border_color": "#8e8e8e",
+    "input_color": "#000000",
+    "input_error_color": "#000000",
+    "input_border_radius": "3px",
+    "input_focus_border_color": "#000000",
+    "input_error_border_color": "#950f1e",
+    "input_error_background_color": "#ffffff",
+    "label_color": "#999999",
+    "label_font_weight": "700",
+    "label_text_transform": "normal",
+    "button_text_transform": "normal",
+    "button_hover_background_color": "{{ link_hover }}",
+    "button_font_weight": "700",
+    "button_color": "{{ background_color }}",
+    "button_hover_color": "{{ background_color }}",
+    "button_position": "left",
+    "button_background_color": "{{ link_color }}",
+    "button_border_color": "",
+    "button_border_radius": "3px",
+    "button_hover_border_color": "",
+    "button_border_width": "0",
+    "error_background_color": "#950f1e",
+    "error_color": "#FFF",
+    "error_border_radius": "3px",
+    "error_border_color": "#950f1e",
+    "error_border_width": "1px",
+    "error_font_size": "16px",
+    "link_color": "{{ link_color }}",
+    "link_font_size": "16px",
+    "link_hover_color": "{{ link_hover }}",
+    "secondary_font_size": "16px",
+    "summary_inactive_item_border_color": "{{ font_color }}",
+    "summary_submit_background_color": "transparent",
+    "summary_inactive_color": "opacify({{ font_color }}, .55)",
+    "summary_submit_border_color": "{{ font_color }}",
+    "summary_font_size": "16px",
+    "summary_item_border_width": "1px",
+    "summary_submit_border_width": "1px",
+    "summary_item_list_border_color": "{{ font_color }}",
+    "summary_inactive_secondary_color": "opacify({{ font_color }}, .55)",
+    "summary_item_list_border_width": "2px",
+    "summary_item_border_color": "{{ font_color }}",
+    "summary_secondary_color": "{{ font_color }}",
+    "summary_color": "{{ font_color }}",
+    "summary_inactive_item_list_border_color": "{{ font_color }}"
+  }
 }
