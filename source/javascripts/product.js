@@ -27,7 +27,7 @@ productForm?.addEventListener('submit', function(e) {
             alert('Sorry, an error occurred. Please try again.');
             resetProductForm();
           }
-        }, 600);
+        }, 300);
       });
     }
   }
