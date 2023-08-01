@@ -84,7 +84,7 @@
     {
       "variable": "announcement_background_color",
       "label": "Announcement message background",
-      "default": "#235575"
+      "default": "#374DCA"
     },
     {
       "variable": "announcement_text_color",
