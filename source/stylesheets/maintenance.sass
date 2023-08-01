@@ -3,6 +3,14 @@
 .maintenance-page
   padding: 100px 20px
 
+  a,
+  a:visited
+    color: var(--link-color)
+    text-decoration: underline
+
+    &:hover
+      color: var(--link-hover-color)
+
   .maintenance-content
     display: grid
     height: auto
@@ -27,14 +35,21 @@
     justify-content: center
     gap: 24px
 
+    @media screen and (max-width: $break-small)
+      gap: 16px
+
+    li
+      flex-shrink: 0
+
     a
       color: var(--body-text-color)
       display: block
       padding: 4px
 
       svg
-        height: 24px
-        width: 24px
+        fill: currentColor
+        height: 22px
+        width: 22px
 
       &:hover, &:focus
         color: var(--link-hover-color)
