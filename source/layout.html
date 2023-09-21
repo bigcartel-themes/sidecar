@@ -10,6 +10,7 @@
   </head>
 
   <body id="{{ page.permalink }}" class="transition-preload preload {{ page.category }}">
+    <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.show_search %}
       <div id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-label" aria-hidden="true">
         <div class="modal-content">
@@ -171,7 +172,7 @@
         </footer>
       </aside>
 
-      <main class="main">
+      <main class="main" id="main">
         {% if page.category == 'custom' %}
           <div class="page custom">
             <h1>{{ page.name }}</h1>

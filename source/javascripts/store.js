@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.body.classList.remove("preload");
 
-  let contactFields = document.querySelectorAll('.contact-form input, .contact-form textarea');
+  let contactFields = document.querySelectorAll('.contact-field input, .contact-field textarea');
   contactFields.forEach(function(contactField) {
     contactField.removeAttribute('tabindex');
   });

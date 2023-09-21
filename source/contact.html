@@ -14,11 +14,11 @@
       <input type="hidden" name="utf8" value='✓'>
       <fieldset>
         <p class="contact-field">
-          <label for="name">Your Name:</label>
+          <label for="name">Name:</label>
           {{ contact | contact_input: 'name' }}
         </p>
         <p class="contact-field">
-          <label for="email">Your Email:</label>
+          <label for="email">Email:</label>
           {{ contact | contact_input: 'email' }}
         </p>
         <p class="contact-field">
@@ -29,11 +29,11 @@
           <label for="message">Message:</label>
           {{ contact | contact_input: 'message' }}
         </p>
-        <p class="contact-field captcha">
-          <div class="recaptcha-note">{{ contact.recaptcha }}</div>
-        </p>
         <p class="contact-field">
           <button id="contact_button" type="submit" name="submit" class="button">Send Message</button>
+        </p>
+        <p class="contact-field captcha">
+          <div class="recaptcha-note">{{ contact.recaptcha }}</div>
         </p>
       </fieldset>
     </form>
