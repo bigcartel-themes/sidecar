@@ -169,7 +169,7 @@
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Shows a search link in the sidebar"
     },
     {
