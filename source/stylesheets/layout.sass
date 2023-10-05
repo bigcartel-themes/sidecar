@@ -8,8 +8,7 @@
   --button-background-color: #{'{{ theme.button_background_color }}'}
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
 
-  --border-color: #{'rgba(var(--primary-color-rgb), .4)'}
-  --border-color-dark: #{'rgba(var(--primary-color-rgb), .8)'}
+  --border-color: #{'rgba(var(--primary-color-rgb), .8)'}
   --sidebar-background-color: #{'{{ theme.sidebar_background_color }}'}
   --sidebar-link-color: #{'{{ theme.sidebar_link_color }}'}
   --sidebar-link-hover-color: #{'{{ theme.sidebar_link_hover }}'}
@@ -51,6 +50,7 @@ body
         content: ""
         position: fixed
         height: 100vh
+        height: 100dvh
         width: 100vw
         background: var(--background-color)
         display: block
@@ -88,44 +88,37 @@ a.skip-link
   background-color: var(--announcement-background-color)
   color: var(--announcement-text-color)
   display: none
-  line-height: 1.2em
-  padding: 16px 144px
+  font-size: .925em
+  padding: 12px 144px
   position: relative
   text-align: center
   width: 100%
   z-index: 1
 
   @media screen and (max-width: $break-medium)
-    padding: 16px 64px
+    padding: 16px 88px
 
   &.visible
     display: block
 
-.button.announcement-message-close
-  transform: translateY(-50%)
-  display: flex
-  align-items: center
-  justify-content: center
-  background: none
-  height: 32px
-  padding: 0
-  position: absolute
-  right: 16px
-  top: 50%
-  width: 32px
+  &__close-button
+    transform: translateY(-50%)
+    transition: none
+    display: flex
+    align-items: center
+    justify-content: center
+    color: var(--announcement-text-color)
+    height: 32px
+    padding: 0
+    position: absolute
+    right: 16px
+    top: 50%
+    width: 32px
 
-  @media screen and (max-width: $break-small)
-    right: 8px
+    @media screen and (max-width: $break-small)
+      right: 8px
 
-  &:hover, &:focus
-    background: none !important
-    opacity: .7
-
-    svg
-      fill: var(--announcement-text-color)
-
-  svg
-    fill: var(--announcement-text-color)
+  &__close-icon
     height: 14px
     width: 14px
 
@@ -452,6 +445,11 @@ textarea
 
       @media screen and (max-width: $break-small)
         padding: 4px 0
+
+  .sidebar-pages, .sidebar-social
+    a
+      font-weight: bold
+      padding: 4px 0
 
   footer
     height: 94px
