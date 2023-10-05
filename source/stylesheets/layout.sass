@@ -399,57 +399,55 @@ textarea
     @media screen and (max-width: $break-small)
       font-size: 1.1rem
 
-    section
-      border-top: 1px solid var(--sidebar-border-color)
-      padding: 12px 0
+  section
+    border-top: 1px solid var(--sidebar-border-color)
+    padding: 12px 0
 
-      &.sidebar-cart
-        padding: 4px 0
-
-    a.cart
-      align-items: flex-start
-      display: flex
-      column-gap: 12px
-      font-size: .975em
-      font-weight: normal
-      padding: 8px 0
-      margin: 0
-
-      .cart-icon
-        display: block
-        flex-shrink: 0
-        height: 22px
-        width: 20px
-
-      .cart-details
-        margin-left: auto
-
-    .title,
-    .title a
-      color: var(--sidebar-link-color)
-      font-weight: bold
-      padding: 2px 0
-
-    .title:not(:last-child)
-      margin-bottom: 2px
-
-    .title a
-      &:hover,
-        color: var(--sidebar-link-hover-color)
-
-    a, .link
-      display: block
-      padding: 2px 0
-      outline-offset: 4px
-      margin: 2px 0
-
-      @media screen and (max-width: $break-small)
-        padding: 4px 0
-
-  .sidebar-pages, .sidebar-social
-    a
-      font-weight: bold
+    &.sidebar-cart
       padding: 4px 0
+
+  .title
+    font-weight: bold
+
+    a
+      display: block
+      padding: 4px 0
+
+    &--no-link
+      padding: 4px 0
+
+  .sidebar-links
+    display: flex
+    flex-direction: column
+    gap: 2px
+
+    li
+      display: block
+
+      a, button
+        display: block
+        padding: 4px 0
+
+        &:hover
+          color: var(--sidebar-link-hover-color)
+
+  a.cart
+    align-items: flex-start
+    display: flex
+    column-gap: 12px
+    font-size: .975em
+    font-weight: normal
+    padding: 8px 0
+    margin: 0
+
+    .cart-icon
+      display: block
+      flex-shrink: 0
+      height: 22px
+      width: 20px
+
+    .cart-details
+      margin-left: auto
 
   footer
     height: 94px

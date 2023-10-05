@@ -83,7 +83,7 @@
                 {{ pages.products.name }}
               </a>
             </div>
-            <ul>
+            <ul class="sidebar-links">
               {% if theme.show_search %}
                 <li>
                   <button class="button--open-search link" aria-haspopup="dialog" aria-controls="search-modal">
@@ -103,9 +103,9 @@
 
           {% if artists.active != blank %}
             <section class="sidebar-artists">
-              <div class="title">Artists</div>
+              <div class="title title--no-link">Artists</div>
 
-              <ul>
+              <ul class="sidebar-links">
                 {% for artist in artists.active %}
                   <li>
                     <a href="{{ artist.url }}">
@@ -118,7 +118,7 @@
           {% endif %}
 
           <section class="sidebar-pages">
-            <ul>
+            <ul class="sidebar-links">
               {% for page in pages.all %}
                 <li>
                   <a href="{{ page.url }}">
@@ -147,7 +147,7 @@
             or store.website != blank
           %}
             <section class="sidebar-social">
-              <ul>
+              <ul class="sidebar-links">
                 {% if theme.instagram_url != blank %}
                   <li><a href="{{ theme.instagram_url }}">Instagram</a></li>
                 {% endif %}

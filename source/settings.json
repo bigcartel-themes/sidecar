@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "images": [
     {
       "variable": "logo",
@@ -17,12 +17,12 @@
     {
       "variable": "header_font",
       "label": "Header Font",
-      "default": "Helvetica"
+      "default": "Work Sans"
     },
     {
       "variable": "font",
       "label": "Font",
-      "default": "Helvetica"
+      "default": "Open Sans"
     }
   ],
   "colors": [
@@ -49,7 +49,7 @@
     {
       "variable": "link_color",
       "label": "Links",
-      "default": "#374DCA"
+      "default": "#000000"
     },
     {
       "variable": "link_hover",
@@ -64,7 +64,7 @@
     {
       "variable": "sidebar_link_hover",
       "label": "Sidebar link hover",
-      "default": "#374DCA"
+      "default": "#273896"
     },
     {
       "variable": "button_text_color",
@@ -84,7 +84,7 @@
     {
       "variable": "announcement_background_color",
       "label": "Announcement message background",
-      "default": "#374DCA"
+      "default": "#000000"
     },
     {
       "variable": "announcement_text_color",
