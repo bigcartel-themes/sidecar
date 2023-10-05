@@ -12,7 +12,7 @@
   <body id="{{ page.permalink }}" class="transition-preload preload {{ page.category }}">
     <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.show_search %}
-      <div id="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-modal-label" aria-hidden="true">
+      <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal-content">
           <div class="wrapper">
             <button class="minimal-button close-modal" aria-label="Close search dialog" data-dismiss="modal" type="button">
@@ -120,13 +120,13 @@
           <section class="sidebar-pages">
             <ul>
               {% for page in pages.all %}
-                <li class="title">
+                <li>
                   <a href="{{ page.url }}">
                     {{ page.name }}
                   </a>
                 </li>
               {% endfor %}
-              <li class="title">
+              <li>
                 <a href="{{ pages.contact.url }}">
                   {{ pages.contact.name }}
                 </a>
@@ -149,34 +149,34 @@
             <section class="sidebar-social">
               <ul>
                 {% if theme.instagram_url != blank %}
-                  <li class="title"><a href="{{ theme.instagram_url }}">Instagram</a></li>
+                  <li><a href="{{ theme.instagram_url }}">Instagram</a></li>
                 {% endif %}
                 {% if theme.tiktok_url != blank %}
-                  <li class="title"><a href="{{ theme.tiktok_url }}">TikTok</a></li>
+                  <li><a href="{{ theme.tiktok_url }}">TikTok</a></li>
                 {% endif %}
                 {% if theme.twitter_url != blank %}
-                  <li class="title"><a href="{{ theme.twitter_url }}">Twitter</a></li>
+                  <li><a href="{{ theme.twitter_url }}">Twitter</a></li>
                 {% endif %}
                 {% if theme.snapchat_url != blank %}
-                  <li class="title"><a href="{{ theme.snapchat_url }}">Snapchat</a></li>
+                  <li><a href="{{ theme.snapchat_url }}">Snapchat</a></li>
                 {% endif %}
                 {% if theme.facebook_url != blank %}
-                  <li class="title"><a href="{{ theme.facebook_url }}">Facebook</a></li>
+                  <li><a href="{{ theme.facebook_url }}">Facebook</a></li>
                 {% endif %}
                 {% if theme.pinterest_url != blank %}
-                  <li class="title"><a href="{{ theme.pinterest_url }}">Pinterest</a></li>
+                  <li><a href="{{ theme.pinterest_url }}">Pinterest</a></li>
                 {% endif %}
                 {% if theme.youtube_url != blank %}
-                  <li class="title"><a href="{{ theme.youtube_url }}">YouTube</a></li>
+                  <li><a href="{{ theme.youtube_url }}">YouTube</a></li>
                 {% endif %}
                 {% if theme.bandcamp_url != blank %}
-                  <li class="title"><a href="{{ theme.bandcamp_url }}">Bandcamp</a></li>
+                  <li><a href="{{ theme.bandcamp_url }}">Bandcamp</a></li>
                 {% endif %}
                 {% if theme.tumblr_url != blank %}
-                  <li class="title"><a href="{{ theme.tumblr_url }}">Tumblr</a></li>
+                  <li><a href="{{ theme.tumblr_url }}">Tumblr</a></li>
                 {% endif %}
                 {% if store.website != blank %}
-                  <li class="title"><a href="{{ store.website }}">Back to Site</a></li>
+                  <li><a href="{{ store.website }}">Back to Site</a></li>
                 {% endif %}
               </ul>
             </section>

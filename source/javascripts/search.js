@@ -3,7 +3,7 @@ const modal = document.getElementById('search-modal');
 const searchBtn = document.querySelector('.button--open-search');
 const closeBtn = document.querySelector('.close-modal');
 const inputField = document.querySelector('#search-modal input[type="search"]');
-const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+const focusableElements = modal?.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
 const openSearch = () => {
   if (modal && inputField) {
