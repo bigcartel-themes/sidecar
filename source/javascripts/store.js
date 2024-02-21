@@ -1,7 +1,7 @@
 "use strict";
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.body.classList.remove("preload");
+  document.body.classList.remove("preloader");
 
   let contactFields = document.querySelectorAll('.contact-field input, .contact-field textarea');
   contactFields.forEach(function(contactField) {
@@ -38,7 +38,7 @@ function camelCaseToDash(string) {
 }
 
 window.addEventListener("load", () => {
-  document.body.classList.remove("transition-preload");
+  document.body.classList.remove("transition-preloader");
 });
 
 const htmlHighlight = function(element, newText) {

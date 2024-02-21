@@ -4,12 +4,12 @@
     <title>{{ page.name }} | {{ store.name }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">.preload * { transition: none !important;display: none !important } .transition-preload { transition: none !important }</style>
     <link href="{{ theme | theme_css_url }}" media="screen" rel="stylesheet" type="text/css">
     {{ head_content }}
+    <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}" class="transition-preload preload {{ page.category }}">
+  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader">
     <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.show_search %}
       <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
@@ -199,6 +199,11 @@
       </main>
     </div>
     <script>
+      const themeOptions = {
+        desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
+        mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
+        productImageZoom: {{ theme.product_image_zoom }},
+      }
       const themeColors = {
         backgroundColor: '{{ theme.background_color }}',
         primaryColor: '{{ theme.font_color }}',

@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "images": [
     {
       "variable": "logo",
@@ -179,6 +179,37 @@
       "default": true,
       "description": "Shows sold out product options in the Product page dropdowns",
       "requires": "inventory"
+    },
+    {
+      "variable": "product_image_zoom",
+      "label": "Enable product image zoom",
+      "type": "boolean",
+      "default": true,
+      "description": "Click to open a larger version of the Product page image"
+    },
+    {
+      "variable": "desktop_product_page_images",
+      "label": "Desktop product page images",
+      "type": "select",
+      "options": [
+        ["Thumbnails", "thumbnails"],
+        ["Carousel", "carousel"],
+        ["Stacked 2 column", "two-column"],
+        ["Stacked full width", "stacked"]
+      ],
+      "default": "carousel",
+      "description": "Sets the display of the Product page gallery"
+    },
+    {
+      "variable": "mobile_product_page_images",
+      "label": "Mobile product page image carousel",
+      "type": "select",
+      "options": [
+        ["Show thumbnails", "show-thumbnails"],
+        ["Hide thumbnails", "hide-thumbnails"]
+      ],
+      "default": "show-thumbnails",
+      "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
     },
     {
       "variable": "money_format",
