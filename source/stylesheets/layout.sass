@@ -1,9 +1,9 @@
 \:root
   --background-color: #{'{{ theme.background_color }}'}
-  --header-text-color: #{'{{ theme.header_color }}'}
-  --body-text-color: #{'{{ theme.font_color }}'}
+  --header-text-color: #{'{{ theme.header_text_color }}'}
+  --body-text-color: #{'{{ theme.body_text_color }}'}
   --link-color: #{'{{ theme.link_color }}'}
-  --link-hover-color: #{'{{ theme.link_hover }}'}
+  --link-hover-color: #{'{{ theme.link_hover_color }}'}
   --button-text-color: #{'{{ theme.button_text_color }}'}
   --button-background-color: #{'{{ theme.button_background_color }}'}
   --button-background-hover-color: #{'{{ theme.button_background_hover_color }}'}
@@ -11,10 +11,10 @@
   --border-color: #{'rgba(var(--primary-color-rgb), .8)'}
   --sidebar-background-color: #{'{{ theme.sidebar_background_color }}'}
   --sidebar-link-color: #{'{{ theme.sidebar_link_color }}'}
-  --sidebar-link-hover-color: #{'{{ theme.sidebar_link_hover }}'}
+  --sidebar-link-hover-color: #{'{{ theme.sidebar_link_hover_color }}'}
   --sidebar-border-color: #{'rgba(var(--sidebar-border-color-rgb), .4)'}
-  --announcement-text-color: #{'{{ theme.announcement_text_color }}'}
-  --announcement-background-color: #{'{{ theme.announcement_background_color }}'}
+  --announcement-message-text-color: #{'{{ theme.announcement_message_text_color }}'}
+  --announcement-message-background-color: #{'{{ theme.announcement_message_background_color }}'}
 
   --header-font: #{'{{ theme.header_font | font_family }}'}
   --body-font: #{'{{ theme.font | font_family }}'}
@@ -85,8 +85,8 @@ a.skip-link
     grid-template-columns: 1fr
 
 .announcement-message
-  background-color: var(--announcement-background-color)
-  color: var(--announcement-text-color)
+  background-color: var(--announcement-message-background-color)
+  color: var(--announcement-message-text-color)
   display: none
   font-size: .925em
   padding: 12px 144px
@@ -107,7 +107,7 @@ a.skip-link
     display: flex
     align-items: center
     justify-content: center
-    color: var(--announcement-text-color)
+    color: var(--announcement-message-text-color)
     height: 32px
     padding: 0
     position: absolute

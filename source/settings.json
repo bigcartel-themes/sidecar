@@ -13,6 +13,159 @@
       "description": "Adds a repeating background image"
     }
   ],
+  "preset_styles": {
+    "preview": {
+      "title_font": "header_font",
+      "body_font": "font",
+      "text_color": "body_text_color",
+      "background_color": "background_color"
+    },
+    "presets": [
+      {
+        "group_name": "Classic",
+        "styles": [
+          {
+            "style_name": "Classic #1",
+            "fonts": {
+              "header_font": "Work Sans",
+              "font": "Open Sans"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "sidebar_background_color": "#FFFFFF",
+              "header_text_color": "#000000",
+              "body_text_color": "#000000",
+              "link_color": "#000000",
+              "link_hover_color": "#273896",
+              "sidebar_link_color": "#000000",
+              "sidebar_link_hover_color": "#273896",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#374DCA",
+              "button_background_hover_color": "#273896",
+              "announcement_message_background_color": "#000000",
+              "announcement_message_text_color": "#FFFFFF"
+            }
+          },
+          {
+            "style_name": "Classic #2",
+            "fonts": {
+              "header_font": "DM Sans",
+              "font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "sidebar_background_color": "#333333",
+              "header_text_color": "#F8F8F8",
+              "body_text_color": "#F8F8F8",
+              "link_color": "#F8F8F8",
+              "link_hover_color": "#C6C6C6",
+              "sidebar_link_color": "#F8F8F8",
+              "sidebar_link_hover_color": "#C6C6C6",
+              "button_text_color": "#333333",
+              "button_background_color": "#F8F8F8",
+              "button_background_hover_color": "#C6C6C6",
+              "announcement_message_background_color": "#F8F8F8",
+              "announcement_message_text_color": "#333333"
+            }
+          },
+          {
+            "style_name": "Classic #3",
+            "fonts": {
+              "header_font": "Cabin",
+              "font": "Cabin"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "sidebar_background_color": "#F8F8FA",
+              "header_text_color": "#2A2A2C",
+              "body_text_color": "#2A2A2C",
+              "link_color": "#2A2A2C",
+              "link_hover_color": "#203BE1",
+              "sidebar_link_color": "#2A2A2C",
+              "sidebar_link_hover_color": "#203BE1",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#203BE1",
+              "button_background_hover_color": "#2A2A2C",
+              "announcement_message_background_color": "#E3E4EA",
+              "announcement_message_text_color": "#2A2A2C"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Playful",
+        "styles": [
+          {
+            "style_name": "Playful #1",
+            "fonts": {
+              "header_font": "Syne",
+              "font": "Syne"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "sidebar_background_color": "#FFFFFF",
+              "header_text_color": "#0000FF",
+              "body_text_color": "#0000FF",
+              "link_color": "#0000FF",
+              "link_hover_color": "#000098",
+              "sidebar_link_color": "#0000FF",
+              "sidebar_link_hover_color": "#000098",
+              "button_text_color": "#0000FF",
+              "button_background_color": "#FFE500",
+              "button_background_hover_color": "#EBD300",
+              "announcement_message_background_color": "#0000FF",
+              "announcement_message_text_color": "#FFFFFF"
+            }
+          },
+          {
+            "style_name": "Playful #2",
+            "fonts": {
+              "header_font": "Concert One",
+              "font": "Dosis"
+            },
+            "colors": {
+              "background_color": "#FFFFFF",
+              "sidebar_background_color": "#FFFFFF",
+              "header_text_color": "#0B0423",
+              "body_text_color": "#0B0423",
+              "link_color": "#0B0423",
+              "link_hover_color": "#F90081",
+              "sidebar_link_color": "#0B0423",
+              "sidebar_link_hover_color": "#F90081",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#F90081",
+              "button_background_hover_color": "#D1006C",
+              "announcement_message_background_color": "#F6FF20",
+              "announcement_message_text_color": "#0B0423"
+            }
+          },
+          {
+            "style_name": "Playful #3",
+            "fonts": {
+              "header_font": "Quicksand",
+              "font": "Quicksand"
+            },
+            "colors": {
+              "background_color": "#FFFBFD",
+              "sidebar_background_color": "#FFE9F4",
+              "header_text_color": "#243588",
+              "body_text_color": "#243588",
+              "link_color": "#243588",
+              "link_hover_color": "#0C143B",
+              "sidebar_link_color": "#243588",
+              "sidebar_link_hover_color": "#0C143B",
+              "button_text_color": "#FFFBFD",
+              "button_background_color": "#273896",
+              "button_background_hover_color": "#0C143B",
+              "announcement_message_background_color": "#FFFA8D",
+              "announcement_message_text_color": "#273896"
+            }
+          }
+        ]
+      }
+
+    ]
+  },
   "fonts": [
     {
       "variable": "header_font",
@@ -37,12 +190,12 @@
       "default": "#FFFFFF"
     },
     {
-      "variable": "header_color",
+      "variable": "header_text_color",
       "label": "Header text",
       "default": "#000000"
     },
     {
-      "variable": "font_color",
+      "variable": "body_text_color",
       "label": "Body text",
       "default": "#000000"
     },
@@ -52,7 +205,7 @@
       "default": "#000000"
     },
     {
-      "variable": "link_hover",
+      "variable": "link_hover_color",
       "label": "Link hover",
       "default": "#273896"
     },
@@ -62,7 +215,7 @@
       "default": "#000000"
     },
     {
-      "variable": "sidebar_link_hover",
+      "variable": "sidebar_link_hover_color",
       "label": "Sidebar link hover",
       "default": "#273896"
     },
@@ -82,12 +235,12 @@
       "default": "#273896"
     },
     {
-      "variable": "announcement_background_color",
+      "variable": "announcement_message_background_color",
       "label": "Announcement message background",
       "default": "#000000"
     },
     {
-      "variable": "announcement_text_color",
+      "variable": "announcement_message_text_color",
       "label": "Announcement message text",
       "default": "#FFFFFF"
     }
@@ -311,8 +464,8 @@
     "header_font": "{{ header_font }}",
     "body_font": "{{ font }}",
     "body_font_size": "16px",
-    "content_color": "{{ font_color }}",
-    "content_header_color": "{{ font_color }}",
+    "content_color": "{{ body_text_color }}",
+    "content_header_color": "{{ body_text_color }}",
     "content_border_width": "0",
     "content_header_font_size": "21px",
     "content_border_color": "transparent",
@@ -320,13 +473,13 @@
     "content_horizontal_padding": "0",
     "content_border_radius": "0",
     "content_background_color": "transparent",
-    "step_inactive_border_color": "{{ font_color }}",
+    "step_inactive_border_color": "{{ body_text_color }}",
     "step_header_text_transform": "normal",
     "step_border_width": "1px",
-    "step_border_color": "{{ font_color }}",
+    "step_border_color": "{{ body_text_color }}",
     "step_header_font_weight": "normal",
-    "step_header_color": "{{ header_color }}",
-    "step_inactive_header_color": "opacify({{ header_color }}, .55)",
+    "step_header_color": "{{ header_text_color }}",
+    "step_inactive_header_color": "opacify({{ header_text_color }}, .55)",
     "step_background_color": "{{ background_color }}",
     "step_inactive_background_color": "transparent",
     "step_header_font_size": "18px",
@@ -349,7 +502,7 @@
     "label_font_weight": "700",
     "label_text_transform": "normal",
     "button_text_transform": "normal",
-    "button_hover_background_color": "{{ link_hover }}",
+    "button_hover_background_color": "{{ link_hover_color }}",
     "button_font_weight": "700",
     "button_color": "{{ background_color }}",
     "button_hover_color": "{{ background_color }}",
@@ -367,21 +520,21 @@
     "error_font_size": "16px",
     "link_color": "{{ link_color }}",
     "link_font_size": "16px",
-    "link_hover_color": "{{ link_hover }}",
+    "link_hover_color": "{{ link_hover_color }}",
     "secondary_font_size": "16px",
-    "summary_inactive_item_border_color": "{{ font_color }}",
+    "summary_inactive_item_border_color": "{{ body_text_color }}",
     "summary_submit_background_color": "transparent",
-    "summary_inactive_color": "opacify({{ font_color }}, .55)",
-    "summary_submit_border_color": "{{ font_color }}",
+    "summary_inactive_color": "opacify({{ body_text_color }}, .55)",
+    "summary_submit_border_color": "{{ body_text_color }}",
     "summary_font_size": "16px",
     "summary_item_border_width": "1px",
     "summary_submit_border_width": "1px",
-    "summary_item_list_border_color": "{{ font_color }}",
-    "summary_inactive_secondary_color": "opacify({{ font_color }}, .55)",
+    "summary_item_list_border_color": "{{ body_text_color }}",
+    "summary_inactive_secondary_color": "opacify({{ body_text_color }}, .55)",
     "summary_item_list_border_width": "2px",
-    "summary_item_border_color": "{{ font_color }}",
-    "summary_secondary_color": "{{ font_color }}",
-    "summary_color": "{{ font_color }}",
-    "summary_inactive_item_list_border_color": "{{ font_color }}"
+    "summary_item_border_color": "{{ body_text_color }}",
+    "summary_secondary_color": "{{ body_text_color }}",
+    "summary_color": "{{ body_text_color }}",
+    "summary_inactive_item_list_border_color": "{{ body_text_color }}"
   }
 }
