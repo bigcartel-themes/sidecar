@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "images": [
     {
       "variable": "logo",
@@ -258,6 +258,13 @@
       "type": "text",
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
+    },
+    {
+      "variable": "featured_header",
+      "label": "Featured products header",
+      "type": "text",
+      "description": "Displays above featured products on the Home page",
+      "default": "Featured"
     },
     {
       "variable": "featured_items",
