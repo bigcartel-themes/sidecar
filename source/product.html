@@ -111,18 +111,24 @@
       {% if forloop.last %}</div>{% endif %}
     {% endfor %}
 
+    {% if product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+      {% assign hide_price = true %}
+    {% else %}
+      {% assign hide_price = false %}
+    {% endif %}
     <div class="price">
-      {% if product.variable_pricing %}
-        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-      {% else %}
-        {{ product.default_price | money: theme.money_format }}
+      {% unless hide_price %}
+        {% if product.variable_pricing %}
+          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+        {% else %}
+          {{ product.default_price | money: theme.money_format }}
+        {% endif %}
+      {% endunless %}
+      {% if product.status == 'sold-out' %}
+        <i>{% if hide_price %}Sold Out{% else %}/ Sold Out{% endif %}</i>
+      {% elsif product.status == 'coming-soon' %}
+        <i>/ Coming Soon</i>
       {% endif %}
-      {% case product.status %}
-        {% when 'sold-out' %}
-          <i>/ Sold Out</i>
-        {% when 'coming-soon' %}
-          <i>/ Coming Soon</i>
-      {% endcase %}
       {% if product.on_sale %}
         <i>/ On Sale</i>
       {% endif %}

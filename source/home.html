@@ -62,13 +62,21 @@
                   <div class="prod-thumb-info-headers">
                     <div class="prod-thumb-name">{{ product.name }}</div>
                     <div class="prod-thumb-price">
-                      {% if product.variable_pricing %}
-                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                      {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                        {% if product.variable_pricing %}
+                          {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                        {% else %}
+                          {{ product.default_price | money: theme.money_format }}
+                        {% endif %}
+                        {% if product_status != blank %}
+                          <span class="prod-thumb-status">/ {{ product_status }}</span>
+                        {% endif %}
                       {% else %}
-                        {{ product.default_price | money: theme.money_format }}
-                      {% endif %}
-                      {% if product_status != blank %}<span class="prod-thumb-status">/ {{ product_status }}</span>{% endif %}
-                    </div>
+                        {% if product_status != blank %}
+                          <span class="prod-thumb-status">{{ product_status }}</span>
+                        {% endif %}
+                      {% endunless %}
+                    </div>                    
                   </div>
                 </div>
               </a>
