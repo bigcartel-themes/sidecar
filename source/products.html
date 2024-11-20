@@ -26,6 +26,7 @@
                 image-square
               {% endif %}
             {% endcapture %}
+            {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
             <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
               <div class="prod-thumb-container">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
@@ -53,12 +54,16 @@
                 <div class="prod-thumb-info-headers">
                   <div class="prod-thumb-name">{{ product.name }}</div>
                   <div class="prod-thumb-price">
-                    {% if product.variable_pricing %}
-                      {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
-                    {% else %}
-                      {{ product.default_price | money: theme.money_format }}
+                    {% unless product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
+                      {% if product.variable_pricing %}
+                        {{ product.min_price | money: theme.money_format }} - {{ product.max_price | money: theme.money_format }}
+                      {% else %}
+                        {{ product.default_price | money: theme.money_format }}
+                      {% endif %}
+                    {% endunless %}
+                    {% if product_status != blank %}
+                      <span class="prod-thumb-status {{ product_status_class }}">{{ product_status }}</span>
                     {% endif %}
-                    {% if product_status != blank %}<span class="prod-thumb-status">/ {{ product_status }}</span>{% endif %}
                   </div>
                 </div>
               </div>

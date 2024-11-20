@@ -42,6 +42,8 @@
               "button_text_color": "#FFFFFF",
               "button_background_color": "#374DCA",
               "button_background_hover_color": "#273896",
+              "product_status_text_color_primary": "#B70303",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#000000",
               "announcement_message_text_color": "#FFFFFF"
             }
@@ -64,6 +66,8 @@
               "button_text_color": "#333333",
               "button_background_color": "#F8F8F8",
               "button_background_hover_color": "#C6C6C6",
+              "product_status_text_color_primary": "#CF3917",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#F8F8F8",
               "announcement_message_text_color": "#333333"
             }
@@ -86,6 +90,8 @@
               "button_text_color": "#FFFFFF",
               "button_background_color": "#203BE1",
               "button_background_hover_color": "#2A2A2C",
+              "product_status_text_color_primary": "#625DF5",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#E3E4EA",
               "announcement_message_text_color": "#2A2A2C"
             }
@@ -113,6 +119,8 @@
               "button_text_color": "#0000FF",
               "button_background_color": "#FFE500",
               "button_background_hover_color": "#EBD300",
+              "product_status_text_color_primary": "#FF5733",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#0000FF",
               "announcement_message_text_color": "#FFFFFF"
             }
@@ -135,6 +143,8 @@
               "button_text_color": "#FFFFFF",
               "button_background_color": "#F90081",
               "button_background_hover_color": "#D1006C",
+              "product_status_text_color_primary": "#008C99",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#F6FF20",
               "announcement_message_text_color": "#0B0423"
             }
@@ -157,6 +167,8 @@
               "button_text_color": "#FFFBFD",
               "button_background_color": "#273896",
               "button_background_hover_color": "#0C143B",
+              "product_status_text_color_primary": "#FF69B4",
+              "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#FFFA8D",
               "announcement_message_text_color": "#273896"
             }
@@ -233,6 +245,16 @@
       "variable": "button_background_hover_color",
       "label": "Button background hover",
       "default": "#273896"
+    },
+    {
+      "variable": "product_status_text_color_primary",
+      "label": "Product status text (primary)",
+      "default": "#B70303"
+    },
+    {
+      "variable": "product_status_text_color_secondary",
+      "label": "Product status text (secondary)",
+      "default": "#7E7D7D"
     },
     {
       "variable": "announcement_message_background_color",
@@ -334,10 +356,18 @@
     },
     {
       "variable": "show_sold_out_product_options",
-      "label": "Show sold out product options",
+      "label": "Show sold out product variants",
       "type": "boolean",
       "default": true,
-      "description": "Shows sold out product options in the Product page dropdowns",
+      "description": "Shows sold out product variants in the Product page dropdowns",
+      "requires": "inventory"
+    },
+    {
+      "variable": "show_sold_out_product_prices",
+      "label": "Show prices for sold out products",
+      "type": "boolean",
+      "default": true,
+      "description": "Show the price of sold out products on product grids and product pages",
       "requires": "inventory"
     },
     {
