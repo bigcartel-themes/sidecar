@@ -128,10 +128,18 @@
   position: relative
   overflow-wrap: break-word
   word-break: break-word
+  font-weight: bold
 
 .prod-thumb-price
-  font-weight: bold
+  font-weight: normal
   margin-top: 4px
+
+.prod-thumb-status
+  &.status-primary
+    color: var(--product-status-text-color-primary)
+  
+  &.status-secondary
+    color: var(--product-status-text-color-secondary)
 
 .pagination
   display: grid

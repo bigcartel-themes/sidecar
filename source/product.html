@@ -111,11 +111,22 @@
       {% if forloop.last %}</div>{% endif %}
     {% endfor %}
 
+    {% assign product_status = '' %}
+    {% case product.status %}
+      {% when 'active' %}
+        {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+      {% when 'sold-out' %}
+        {% assign product_status = 'Sold out' %}
+      {% when 'coming-soon' %}
+        {% assign product_status = 'Coming soon' %}
+    {% endcase %}
+
     {% if product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
       {% assign hide_price = true %}
     {% else %}
       {% assign hide_price = false %}
     {% endif %}
+    {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
     <div class="price">
       {% unless hide_price %}
         {% if product.variable_pricing %}
@@ -124,13 +135,10 @@
           {{ product.default_price | money: theme.money_format }}
         {% endif %}
       {% endunless %}
-      {% if product.status == 'sold-out' %}
-        <i>{% if hide_price %}Sold Out{% else %}/ Sold Out{% endif %}</i>
-      {% elsif product.status == 'coming-soon' %}
-        <i>/ Coming Soon</i>
-      {% endif %}
-      {% if product.on_sale %}
-        <i>/ On Sale</i>
+      {% if product_status == 'Sold out' %}
+        <span class="status {{ product_status_class }}">{% if hide_price %}Sold Out{% else %} Sold Out{% endif %}</span>
+      {% elsif product_status != blank %}
+        <span class="status {{ product_status_class }}">{{ product_status }}</span>
       {% endif %}
     </div>
 
