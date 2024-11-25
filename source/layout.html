@@ -137,6 +137,8 @@
           {%
             if theme.instagram_url != blank
             or theme.tiktok_url != blank
+            or theme.bluesky_url != blank
+            or theme.threads_url != blank
             or theme.twitter_url != blank
             or theme.snapchat_url != blank
             or theme.facebook_url != blank
@@ -154,8 +156,14 @@
                 {% if theme.tiktok_url != blank %}
                   <li><a href="{{ theme.tiktok_url }}">TikTok</a></li>
                 {% endif %}
+                {% if theme.threads_url != blank %}
+                  <li><a href="{{ theme.threads_url }}">Threads</a></li>
+                {% endif %}
+                {% if theme.bluesky_url != blank %}
+                  <li><a href="{{ theme.bluesky_url }}">Bluesky</a></li>
+                {% endif %}
                 {% if theme.twitter_url != blank %}
-                  <li><a href="{{ theme.twitter_url }}">Twitter</a></li>
+                  <li><a href="{{ theme.twitter_url }}">X</a></li>
                 {% endif %}
                 {% if theme.snapchat_url != blank %}
                   <li><a href="{{ theme.snapchat_url }}">Snapchat</a></li>
