@@ -9,7 +9,7 @@
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader">
+  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.show_search %}
       <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
@@ -194,8 +194,8 @@
           {{ powered_by_big_cartel }}
         </footer>
       </aside>
-
       <main class="main" id="main">
+        <header data-bc-hook="header"></header>
         {% if page.category == 'custom' %}
           <div class="page custom">
             <h1>{{ page.name }}</h1>
@@ -204,6 +204,7 @@
         {% else %}
           {{ page_content }}
         {% endif %}
+        <div data-bc-hook="footer"></div>
       </main>
     </div>
     <script>
