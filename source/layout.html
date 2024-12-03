@@ -144,7 +144,7 @@
             <div class="custom-page-content body-text">{{ page_content | paragraphs }}</div>
           </div>
         {% else %}
-          <div class="page {{ page.category }}">{{ page_content }}</div>
+          {{ page_content }}
         {% endif %}
 
         <footer data-bc-hook="footer">

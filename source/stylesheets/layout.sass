@@ -89,6 +89,7 @@ a.skip-link
 footer
   border-top: 1px solid var(--border-color)
   display: grid
+  flex-shrink: 0
   place-items: center
   gap: 24px
   padding: 24px 0
@@ -515,15 +516,17 @@ textarea
 /* @group main */
 
 .main
-  display: grid
-  grid-template-rows: 1fr auto
-  grid-template-columns: 1fr
-  gap: 60px
+  display: flex
+  flex-direction: column
   padding: 60px 32px 0
   width: 100%
 
   @media screen and (max-width: $break-small)
     padding: 24px 16px 0
+
+  > .page
+    flex: 1 0 auto
+    margin-bottom: 60px
 
   a,
   a:visited
