@@ -9,7 +9,7 @@
     <style>.preloader * { opacity: 0; }.transition-preloader * { transition: none !important }</style>
   </head>
 
-  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader">
+  <body id="{{ page.permalink }}" class="{{ page.category }} preloader transition-preloader" data-bc-page-type="{% if page.category == 'custom' %}custom{% else %}{{ page.permalink }}{% endif %}">
     <a class="skip-link" href="#main">Skip to main content</a>
     {% if theme.show_search %}
       <div id="search-modal" role="dialog" aria-modal="true" aria-hidden="true">
@@ -137,6 +137,7 @@
       </aside>
 
       <main class="main" id="main">
+        <div data-bc-hook="header"></div>
         {% if page.category == 'custom' %}
           <div class="page custom">
             <h1>{{ page.name }}</h1>
@@ -146,7 +147,7 @@
           <div class="page {{ page.category }}">{{ page_content }}</div>
         {% endif %}
 
-        <footer>
+        <footer data-bc-hook="footer">
           {% if theme.instagram_url != blank
             or theme.tiktok_url != blank
             or theme.threads_url != blank
