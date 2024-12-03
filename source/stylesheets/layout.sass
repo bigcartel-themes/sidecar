@@ -79,12 +79,53 @@ a.skip-link
 .wrapper
   display: grid
   grid-template-columns: 244px 1fr
-  height: 100%
-  min-height: 100%
+  min-height: calc(100dvh - var(--announcement-height, 0px))
   position: relative
 
   @media screen and (max-width: $break-small)
     grid-template-columns: 1fr
+    min-height: calc(100dvh - var(--announcement-height, 0px) - 72px)
+
+footer
+  border-top: 1px solid var(--border-color)
+  display: grid
+  place-items: center
+  gap: 24px
+  grid-row: 2
+  padding: 24px 0
+  width: 100%
+
+.social-icons
+  display: flex
+  gap: 16px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 8px
+
+  a
+    color: var(--body-text-color)
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    &:hover, &:focus
+      color: var(--link-hover-color)
+
+    svg
+      fill: currentColor
+      height: 22px
+      width: 22px
+
+      &.tumblr-icon
+        width: 14px
 
 .announcement-message
   background-color: var(--announcement-message-background-color)
@@ -452,10 +493,6 @@ textarea
     .cart-details
       margin-left: auto
 
-  footer
-    height: 94px
-    padding: 40px 0 32px
-
 .bigcartel-credit
   font-size: .875rem
   line-height: 1em
@@ -479,11 +516,15 @@ textarea
 /* @group main */
 
 .main
-  padding: 60px 32px
+  display: grid
+  grid-template-rows: 1fr auto
+  grid-template-columns: 1fr
+  gap: 60px
+  padding: 60px 32px 0
   width: 100%
 
   @media screen and (max-width: $break-small)
-    padding: 24px 16px
+    padding: 24px 16px 0
 
   a,
   a:visited
