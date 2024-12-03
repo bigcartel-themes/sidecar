@@ -72,8 +72,9 @@
         </div>
       </div>
     </form>
-{% else %}
-  <div class="alert-message">
-    <div class="alert-message__text">Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</div>
-  </div>
-{% endunless %}
+  {% else %}
+    <div class="alert-message">
+      <div class="alert-message__text">Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</div>
+    </div>
+  {% endunless %}
+</div>
