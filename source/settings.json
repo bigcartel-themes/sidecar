@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.3.3",
+  "version": "2.4.0",
   "images": [
     {
       "variable": "logo",
@@ -94,6 +94,83 @@
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#E3E4EA",
               "announcement_message_text_color": "#2A2A2C"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Elegant",
+        "styles": [
+          {
+            "style_name": "Elegant #1",
+            "fonts": {
+              "header_font": "Playfair Display",
+              "font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F8F8F8",
+              "sidebar_background_color": "#FFFFFF",
+              "header_text_color": "#2A2A2C",
+              "body_text_color": "#2A2A2C",
+              "link_color": "#2A2A2C",
+              "link_hover_color": "#203BE1",
+              "sidebar_link_color": "#2A2A2C",
+              "sidebar_link_hover_color": "#203BE1",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#203BE1",
+              "button_background_hover_color": "#2A2A2C",
+              "product_status_text_color_primary": "#625DF5",
+              "product_status_text_color_secondary": "#7E7D7D",
+              "announcement_message_background_color": "#E3E4EA",
+              "announcement_message_text_color": "#2A2A2C"
+            }
+          },
+          {
+            "style_name": "Elegant #2",
+            "fonts": {
+              "header_font": "Prata",
+              "font": "Merriweather"
+            },
+            "colors": {
+              "background_color": "#141415",
+              "sidebar_background_color": "#1D1D1F",
+              "header_text_color": "#F8F8F8",
+              "body_text_color": "#D3D3D3",
+              "link_color": "#F8F8F8",
+              "link_hover_color": "#B6B6B6",
+              "sidebar_link_color": "#F8F8F8",
+              "sidebar_link_hover_color": "#B6B6B6",
+              "button_text_color": "#1D1D1F",
+              "button_background_color": "#F8F8F8",
+              "button_background_hover_color": "#C6C6C6",
+              "product_status_text_color_primary": "#CF3917",
+              "product_status_text_color_secondary": "#7E7D7D",
+              "announcement_message_background_color": "#F8F8F8",
+              "announcement_message_text_color": "#1D1D1F"
+            }
+          },
+          {
+            "style_name": "Elegant #3",
+            "fonts": {
+              "header_font": "Cormorant",
+              "font": "Lora"
+            },
+            "colors": {
+              "background_color": "#F5F4F0",
+              "sidebar_background_color": "#EBE7E3",
+              "header_text_color": "#232323",
+              "body_text_color": "#555555",
+              "link_color": "#232323",
+              "link_hover_color": "#555555",
+              "sidebar_link_color": "#232323",
+              "sidebar_link_hover_color": "#555555",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#555555",
+              "button_background_hover_color": "#232323",
+              "product_status_text_color_primary": "#AA6F39",
+              "product_status_text_color_secondary": "#7E7D7D",
+              "announcement_message_background_color": "#E8E7E3",
+              "announcement_message_text_color": "#232323"
             }
           }
         ]
