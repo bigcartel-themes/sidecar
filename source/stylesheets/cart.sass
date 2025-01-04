@@ -14,10 +14,11 @@
   h1
     margin-bottom: 0
 
-.continue-shopping
-  font-size: .925rem
+.copy-cart-link
   margin-left: auto
-  text-decoration: underline
+
+.continue-shopping
+  font-weight: normal
 
 .cart-items
   border-bottom: 1px solid var(--border-color)
@@ -124,8 +125,11 @@
     line-height: 1em
     font-weight: normal
     padding: 8px 16px
-    text-decoration: underline
+    text-decoration: none
     width: auto
+
+    &:hover
+      text-decoration: underline
 
     @media (max-width: $break-medium)
       padding: 4px 0
@@ -169,4 +173,5 @@
     width: 100%
 
   button
+    margin-bottom: 20px
     width: 100%
