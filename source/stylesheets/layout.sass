@@ -169,6 +169,9 @@ a
   text-decoration: none
   text-underline-offset: 2px
 
+  &:hover
+    text-decoration: underline
+
 h1,
 h2,
 h3,
@@ -231,7 +234,7 @@ small
   border-radius: var(--border-radius)
   color: var(--button-text-color)
   cursor: pointer
-  font-weight: 700
+  font-weight: 500
   padding: 0 32px
   height: 54px
   text-align: center
@@ -274,11 +277,12 @@ small
     height: auto
     outline-offset: 4px
     text-align: center
-    text-decoration: underline
+    text-decoration: none
     transition: color .2s ease
     width: 100%
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
+      text-decoration: underline
       color: var(--link-hover-color)
       background: none
 

@@ -1,7 +1,9 @@
 <div class="page cart">
   <div class="cart-header">
     <h1>{{ page.name }}</h1>
-    {% if cart.item_count > 0 %}<a class="continue-shopping" href="/products">Continue Shopping</a>{% endif %}
+    {% if cart.item_count > 0 && cart.shareable_link %}
+      <a href="{{ cart.shareable_link }}" class="copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
+    {% endif %}
   </div>
   {% unless cart.items == blank %}
 
@@ -69,12 +71,13 @@
         </div>
         <div class="cart-submit">
           <button type="submit" name="checkout" class="button button--checkout">Checkout</button>
+          <a class="button minimal-button continue-shopping" href="/">Continue Shopping</a>
         </div>
       </div>
     </form>
   {% else %}
     <div class="alert-message">
-      <div class="alert-message__text">Your cart is empty! Sounds like a good time to <a href="/">start shopping</a>.</div>
+      <div class="alert-message__text">Your cart is empty. <a href="/">Shop now</a>.</div>
     </div>
   {% endunless %}
 </div>
