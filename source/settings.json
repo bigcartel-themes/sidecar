@@ -443,7 +443,7 @@
       "variable": "show_sold_out_product_prices",
       "label": "Show prices for sold out products",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "description": "Show the price of sold out products on product grids and product pages",
       "requires": "inventory"
     },
