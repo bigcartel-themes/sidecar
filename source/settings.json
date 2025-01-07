@@ -417,6 +417,13 @@
       "description": "Shows a product's name & price on hover, or under the image"
     },
     {
+      "variable": "all_products_button_text",
+      "label": "All products button text",
+      "type": "text",
+      "description": "Displays underneath featured products and links to your Products Page",
+      "default": "All Products"
+    },
+    {
       "variable": "show_inventory_bars",
       "label": "Show inventory bars",
       "type": "boolean",
