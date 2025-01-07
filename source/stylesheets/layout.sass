@@ -95,37 +95,60 @@ footer
   padding: 24px 0
   width: 100%
 
-.social-icons
-  display: flex
-  gap: 16px
-  list-style: none
-  margin: 0
-  padding: 0
-  flex-wrap: wrap
-  justify-content: center
-
-  @media screen and (max-width: $break-small)
-    gap: 8px
-
-  a
-    color: var(--body-text-color)
+  .social-icons
     display: flex
-    align-items: center
+    gap: 16px
+    list-style: none
+    margin: 0
+    padding: 0
+    flex-wrap: wrap
     justify-content: center
-    flex-shrink: 0
-    width: 36px
-    height: 36px
 
-    &:hover, &:focus
-      color: var(--link-hover-color)
+    @media screen and (max-width: $break-small)
+      gap: 8px
 
-    svg
-      fill: currentColor
-      height: 22px
-      width: 22px
+    a
+      color: var(--sidebar-link-color) !important
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-shrink: 0
+      width: 36px
+      height: 36px
 
-      &.tumblr-icon
-        width: 14px
+      &:hover, &:focus
+        color: var(--sidebar-link-hover-color) !important
+
+      svg
+        fill: currentColor
+        height: 22px
+        width: 22px
+
+        &.tumblr-icon
+          width: 14px
+  
+  .footer-credit
+    .bigcartel-credit
+      color: var(--sidebar-link-color) !important
+      font-size: .875rem
+      line-height: 1em
+      display: flex
+      align-items: center
+      gap: 8px
+      outline-offset: 4px
+      padding: 2px 0
+      text-decoration: none !important
+
+      &__text
+        position: relative
+
+      &__lockup
+        fill: currentColor
+        padding-top: 1px
+        width: 80px
+      
+      &:hover
+        color: var(--sidebar-link-hover-color) !important
 
 .announcement-message
   background-color: var(--announcement-message-background-color)
@@ -184,7 +207,7 @@ h6
   margin-bottom: 32px
 
 h1
-  font-size: 1.75rem
+  font-size: 1.50rem
   line-height: 1.3em
 
 h2
@@ -504,24 +527,6 @@ textarea
 
     .cart-details
       margin-left: auto
-
-.bigcartel-credit
-  font-size: .875rem
-  line-height: 1em
-  display: flex
-  align-items: center
-  gap: 8px
-  outline-offset: 4px
-  padding: 2px 0
-  text-decoration: none !important
-
-  &__text
-    position: relative
-
-  &__lockup
-    fill: currentColor
-    padding-top: 1px
-    width: 80px
 
 /* @end */
 
