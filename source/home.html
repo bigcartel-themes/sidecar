@@ -12,7 +12,7 @@
     {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
       {% if products != blank %}
         <div class="product-list-container">
-          <div class="product-list product-image-{{ theme.product_grid_image_size }}">
+          <div class="product-list product-image-{{ theme.product_grid_image_size }} {% if products.size < 2 %}product-list--center{% endif %}">
             {% for product in products %}
               {% assign image_width = product.image.width | times: 1.0 %}
               {% assign image_height = product.image.height | times: 1.0 %}
@@ -80,6 +80,13 @@
             {% endfor %}
           </div>
         </div>
+        {% if paginate.pages > 1 %}
+          {% if theme.all_products_button_text != blank %}
+          <a class="button minimal-button all-products-button" href="/products">
+            {{ theme.all_products_button_text }}<svg aria-hidden="true" width="16" height="15" viewBox="0 0 21 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.445798 0l9.9966372 9.99663714-.0035344.00381736.0035344.0029084L10.445798 20l-1.87436943-1.8743695L15.1964286 11.5H0v-3h15.1964286L8.57142857 1.87436946z" fill-rule="evenodd"></path></svg>
+          </a>
+          {% endif %}
+        {% endif %}
       {% else %}
         <div class="alert-message">
           <div class="alert-message__text">No products found.</div>

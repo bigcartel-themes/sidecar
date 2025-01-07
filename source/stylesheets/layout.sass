@@ -184,7 +184,7 @@ h6
   margin-bottom: 32px
 
 h1
-  font-size: 1.5rem
+  font-size: 1.75rem
   line-height: 1.3em
 
 h2
@@ -540,6 +540,14 @@ textarea
     flex: 1 0 auto
     margin-bottom: 60px
 
+  .page-title, h1
+    @media screen and (max-width: $break-small)
+      text-align: center
+  
+  .product_detail h1
+    @media screen and (max-width: $break-small)
+      text-align: left
+
   a,
   a:visited
     color: var(--link-color)
@@ -556,7 +564,7 @@ textarea
   border-bottom-width: 1px
   display: none
   gap: 16px
-  height: 72px
+  height: 80px
   padding: 8px 16px
   position: relative
   text-align: center
