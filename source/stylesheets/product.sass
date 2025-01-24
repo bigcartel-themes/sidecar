@@ -162,3 +162,32 @@ a.product-form-cart-linker-link
   .arrow
     width: 12px
     transform: rotate(-90deg)
+
+.related-products-container
+  padding: 80px 0 100px 0
+  margin-top: -125px
+
+  @media screen and (max-width: $break-medium)
+    padding: 30px 0 60px 0
+
+  @media screen and (max-width: $break-small)
+    padding-bottom: -80px
+
+.related-products-header
+  display: flex
+  align-items: center
+  margin-bottom: 30px
+
+  .related-products-title
+    font-size: 1.75rem
+    margin-bottom: 0
+
+  .related-products-view-all-link
+    margin-left: auto
+
+    &:hover
+      text-decoration: underline
+      text-underline-offset: 3px
+
+.related-product-list
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr))
