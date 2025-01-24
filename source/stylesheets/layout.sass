@@ -86,6 +86,38 @@ a.skip-link
     grid-template-columns: 1fr
     min-height: calc(100dvh - var(--announcement-height, 0px) - 72px)
 
+.social-icons
+  display: flex
+  gap: 16px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 8px
+
+  a
+    color: var(--sidebar-link-color) !important
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    &:hover, &:focus
+      color: var(--sidebar-link-hover-color) !important
+
+    svg
+      fill: currentColor
+      height: 22px
+      width: 22px
+
+      &.tumblr-icon
+        width: 14px
+
 footer
   border-top: 1px solid var(--border-color)
   display: grid
@@ -94,38 +126,6 @@ footer
   gap: 24px
   padding: 24px 0
   width: 100%
-
-  .social-icons
-    display: flex
-    gap: 16px
-    list-style: none
-    margin: 0
-    padding: 0
-    flex-wrap: wrap
-    justify-content: center
-
-    @media screen and (max-width: $break-small)
-      gap: 8px
-
-    a
-      color: var(--sidebar-link-color) !important
-      display: flex
-      align-items: center
-      justify-content: center
-      flex-shrink: 0
-      width: 36px
-      height: 36px
-
-      &:hover, &:focus
-        color: var(--sidebar-link-hover-color) !important
-
-      svg
-        fill: currentColor
-        height: 22px
-        width: 22px
-
-        &.tumblr-icon
-          width: 14px
   
   .footer-credit
     .bigcartel-credit
