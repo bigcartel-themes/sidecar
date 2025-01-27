@@ -148,6 +148,9 @@
         {% endif %}
 
         <footer data-bc-hook="footer">
+          {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
+            <div class="footer-custom-content">{{ theme.footer_text }} </div>
+          {% endif %}
           {% if theme.instagram_url != blank
             or theme.tiktok_url != blank
             or theme.threads_url != blank
@@ -221,6 +224,9 @@
                 {% endif %}
               </ul>
             </nav>
+          {% endif %}
+          {% if theme.footer_text != blank and theme.footer_text_position == "end" %}
+            <div class="footer-custom-content">{{ theme.footer_text }} </div>
           {% endif %}
           <div class="footer-credit">{{ powered_by_big_cartel }}</div>
         </footer>
