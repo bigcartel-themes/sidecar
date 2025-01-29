@@ -17,6 +17,8 @@
   --product-status-text-color-secondary: #{'{{ theme.product_status_text_color_secondary }}'}
   --announcement-message-text-color: #{'{{ theme.announcement_message_text_color }}'}
   --announcement-message-background-color: #{'{{ theme.announcement_message_background_color }}'}
+  --footer-link-color: #{'{{ theme.footer_link_color }}'}
+  --footer-link-hover-color: #{'{{ theme.footer_link_hover_color }}'}
 
   --header-font: #{'{{ theme.header_font | font_family }}'}
   --body-font: #{'{{ theme.font | font_family }}'}
@@ -99,7 +101,7 @@ a.skip-link
     gap: 8px
 
   a
-    color: var(--sidebar-link-color) !important
+    color: var(--footer-link-color) !important
     display: flex
     align-items: center
     justify-content: center
@@ -108,7 +110,7 @@ a.skip-link
     height: 36px
 
     &:hover, &:focus
-      color: var(--sidebar-link-hover-color) !important
+      color: var(--footer-link-hover-color) !important
 
     svg
       fill: currentColor
@@ -126,13 +128,14 @@ footer
   gap: 24px
   padding: 24px 0
   width: 100%
+  color: var(--footer-link-color)
 
   @media screen and (max-width: $break-small)
     margin: 68px 0
   
   .footer-credit
     .bigcartel-credit
-      color: var(--sidebar-link-color) !important
+      color: var(--footer-link-color) !important
       font-size: .875rem
       line-height: 1em
       display: flex
@@ -152,10 +155,10 @@ footer
         width: 80px
       
       &:hover
-        color: var(--sidebar-link-hover-color) !important
+        color: var(--footer-link-hover-color) !important
 
-.footer-custom-content
-  margin-top: 30px
+  .footer-custom-content
+    margin-top: 30px
 
 .announcement-message
   background-color: var(--announcement-message-background-color)

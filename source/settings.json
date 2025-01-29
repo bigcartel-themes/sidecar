@@ -45,7 +45,9 @@
               "product_status_text_color_primary": "#B70303",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#000000",
-              "announcement_message_text_color": "#FFFFFF"
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#898989",
+              "footer_link_hover_color": "#273896"
             }
           },
           {
@@ -68,8 +70,10 @@
               "button_background_hover_color": "#C6C6C6",
               "product_status_text_color_primary": "#CF3917",
               "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#F8F8F8",
-              "announcement_message_text_color": "#333333"
+              "announcement_message_background_color": "#CBCBCB",
+              "announcement_message_text_color": "#333333",
+              "footer_link_color": "#F8F8F8",
+              "footer_link_hover_color": "#C6C6C6"
             }
           },
           {
@@ -93,7 +97,9 @@
               "product_status_text_color_primary": "#625DF5",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#E3E4EA",
-              "announcement_message_text_color": "#2A2A2C"
+              "announcement_message_text_color": "#2A2A2C",
+              "footer_link_color": "#939393",
+              "footer_link_hover_color": "#203BE1"
             }
           }
         ]
@@ -108,21 +114,23 @@
               "font": "Source Sans Pro"
             },
             "colors": {
-              "background_color": "#F8F8F8",
-              "sidebar_background_color": "#FFFFFF",
-              "header_text_color": "#2A2A2C",
-              "body_text_color": "#2A2A2C",
-              "link_color": "#2A2A2C",
-              "link_hover_color": "#203BE1",
-              "sidebar_link_color": "#2A2A2C",
-              "sidebar_link_hover_color": "#203BE1",
+              "background_color": "#F5F0FA",
+              "sidebar_background_color": "#F5F0FA",
+              "header_text_color": "#2D1854",
+              "body_text_color": "#382466",
+              "link_color": "#5B3E8E",
+              "link_hover_color": "#8C5FD4",
+              "sidebar_link_color": "#5B3E8E",
+              "sidebar_link_hover_color": "#8C5FD4",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#203BE1",
-              "button_background_hover_color": "#2A2A2C",
-              "product_status_text_color_primary": "#625DF5",
+              "button_background_color": "#8C5FD4",
+              "button_background_hover_color": "#5B3E8E",
+              "product_status_text_color_primary": "#9747FF",
               "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#E3E4EA",
-              "announcement_message_text_color": "#2A2A2C"
+              "announcement_message_background_color": "#EAE0F7",
+              "announcement_message_text_color": "#2D1854",
+              "footer_link_color": "#5B3E8E",
+              "footer_link_hover_color": "#8C5FD4"
             }
           },
           {
@@ -146,7 +154,9 @@
               "product_status_text_color_primary": "#CF3917",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#F8F8F8",
-              "announcement_message_text_color": "#1D1D1F"
+              "announcement_message_text_color": "#1D1D1F",
+              "footer_link_color": "#F8F8F8",
+              "footer_link_hover_color": "#B6B6B6"
             }
           },
           {
@@ -169,8 +179,10 @@
               "button_background_hover_color": "#232323",
               "product_status_text_color_primary": "#AA6F39",
               "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#E8E7E3",
-              "announcement_message_text_color": "#232323"
+              "announcement_message_background_color": "#C9C1C1",
+              "announcement_message_text_color": "#232323",
+              "footer_link_color": "#232323",
+              "footer_link_hover_color": "#555555"
             }
           }
         ]
@@ -199,7 +211,9 @@
               "product_status_text_color_primary": "#FF5733",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#0000FF",
-              "announcement_message_text_color": "#FFFFFF"
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#0000FF",
+              "footer_link_hover_color": "#000098"
             }
           },
           {
@@ -223,7 +237,9 @@
               "product_status_text_color_primary": "#008C99",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#F6FF20",
-              "announcement_message_text_color": "#0B0423"
+              "announcement_message_text_color": "#0B0423",
+              "footer_link_color": "#0B0423",
+              "footer_link_hover_color": "#F90081"
             }
           },
           {
@@ -246,8 +262,10 @@
               "button_background_hover_color": "#0C143B",
               "product_status_text_color_primary": "#FF69B4",
               "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#FFFA8D",
-              "announcement_message_text_color": "#273896"
+              "announcement_message_background_color": "#273896",
+              "announcement_message_text_color": "#FFFBFD",
+              "footer_link_color": "#243588",
+              "footer_link_hover_color": "#0C143B"
             }
           }
         ]
@@ -342,6 +360,16 @@
       "variable": "announcement_message_text_color",
       "label": "Announcement message text",
       "default": "#FFFFFF"
+    },
+    {
+      "variable": "footer_link_color",
+      "label": "Footer links",
+      "default": "#000000"
+    },
+    {
+      "variable": "footer_link_hover_color",
+      "label": "footer link hover",
+      "default": "#273896"
     }
   ],
   "options": [
