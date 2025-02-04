@@ -17,6 +17,8 @@
   --product-status-text-color-secondary: #{'{{ theme.product_status_text_color_secondary }}'}
   --announcement-message-text-color: #{'{{ theme.announcement_message_text_color }}'}
   --announcement-message-background-color: #{'{{ theme.announcement_message_background_color }}'}
+  --footer-link-color: #{'{{ theme.footer_link_color }}'}
+  --footer-link-hover-color: #{'{{ theme.footer_link_hover_color }}'}
 
   --header-font: #{'{{ theme.header_font | font_family }}'}
   --body-font: #{'{{ theme.font | font_family }}'}
@@ -86,6 +88,38 @@ a.skip-link
     grid-template-columns: 1fr
     min-height: calc(100dvh - var(--announcement-height, 0px) - 72px)
 
+.social-icons
+  display: flex
+  gap: 16px
+  list-style: none
+  margin: 0
+  padding: 0
+  flex-wrap: wrap
+  justify-content: center
+
+  @media screen and (max-width: $break-small)
+    gap: 8px
+
+  a
+    color: var(--footer-link-color) !important
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-shrink: 0
+    width: 36px
+    height: 36px
+
+    &:hover, &:focus
+      color: var(--footer-link-hover-color) !important
+
+    svg
+      fill: currentColor
+      height: 22px
+      width: 22px
+
+      &.tumblr-icon
+        width: 14px
+
 footer
   border-top: 1px solid var(--border-color)
   display: grid
@@ -94,42 +128,14 @@ footer
   gap: 24px
   padding: 24px 0
   width: 100%
+  color: var(--footer-link-color)
 
-  .social-icons
-    display: flex
-    gap: 16px
-    list-style: none
-    margin: 0
-    padding: 0
-    flex-wrap: wrap
-    justify-content: center
-
-    @media screen and (max-width: $break-small)
-      gap: 8px
-
-    a
-      color: var(--sidebar-link-color) !important
-      display: flex
-      align-items: center
-      justify-content: center
-      flex-shrink: 0
-      width: 36px
-      height: 36px
-
-      &:hover, &:focus
-        color: var(--sidebar-link-hover-color) !important
-
-      svg
-        fill: currentColor
-        height: 22px
-        width: 22px
-
-        &.tumblr-icon
-          width: 14px
+  @media screen and (max-width: $break-small)
+    margin: 68px 0
   
   .footer-credit
     .bigcartel-credit
-      color: var(--sidebar-link-color) !important
+      color: var(--footer-link-color) !important
       font-size: .875rem
       line-height: 1em
       display: flex
@@ -137,6 +143,7 @@ footer
       gap: 8px
       outline-offset: 4px
       padding: 2px 0
+      margin: 30px 0
       text-decoration: none !important
 
       &__text
@@ -148,7 +155,10 @@ footer
         width: 80px
       
       &:hover
-        color: var(--sidebar-link-hover-color) !important
+        color: var(--footer-link-hover-color) !important
+
+  .footer-custom-content
+    margin-top: 30px
 
 .announcement-message
   background-color: var(--announcement-message-background-color)
@@ -207,7 +217,7 @@ h6
   margin-bottom: 32px
 
 h1
-  font-size: 1.50rem
+  font-size: 1.75rem
   line-height: 1.3em
 
 h2
@@ -543,7 +553,10 @@ textarea
 
   > .page
     flex: 1 0 auto
-    margin-bottom: 60px
+    padding-bottom: 125px
+
+    @media screen and (max-width: $break-small)
+      padding-bottom: 80px
 
   .page-title, h1
     @media screen and (max-width: $break-small)

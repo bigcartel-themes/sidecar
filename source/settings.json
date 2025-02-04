@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "images": [
     {
       "variable": "logo",
@@ -45,132 +45,144 @@
               "product_status_text_color_primary": "#B70303",
               "product_status_text_color_secondary": "#7E7D7D",
               "announcement_message_background_color": "#000000",
-              "announcement_message_text_color": "#FFFFFF"
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#898989",
+              "footer_link_hover_color": "#273896"
             }
           },
           {
             "style_name": "Classic #2",
             "fonts": {
-              "header_font": "DM Sans",
-              "font": "DM Sans"
+              "header_font": "Crimson Text",
+              "font": "Source Sans Pro"
             },
             "colors": {
-              "background_color": "#141415",
-              "sidebar_background_color": "#333333",
-              "header_text_color": "#F8F8F8",
-              "body_text_color": "#F8F8F8",
-              "link_color": "#F8F8F8",
-              "link_hover_color": "#C6C6C6",
-              "sidebar_link_color": "#F8F8F8",
-              "sidebar_link_hover_color": "#C6C6C6",
-              "button_text_color": "#333333",
-              "button_background_color": "#F8F8F8",
-              "button_background_hover_color": "#C6C6C6",
-              "product_status_text_color_primary": "#CF3917",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#F8F8F8",
-              "announcement_message_text_color": "#333333"
+              "background_color": "#4E2E32",
+              "sidebar_background_color": "#4E2E32",
+              "header_text_color": "#F7E5D7",
+              "body_text_color": "#F7E5D7",
+              "link_color": "#F7E5D7",
+              "link_hover_color": "#E2B69D",
+              "sidebar_link_color": "#F7E5D7",
+              "sidebar_link_hover_color": "#E2B69D",
+              "button_text_color": "#4E2E32",
+              "button_background_color": "#E2B69D",
+              "button_background_hover_color": "#D4A089",
+              "product_status_text_color_primary": "#E2B69D",
+              "product_status_text_color_secondary": "#C4A5A7",
+              "announcement_message_background_color": "#E2B69D",
+              "announcement_message_text_color": "#4E2E32",
+              "footer_link_color": "#C4A5A7",
+              "footer_link_hover_color": "#E2B69D"
             }
           },
           {
             "style_name": "Classic #3",
             "fonts": {
-              "header_font": "Cabin",
-              "font": "Cabin"
+              "header_font": "Lora",
+              "font": "Inter"
             },
             "colors": {
               "background_color": "#FFFFFF",
-              "sidebar_background_color": "#F8F8FA",
-              "header_text_color": "#2A2A2C",
-              "body_text_color": "#2A2A2C",
-              "link_color": "#2A2A2C",
-              "link_hover_color": "#203BE1",
-              "sidebar_link_color": "#2A2A2C",
-              "sidebar_link_hover_color": "#203BE1",
+              "sidebar_background_color": "#F8F9FA",
+              "header_text_color": "#2C3E50",
+              "body_text_color": "#2C3E50",
+              "link_color": "#2C3E50",
+              "link_hover_color": "#7B341E",
+              "sidebar_link_color": "#2C3E50",
+              "sidebar_link_hover_color": "#7B341E",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#203BE1",
-              "button_background_hover_color": "#2A2A2C",
-              "product_status_text_color_primary": "#625DF5",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#E3E4EA",
-              "announcement_message_text_color": "#2A2A2C"
+              "button_background_color": "#2C5282",
+              "button_background_hover_color": "#7B341E",
+              "product_status_text_color_primary": "#7B341E",
+              "product_status_text_color_secondary": "#718096",
+              "announcement_message_background_color": "#2C5282",
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#718096",
+              "footer_link_hover_color": "#7B341E"
             }
           }
         ]
       },
       {
-        "group_name": "Elegant",
+        "group_name": "Bold",
         "styles": [
           {
-            "style_name": "Elegant #1",
+            "style_name": "Bold #1",
             "fonts": {
-              "header_font": "Playfair Display",
-              "font": "Source Sans Pro"
+              "header_font": "Space Grotesk",
+              "font": "Inter"
             },
             "colors": {
-              "background_color": "#F8F8F8",
-              "sidebar_background_color": "#FFFFFF",
-              "header_text_color": "#2A2A2C",
-              "body_text_color": "#2A2A2C",
-              "link_color": "#2A2A2C",
-              "link_hover_color": "#203BE1",
-              "sidebar_link_color": "#2A2A2C",
-              "sidebar_link_hover_color": "#203BE1",
-              "button_text_color": "#FFFFFF",
-              "button_background_color": "#203BE1",
-              "button_background_hover_color": "#2A2A2C",
-              "product_status_text_color_primary": "#625DF5",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#E3E4EA",
-              "announcement_message_text_color": "#2A2A2C"
+              "background_color": "#000000",
+              "sidebar_background_color": "#000000",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#FF3D00",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#FF3D00",
+              "button_text_color": "#000000",
+              "button_background_color": "#FF3D00",
+              "button_background_hover_color": "#CC3100",
+              "product_status_text_color_primary": "#FF3D00",
+              "product_status_text_color_secondary": "#808080",
+              "announcement_message_background_color": "#FF3D00",
+              "announcement_message_text_color": "#000000",
+              "footer_link_color": "#808080",
+              "footer_link_hover_color": "#FF3D00"
             }
           },
           {
-            "style_name": "Elegant #2",
+            "style_name": "Bold #2",
             "fonts": {
-              "header_font": "Prata",
-              "font": "Merriweather"
+              "header_font": "Chivo",
+              "font": "DM Sans"
             },
             "colors": {
-              "background_color": "#141415",
-              "sidebar_background_color": "#1D1D1F",
-              "header_text_color": "#F8F8F8",
-              "body_text_color": "#D3D3D3",
-              "link_color": "#F8F8F8",
-              "link_hover_color": "#B6B6B6",
-              "sidebar_link_color": "#F8F8F8",
-              "sidebar_link_hover_color": "#B6B6B6",
-              "button_text_color": "#1D1D1F",
-              "button_background_color": "#F8F8F8",
-              "button_background_hover_color": "#C6C6C6",
-              "product_status_text_color_primary": "#CF3917",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#F8F8F8",
-              "announcement_message_text_color": "#1D1D1F"
+              "background_color": "#006D77",
+              "sidebar_background_color": "#005C64",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#FF9E2A",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#FF9E2A",
+              "button_text_color": "#006D77",
+              "button_background_color": "#FF9E2A",
+              "button_background_hover_color": "#FF8C00",
+              "product_status_text_color_primary": "#FF9E2A",
+              "product_status_text_color_secondary": "#83C5C9",
+              "announcement_message_background_color": "#FF9E2A",
+              "announcement_message_text_color": "#006D77",
+              "footer_link_color": "#83C5C9",
+              "footer_link_hover_color": "#FF9E2A"
             }
           },
           {
-            "style_name": "Elegant #3",
+            "style_name": "Bold #3",
             "fonts": {
-              "header_font": "Cormorant",
-              "font": "Lora"
+              "header_font": "Syne",
+              "font": "Work Sans"
             },
             "colors": {
-              "background_color": "#F5F4F0",
-              "sidebar_background_color": "#EBE7E3",
-              "header_text_color": "#232323",
-              "body_text_color": "#555555",
-              "link_color": "#232323",
-              "link_hover_color": "#555555",
-              "sidebar_link_color": "#232323",
-              "sidebar_link_hover_color": "#555555",
-              "button_text_color": "#FFFFFF",
-              "button_background_color": "#555555",
-              "button_background_hover_color": "#232323",
-              "product_status_text_color_primary": "#AA6F39",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#E8E7E3",
-              "announcement_message_text_color": "#232323"
+              "background_color": "#00B894",
+              "sidebar_background_color": "#009B7D",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#FFD700",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#FFD700",
+              "button_text_color": "#00B894",
+              "button_background_color": "#FFD700",
+              "button_background_hover_color": "#FFC700",
+              "product_status_text_color_primary": "#FFD700",
+              "product_status_text_color_secondary": "#80DCC9",
+              "announcement_message_background_color": "#FFD700",
+              "announcement_message_text_color": "#00B894",
+              "footer_link_color": "#80DCC9",
+              "footer_link_hover_color": "#FFD700"
             }
           }
         ]
@@ -181,78 +193,249 @@
           {
             "style_name": "Playful #1",
             "fonts": {
-              "header_font": "Syne",
-              "font": "Syne"
+              "header_font": "Fredoka One",
+              "font": "Nunito"
             },
             "colors": {
-              "background_color": "#FFFFFF",
-              "sidebar_background_color": "#FFFFFF",
-              "header_text_color": "#0000FF",
-              "body_text_color": "#0000FF",
-              "link_color": "#0000FF",
-              "link_hover_color": "#000098",
-              "sidebar_link_color": "#0000FF",
-              "sidebar_link_hover_color": "#000098",
-              "button_text_color": "#0000FF",
-              "button_background_color": "#FFE500",
-              "button_background_hover_color": "#EBD300",
-              "product_status_text_color_primary": "#FF5733",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#0000FF",
-              "announcement_message_text_color": "#FFFFFF"
+              "background_color": "#FF647C",
+              "sidebar_background_color": "#FF4D69",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#1AD1C3",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#1AD1C3",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#1A4D57",
+              "button_background_hover_color": "#265F6B",
+              "product_status_text_color_primary": "#FFFFFF",
+              "product_status_text_color_secondary": "#FFB2BE",
+              "announcement_message_background_color": "#1A4D57",
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#FFB2BE",
+              "footer_link_hover_color": "#1AD1C3"
             }
           },
           {
             "style_name": "Playful #2",
             "fonts": {
               "header_font": "Concert One",
-              "font": "Dosis"
+              "font": "Nunito Sans"
             },
             "colors": {
-              "background_color": "#FFFFFF",
-              "sidebar_background_color": "#FFFFFF",
-              "header_text_color": "#0B0423",
-              "body_text_color": "#0B0423",
-              "link_color": "#0B0423",
-              "link_hover_color": "#F90081",
-              "sidebar_link_color": "#0B0423",
-              "sidebar_link_hover_color": "#F90081",
+              "background_color": "#00B5B0",
+              "sidebar_background_color": "#009B97",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#FF6B6C",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#FF6B6C",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#F90081",
-              "button_background_hover_color": "#D1006C",
-              "product_status_text_color_primary": "#008C99",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#F6FF20",
-              "announcement_message_text_color": "#0B0423"
+              "button_background_color": "#FF6B6C",
+              "button_background_hover_color": "#FF5252",
+              "product_status_text_color_primary": "#FF6B6C",
+              "product_status_text_color_secondary": "#80DAD8",
+              "announcement_message_background_color": "#FF6B6C",
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#80DAD8",
+              "footer_link_hover_color": "#FF6B6C"
             }
           },
           {
             "style_name": "Playful #3",
             "fonts": {
-              "header_font": "Quicksand",
+              "header_font": "Cabin Sketch",
               "font": "Quicksand"
             },
             "colors": {
-              "background_color": "#FFFBFD",
-              "sidebar_background_color": "#FFE9F4",
-              "header_text_color": "#243588",
-              "body_text_color": "#243588",
-              "link_color": "#243588",
-              "link_hover_color": "#0C143B",
-              "sidebar_link_color": "#243588",
-              "sidebar_link_hover_color": "#0C143B",
-              "button_text_color": "#FFFBFD",
-              "button_background_color": "#273896",
-              "button_background_hover_color": "#0C143B",
-              "product_status_text_color_primary": "#FF69B4",
-              "product_status_text_color_secondary": "#7E7D7D",
-              "announcement_message_background_color": "#FFFA8D",
-              "announcement_message_text_color": "#273896"
+              "background_color": "#00B066",
+              "sidebar_background_color": "#009955",
+              "header_text_color": "#FFFFFF",
+              "body_text_color": "#FFFFFF",
+              "link_color": "#FFFFFF",
+              "link_hover_color": "#FFB8FF",
+              "sidebar_link_color": "#FFFFFF",
+              "sidebar_link_hover_color": "#FFB8FF",
+              "button_text_color": "#00B066",
+              "button_background_color": "#FFB8FF",
+              "button_background_hover_color": "#FFA1FF",
+              "product_status_text_color_primary": "#FFA1FF",
+              "product_status_text_color_secondary": "#80D8B3",
+              "announcement_message_background_color": "#FFB8FF",
+              "announcement_message_text_color": "#00B066",
+              "footer_link_color": "#80D8B3",
+              "footer_link_hover_color": "#FFB8FF"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Earthy",
+        "styles": [
+          {
+            "style_name": "Earthy #1",
+            "fonts": {
+              "header_font": "Fauna One",
+              "font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#DAD7CD",
+              "sidebar_background_color": "#DAD7CD",
+              "header_text_color": "#344E41",
+              "body_text_color": "#344E41",
+              "link_color": "#344E41",
+              "link_hover_color": "#A15737",
+              "sidebar_link_color": "#344E41",
+              "sidebar_link_hover_color": "#A15737",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#A15737",
+              "button_background_hover_color": "#8B4A2F",
+              "product_status_text_color_primary": "#A15737",
+              "product_status_text_color_secondary": "#6B7568",
+              "announcement_message_background_color": "#344E41",
+              "announcement_message_text_color": "#DAD7CD",
+              "footer_link_color": "#6B7568",
+              "footer_link_hover_color": "#A15737"
+            }
+          },
+          {
+            "style_name": "Earthy #2",
+            "fonts": {
+              "header_font": "Hahmlet",
+              "font": "Karla"
+            },
+            "colors": {
+              "background_color": "#CB997E",
+              "sidebar_background_color": "#B88B72",
+              "header_text_color": "#2F3E46",
+              "body_text_color": "#2F3E46",
+              "link_color": "#2F3E46",
+              "link_hover_color": "#6B9080",
+              "sidebar_link_color": "#2F3E46",
+              "sidebar_link_hover_color": "#6B9080",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#6B9080",
+              "button_background_hover_color": "#5C7A6C",
+              "product_status_text_color_primary": "#4B7B66",
+              "product_status_text_color_secondary": "#715445",
+              "announcement_message_background_color": "#2F3E46",
+              "announcement_message_text_color": "#CB997E",
+              "footer_link_color": "#715445",
+              "footer_link_hover_color": "#6B9080"
+            }
+          },
+          {
+            "style_name": "Earthy #3",
+            "fonts": {
+              "header_font": "Fjord One",
+              "font": "Work Sans"
+            },
+            "colors": {
+              "background_color": "#FEFAE0",
+              "sidebar_background_color": "#F5F1D3",
+              "header_text_color": "#283618",
+              "body_text_color": "#283618",
+              "link_color": "#283618",
+              "link_hover_color": "#BC6C25",
+              "sidebar_link_color": "#283618",
+              "sidebar_link_hover_color": "#BC6C25",
+              "button_text_color": "#FEFAE0",
+              "button_background_color": "#BC6C25",
+              "button_background_hover_color": "#A65D20",
+              "product_status_text_color_primary": "#BC6C25",
+              "product_status_text_color_secondary": "#606C3C",
+              "announcement_message_background_color": "#283618",
+              "announcement_message_text_color": "#FEFAE0",
+              "footer_link_color": "#606C3C",
+              "footer_link_hover_color": "#BC6C25"
+            }
+          }
+        ]
+      },
+      {
+        "group_name": "Dreamy",
+        "styles": [
+          {
+            "style_name": "Dreamy #1",
+            "fonts": {
+              "header_font": "Fraunces",
+              "font": "DM Sans"
+            },
+            "colors": {
+              "background_color": "#EBF2FA",
+              "sidebar_background_color": "#EBF2FA",
+              "header_text_color": "#427AA1",
+              "body_text_color": "#427AA1",
+              "link_color": "#427AA1",
+              "link_hover_color": "#A679C7",
+              "sidebar_link_color": "#427AA1",
+              "sidebar_link_hover_color": "#A679C7",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#A679C7",
+              "button_background_hover_color": "#8F5FB0",
+              "product_status_text_color_primary": "#A679C7",
+              "product_status_text_color_secondary": "#71A0BD",
+              "announcement_message_background_color": "#427AA1",
+              "announcement_message_text_color": "#EBF2FA",
+              "footer_link_color": "#71A0BD",
+              "footer_link_hover_color": "#A679C7"
+            }
+          },
+          {
+            "style_name": "Dreamy #2",
+            "fonts": {
+              "header_font": "Spectral",
+              "font": "Quicksand"
+            },
+            "colors": {
+              "background_color": "#E0EEE8",
+              "sidebar_background_color": "#D3E5DE",
+              "header_text_color": "#4A6670",
+              "body_text_color": "#4A6670",
+              "link_color": "#4A6670",
+              "link_hover_color": "#7595AD",
+              "sidebar_link_color": "#4A6670",
+              "sidebar_link_hover_color": "#7595AD",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#7595AD",
+              "button_background_hover_color": "#5F7C93",
+              "product_status_text_color_primary": "#5F7C93",
+              "product_status_text_color_secondary": "#4A6670",
+              "announcement_message_background_color": "#7595AD",
+              "announcement_message_text_color": "#FFFFFF",
+              "footer_link_color": "#4A6670",
+              "footer_link_hover_color": "#7595AD"
+            }
+          },
+          {
+            "style_name": "Dreamy #3",
+            "fonts": {
+              "header_font": "Rokkitt",
+              "font": "Source Sans Pro"
+            },
+            "colors": {
+              "background_color": "#F6F7FB",
+              "sidebar_background_color": "#F6F7FB",
+              "header_text_color": "#48466D",
+              "body_text_color": "#48466D",
+              "link_color": "#48466D",
+              "link_hover_color": "#3D84A8",
+              "sidebar_link_color": "#48466D",
+              "sidebar_link_hover_color": "#3D84A8",
+              "button_text_color": "#FFFFFF",
+              "button_background_color": "#3D84A8",
+              "button_background_hover_color": "#326D8C",
+              "product_status_text_color_primary": "#3D84A8",
+              "product_status_text_color_secondary": "#747391",
+              "announcement_message_background_color": "#48466D",
+              "announcement_message_text_color": "#F6F7FB",
+              "footer_link_color": "#747391",
+              "footer_link_hover_color": "#3D84A8"
             }
           }
         ]
       }
-
     ]
   },
   "fonts": [
@@ -342,6 +525,16 @@
       "variable": "announcement_message_text_color",
       "label": "Announcement message text",
       "default": "#FFFFFF"
+    },
+    {
+      "variable": "footer_link_color",
+      "label": "Footer links",
+      "default": "#000000"
+    },
+    {
+      "variable": "footer_link_hover_color",
+      "label": "footer link hover",
+      "default": "#273896"
     }
   ],
   "options": [
@@ -349,12 +542,14 @@
       "variable": "announcement_message_text",
       "label": "Announcement text",
       "type": "text",
+      "max_length": 500,
       "description": "Displays an announcement message on the top of every page"
     },
     {
       "variable": "maintenance_message",
       "label": "Maintenance mode message",
       "type": "text",
+      "max_length": 2048,
       "description": "A message visitors see when your shop is in Maintenance Mode",
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
@@ -429,13 +624,13 @@
       "type": "boolean",
       "default": false,
       "description": "Shows a product's inventory amounts (when using inventory tracking)",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "show_search",
       "label": "Show search",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Shows a search link in the sidebar"
     },
     {
@@ -444,7 +639,7 @@
       "type": "boolean",
       "default": true,
       "description": "Shows sold out product variants in the Product page dropdowns",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "show_sold_out_product_prices",
@@ -452,7 +647,7 @@
       "type": "boolean",
       "default": false,
       "description": "Show the price of sold out products on product grids and product pages",
-      "requires": "inventory"
+      "requires": ["inventory"]
     },
     {
       "variable": "product_image_zoom",
@@ -484,6 +679,66 @@
       ],
       "default": "show-thumbnails",
       "description": "Choose to hide or show thumbnails on the mobile Product page carousel"
+    },
+    {
+      "variable": "show_related_products",
+      "label": "Show related products",
+      "type": "boolean",
+      "default": true,
+      "description": "Displays related products on the Product page"
+    },
+    {
+      "variable": "related_products_header",
+      "label": "Related products header",
+      "type": "text",
+      "description": "Displays above related products on Products pages",
+      "default": "You might also like",
+      "requires": [
+        "show_related_products eq true"
+      ]
+    },
+    {
+      "variable": "related_products",
+      "label": "Related products",
+      "type": "select",
+      "options": "1..8",
+      "default": 4,
+      "description": "The maximum number of related products to show on Product pages",
+      "requires": [
+        "show_related_products eq true"
+      ]
+    },
+    {
+      "variable": "related_products_order",
+      "label": "Related products order",
+      "type": "select",
+      "options": "product_orders",
+      "default": "sales",
+      "description": "The order of related products on the Product pages",
+      "requires": [
+        "show_related_products eq true"
+      ]
+    },
+    {
+      "variable": "footer_text",
+      "label": "Footer text",
+      "type": "text",
+      "max_length": 2048,
+      "description": "Show a custom message to your shop's footer"
+    },
+    {
+      "variable": "footer_text_position",
+      "label": "Footer text position",
+      "type": "select",
+      "options": [
+        ["Start of footer", "start"],
+        ["End of footer", "end"]
+      ],
+      "default": "end",
+      "description": "Choose where to show your footer message",
+      "requires": [
+        "footer_text present"
+      ]
     },
     {
       "variable": "money_format",
@@ -568,6 +823,24 @@
       "label": "YouTube URL",
       "type": "text",
       "description": "Ex: https://youtube.com/@BigCartelDotCom"
+    },
+    {
+      "variable": "spotify_url",
+      "label": "Spotify URL",
+      "type": "text",
+      "description": "Ex: https://open.spotify.com/artist/0gxy..."
+    },
+    {
+      "variable": "linkedin_url",
+      "label": "LinkedIn URL",
+      "type": "text",
+      "description": "Ex: https://linkedin.com/in/bigcartel"
+    },
+    {
+      "variable": "twitch_url",
+      "label": "Twitch URL",
+      "type": "text",
+      "description": "Ex: https://twitch.tv/username"
     },
     {
       "variable": "tumblr_url",
