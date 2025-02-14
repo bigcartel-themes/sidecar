@@ -554,6 +554,13 @@
       "default": "We're working on our shop right now.<br /><br />Please check back soon."
     },
     {
+      "variable": "contact_text",
+      "label": "Contact page text",
+      "type": "text",
+      "max_length": 1024,
+      "description": "Displays a message on your contact page"
+    },
+    {
       "variable": "featured_header",
       "label": "Featured products header",
       "type": "text",
