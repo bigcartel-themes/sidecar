@@ -10,6 +10,9 @@
         {% endfor %}
       </ul>
     {% endif %}
+    {% if theme.contact_text %}
+      <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
+    {% endif %}
     <form method="post" class="contact" action="/contact" accept-charset="utf8">
       <input type="hidden" name="utf8" value='✓'>
       <fieldset>
