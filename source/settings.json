@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "images": [
     {
       "variable": "logo",
@@ -644,14 +644,6 @@
       "type": "text",
       "description": "Displays underneath featured products and links to your Products Page",
       "default": "All Products"
-    },
-    {
-      "variable": "show_inventory_bars",
-      "label": "Show inventory bars",
-      "type": "boolean",
-      "default": false,
-      "description": "Shows a product's inventory amounts (when using inventory tracking)",
-      "requires": ["inventory"]
     },
     {
       "variable": "show_search",
