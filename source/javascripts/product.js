@@ -68,3 +68,7 @@ if (themeOptions.productImageZoom === true) {
   });
   lightbox.init();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateInventoryMessage();
+});

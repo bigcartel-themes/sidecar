@@ -195,6 +195,7 @@
           </div>
         </div>
         {{ store | instant_checkout_button: 'dark', '48px' }}
+        <div class="inventory-status-message" data-inventory-message style="display:none;"></div>
 
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
