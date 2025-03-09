@@ -13,6 +13,13 @@
       "description": "Adds a repeating background image"
     }
   ],
+  "image_sets": [
+    {
+      "variable": "slideshow",
+      "label": "Slideshow",
+    "description": "Adds slideshow to the homepage. Use same-sized images, minimum 900px wide."
+    }
+  ],
   "preset_styles": {
     "preview": {
       "title_font": "header_font",
@@ -585,6 +592,30 @@
       "label": "Welcome message",
       "type": "text",
       "description": "Displays a message on the Home page"
+    },
+    {
+      "variable": "homepage_slideshow_autoplay",
+      "label": "Auto-play homepage slideshow",
+      "type": "boolean",
+      "default": true,
+      "description": "Automatically advances slides in the homepage slideshow"
+    },
+    {
+      "variable": "homepage_slideshow_speed",
+      "label": "Slideshow speed",
+      "type": "select",
+      "options": [
+        ["Slowest", 6000],
+        ["Slower", 5000],
+        ["Normal", 4000],
+        ["Faster", 3500],
+        ["Fastest", 3000]
+      ],
+      "default": 4000,
+      "description": "Controls how quickly slides advance in the auto-playing slideshow",
+      "requires": [
+        "homepage_slideshow_autoplay eq true"
+      ]
     },
     {
       "variable": "featured_header",
