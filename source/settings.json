@@ -655,13 +655,6 @@
       "default": "All Products"
     },
     {
-      "variable": "show_search",
-      "label": "Show search",
-      "type": "boolean",
-      "default": true,
-      "description": "Shows a search link in the sidebar"
-    },
-    {
       "variable": "show_sold_out_product_options",
       "label": "Show sold out product variants",
       "type": "boolean",
@@ -826,6 +819,13 @@
       "requires": [
         "footer_text present"
       ]
+    },
+    {
+      "variable": "show_search",
+      "label": "Show search",
+      "type": "boolean",
+      "default": true,
+      "description": "Shows a search link in the sidebar"
     },
     {
       "variable": "money_format",
