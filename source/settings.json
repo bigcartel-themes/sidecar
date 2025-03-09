@@ -591,7 +591,10 @@
       "label": "Featured products header",
       "type": "text",
       "description": "Displays above featured products on the Home page",
-      "default": "Featured"
+      "default": "Featured",
+      "requires": [
+        "featured_items gt 0"
+      ]
     },
     {
       "variable": "featured_items",
