@@ -581,6 +581,12 @@
       "description": "Displays a message on your contact page"
     },
     {
+      "variable": "welcome_message",
+      "label": "Welcome message",
+      "type": "text",
+      "description": "Displays a message on the Home page"
+    },
+    {
       "variable": "featured_header",
       "label": "Featured products header",
       "type": "text",
