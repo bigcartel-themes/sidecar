@@ -134,6 +134,10 @@ footer
   @media screen and (max-width: $break-small)
     margin: 68px 0
   
+  // Override for the cart page since we limit cart content width to $break-medium
+  body[data-bc-page-type="cart"] &
+    max-width: $break-medium
+  
   .footer-credit
     .bigcartel-credit
       color: var(--footer-link-color) !important
