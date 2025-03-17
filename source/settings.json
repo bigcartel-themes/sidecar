@@ -5,7 +5,7 @@
     {
       "variable": "logo",
       "label": "Logo",
-      "description": "Good for an image up to 180 pixels wide"
+      "description": "180 x 180px square logo recommended"
     },
     {
       "variable": "background_image",
