@@ -120,8 +120,8 @@
           {
             "style_name": "Bold #1",
             "fonts": {
-              "header_font": "Space Grotesk",
-              "font": "Inter"
+              "header_font": "Impact",
+              "font": "Work Sans"
             },
             "colors": {
               "background_color": "#000000",
@@ -206,8 +206,8 @@
           {
             "style_name": "Playful #1",
             "fonts": {
-              "header_font": "Fredoka One",
-              "font": "Nunito"
+              "header_font": "Playwrite HR Lijeva",
+              "font": "Lato"
             },
             "colors": {
               "background_color": "#FF647C",
@@ -233,8 +233,8 @@
           {
             "style_name": "Playful #2",
             "fonts": {
-              "header_font": "Concert One",
-              "font": "Nunito Sans"
+              "header_font": "Sour Gummy",
+              "font": "Work Sans"
             },
             "colors": {
               "background_color": "#00B5B0",
@@ -260,7 +260,7 @@
           {
             "style_name": "Playful #3",
             "fonts": {
-              "header_font": "Cabin Sketch",
+              "header_font": "Over the Rainbow",
               "font": "Quicksand"
             },
             "colors": {
@@ -405,7 +405,7 @@
           {
             "style_name": "Dreamy #2",
             "fonts": {
-              "header_font": "Spectral",
+              "header_font": "Coiny",
               "font": "Quicksand"
             },
             "colors": {
@@ -432,7 +432,7 @@
           {
             "style_name": "Dreamy #3",
             "fonts": {
-              "header_font": "Rokkitt",
+              "header_font": "Lobster Two",
               "font": "Source Sans Pro"
             },
             "colors": {
