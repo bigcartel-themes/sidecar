@@ -70,5 +70,11 @@ if (themeOptions.productImageZoom === true) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  updateInventoryMessage();
+  const isProductPage = document.body.getAttribute('data-bc-page-type') === 'product';
+  if (isProductPage) {
+    updateInventoryMessage();
+    
+    const price = window.bigcartel?.product?.default_price || null;    
+    showBnplMessaging(price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
+  }
 });

@@ -859,6 +859,13 @@
       "description": "Shows a search link in the sidebar"
     },
     {
+      "variable": "show_bnpl_messaging",
+      "label": "Buy Now, Pay Later Messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Show payment options prior to checkout on product and cart pages. Requires paid plan."
+    },
+    {
       "variable": "money_format",
       "label": "Price display",
       "type": "select",

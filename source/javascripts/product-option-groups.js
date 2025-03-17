@@ -96,6 +96,7 @@ function enableAddButton(updated_price) {
   }
   addButton.find('.button-text').html(addButtonTitle + priceTitle);
   updateInventoryMessage($('#option').val());
+  showBnplMessaging(updated_price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
 }
 
 function disableAddButton(type) {
