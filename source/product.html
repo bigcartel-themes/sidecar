@@ -142,6 +142,18 @@
       {% endif %}
     </div>
 
+    {% if product.status == "active" and theme.show_bnpl_messaging %}
+      {% unless theme.features.opt_outs contains "theme_bnpl_messaging" %}
+        <div id="payment-processor-messaging">
+          <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
+            <div id="paypal-messaging-element"></div>
+          </div>
+          <div id="stripe-messaging-container" style="height: 0; overflow: hidden;">
+            <div id="payment-method-messaging-element"></div>
+          </div>
+        </div>
+      {% endunless %}
+    {% endif %}
     {% if product.status == 'active' %}
       <form method="post" class="add product-form {% if theme.show_sold_out_product_options %}show-sold-out{% else %}hide-sold-out{% endif %}" action="/cart" accept-charset="utf8">
         <input type="hidden" name="utf8" value='✓'>
@@ -195,6 +207,7 @@
           </div>
         </div>
         {{ store | instant_checkout_button: 'dark', '48px' }}
+        <div class="inventory-status-message" data-inventory-message style="display:none;"></div>
 
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">

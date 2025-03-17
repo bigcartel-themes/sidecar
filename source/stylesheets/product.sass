@@ -11,7 +11,7 @@
     row-gap: 24px
 
   .product-images
-    max-width: 800px
+    max-width: 600px
     position: relative
     width: 100%
 
@@ -66,10 +66,17 @@
   #instant-checkout-button
     margin-bottom: 8px
 
+  .inventory-status-message
+    color: var(--inventory-status-text-color)
+    margin: 0px 10px 10px 10px
+    text-align: center
+    padding: 8px 0
+    font-weight: 500
+    
   .product-form
     border-bottom: 1px solid var(--border-color)
     border-top: 1px solid var(--border-color)
-    padding-top: 16px
+    padding-top: 24px
     display: grid
     padding-bottom: 4px
 
@@ -77,7 +84,7 @@
     margin-bottom: 12px
 
   .add-to-cart-button
-    margin-bottom: 12px
+    margin-bottom: 20px
 
   .product_option_groups
     display: grid
@@ -168,6 +175,7 @@ a.product-form-cart-linker-link
   margin-top: -125px
 
   @media screen and (max-width: $break-medium)
+    margin-top: 0
     padding: 30px 0 60px 0
 
   @media screen and (max-width: $break-small)
@@ -185,9 +193,41 @@ a.product-form-cart-linker-link
   .related-products-view-all-link
     margin-left: auto
 
-    &:hover
-      text-decoration: underline
-      text-underline-offset: 3px
-
 .related-product-list
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr))
+
+#payment-processor-messaging
+  margin: 20px 0 0
+  width: 100%
+  display: block
+  
+  body[data-bc-page-type="product"] &
+    margin-bottom: 20px
+
+  body[data-bc-page-type="cart"] &
+    margin-bottom: 20px
+
+  &.display-flex
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+    &.dual-messaging
+      gap: 15px
+
+  &.display-grid
+    display: grid
+  
+  &.hidden
+    position: absolute
+    left: -9999px
+    top: -9999px
+
+  > div
+    margin-bottom: 0
+  
+  // Only apply the margin for non-flex layouts when dual messaging is present
+  &:not(.display-flex)
+    &.dual-messaging > div.visible:first-of-type
+      margin-bottom: 15px

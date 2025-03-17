@@ -42,7 +42,7 @@
     {% endif %}
     <header class="mobile-header">
       <button class="menu" aria-label="Open menu"><b></b></button>
-      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
+      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %}image{% else %}text{% endif %}" >
         {% if theme.logo %}
           <img src="{{ theme.logo.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo.width > 180 %}width="180"{% endif %} />
         {% else %}
@@ -60,7 +60,7 @@
           <svg aria-hidden="true" fill="currentColor" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
         </button>
         <header class="sidebar-header">
-          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %} image {% else %} text {% endif %}" >
+          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %}image{% else %}text{% endif %}" >
             {% if theme.logo %}
               <img src="{{ theme.logo.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo.width > 180 %}width="180"{% endif %} />
             {% else %}
@@ -233,17 +233,34 @@
       </main>
     </div>
     <script>
+      {% comment %}
+        Manual array construction needed for Liquid 3.0.6 since standard JSON filters 
+        (json, jsonify) don't work properly. This ensures proper JavaScript array 
+        formatting with quoted elements and commas.
+      {% endcomment %}
+      const themeFeatures = {
+        optIns: [{% if theme.features.opt_ins %}{% for opt in theme.features.opt_ins %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
+        optOuts: [{% if theme.features.opt_outs %}{% for opt in theme.features.opt_outs %}"{{ opt }}"{% unless forloop.last %}, {% endunless %}{% endfor %}{% endif %}],
+      };
       const themeOptions = {
+        showInventoryBars: {{ theme.show_inventory_bars }},
+        showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
+        lowInventoryMessage: "{{ theme.low_inventory_message | replace: '"', '\"' | replace: "'", "\\'" }}",
+        almostSoldOutMessage: "{{ theme.almost_sold_out_message | replace: '"', '\"' | replace: "'", "\\'" }}",
         desktopProductPageImages: '{{ theme.desktop_product_page_images }}',
         mobileProductPageImages: '{{ theme.mobile_product_page_images }}',
         productImageZoom: {{ theme.product_image_zoom }},
-      }
+        homepageSlideshowAutoplay: {{ theme.homepage_slideshow_autoplay }},
+        homepageSlideshowSpeed: {{ theme.homepage_slideshow_speed }},
+        showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
+      };
       const themeColors = {
         backgroundColor: '{{ theme.background_color }}',
+        primaryTextColor: '{{ theme.body_text_color }}',
         primaryColor: '{{ theme.body_text_color }}',
         borderColor: '{{ theme.body_text_color }}',
         sidebarBorderColor: '{{ theme.sidebar_link_color }}'
-      }
+      };
     </script>
     {% if theme.announcement_message_text %}
       <script>
