@@ -244,17 +244,17 @@
               "link_color": "#FFFFFF",
               "link_hover_color": "#FF6B6C",
               "sidebar_link_color": "#FFFFFF",
-              "sidebar_link_hover_color": "#FF6B6C",
+              "sidebar_link_hover_color": "#FFD166",
               "button_text_color": "#FFFFFF",
               "button_background_color": "#FF6B6C",
               "button_background_hover_color": "#FF5252",
-              "product_status_text_color_primary": "#FF6B6C",
+              "product_status_text_color_primary": "#FFD166",
               "product_status_text_color_secondary": "#80DAD8",
-              "inventory_status_text_color": "#FF6B6C",
+              "inventory_status_text_color": "#FFD166",
               "announcement_message_background_color": "#FF6B6C",
               "announcement_message_text_color": "#FFFFFF",
               "footer_link_color": "#80DAD8",
-              "footer_link_hover_color": "#FF6B6C"
+              "footer_link_hover_color": "#FFD166"
             }
           },
           {
@@ -269,19 +269,19 @@
               "header_text_color": "#FFFFFF",
               "body_text_color": "#FFFFFF",
               "link_color": "#FFFFFF",
-              "link_hover_color": "#FFB8FF",
+              "link_hover_color": "#2D0C52",
               "sidebar_link_color": "#FFFFFF",
-              "sidebar_link_hover_color": "#FFB8FF",
-              "button_text_color": "#00B066",
+              "sidebar_link_hover_color": "#2D0C52",
+              "button_text_color": "#2D0C52",
               "button_background_color": "#FFB8FF",
               "button_background_hover_color": "#FFA1FF",
-              "product_status_text_color_primary": "#FFA1FF",
+              "product_status_text_color_primary": "#2D0C52",
               "product_status_text_color_secondary": "#80D8B3",
               "inventory_status_text_color": "#FFA1FF",
               "announcement_message_background_color": "#FFB8FF",
-              "announcement_message_text_color": "#00B066",
+              "announcement_message_text_color": "#2D0C52",
               "footer_link_color": "#80D8B3",
-              "footer_link_hover_color": "#FFB8FF"
+              "footer_link_hover_color": "#2D0C52"
             }
           }
         ]
@@ -328,19 +328,19 @@
               "header_text_color": "#2F3E46",
               "body_text_color": "#2F3E46",
               "link_color": "#2F3E46",
-              "link_hover_color": "#6B9080",
+              "link_hover_color": "#F8D7A3",
               "sidebar_link_color": "#2F3E46",
-              "sidebar_link_hover_color": "#6B9080",
+              "sidebar_link_hover_color": "#F8D7A3",
               "button_text_color": "#FFFFFF",
-              "button_background_color": "#6B9080",
+              "button_background_color": "#7A9E7E",
               "button_background_hover_color": "#5C7A6C",
-              "product_status_text_color_primary": "#4B7B66",
+              "product_status_text_color_primary": "#F8D7A3",
               "product_status_text_color_secondary": "#715445",
-              "inventory_status_text_color": "#4B7B66",
+              "inventory_status_text_color": "#F8D7A3",
               "announcement_message_background_color": "#2F3E46",
               "announcement_message_text_color": "#CB997E",
               "footer_link_color": "#715445",
-              "footer_link_hover_color": "#6B9080"
+              "footer_link_hover_color": "#F8D7A3"
             }
           },
           {
