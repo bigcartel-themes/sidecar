@@ -209,10 +209,9 @@ footer
 
 a
   text-decoration: none
-  text-underline-offset: 2px
 
   &:hover
-    text-decoration: underline
+    text-decoration: none
 
 h1,
 h2,
@@ -324,7 +323,6 @@ small
     width: 100%
 
     &:not(:disabled):hover, &:not(:disabled):active, &:not(:disabled):focus
-      text-decoration: underline
       color: var(--link-hover-color)
       background: none
 
@@ -463,10 +461,11 @@ textarea
 
   a, .link
     color: var(--sidebar-link-color)
+    text-decoration: none
 
     &:hover
       color: var(--sidebar-link-hover-color)
-      text-decoration: underline
+
 
   header
     margin-bottom: 32px
@@ -476,7 +475,8 @@ textarea
 
     .logo
       display: block
-      font-size: 1.5rem
+      font-family: var(--header-font)
+      font-size: 1.75rem
       font-weight: 700
       word-wrap: break-word
 
