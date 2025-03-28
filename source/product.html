@@ -121,11 +121,14 @@
         {% assign product_status = 'Coming soon' %}
     {% endcase %}
 
+    {% assign hide_price = false %}
     {% if product.status == 'sold-out' and theme.show_sold_out_product_prices == false %}
       {% assign hide_price = true %}
-    {% else %}
-      {% assign hide_price = false %}
+    {% endif -%}
+    {% if product.status == 'coming-soon' and theme.show_coming_soon_product_prices == false %}
+      {% assign hide_price = true %}
     {% endif %}
+
     {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
     <div class="price">
       {% unless hide_price %}
