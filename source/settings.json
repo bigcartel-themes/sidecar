@@ -772,7 +772,7 @@
       "label": "Related products order",
       "type": "select",
       "options": "product_orders",
-      "default": "sales",
+      "default": "top-selling",
       "description": "The order of related products on the Product pages",
       "requires": [
         "show_related_products eq true"
