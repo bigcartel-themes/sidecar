@@ -257,9 +257,9 @@
   {% assign related_products_collection = product.related_products %}
     
   {% if related_products_collection.size > 0 %}
-    <div class="related-products-container" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ theme.related_products_header | default: 'You might also like' }}">
+    <div class="related-products-container" data-num-products="{{ related_products_limit }}" role="complementary" aria-label="{{ related_products_header }}">
       <div class="related-products-header">
-        <h2 class="related-products-title">{{ theme.related_products_header | default: 'You might also like' }}</h2>
+        <h2 class="related-products-title">{{ related_products_header }}</h2>
         <a class="related-products-view-all-link" href="/products">View all</a>
       </div>
       <div class="product-list-container">
