@@ -18,6 +18,10 @@
         </ul>
       {% endif %}
 
+      {% if theme.cart_text != blank %}
+        <div class="message-banner message-banner--cart">{{ theme.cart_text }}</div>
+      {% endif %}
+
       <ul class="cart-items">
         {% for item in cart.items %}
           <li class="cart-item" data-item-id="{{ item.id }}">
