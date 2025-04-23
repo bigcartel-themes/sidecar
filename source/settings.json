@@ -673,6 +673,13 @@
       ]
     },
     {
+      "variable": "welcome_message",
+      "label": "Welcome message",
+      "section": "homepage",
+      "type": "text",
+      "description": "Displays a message on the Home page"
+    },
+    {
       "variable": "featured_header",
       "label": "Featured products header",
       "section": "homepage",
