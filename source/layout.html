@@ -319,17 +319,12 @@
     <script src="{{ 'api' | theme_js_url }}" type="text/javascript"></script>
     <script src="{{ theme | theme_js_url }}" type="text/javascript"></script>
     <script type="text/javascript">
-      var formatMoney = Format.money;
-      Format.money = function(number) {
-        {% case theme.money_format %}
-        {% when 'sign' %}
-          return formatMoney(number, true, true, false);
-        {% when 'code' %}
-          return formatMoney(number, true, false, true);
-        {% when 'sign_and_code' %}
-          return formatMoney(number, true, true, true);
-        {% endcase %}
-      };
+      window.bigcartel = window.bigcartel || {};
+      window.bigcartel.account = window.bigcartel.account || {};
+  
+      window.bigcartel.account.currency = window.bigcartel.account.currency || "{{ store.currency.code }}";
+      window.bigcartel.account.currencyLocale = window.bigcartel.account.currencyLocale || "{{ store.currency.locale }}";
+      window.bigcartel.account.moneyFormat = "{{ theme.money_format }}";
     </script>
     {% if page.full_url contains '/product/' %}
       <script>
