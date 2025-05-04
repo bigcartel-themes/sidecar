@@ -14,7 +14,7 @@ function camelCaseToDash(string) {
  */
 function formatMoney(amount, withDelimiter = true, withSign = true, withCode = false) {
   const currency = window.bigcartel?.account?.currency || 'USD';
-  const locale = window.bigcartel?.account?.currencyLocale || 'en-US';
+  const locale = navigator.language || 'en-US';
   const moneyFormat = window.bigcartel?.account?.moneyFormat || 'sign';
   
   switch (moneyFormat) {
