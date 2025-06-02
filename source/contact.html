@@ -1,7 +1,15 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.contact'] %}
+{% if page.name != 'Contact' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 <div class="page">
-  <h1>{{ page.name }}</h1>
+  <h1>{{ page_title }}</h1>
   {% if contact.sent %}
-    <p>Thanks! Your message has been sent and we'll get back to you as soon as we can.</p>
+    <p>{{ t['contact.form_success'] }}</p>
   {% else %}
     {% if errors != blank %}
       <ul class="errors">
@@ -17,23 +25,23 @@
       <input type="hidden" name="utf8" value='✓'>
       <fieldset>
         <p class="contact-field">
-          <label for="name">Name:</label>
+          <label for="name">{{ t['contact.name'] }}:</label>
           {{ contact | contact_input: 'name' }}
         </p>
         <p class="contact-field">
-          <label for="email">Email:</label>
+          <label for="email">{{ t['contact.email'] }}:</label>
           {{ contact | contact_input: 'email' }}
         </p>
         <p class="contact-field">
-          <label for="subject">Subject:</label>
+          <label for="subject">{{ t['contact.subject'] }}:</label>
           {{ contact | contact_input: 'subject' }}
         </p>
         <p class="contact-field">
-          <label for="message">Message:</label>
+          <label for="message">{{ t['contact.message'] }}:</label>
           {{ contact | contact_input: 'message' }}
         </p>
         <p class="contact-field">
-          <button id="contact_button" type="submit" name="submit" class="button">Send Message</button>
+          <button id="contact_button" type="submit" name="submit" class="button">{{ t['contact.send_button'] }}</button>
         </p>
         <p class="contact-field captcha">
           <div class="recaptcha-note">{{ contact.recaptcha }}</div>

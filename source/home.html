@@ -40,7 +40,7 @@
   {% endif %}
 
   {% if theme.featured_items > 0 %}
-    <h1 class="page-title">{{ theme.featured_header }}</h1>
+    <h1 class="page-title">{{ t['home.featured'] }}</h1>
     {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
       {% if products != blank %}
         <div class="product-list-container">
@@ -52,11 +52,13 @@
               {% assign product_status = '' %}
               {% case product.status %}
                 {% when 'active' %}
-                  {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                  {% if product.on_sale %}
+                    {% assign product_status = t['products.on_sale'] %}
+                  {% endif %}
                 {% when 'sold-out' %}
-                  {% assign product_status = 'Sold out' %}
+                  {% assign product_status = t['products.sold_out'] %}
                 {% when 'coming-soon' %}
-                  {% assign product_status = 'Coming soon' %}
+                  {% assign product_status = t['products.coming_soon'] %}
               {% endcase %}
               {% capture image_class %}
                 {% if product.image.height > product.image.width %}
@@ -68,7 +70,7 @@
                 {% endif %}
               {% endcapture %}
               {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
-              <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+              <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="{{ product.name | escape }}">
                 <div class="prod-thumb-container">
                   <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                     <img
@@ -129,7 +131,7 @@
         {% endif %}
       {% else %}
         <div class="alert-message">
-          <div class="alert-message__text">No products found.</div>
+          <div class="alert-message__text">{{ t['products.no_products'] }}</div>
         </div>
       {% endif %}
     {% endpaginate %}

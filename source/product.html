@@ -114,11 +114,13 @@
     {% assign product_status = '' %}
     {% case product.status %}
       {% when 'active' %}
-        {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+        {% if product.on_sale %}
+          {% assign product_status = t['products.on_sale'] %}
+        {% endif %}
       {% when 'sold-out' %}
-        {% assign product_status = 'Sold out' %}
+        {% assign product_status = t['products.sold_out'] %}
       {% when 'coming-soon' %}
-        {% assign product_status = 'Coming soon' %}
+        {% assign product_status = t['products.coming_soon'] %}
     {% endcase %}
 
     {% assign hide_price = false %}
@@ -138,14 +140,14 @@
           {{ product.default_price | money: theme.money_format }}
         {% endif %}
       {% endunless %}
-      {% if product_status == 'Sold out' %}
-        <span class="status {{ product_status_class }}">{% if hide_price %}Sold Out{% else %} Sold Out{% endif %}</span>
+      {% if product.status == 'sold-out' %}
+        <span class="status {{ product_status_class }}">{% if hide_price %}{{ t['products.sold_out'] }}{% else %} {{ t['products.sold_out'] }}{% endif %}</span>
       {% elsif product_status != blank %}
         <span class="status {{ product_status_class }}">{{ product_status }}</span>
       {% endif %}
     </div>
 
-    {% if product.status == "active" and theme.show_bnpl_messaging %}
+    {% if product.status == 'active' and theme.show_bnpl_messaging %}
       <div id="payment-processor-messaging">
         <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
           <div id="paypal-messaging-element"></div>
@@ -168,8 +170,8 @@
               {% for option_group in product.option_groups %}
                 <div class="select">
                   <div class="select-wrapper">
-                    <select data-unavailable-text="(Unavailable)" data-sold-text="(Sold out)" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
-                      <option value="" disabled="disabled" selected>Select {{ option_group.name }}</option>
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                      <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                       {% for value in option_group.values %}
                         <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
                       {% endfor %}
@@ -182,10 +184,10 @@
           {% else %}
             <div class="select single-select">
               <div class="select-wrapper">
-                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="Select variant" required>
-                  <option value="" disabled="disabled" selected>Select variant</option>
+                <select class="product_option_select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
+                  <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
                   {% for option in product.options %}
-                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} (Sold out){% endif %}</option>
+                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
                   {% endfor %}
                 </select>
                 <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="14"><path d="M14 1h-1c0-1 0-1 0 0L7 6 1 1c0-1 0-1 0 0H0v1l7 6 7-6V1Z"></path></svg>
@@ -194,15 +196,15 @@
           {% endif %}
         {% endif %}
 
-        <button class="button add-to-cart-button" name="submit" type="submit" data-adding-text="Adding..." data-added-text="Added!" data-add-title="Add to cart" data-sold-title="Sold out">
+        <button class="button add-to-cart-button" name="submit" type="submit" data-adding-text="{{ t['products.adding'] }}" data-added-text="{{ t['products.added'] }}" data-add-title="{{ t['products.add_to_cart'] }}" data-sold-title="{{ t['products.sold_out'] }}">
           <svg aria-hidden="true" class="loader" width="24" fill="currentColor" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_P7sC{transform-origin:center;animation:spinner_svv2 2.5s infinite linear}@keyframes spinner_svv2{100%{transform:rotate(360deg)}}</style><path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" class="spinner_P7sC"/></svg>
-          <span class="button-text">Add to cart</span>
+          <span class="button-text">{{ t['products.add_to_cart'] }}</span>
         </button>
 
         <div class="product-form-cart-linker">
           <div class="product-form-cart-linker-slider">
             <a class="product-form-cart-linker-link" href="/cart">
-              <span class="product-form-cart-link-text">Go to cart</span>
+              <span class="product-form-cart-link-text">{{ t['products.view_cart'] }}</span>
               <svg fill="currentColor" aria-hidden="true" class="arrow" width="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg>
             </a>
           </div>
@@ -212,7 +214,7 @@
 
         {% if product.has_option_groups %}
           <div class="reset-selection-button-container">
-            <button class="button minimal-button reset-selection-button" type="reset">Reset selection</button>
+            <button class="button minimal-button reset-selection-button" type="reset">{{ t['products.reset'] }}</button>
           </div>
         {% endif %}
       </form>
@@ -228,7 +230,7 @@
       {% case product.status %}
         {% when 'active' %}
           <div class="availability">
-            <h2 class="availability-header">Availability</h2>
+            <h2 class="availability-header">{{ t['products.inventory'] }}</h2>
             <ul>
               {% for option in product.options %}
                 <li>
@@ -237,7 +239,7 @@
                   {% endunless %}
                   <span class="inventory-status">
                     {% if option.sold_out %}
-                      Sold Out
+                      {{ t['products.sold_out'] }}
                     {% else %}
                       {{ option.inventory }}%
                     {% endif %}
@@ -253,7 +255,7 @@
 </div>
 
 {% if theme.show_related_products %}
-  {% assign related_products_header = theme.related_products_header | default: 'You might also like' %}
+  {% assign related_products_header = t['products.related_products'] %}
   {% assign related_products_collection = product.related_products %}
     
   {% if related_products_collection.size > 0 %}
@@ -270,11 +272,13 @@
             {% assign related_product_status = '' %}
             {% case related_product.status %}
               {% when 'active' %}
-                {% if related_product.on_sale %}{% assign related_product_status = 'On sale' %}{% endif %}
+                {% if related_product.on_sale %}
+                  {% assign related_product_status = t['products.on_sale'] %}
+                {% endif %}
               {% when 'sold-out' %}
-                {% assign related_product_status = 'Sold out' %}
+                {% assign related_product_status = t['products.sold_out'] %}
               {% when 'coming-soon' %}
-                {% assign related_product_status = 'Coming soon' %}
+                {% assign related_product_status = t['products.coming_soon'] %}
             {% endcase %}
             {% capture related_product_status_class %}{% if related_product.status == 'active' and related_product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
             {% capture image_class %}
@@ -286,7 +290,7 @@
                 image-square
               {% endif %}
             {% endcapture %}
-            <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ related_product.url }}" title="View {{ related_product.name | escape }}">
+            <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ related_product.url }}" title="{{ related_product.name | escape }}">
               <div class="prod-thumb-container">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img

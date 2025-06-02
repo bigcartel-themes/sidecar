@@ -36,7 +36,7 @@
             </button>
             <form class="search-form" name="search" action="/products" method="get" accept-charset="utf8" role="search">
               <input type="hidden" name="utf8" value='✓'>
-              <label for="desktop-search">Search products</label>
+              <label for="desktop-search">{{ t['navigation.search'] }}</label>
               <input class="search-input" id="desktop-search" name="search" type="search" autocomplete="off" />
               <button type="submit" class="button search-button" aria-label="Submit search form">
                 <svg aria-hidden="true" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -65,7 +65,7 @@
           {{ store.name | escape }}
         {% endif %}
       </a>
-      <a href="/cart" class="cart" aria-label="View cart">
+      <a href="/cart" class="cart" aria-label="{{ t['cart.view_cart'] }}">
         <svg aria-hidden="true" fill="currentColor" width="28" height="24" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg"><path d="M25.3749929 27.9999278c1.9329635 0 3.4999917-1.5670227 3.4999917-3.4999862 0-.991796-.4131994-1.8865006-1.0760168-2.5233628.1341029-.1041601.2011543-.1766346.2011543-.2174235V20.124952H11.1430856l-.5134952-2.6249937h17.0846227c.6174225 0 1.1513721-.4303426 1.2824829-1.0337195C30.9224827 7.82207961 31.885376 3.5 31.885376 3.5H7.89030864L7.40576172 0H.65624844v2.62499374h4.38812735L8.85027492 22.0773552c-.60364389.6289048-.9752937 1.4820598-.9752937 2.4225864 0 1.9329635 1.56702813 3.4999862 3.49999168 3.4999862 1.9329635 0 3.4999916-1.5670227 3.4999916-3.4999862 0-.5205981-.2102579-1.3028839-.4693821-1.7499958h7.938801c-.2591242.4471119-.4693821 1.2293977-.4693821 1.7461506 0 1.9368087 1.5670281 3.5038314 3.4999916 3.5038314zm1.2817352-13.1249633H10.1160953L8.40380382 6.1249854H28.5587164l-1.9019883 8.7499791zm-15.2817552 10.937474c-.7237532 0-1.3124969-.5887438-1.3124969-1.3124969 0-.7237532.5887437-1.3124969 1.3124969-1.3124969.7237531 0 1.3124969.5887437 1.3124969 1.3124969 0 .7237531-.5887438 1.3124969-1.3124969 1.3124969zm13.9999666 0c-.7237532 0-1.3124969-.5887438-1.3124969-1.3124969 0-.7237532.5887437-1.3124969 1.3124969-1.3124969s1.3124969.5887437 1.3124969 1.3124969c0 .7237531-.5887437 1.3124969-1.3124969 1.3124969z" fill-rule="nonzero"></path></svg>
         <span class="cart-count">{{ cart.item_count }}</span>
       </a>
@@ -87,23 +87,23 @@
 
         <nav role="navigation" aria-label="Main">
           <section class="sidebar-cart">
-            <a href="/cart" class="cart" aria-label="View cart">
+            <a href="/cart" class="cart" aria-label="{{ t['cart.view_cart'] }}">
               <svg class="cart-icon" aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0.66 0 31.23 28"><path d="M25.3749929 27.9999278c1.9329635 0 3.4999917-1.5670227 3.4999917-3.4999862 0-.991796-.4131994-1.8865006-1.0760168-2.5233628.1341029-.1041601.2011543-.1766346.2011543-.2174235V20.124952H11.1430856l-.5134952-2.6249937h17.0846227c.6174225 0 1.1513721-.4303426 1.2824829-1.0337195C30.9224827 7.82207961 31.885376 3.5 31.885376 3.5H7.89030864L7.40576172 0H.65624844v2.62499374h4.38812735L8.85027492 22.0773552c-.60364389.6289048-.9752937 1.4820598-.9752937 2.4225864 0 1.9329635 1.56702813 3.4999862 3.49999168 3.4999862 1.9329635 0 3.4999916-1.5670227 3.4999916-3.4999862 0-.5205981-.2102579-1.3028839-.4693821-1.7499958h7.938801c-.2591242.4471119-.4693821 1.2293977-.4693821 1.7461506 0 1.9368087 1.5670281 3.5038314 3.4999916 3.5038314zm1.2817352-13.1249633H10.1160953L8.40380382 6.1249854H28.5587164l-1.9019883 8.7499791zm-15.2817552 10.937474c-.7237532 0-1.3124969-.5887438-1.3124969-1.3124969 0-.7237532.5887437-1.3124969 1.3124969-1.3124969.7237531 0 1.3124969.5887437 1.3124969 1.3124969 0 .7237531-.5887438 1.3124969-1.3124969 1.3124969zm13.9999666 0c-.7237532 0-1.3124969-.5887438-1.3124969-1.3124969 0-.7237532.5887437-1.3124969 1.3124969-1.3124969s1.3124969.5887437 1.3124969 1.3124969c0 .7237531-.5887437 1.3124969-1.3124969 1.3124969z" fill-rule="nonzero"></path></svg>
-              <span class="cart-details">{{ cart.item_count | pluralize: 'item', 'items' }}: {{ cart.total | money: theme.money_format }}</span>
+              <span class="cart-details">{{ cart.item_count | pluralize: t['navigation.item'], t['navigation.items'] }}: {{ cart.total | money: theme.money_format }}</span>
             </a>
           </section>
 
           <section class="sidebar-categories">
             <div class="title">
               <a href="/products">
-                {{ pages.products.name }}
+                {{ t['navigation.products'] }}
               </a>
             </div>
             <ul class="sidebar-links">
               {% if theme.show_search %}
                 <li>
                   <button class="button--open-search link" aria-haspopup="dialog" aria-controls="search-modal">
-                    Search products
+                    {{ t['navigation.search'] }}
                   </button>
                 </li>
               {% endif %}
@@ -144,7 +144,7 @@
               {% endfor %}
               <li>
                 <a href="{{ pages.contact.url }}">
-                  {{ pages.contact.name }}
+                  {{ t['navigation.contact'] }}
                 </a>
               </li>
             </ul>
@@ -280,6 +280,11 @@
         primaryColor: '{{ theme.body_text_color }}',
         borderColor: '{{ theme.body_text_color }}',
         sidebarBorderColor: '{{ theme.sidebar_link_color }}'
+      };
+      const themeTranslations = {
+        cart: {
+          shareThisCartLinkCopySuccess: "{{ t['cart.share_this_cart_link_copy_success'] | replace: '"', '\"' | replace: "'", "\\'" }}"
+        }
       };
     </script>
     {% if theme.announcement_message_text %}

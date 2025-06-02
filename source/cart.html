@@ -1,8 +1,16 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.cart'] %}
+{% if page.name != 'Cart' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 <div class="page cart">
   <div class="cart-header">
-    <h1>{{ page.name }}</h1>
+    <h1>{{ page_title }}</h1>
     {% if cart.item_count > 0 && cart.shareable_link %}
-      <a href="{{ cart.shareable_link }}" class="copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">Share this cart</a>
+      <a href="{{ cart.shareable_link }}" class="copy-cart-link" data-clipboard-text="{{ cart.shareable_link }}">{{ t['cart.share_this_cart'] }}</a>
     {% endif %}
   </div>
   {% unless cart.items == blank %}
@@ -47,18 +55,18 @@
 
             <div class="cart-qty">
               <div class="qty-holder" data-item-id="{{ item.id }}">
-                <button title="Decrease quantity of {{ item.product.name | escape }}" class="qty-button qty-button--decrease" data-func="decrease" type="button" data-item-id="{{ item.id }}">
+                <button title="-1  {{ item.product.name | escape }}" class="qty-button qty-button--decrease" data-func="decrease" type="button" data-item-id="{{ item.id }}">
                   <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" height="20" width="20"><path d="M5 9h10v2H5z"/><path d="M5 9h10v2H5z"/></svg>
                 </button>
 
                 <input aria-label="Quantity of {{ item.product.name | escape }}" type="number" autocomplete="off" class="product-quantity" name="cart[update][{{ item.id }}]" min="0" value="{{ item.quantity }}" data-item-id="{{ item.id }}">
 
-                <button title="Increase quantity of {{ item.product.name | escape }}" class="qty-button qty-button--increase" data-func="increase" type="button" data-item-id="{{ item.id }}">
+                <button title="+1 {{ item.product.name | escape }}" class="qty-button qty-button--increase" data-func="increase" type="button" data-item-id="{{ item.id }}">
                   <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" height="20" width="20"><path d="M11 5H9v4H5v2h4v4h2v-4h4V9h-4z"/></svg>
                 </button>
               </div>
 
-              <button class="cart-remove-item cart-remove-item--link button minimal-button" data-item-id="{{ item.id }}" type="button">Remove<span class="visuallyhidden"> {{ item.product.name | escape }} from cart</span></button>
+              <button class="cart-remove-item cart-remove-item--link button minimal-button" data-item-id="{{ item.id }}" type="button">{{ t['cart.remove'] }}<span class="visuallyhidden"> {{ item.product.name | escape }}</span></button>
             </div>
 
             <div class="cart-item-price">
@@ -70,11 +78,11 @@
 
       <div class="cart-footer">
         <div class="cart-subtotal" aria-live="polite" aria-atomic="true">
-          <span class="cart-subtotal__label">Subtotal:</span>
+          <span class="cart-subtotal__label">{{ t['cart.subtotal'] }}:</span>
           <span class="cart-subtotal__amount">{{ cart.total | money: theme.money_format }}</span>
         </div>
         <div class="cart-submit">
-          <button type="submit" name="checkout" class="button button--checkout">Checkout</button>
+          <button type="submit" name="checkout" class="button button--checkout">{{ t['cart.checkout'] }}</button>
           {% if theme.show_bnpl_messaging and cart.items != blank %}
             <div id="payment-processor-messaging">
               <div id="paypal-messaging-container" style="height: 0; overflow: hidden;">
@@ -90,7 +98,7 @@
     </form>
   {% else %}
     <div class="alert-message">
-      <div class="alert-message__text">Your cart is empty. <a href="/">Shop now</a>.</div>
+      <div class="alert-message__text">{{ t['cart.empty_cart'] }}</div>
     </div>
   {% endunless %}
 </div>
