@@ -94,12 +94,17 @@
           </section>
 
           <section class="sidebar-categories">
-            <div class="title">
-              <a href="/products">
-                {{ t['navigation.products'] }}
-              </a>
-            </div>
             <ul class="sidebar-links">
+              <li>
+                <a href="/">
+                  {{ t['navigation.home'] }}
+                </a>
+              </li>
+              <li>
+                <a href="/products">
+                  {{ t['navigation.all_products'] }}
+                </a>
+              </li>
               {% if theme.show_search %}
                 <li>
                   <button class="button--open-search link" aria-haspopup="dialog" aria-controls="search-modal">
@@ -107,6 +112,11 @@
                   </button>
                 </li>
               {% endif %}
+            </ul>
+          </section>
+
+          <section class="sidebar-categories">
+            <ul class="sidebar-links">
               {% for category in categories.active %}
                 <li>
                   <a href="{{ category.url }}">
