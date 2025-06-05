@@ -164,14 +164,16 @@
 
       <main class="main" id="main">
         <div data-bc-hook="header"></div>
-        {% if page.category == 'custom' %}
-          <div class="page custom">
-            <h1>{{ page.name }}</h1>
-            <div class="custom-page-content body-text">{{ page_content | paragraphs }}</div>
-          </div>
-        {% else %}
-          {{ page_content }}
-        {% endif %}
+        <div data-bc-hook="content">
+          {% if page.category == 'custom' %}
+            <div class="page custom">
+              <h1>{{ page.name }}</h1>
+              <div class="custom-page-content body-text">{{ page_content | paragraphs }}</div>
+            </div>
+          {% else %}
+            {{ page_content }}
+          {% endif %}
+        </div>
 
         <footer data-bc-hook="footer">
           {% if theme.footer_text != blank and theme.footer_text_position == "start" %}
