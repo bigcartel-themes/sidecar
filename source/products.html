@@ -1,5 +1,15 @@
+{% comment %}
+  Use page name from Custo if it's been customized, otherwise use the localized default.
+{% endcomment %}
+{% assign page_title = t['navigation.products'] %}
+{% if page.full_url contains "search=" %}
+  {% assign page_title = t['products.search_results'] %}
+{% elsif page.name != 'Products' %}
+  {% assign page_title = page.name %}
+{% endif %}
+
 <div class="page products">
-  <h1>{% if page.full_url contains 'search=' %}Product search{% else %}{{ page.name }}{% endif %}</h1>
+  <h1>{{ page_title }}</h1>
   {% paginate products from products.current by theme.products_per_page %}
     {% if products != blank %}
       <div class="product-list-container">
@@ -11,11 +21,13 @@
             {% assign product_status = '' %}
             {% case product.status %}
               {% when 'active' %}
-                {% if product.on_sale %}{% assign product_status = 'On sale' %}{% endif %}
+                {% if product.on_sale %}
+                  {% assign product_status = t['products.on_sale'] %}
+                {% endif %}
               {% when 'sold-out' %}
-                {% assign product_status = 'Sold out' %}
+                {% assign product_status = t['products.sold_out'] %}
               {% when 'coming-soon' %}
-                {% assign product_status = 'Coming soon' %}
+                {% assign product_status = t['products.coming_soon'] %}
             {% endcase %}
             {% capture image_class %}
               {% if product.image.height > product.image.width %}
@@ -27,7 +39,7 @@
               {% endif %}
             {% endcapture %}
             {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
-            <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="View {{ product.name | escape }}">
+            <a class="prod-thumb {{ theme.show_overlay }} {{ theme.grid_image_style }}" href="{{ product.url }}" title="{{ product.name | escape }}">
               <div class="prod-thumb-container">
                 <div class="product-list-image-container product-list-image-container-{{ theme.grid_image_style }}">
                   <img
@@ -84,17 +96,17 @@
 
           <div class="page-arrows">
             {% if paginate.previous.is_link %}
-              <a aria-label="Go to previous page" class="page-link page-link--previous" href="{{ paginate.previous.url }}"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>Previous</span></a>
+              <a aria-label="Go to previous page" class="page-link page-link--previous" href="{{ paginate.previous.url }}"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>{{ t['navigation.previous'] }}</span></a>
             {% else %}
-              <span class="page-link page-link--previous disabled"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>Previous</span></span>
+              <span class="page-link page-link--previous disabled"><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg><span>{{ t['navigation.previous'] }}</span></span>
             {% endif %}
 
             {{ paginate | default_pagination, 'page-numbers', 'page-numbers' }}
 
             {% if paginate.next.is_link %}
-              <a aria-label="Go to next page" class="page-link page-link--next" href="{{ paginate.next.url }}"><span>Next</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></a>
+              <a aria-label="Go to next page" class="page-link page-link--next" href="{{ paginate.next.url }}"><span>{{ t['navigation.next'] }}</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></a>
             {% else %}
-              <span class="page-link page-link--next disabled"><span>Next</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></span>
+              <span class="page-link page-link--next disabled"><span>{{ t['navigation.next'] }}</span><svg aria-hidden="true" fill="currentColor" class="arrow" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 7.12"><path d="M5.99798228 7.12260396L0 1.12462168 1.12462168 0l4.87565104 4.87529072L10.8753783 0 12 1.12462168 6.00201772 7.12260396l-.001745-.00212061z" fill-rule="evenodd"></path></svg></span>
             {% endif %}
           </div>
 
@@ -102,7 +114,7 @@
       {% endif %}
     {% else %}
       <div class="alert-message">
-        <div class="alert-message__text">No products found.</div>
+        <div class="alert-message__text">{{ t['products.no_products'] }}</div>
       </div>
     {% endif %}
   {% endpaginate %}

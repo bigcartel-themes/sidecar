@@ -101,6 +101,31 @@
     p:last-child
       margin-bottom: 0
 
+    ol, ul
+      padding-left: 1.5em
+      margin: 1em 0
+
+    ol, ul
+      margin: 0.5em 0
+  
+    ul
+      list-style: disc
+
+    ol
+      list-style: decimal
+
+    img
+      display: inline-block
+      margin: 0 auto
+      max-width: 100%
+      margin-bottom: 16px
+
+    iframe
+      display: block
+      margin: 0 auto
+      max-width: 100%
+      margin-bottom: 16px
+
   .availability
     border-top: 1px solid var(--border-color)
     padding-top: 16px
@@ -172,7 +197,6 @@ a.product-form-cart-linker-link
 
 .related-products-container
   padding: 80px 0 100px 0
-  margin-top: -125px
 
   @media screen and (max-width: $break-medium)
     margin-top: 0
@@ -185,6 +209,9 @@ a.product-form-cart-linker-link
   display: flex
   align-items: center
   margin-bottom: 30px
+
+  @media screen and (max-width: $break-small)
+    display: block
 
   .related-products-title
     font-size: 1.75rem

@@ -91,7 +91,7 @@ document.querySelector('.copy-cart-link')?.addEventListener('click', async (even
   } else {
     try {
       await navigator.clipboard.writeText(text);
-      link.textContent = 'Link copied!';
+      link.textContent = themeTranslations?.cart?.shareThisCartLinkCopySuccess || 'Link copied!';
       setTimeout(() => {
         link.textContent = originalText;
       }, 2000);
@@ -129,7 +129,7 @@ function updateShareableLink() {
 }
 
 updateCartCounts = (cart) => {
-  const sub_total = Format.money(cart.total, true, true);
+  const sub_total = formatMoney(cart.total, true, true);
   const item_count = cart.item_count;
   const itemOrItems = Format.pluralize(item_count, 'item', 'items');
 
@@ -168,7 +168,7 @@ processUpdate = (input, item_id, new_val, cart) => {
     for (itemIndex = 0; itemIndex < cart.items.length; itemIndex++) {
       if (cart.items[itemIndex].id == item_id) {
         item_price = cart.items[itemIndex].price;
-        formatted_item_price = Format.money(item_price, true, true);
+        formatted_item_price = formatMoney(item_price, true, true);
         let priceElement = document.querySelector('.cart-item-price__update[data-item-id="'+item_id+'"]');
         htmlHighlight(priceElement,formatted_item_price);
       }

@@ -89,7 +89,7 @@ function enableAddButton(updated_price) {
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
   if (updated_price) {
-    priceTitle = ' - ' + Format.money(updated_price, true, true);
+    priceTitle = ' - ' + formatMoney(updated_price, true, true);
   }
   else {
     priceTitle = '';
