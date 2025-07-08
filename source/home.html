@@ -40,7 +40,21 @@
   {% endif %}
 
   {% if theme.featured_items > 0 %}
-    <h1 class="page-title">{{ t['home.featured'] }}</h1>
+    <div class="featured-container">
+      {% assign featured_header = t['home.featured'] %}
+      {% assign featured_text = theme.homepage_featured_text %}
+      {% assign featured_text_position = theme.homepage_featured_text_position %}
+      
+      {% if featured_text != blank and featured_text_position == "above" %}
+        <div class="featured-message">{{ featured_text }}</div>
+      {% endif %}
+      
+      <h1 class="featured-title page-title">{{ featured_header }}</h1>
+      
+      {% if featured_text != blank and featured_text_position != "above" %}
+        <div class="featured-message">{{ featured_text }}</div>
+      {% endif %}
+    </div>
     {% paginate products from products.all by theme.featured_items order:theme.featured_order %}
       {% if products != blank %}
         <div class="product-list-container">
