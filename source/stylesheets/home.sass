@@ -58,3 +58,51 @@
       &.is-active
         background: var(--pagination-active-page)
         transform: scale(1.1)
+
+
+#main
+  .featured-container
+    margin-bottom: 32px
+
+  .featured-title
+    margin-bottom: 0
+
+    @media screen and (max-width: $break-small)
+      text-align: center
+
+  .featured-message
+    margin: 20px auto 60px auto
+
+    ol, ul
+      text-align: left
+      margin: 1em
+      max-width: 600px
+
+      ol, ul
+        margin: 0.5em 0
+        padding-left: 1em
+
+    ul
+      list-style: disc
+
+    ol
+      list-style: decimal
+
+    a
+      text-decoration: underline
+      text-underline-offset: 3px
+
+    img
+      display: inline-block
+      max-width: 100%
+      margin: 0 auto
+      padding-bottom: 16px
+    
+    iframe
+      display: block
+      margin: 0 auto
+      max-width: 100%
+      margin-bottom: 16px
+
+    @media screen and (max-width: $break-small)
+      text-align: center
