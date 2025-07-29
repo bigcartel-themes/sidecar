@@ -85,6 +85,11 @@ a.skip-link
   min-height: calc(100dvh - var(--announcement-height, 0px))
   position: relative
 
+  // Grid inherits flexbit `min-width: auto` which can introduce issues.
+  // Reference: https://daverupert.com/2017/09/breaking-the-grid/
+  > *
+    min-width: 0
+
   @media screen and (max-width: $break-small)
     grid-template-columns: 1fr
     min-height: calc(100dvh - var(--announcement-height, 0px) - 72px)
@@ -130,6 +135,9 @@ footer
   padding: 24px 0
   width: 100%
   color: var(--footer-link-color)
+
+  > *
+    min-width: 0
 
   @media screen and (max-width: $break-small)
     margin: 68px 0
