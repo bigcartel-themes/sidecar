@@ -636,6 +636,19 @@
       }
     },
     {
+      "variable": "social_link_location",
+      "label": "Social link location",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["Sidebar and Header only", "header_only"],
+        ["Footer only", "footer_only"],
+        ["Both", "both"]
+      ],
+      "default": "header_only",
+      "description": "Choose where to show your social links"
+    },
+    {
       "variable": "footer_text",
       "label": "Footer text",
       "section": "global_navigation",
