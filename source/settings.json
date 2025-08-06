@@ -569,6 +569,33 @@
   ],
   "options": [
     {
+      "variable": "nav_page_display",
+      "label": "Pages to show in your header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": [
+        ["All pages", "all"],
+        ["Custom pages only", "pages_only"],
+        ["Contact page only", "contact_only"],
+        ["None", "none"]
+      ],
+      "default": "all",
+      "description": "Select which types of pages appear in your header"
+    },
+    {
+      "variable": "nav_items",
+      "label": "Custom page limit in header",
+      "section": "global_navigation",
+      "type": "select",
+      "options": "0..100",
+      "default": 2,
+      "description": "Maximum number of custom pages shown in your header",
+      "requires": [
+        "nav_page_display neq contact_only",
+        "nav_page_display neq none"
+      ]
+    },
+    {
       "variable": "nav_text_transform_header",
       "label": "Transform text in shop header",
       "section": "global_navigation",
@@ -579,7 +606,7 @@
         ["Lowercase", "lowercase"]
       ],
       "default": "initial",
-      "description": "Controls the text case styling in your header"
+      "description": "Controls the text case styling in your main navigation"
     },
     {
       "variable": "nav_text_transform_footer",
@@ -694,7 +721,8 @@
       "default": "end",
       "description": "Choose where to show your footer message",
       "requires": [
-        "footer_text present"
+        "footer_text present",
+        "social_link_location neq header_only"
       ]
     },
     {

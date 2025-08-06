@@ -145,18 +145,33 @@
 
           <section class="sidebar-pages">
             <ul class="sidebar-links">
-              {% for page in pages.all %}
+              {% if theme.nav_page_display == 'all' or theme.nav_page_display == 'pages_only' %}
+                {% for custom_page in pages.custom_pages limit: theme.nav_items %}
+                  <li>
+                    <a href="{{ custom_page.url }}">{{ custom_page.name }}</a>
+                  </li>
+                {% endfor %}
+              {% endif %}
+              {% if pages.subscribe_page %}
                 <li>
-                  <a href="{{ page.url }}">
-                    {{ page.name }}
-                  </a>
+                  <a href="{{ pages.subscribe_page.url }}">{{ t['navigation.subscribe'] }}</a>
                 </li>
-              {% endfor %}
-              <li>
-                <a href="{{ pages.contact.url }}">
-                  {{ t['navigation.contact'] }}
-                </a>
-              </li>
+              {% endif %}
+              {% if theme.nav_page_display == 'all' or theme.nav_page_display == 'contact_only' %}
+                <li>
+                  <a href="{{ pages.contact.url }}">{{ t['navigation.contact'] }}</a>
+                </li>
+              {% endif %}
+              {% if store.website != blank %}
+                <li>
+                  <a href="{{ store.website }}">{{ t['navigation.back_to_site'] }}</a>
+                </li>
+              {% endif %}
+              {% if pages.required_pages.size > 0 %}
+                {% for required_page in pages.required_pages %}
+                  <li><a href="{{ required_page.url }}">{{ required_page.name }}</a></li>
+                {% endfor %}
+              {% endif %}
             </ul>
 
             {% if theme.social_link_location == "both" or theme.social_link_location == "header_only" %}
