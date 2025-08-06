@@ -948,6 +948,14 @@
       "description": "Displays a message at the top of your contact page. Supports HTML for advanced customization."
     },
     {
+      "variable": "show_contact_form",
+      "label": "Show contact form",
+      "section": "messaging",
+      "type": "boolean",
+      "default": true,
+      "description": "Display contact form on contact page. If disabled, only contact text is shown."
+    },
+    {
       "variable": "cart_text",
       "label": "Cart page",
       "section": "messaging",
