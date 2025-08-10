@@ -1022,7 +1022,6 @@
       "description": "Select how text appears throughout your shop. Automatic uses our default translations for your chosen language. Manual lets you customize individual text elements to improve translations or personalize messaging."
     },
 
-    // Manual Navigation Translations
     {
       "variable": "navigation_home_tr_text",
       "label": "'Home'",
@@ -1224,7 +1223,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Homepage Translations
     {
       "variable": "home_featured_products_tr_text",
       "label": "'Featured products'",
@@ -1269,7 +1267,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
   
-    // Manual Product Translations
     {
       "variable": "products_add_to_cart_tr_text",
       "label": "'Add to cart'",
@@ -1403,7 +1400,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Manual Cart Translations
     {
       "variable": "cart_checkout_tr_text",
       "label": "'Checkout'",
@@ -1506,7 +1502,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Manual Contact Translations
     {
       "variable": "contact_name_tr_text",
       "label": "'Name'",
@@ -1569,7 +1564,6 @@
       "requires": [ "translation_mode eq manual" ]
     },
 
-    // Social Profile URL Settings
     {
       "variable": "instagram_url",
       "label": "Instagram URL",
