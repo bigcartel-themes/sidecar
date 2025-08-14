@@ -18,7 +18,7 @@
       <div class="splide__track">
         <div class="splide__list">
           {% for image in theme.image_sets.slideshow %}
-            <div class="splide__slide">
+            <div class="splide__slide"{% if theme.homepage_slideshow_link != blank %} title="{{ theme.homepage_slideshow_link }}"{% endif %}>
               <img
                 alt="Slideshow image {{ forloop.index }}"
                 class="slideshow-image lazyload "
