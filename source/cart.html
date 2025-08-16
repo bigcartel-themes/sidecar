@@ -71,6 +71,10 @@
 
             <div class="cart-item-price">
               <span class="cart-item-price__update" data-item-id="{{ item.id }}">{{ item.price | money: theme.money_format }}</span>
+
+              {% if item.product.price_suffix != blank %}
+                <span class="price-suffix">{{ item.product.price_suffix }}</span>
+              {% endif %}
             </div>
           </li>
         {% endfor %}

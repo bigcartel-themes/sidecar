@@ -21,32 +21,34 @@
     {% if theme.contact_text != blank %}
       <div class="message-banner message-banner--contact">{{ theme.contact_text }}</div>
     {% endif %}
-    <form method="post" class="contact" action="/contact" accept-charset="utf8">
-      <input type="hidden" name="utf8" value='✓'>
-      <fieldset>
-        <p class="contact-field">
-          <label for="name">{{ t['contact.name'] }}:</label>
-          {{ contact | contact_input: 'name' }}
-        </p>
-        <p class="contact-field">
-          <label for="email">{{ t['contact.email'] }}:</label>
-          {{ contact | contact_input: 'email' }}
-        </p>
-        <p class="contact-field">
-          <label for="subject">{{ t['contact.subject'] }}:</label>
-          {{ contact | contact_input: 'subject' }}
-        </p>
-        <p class="contact-field">
-          <label for="message">{{ t['contact.message'] }}:</label>
-          {{ contact | contact_input: 'message' }}
-        </p>
-        <p class="contact-field">
-          <button id="contact_button" type="submit" name="submit" class="button">{{ t['contact.send_button'] }}</button>
-        </p>
-        <p class="contact-field captcha">
-          <div class="recaptcha-note">{{ contact.recaptcha }}</div>
-        </p>
-      </fieldset>
-    </form>
+    {% if theme.show_contact_form != false %}
+      <form method="post" class="contact" action="/contact" accept-charset="utf8">
+        <input type="hidden" name="utf8" value='✓'>
+        <fieldset>
+          <p class="contact-field">
+            <label for="name">{{ t['contact.name'] }}:</label>
+            {{ contact | contact_input: 'name' }}
+          </p>
+          <p class="contact-field">
+            <label for="email">{{ t['contact.email'] }}:</label>
+            {{ contact | contact_input: 'email' }}
+          </p>
+          <p class="contact-field">
+            <label for="subject">{{ t['contact.subject'] }}:</label>
+            {{ contact | contact_input: 'subject' }}
+          </p>
+          <p class="contact-field">
+            <label for="message">{{ t['contact.message'] }}:</label>
+            {{ contact | contact_input: 'message' }}
+          </p>
+          <p class="contact-field">
+            <button id="contact_button" type="submit" name="submit" class="button">{{ t['contact.send_button'] }}</button>
+          </p>
+          <p class="contact-field captcha">
+            <div class="recaptcha-note">{{ contact.recaptcha }}</div>
+          </p>
+        </fieldset>
+      </form>
+    {% endif %}
   {% endif %}
 </div>

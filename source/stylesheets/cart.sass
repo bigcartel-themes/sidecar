@@ -141,8 +141,12 @@
     min-height: 42px
     display: flex
     justify-content: flex-end
-    align-items: center
+    align-items: flex-end
     text-align: right
+    flex-direction: column
+
+    .price-suffix
+      font-size: 1rem
 
     @media screen and (max-width: $break-medium)
       font-size: 1.3rem
