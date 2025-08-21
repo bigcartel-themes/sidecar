@@ -1,9 +1,9 @@
-const homeSlideshowContainer = document.querySelector('.home-slideshow');
-if (homeSlideshowContainer) {
-  document.addEventListener( 'DOMContentLoaded', function() {
+function initSplide() {
+  const homeSlideshowContainer = document.querySelector('.home-slideshow');
+  if (homeSlideshowContainer) {
     var splide = new Splide( '.home-slideshow', {
-      arrows: false,
-      type: 'slide',
+      arrows: true,
+      type: themeOptions.homepageSlideshowTransition,
       autoplay: themeOptions.homepageSlideshowAutoplay,
       interval: themeOptions.homepageSlideshowSpeed,
       speed: 1500,
@@ -12,5 +12,11 @@ if (homeSlideshowContainer) {
       pagination: true
     } );
     splide.mount();
-  });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSplide);
+} else {
+  initSplide();
 }
