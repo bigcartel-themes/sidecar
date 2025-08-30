@@ -1392,6 +1392,26 @@
       "requires": [ "translation_mode eq manual" ]
     },
     {
+      "variable": "products_product_tr_text",
+      "label": "'Product'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Product",
+      "description": "Text displayed when referencing a single item in your shop",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
+      "variable": "products_products_tr_text",
+      "label": "'Products'",
+      "section": "translations",
+      "sub_section": "products",
+      "type": "text",
+      "default": "Products",
+      "description": "Text displayed when referencing multiple items in your shop",
+      "requires": [ "translation_mode eq manual" ]
+    },
+    {
       "variable": "products_related_products_tr_text",
       "label": "Related products header",
       "section": "translations",
