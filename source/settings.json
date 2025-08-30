@@ -1294,7 +1294,7 @@
       "section": "translations",
       "sub_section": "homepage",
       "type": "text",
-      "default": "Featured categories",
+      "default": "Shop by Category",
       "allow_blank": true,
       "description": "Text for the featured categories section on the home page.",
       "requires": [ "translation_mode eq manual" ]
