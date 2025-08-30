@@ -71,6 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+  
+  // Featured Categories Collage Initialization
+  function initCategoryCollages() {
+    if (!isHomePage) return;
+    if (typeof setupCategoryCollages === 'function') {
+      setupCategoryCollages({
+        collage: {
+          width: 800,
+          height: 800,
+          gap: 1
+        },
+        observer: {
+          rootMargin: '200px 0px',
+          threshold: 0.01
+        }
+      });
+    }
+  }
+  
+  // Initialize category collages
+  initCategoryCollages();
 });
 
 const htmlHighlight = function(element, newText) {
