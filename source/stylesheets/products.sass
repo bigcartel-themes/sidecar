@@ -129,11 +129,17 @@ a.prod-thumb
   width: 100%
   z-index: 1
 
+  @media screen and (max-width: $break-small)
+    font-size: 0.9rem
+
 .prod-thumb-name
   position: relative
   overflow-wrap: break-word
   word-break: break-word
   font-weight: 500
+
+  &:last-child:after
+    display: none
 
 .prod-thumb-price
   font-weight: normal
