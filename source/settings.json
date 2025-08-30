@@ -869,7 +869,8 @@
       "label": "Show product variant count in product grids",
       "section": "product_page",
       "type": "boolean",
-      "default": false,
+      "default": true,
+      "upgrade_default": false,
       "description": "For products with multiple variants, show the variant count in product grids."
     },
     {
