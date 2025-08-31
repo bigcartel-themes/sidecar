@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.14.0",
+  "version": "2.14.1",
   "images": [
     {
       "variable": "logo",
@@ -826,6 +826,7 @@
       "type": "select",
       "options": "0..48",
       "default": 6,
+      "upgrade_default": 0,
       "description": "The number of categories featured on the Home page"
     },
     {
