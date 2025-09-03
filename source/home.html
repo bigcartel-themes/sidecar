@@ -272,12 +272,7 @@
                       <div class="prod-thumb-name">{{ category.name }}</div>
                       {% if theme.home_page_categories_product_count_display %}
                         <div class="category-count">
-                          {{ category.products.size }} 
-                          {% if category.products.size == 1 %}
-                            {{ t['products.product'] }}
-                          {% else %}
-                            {{ t['products.products'] }}
-                          {% endif %}
+                          {{ category.products.size | pluralize: t['products.product'], t['products.products'] }} 
                         </div>
                       {% endif %}
                     </div>
