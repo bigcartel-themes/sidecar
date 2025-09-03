@@ -112,6 +112,17 @@ a.prod-thumb
   &:hover
     text-decoration: none
 
+// Featured Categories: when grid_image_style is default, keep category thumbs square and contained
+// Scope: In Sidecar, the categories grid lives inside a `.featured-container`,
+// while the featured products grid does not. This selector targets categories only.
+.featured-container
+  .product-list-image-container-default:before
+    display: block
+
+  .product-list-image.grid-default
+    position: absolute
+    object-fit: contain
+
 .prod-thumb-info
   padding-top: 16px
 
