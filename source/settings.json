@@ -6,7 +6,7 @@
       "variable": "logo",
       "label": "Logo",
       "section": "global_navigation",
-      "description": "180 x 180px square logo recommended"
+      "description": "Square image recommended, at least 180 x 180px"
     },
     {
       "variable": "background_image",
