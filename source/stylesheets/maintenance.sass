@@ -22,10 +22,32 @@
     text-align: center
     width: 100%
 
+    @media screen and (max-width: $break-small)
+      padding: 16px
+
     h1
-      font-size: 2em
+      font-size: 2.2em
       font-weight: 600
       margin: 0
 
+      @media screen and (max-width: $break-small)
+        font-size: 1.8em
+
     .maintenance-message
-      font-size: 1.25em
+      font-size:  1.125em
+
+      @media screen and (max-width: $break-small)
+        font-size: 1em
+
+  .social-icons
+    a
+      svg
+        width: 20px
+        heigth: 20px
+
+    @media screen and (max-width: $break-small)
+      a
+        svg
+          width: 18px
+          heigth: 18px
+    
