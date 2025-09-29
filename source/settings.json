@@ -1142,7 +1142,7 @@
     },
     {
       "variable": "header_text_scale",
-      "label": "Header navigation text size",
+      "label": "Header and sidebar text size",
       "section": "text_sizing",
       "type": "select",
       "options": [
