@@ -21,6 +21,14 @@
   --footer-link-color: #{'{{ theme.footer_link_color }}'}
   --footer-link-hover-color: #{'{{ theme.footer_link_hover_color }}'}
 
+  --font-scale: #{'{{ theme.global_text_scale | default: 1 }}'}
+  --shop-name-scale: #{'{{ theme.shop_name_text_scale | default: 1 }}'}
+  --product-grid-scale: #{'{{ theme.product_grid_scale | default: 1 }}'}
+  --product-title-scale: #{'{{ theme.product_page_heading_scale | default: 1 }}'}
+  --product-description-scale: #{'{{ theme.product_page_description_scale | default: 1 }}'}
+  --header-scale: #{'{{ theme.header_text_scale | default: 1 }}'}
+  --footer-scale: #{'{{ theme.footer_text_scale | default: 1 }}'}
+
   --header-font: #{'{{ theme.header_font | font_family }}'}
   --body-font: #{'{{ theme.font | font_family }}'}
 
@@ -34,7 +42,7 @@ html
   min-height: 100%
 
 html
-  font-size: 16px
+  font-size: calc(16px * var(--font-scale, 1))
 
 body
   background-color: var(--background-color)
@@ -112,19 +120,24 @@ a.skip-link
     align-items: center
     justify-content: center
     flex-shrink: 0
-    width: 36px
-    height: 36px
+    width: 30px
+    height: 30px
 
     &:hover, &:focus
       color: var(--footer-link-hover-color) !important
 
     svg
       fill: currentColor
-      height: 22px
-      width: 22px
+      height: 20px
+      width: 20px
 
       &.tumblr-icon
         width: 14px
+
+      &.reddit-icon,
+      &.discord-icon
+        width: 22px
+        height: 22px
 
 footer
   border-top: 1px solid var(--footer-link-color)
@@ -177,6 +190,7 @@ footer
     margin-top: 30px
     display: block
     text-align: center
+    font-size: calc(1rem * var(--footer-scale, 1))
 
     img
       display: block
@@ -510,7 +524,7 @@ textarea
     .logo
       display: block
       font-family: var(--header-font)
-      font-size: 1.75rem
+      font-size: calc(1.75rem * var(--shop-name-scale, 1) * var(--header-scale, 1))
       font-weight: 700
       word-wrap: break-word
 
@@ -527,8 +541,10 @@ textarea
     width: 100%
 
   nav
+    font-size: calc(1rem * var(--header-scale, 1))
+
     @media screen and (max-width: $break-small)
-      font-size: 1.1rem
+      font-size: calc(1.1rem * var(--header-scale, 1))
 
   section
     border-top: 1px solid var(--sidebar-border-color)
@@ -578,21 +594,27 @@ textarea
       display: flex
       align-items: center
       justify-content: center
-      width: 24px
-      height: 24px
+      width: 26px
+      height: 26px
       transition: opacity 0.2s ease
       
       &:hover
         opacity: 0.7
         
     svg
-      width: 100%
-      height: 100%
+      width: 20px
+      height: 20px
+
+      &.reddit-icon,
+      &.discord-icon
+        width: 22px
+        height: 22px
+
   a.cart
     align-items: flex-start
     display: flex
     column-gap: 12px
-    font-size: .975em
+    font-size: calc(.975em * var(--header-scale, 1))
     font-weight: normal
     padding: 8px 0
     margin: 0
@@ -662,7 +684,7 @@ textarea
 
   .logo
     color: var(--sidebar-link-color)
-    font-size: 1.25rem
+    font-size: calc(1.25rem * var(--shop-name-scale, 1) * var(--header-scale, 1))
     font-weight: 700
     display: flex
     padding: 0
@@ -682,6 +704,7 @@ textarea
   .cart
     display: flex
     color: var(--sidebar-link-color)
+    font-size: calc(1rem * var(--header-scale, 1))
     font-weight: bold
     align-items: center
     gap: 12px

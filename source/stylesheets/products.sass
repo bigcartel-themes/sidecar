@@ -139,9 +139,10 @@ a.prod-thumb
   text-align: center
   width: 100%
   z-index: 1
+  font-size: calc(1rem * var(--product-grid-scale, 1))
 
   @media screen and (max-width: $break-small)
-    font-size: 0.9rem
+    font-size: calc(0.9rem * var(--product-grid-scale, 1))
 
 .prod-thumb-name
   position: relative
@@ -155,12 +156,14 @@ a.prod-thumb
 .prod-thumb-price
   font-weight: normal
   margin-top: 4px
+  font-size: calc(0.9rem * var(--product-grid-scale, 1))
 
 .price-suffix
   white-space: nowrap
 
 .prod-thumb-status
   margin-top: 4px
+  font-size: calc(0.85rem * min(var(--product-grid-scale, 1), 1.25))
 
   &.status-primary
     color: var(--product-status-text-color-primary)
@@ -171,6 +174,7 @@ a.prod-thumb
 .product-list-thumb-options-description
   font-style: italic
   margin-top: 4px
+  font-size: calc(0.85rem * var(--product-grid-scale, 1))
 
 .pagination
   display: grid
