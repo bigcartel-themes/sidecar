@@ -57,10 +57,13 @@
     {% endfor %}
   {% endif %}
 
-  {% if featured_text != blank and featured_text_position == "above" and (show_featured_products or show_featured_categories) %}
-    <div class="featured-container">
-      <div class="featured-message">{{ featured_text }}</div>
-    </div>
+  {% comment %} Show featured text above when position is "above" OR when no featured items {% endcomment %}
+  {% if featured_text != blank %}
+    {% if featured_text_position == "above" or theme.featured_items == 0 %}
+      <div class="featured-container">
+        <div class="featured-message">{{ featured_text }}</div>
+      </div>
+    {% endif %}
   {% endif %}
 
   {% if show_featured_products %}
@@ -69,7 +72,8 @@
       
       <h1 class="featured-title page-title">{{ featured_header }}</h1>
       
-      {% if featured_text != blank and featured_text_position != "above" and show_featured_categories == false %}
+      {% comment %} Only show within if we have items AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
@@ -190,7 +194,8 @@
         {% assign category_collages_enabled = true %}
       {% endif %}
       
-      {% if featured_text != blank and featured_text_position != "above" and show_featured_products == false %}
+      {% comment %} Only show within if we have items AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
       
