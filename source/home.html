@@ -57,9 +57,9 @@
     {% endfor %}
   {% endif %}
 
-  {% comment %} Show featured text above when position is "above" OR when no featured items {% endcomment %}
+  {% comment %} Show featured text above when position is "above" OR when no featured content exists {% endcomment %}
   {% if featured_text != blank %}
-    {% if featured_text_position == "above" or theme.featured_items == 0 %}
+    {% if featured_text_position == "above" or (theme.featured_items == 0 and show_featured_categories == false) %}
       <div class="featured-container">
         <div class="featured-message">{{ featured_text }}</div>
       </div>
@@ -69,11 +69,11 @@
   {% if show_featured_products %}
     <div class="featured-container">
       {% assign featured_header = t['home.featured'] %}
-      
+
       <h1 class="featured-title page-title">{{ featured_header }}</h1>
-      
-      {% comment %} Only show within if we have items AND position is within {% endcomment %}
-      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
+
+      {% comment %} Only show within if we have featured products AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and show_featured_products %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
     </div>
@@ -193,12 +193,12 @@
       {% if theme.features.has_theme_category_collages %}
         {% assign category_collages_enabled = true %}
       {% endif %}
-      
-      {% comment %} Only show within if we have items AND position is within {% endcomment %}
-      {% if featured_text != blank and featured_text_position == "within" and theme.featured_items > 0 %}
+
+      {% comment %} Only show within if we have featured categories, no featured products, AND position is within {% endcomment %}
+      {% if featured_text != blank and featured_text_position == "within" and show_featured_categories and show_featured_products == false %}
         <div class="featured-message">{{ featured_text }}</div>
       {% endif %}
-      
+
       <h1 class="featured-title page-title">{{ featured_categories_header }}</h1>
       
       <div class="product-list-container">
