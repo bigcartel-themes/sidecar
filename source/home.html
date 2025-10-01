@@ -310,7 +310,7 @@
       {% assign show_all_products_button = true %}
     {% endif %}
     
-    {% if show_all_products_button %}
+    {% if theme.homepage_show_all_items_link and show_all_products_button %}
       {% assign all_products_button_text = t['navigation.all_products'] %}
       {% if all_products_button_text != blank %}
         <div class="featured-container">
