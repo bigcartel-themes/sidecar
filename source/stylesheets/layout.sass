@@ -226,7 +226,8 @@ footer
     padding: 16px 88px
 
   &.visible
-    display: block
+    display: flex
+    justify-content: center
 
   &__close-button
     transform: translateY(-50%)
@@ -250,12 +251,12 @@ footer
     width: 14px
 
   &--scrolling
-    min-height: 48px
-    padding: 0
+    padding: 13px 0
     overflow: hidden
+    min-height: fit-content
 
-    @media screen and (max-width: $break-small)
-      min-height: 50px
+    @media screen and (max-width: $break-medium)
+      padding: 16px 0
 
     .announcement-message__close-button
       display: none
@@ -265,7 +266,7 @@ footer
     align-items: center
     width: 100%
     height: 100%
-    min-height: 48px
+    overflow: hidden
 
   &__scroll-content
     display: inline-flex
@@ -277,7 +278,7 @@ footer
 
     .announcement-message__text
       display: inline-flex
-      padding: 0 5em
+      padding: 0 8em
 
 @keyframes scroll-announcement
   from
