@@ -127,6 +127,7 @@
             </ul>
           </section>
 
+          {% if categories.active.size > 0 %}
           <section class="sidebar-categories">
             <ul class="sidebar-links">
               {% for category in categories.active %}
@@ -138,6 +139,7 @@
               {% endfor %}
             </ul>
           </section>
+          {% endif %}
 
           {% if artists.active != blank %}
             <section class="sidebar-artists">
