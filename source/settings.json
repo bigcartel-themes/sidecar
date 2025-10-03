@@ -3,8 +3,8 @@
   "version": "2.15.0",
   "images": [
     {
-      "variable": "logo",
-      "label": "Logo",
+      "variable": "logo_image",
+      "label": "Logo image",
       "section": "global_navigation",
       "description": "Square image recommended, at least 180 x 180px"
     },
@@ -2035,7 +2035,7 @@
   "checkout": {
     "optimize_legibility": "optimizeLegibility",
     "antialias_text": "antialiased",
-    "header_image": "{{ logo }}",
+    "header_image": "{{ logo_image }}",
     "header_image_max_width": "150px",
     "background_image": "{{ background_image }}",
     "background_color": "{{ background_color }}",
