@@ -112,3 +112,21 @@ $('.announcement-message-close').click(function(e) {
     setCookie('hide-announcement-message',hashedMessage,7);
   });
 })
+
+// Hybrid announcement pause: hover on desktop, tap-to-toggle on mobile, focus for keyboard
+document.addEventListener('DOMContentLoaded', () => {
+  const announcement = document.querySelector('.announcement-message--scrolling');
+
+  if (!announcement) return;
+
+  let isPaused = false;
+
+  announcement.addEventListener('click', (e) => {
+    // Don't toggle if user clicked a link - let the link work normally
+    if (e.target.closest('a')) return;
+
+    // Toggle pause state
+    isPaused = !isPaused;
+    announcement.classList.toggle('is-paused', isPaused);
+  });
+});

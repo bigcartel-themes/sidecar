@@ -49,7 +49,7 @@
       </div>
     {% endif %}
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}">
+      <div role="{% if theme.announcement_message_scroll %}region{% else %}complementary{% endif %}" aria-label="{% if theme.announcement_message_scroll %}Scrolling announcement. Focus or hover to pause.{% else %}Announcement message{% endif %}" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}"{% if theme.announcement_message_scroll %} tabindex="0"{% endif %}>
         {% if theme.announcement_message_scroll %}
           <div class="announcement-message__scroll-wrapper">
             <div class="announcement-message__scroll-content">

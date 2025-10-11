@@ -231,7 +231,7 @@ footer
   position: relative
   text-align: center
   width: 100%
-  z-index: 1
+  z-index: 500
 
   a, a:visited
     color: var(--announcement-message-text-color)
@@ -272,6 +272,7 @@ footer
     width: 14px
 
   &--scrolling
+    cursor: pointer
     padding: 13px 0
     overflow: hidden
     min-height: fit-content
@@ -294,12 +295,22 @@ footer
     white-space: nowrap
     animation: scroll-announcement var(--announcement-scroll-duration) linear infinite
 
-    &:hover
-      animation-play-state: paused
-
     .announcement-message__text
       display: inline-flex
       padding: 0 8em
+
+  // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
+  &--scrolling
+    @media (hover: hover)
+      &:hover .announcement-message__scroll-content
+        animation-play-state: paused
+
+    &:focus-visible .announcement-message__scroll-content
+      animation-play-state: paused
+
+    // Pause when user taps on mobile (via JS class toggle)
+    &.is-paused .announcement-message__scroll-content
+      animation-play-state: paused
 
 @keyframes scroll-announcement
   from
