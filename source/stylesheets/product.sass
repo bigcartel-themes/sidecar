@@ -1,3 +1,15 @@
+.product-password-form-container
+  margin: 60px auto
+  padding: 0 20px
+  min-height: 600px
+
+  @media screen and (max-width: $break-small)
+    min-height: 400px
+
+.main
+  .page.product_detail
+    min-height: 600px
+
 .product_detail
   display: flex
   column-gap: 64px
@@ -27,6 +39,7 @@
 
   h1
     margin-bottom: 0
+    font-size: calc(1.75rem * var(--product-title-scale, 1))
 
   .reset-selection-button-container
     display: none
@@ -42,17 +55,17 @@
 
     .artists
       color: var(--header-text-color)
-      font-size: .875rem
+      font-size: calc(0.875rem * var(--product-title-scale, 1))
       margin-bottom: 0
 
     .price
       color: var(--header-text-color)
-      font-size: 1.125rem
+      font-size: calc(1.125rem * var(--product-title-scale, 1))
       margin: 4px 0 12px
 
     .status
       font-style: normal
-      font-size: .925rem
+      font-size: calc(0.925rem * min(var(--product-title-scale, 1), 1.3))
       
       &.status-primary
         color: var(--product-status-text-color-primary)
@@ -72,6 +85,7 @@
     text-align: center
     padding: 8px 0
     font-weight: 500
+    font-size: calc(0.9rem * min(var(--product-title-scale, 1), 1.3))
     
   .product-form
     border-bottom: 1px solid var(--border-color)
@@ -94,6 +108,7 @@
   .product-description
     padding-bottom: 16px
     padding-top: 16px
+    font-size: calc(1rem * var(--product-description-scale, 1))
 
     a
       text-decoration: underline
@@ -132,7 +147,7 @@
     margin-top: 16px
 
     .availability-header
-      font-size: .925rem
+      font-size: calc(0.925rem * var(--product-description-scale, 1))
       font-weight: 700
       margin-bottom: 0
 
@@ -141,7 +156,7 @@
 
     li
       display: flex
-      font-size: .825rem
+      font-size: calc(0.825rem * var(--product-description-scale, 1))
       margin-bottom: 6px
       width: 100%
       padding: 2px 6px
@@ -216,6 +231,9 @@ a.product-form-cart-linker-link
   .related-products-title
     font-size: 1.75rem
     margin-bottom: 0
+
+    @media screen and (max-width: $break-small)
+      font-size: 1.5rem
 
   .related-products-view-all-link
     margin-left: auto

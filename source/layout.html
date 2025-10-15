@@ -49,18 +49,30 @@
       </div>
     {% endif %}
     {% if theme.announcement_message_text != blank %}
-      <div aria-label="Announcement message" class="announcement-message">
-        <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
-        <button title="Close announcement message" class="announcement-message__close-button">
-          <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
-        </button>
+      <div role="{% if theme.announcement_message_scroll %}region{% else %}complementary{% endif %}" aria-label="{% if theme.announcement_message_scroll %}Scrolling announcement. Focus or hover to pause.{% else %}Announcement message{% endif %}" class="announcement-message{% if theme.announcement_message_scroll %} announcement-message--scrolling{% endif %}"{% if theme.announcement_message_scroll %} tabindex="0"{% endif %}>
+        {% if theme.announcement_message_scroll %}
+          <div class="announcement-message__scroll-wrapper">
+            <div class="announcement-message__scroll-content">
+              <span class="announcement-message__text">{{ theme.announcement_message_text }}</span>
+              <span class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</span>
+              <span class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</span>
+              <span class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</span>
+              <span class="announcement-message__text" aria-hidden="true">{{ theme.announcement_message_text }}</span>
+            </div>
+          </div>
+        {% else %}
+          <div class="announcement-message__text">{{ theme.announcement_message_text }}</div>
+          <button title="Close announcement message" class="announcement-message__close-button">
+            <svg aria-hidden="true" fill="currentColor" class="announcement-message__close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
+          </button>
+        {% endif %}
       </div>
     {% endif %}
     <header class="mobile-header">
       <button class="menu" aria-label="Open menu"><b></b></button>
-      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %}image{% else %}text{% endif %}" >
-        {% if theme.logo %}
-          <img src="{{ theme.logo.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo.width > 180 %}width="180"{% endif %} />
+      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}" >
+        {% if theme.logo_image %}
+          <img src="{{ theme.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo_image.width > 180 %}width="180"{% endif %} />
         {% else %}
           {{ store.name | escape }}
         {% endif %}
@@ -76,9 +88,9 @@
           <svg aria-hidden="true" fill="currentColor" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
         </button>
         <header class="sidebar-header">
-          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo != blank %}image{% else %}text{% endif %}" >
-            {% if theme.logo %}
-              <img src="{{ theme.logo.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo.width > 180 %}width="180"{% endif %} />
+          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}" >
+            {% if theme.logo_image %}
+              <img src="{{ theme.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo_image.width > 180 %}width="180"{% endif %} />
             {% else %}
               {{ store.name | escape }}
             {% endif %}
@@ -115,6 +127,7 @@
             </ul>
           </section>
 
+          {% if categories.active.size > 0 %}
           <section class="sidebar-categories">
             <ul class="sidebar-links">
               {% for category in categories.active %}
@@ -126,6 +139,7 @@
               {% endfor %}
             </ul>
           </section>
+          {% endif %}
 
           {% if artists.active != blank %}
             <section class="sidebar-artists">
@@ -440,17 +454,19 @@
         let announcementText = document.querySelector(".announcement-message__text").innerHTML;
         let closeAnnouncementBtn = document.querySelector(".announcement-message__close-button");
         let hashedAnnouncement = hashCode(announcementText);
+        let isScrolling = announcementElement?.classList.contains('announcement-message--scrolling');
 
         function closeAnnouncement() {
           let announcementElement = document.querySelector(".announcement-message");
           announcementElement?.remove();
           document.documentElement.style.setProperty('--announcement-height', '0px');
-          document.cookie = `announcementClosed=${hashedAnnouncement};path=/`;
+          document.cookie = `announcementClosed=${hashedAnnouncement};path=/;max-age=28800`;
         }
 
-        if (announcementElement?.classList && closeAnnouncementBtn && hashedAnnouncement) {
-          let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
-          if (!hasClosedAnnouncement) {
+        if (announcementElement?.classList && hashedAnnouncement) {
+          // For scrolling announcements, always show them
+          // For non-scrolling announcements, check if they've been closed
+          if (isScrolling) {
             announcementElement.classList.add('visible');
             const updateAnnouncementHeight = () => {
               const height = announcementElement.offsetHeight;
@@ -460,9 +476,23 @@
             const observer = new ResizeObserver(updateAnnouncementHeight);
             observer.observe(announcementElement);
           } else {
-            document.documentElement.style.setProperty('--announcement-height', '0px');
+            let hasClosedAnnouncement = document.cookie.includes(`announcementClosed=${hashedAnnouncement}`);
+            if (!hasClosedAnnouncement) {
+              announcementElement.classList.add('visible');
+              const updateAnnouncementHeight = () => {
+                const height = announcementElement.offsetHeight;
+                document.documentElement.style.setProperty('--announcement-height', height + 'px');
+              };
+              requestAnimationFrame(updateAnnouncementHeight);
+              const observer = new ResizeObserver(updateAnnouncementHeight);
+              observer.observe(announcementElement);
+            } else {
+              document.documentElement.style.setProperty('--announcement-height', '0px');
+            }
           }
-          closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          if (closeAnnouncementBtn) {
+            closeAnnouncementBtn.addEventListener("click", closeAnnouncement);
+          }
         }
       </script>
     {% endif %}
