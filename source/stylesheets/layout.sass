@@ -273,17 +273,18 @@ footer
 
   &--scrolling
     cursor: pointer
-    padding: 13px 0
-    overflow: hidden
-    min-height: fit-content
-
-    @media screen and (max-width: $break-medium)
-      padding: 16px 0
+    padding: 0
+    overflow: visible
+    display: flex
+    align-items: center
+    justify-content: center
+    // Safari fix: overflow visible on parent, hidden on wrapper
 
     .announcement-message__close-button
       display: none
 
   &__scroll-wrapper
+    padding: 13px 0
     display: flex
     align-items: center
     width: 100%
@@ -291,6 +292,9 @@ footer
     overflow: hidden
     // Isolate this container to prevent layout thrashing
     isolation: isolate
+
+    @media screen and (max-width: $break-medium)
+      padding: 16px 0
 
   &__scroll-content
     display: inline-flex
@@ -868,3 +872,13 @@ textarea
     max-width: 100%
     margin-bottom: 16px
     margin: 0 auto
+
+.visually-hidden
+  border: 0
+  clip: rect(0 0 0 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  width: 1px
