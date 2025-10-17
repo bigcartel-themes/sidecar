@@ -70,9 +70,9 @@
     {% endif %}
     <header class="mobile-header">
       <button class="menu" aria-label="Open menu"><b></b></button>
-      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}" >
-        {% if theme.logo_image %}
-          <img src="{{ theme.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo_image.width > 180 %}width="180"{% endif %} />
+      <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.images.logo_image != blank %}image{% else %}text{% endif %}" >
+        {% if theme.images.logo_image %}
+          <img src="{{ theme.images.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.images.logo_image.width > 180 %}width="180"{% endif %} />
         {% else %}
           {{ store.name | escape }}
         {% endif %}
@@ -88,9 +88,9 @@
           <svg aria-hidden="true" fill="currentColor" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.1 14.1" enable-background="new 0 0 14.1 14.1"><path d="M14.1 1.1l-1.1-1.1-6 6-5.9-6-1.1 1.1 6 5.9-6 6 1.1 1.1 5.9-6 6 6 1.1-1.1-6-6z"/></svg>
         </button>
         <header class="sidebar-header">
-          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.logo_image != blank %}image{% else %}text{% endif %}" >
-            {% if theme.logo_image %}
-              <img src="{{ theme.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.logo_image.width > 180 %}width="180"{% endif %} />
+          <a href="/" title="{{ store.name | escape }}" class="logo {% if theme.images.logo_image != blank %}image{% else %}text{% endif %}" >
+            {% if theme.images.logo_image %}
+              <img src="{{ theme.images.logo_image.url | constrain: 360 }}" alt="{{ store.name }} Home" {% if theme.images.logo_image.width > 180 %}width="180"{% endif %} />
             {% else %}
               {{ store.name | escape }}
             {% endif %}
