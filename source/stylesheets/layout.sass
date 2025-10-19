@@ -226,7 +226,7 @@ footer
   background-color: var(--announcement-message-background-color)
   color: var(--announcement-message-text-color)
   display: none
-  font-size: calc(0.925em * var(--header-scale, 1))
+  font-size: calc(1rem * var(--header-scale, 1))
   padding: 13px 144px
   position: relative
   text-align: center
@@ -245,6 +245,9 @@ footer
 
   @media screen and (max-width: $break-medium)
     padding: 16px 88px
+
+  @media screen and (max-width: $break-small)
+    font-size: calc(1.1rem * var(--header-scale, 1))
 
   &.visible
     display: flex
@@ -579,7 +582,7 @@ textarea
     position: fixed
     top: 0
     width: 300px
-    z-index: 100
+    z-index: 600
     transform: translateX(-100%)
     overflow-y: scroll
 
