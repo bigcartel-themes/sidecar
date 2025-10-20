@@ -309,6 +309,9 @@ footer
     .announcement-message__text
       display: inline-flex
       padding: 0 8em
+      // Prevent iOS Safari text inflation
+      -webkit-text-size-adjust: 100%
+      text-size-adjust: 100%
 
   // Pause scrolling on hover (desktop) and focus (keyboard) for accessibility
   &--scrolling
