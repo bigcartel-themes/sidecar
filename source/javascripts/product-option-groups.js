@@ -149,6 +149,8 @@ function disableSelectOption(select_option, type) {
 }
 
 function processProduct(product) {
+  window.bigcartel = window.bigcartel || {};
+  window.bigcartel.product = product;
   if (product.has_option_groups) {
     setInitialProductOptionStatuses(product);
     $(".product_option_group").on('change',function() {
@@ -159,6 +161,7 @@ function processProduct(product) {
       enableAddButton();
     }
   }
+  updateInventoryMessage();
   if ($('.product_option_select').length) {
     if (show_sold_out_product_options === 'false') {
       $('option[disabled-type="sold-out"]').wrap('<span>');
@@ -420,13 +423,14 @@ function getSelectedValues() {
 };
 
 function updateInventoryMessage(optionId = null) {
-  const product = window.bigcartel.product;
+  const product = window.bigcartel?.product;
   const messageElement = document.querySelector('[data-inventory-message]');
 
   if (
     !themeOptions?.showLowInventoryMessages ||
     themeOptions.showInventoryBars ||
-    !messageElement
+    !messageElement ||
+    !product
   ) {
     return;
   }
