@@ -2,15 +2,22 @@ const productForm = document.querySelector('.product-form');
 const addToCartButton = document.querySelector('.add-to-cart-button');
 const addToCartButtonText = addToCartButton?.querySelector('.button-text');
 const addedText = addToCartButton?.dataset.addedText;
-let addText = '';
+const addText = addToCartButton?.dataset.addTitle;
+let resetTimer = null;
+
 productForm?.addEventListener('submit', function(e) {
   const itemID = document.querySelector("#option").value;
   const quantity = document.querySelector('#product-quantity').value;
-  addText = addToCartButtonText?.innerHTML;
 
   e.preventDefault();
   if (!addToCartButton.classList.contains('adding')) {
     if (quantity > 0 && itemID > 0) {
+      // Clear any pending reset timer from previous click
+      if (resetTimer) {
+        clearTimeout(resetTimer);
+        resetTimer = null;
+      }
+
       addToCartButton.classList.add('adding');
       addToCartButton.blur();
       Cart.addItem(itemID, quantity, (cart) => {
@@ -34,8 +41,9 @@ productForm?.addEventListener('submit', function(e) {
 });
 
 function resetProductForm() {
-  setTimeout(() => {
+  resetTimer = setTimeout(() => {
     addToCartButtonText.innerHTML = addText;
+    resetTimer = null;
   }, 1500);
 }
 if (themeOptions.productImageZoom === true) {

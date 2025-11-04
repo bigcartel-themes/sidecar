@@ -422,6 +422,7 @@
       };
       const themeOptions = {
         showInventoryBars: {{ theme.show_inventory_bars }},
+        showSoldOutOptions: {{ theme.show_sold_out_product_options }},
         showLowInventoryMessages: {{ theme.show_low_inventory_messages }},
         lowInventoryMessage: "{{ t['products.low_inventory'] | replace: '"', '\"' | replace: "'", "\\'" }}",
         almostSoldOutMessage: "{{ t['products.almost_sold_out'] | replace: '"', '\"' | replace: "'", "\\'" }}",
@@ -507,8 +508,18 @@
     </script>
     {% if page.full_url contains '/product/' %}
       <script>
-        var show_sold_out_product_options = '{{ theme.show_sold_out_product_options }}';
-        Product.find('{{ product.permalink }}', processProduct)
+        // Detect if this is back/forward navigation
+        var navEntry = performance.getEntriesByType('navigation')[0];
+        var isBackForward = navEntry && navEntry.type === 'back_forward';
+
+        // If back/forward navigation OR no cached data, fetch via API
+        // The API delay naturally handles browser form restoration timing
+        if (isBackForward || !window.bigcartel?.product) {
+          Product.find('{{ product.permalink }}', processProduct);
+        } else {
+          // Normal page load with cached data (optimization)
+          processProduct(window.bigcartel.product);
+        }
       </script>
     {% endif %}
   </body>

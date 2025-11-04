@@ -147,7 +147,11 @@ updateCartCounts = (cart) => {
   if (cartTotal) { htmlHighlight(cartTotal, sub_total); }
   if (cartSubtotal) { htmlHighlight(cartSubtotal, sub_total); }
 
-  showBnplMessaging(cart.total, { alignment: 'right', displayMode: 'grid', pageType: 'cart' });
+  // Only update BNPL messaging on cart page - product page manages its own
+  const isCartPage = document.body.getAttribute('data-bc-page-type') === 'cart';
+  if (isCartPage) {
+    showBnplMessaging(cart.total, { alignment: 'right', displayMode: 'grid', pageType: 'cart' });
+  }
 }
 
 processUpdate = (input, item_id, new_val, cart) => {
