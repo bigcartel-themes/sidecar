@@ -157,7 +157,30 @@
             </section>
           {% endif %}
 
-          <section class="sidebar-pages">
+          {% assign show_sidebar_pages = false %}
+          {% if pages.required_pages.size > 0 %}
+            {% assign show_sidebar_pages = true %}
+          {% elsif pages.subscribe_page %}
+            {% assign show_sidebar_pages = true %}
+          {% elsif store.website != blank %}
+            {% assign show_sidebar_pages = true %}
+          {% elsif theme.nav_page_display == 'all' or theme.nav_page_display == 'contact_only' %}
+            {% assign show_sidebar_pages = true %}
+          {% elsif theme.nav_page_display == 'pages_only' %}
+            {% if pages.custom_pages.size > 0 and theme.nav_items > 0 %}
+              {% assign show_sidebar_pages = true %}
+            {% endif %}
+          {% endif %}
+
+          {% comment %}Also check if social links will show{% endcomment %}
+          {% if theme.social_link_location == "both" or theme.social_link_location == "header_only" %}
+            {% if theme.instagram_url != blank or theme.tiktok_url != blank or theme.bluesky_url != blank or theme.threads_url != blank or theme.twitter_url != blank or theme.snapchat_url != blank or theme.facebook_url != blank or theme.pinterest_url != blank or theme.youtube_url != blank or theme.spotify_url != blank or theme.linkedin_url != blank or theme.twitch_url != blank or theme.telegram_url != blank or theme.discord_url != blank or theme.reddit_url != blank or theme.signal_url != blank or theme.tumblr_url != blank or theme.bandcamp_url != blank %}
+              {% assign show_sidebar_pages = true %}
+            {% endif %}
+          {% endif %}
+
+          {% if show_sidebar_pages %}
+            <section class="sidebar-pages">
             <ul class="sidebar-links">
               {% if theme.nav_page_display == 'all' or theme.nav_page_display == 'pages_only' %}
                 {% for custom_page in pages.custom_pages limit: theme.nav_items %}
@@ -283,6 +306,7 @@
               {% endif %}
             {% endif %}
           </section>
+          {% endif %}
         </nav>
       </aside>
 
