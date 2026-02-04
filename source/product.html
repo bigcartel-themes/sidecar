@@ -230,11 +230,7 @@
       </form>
     {% endif %}
 
-    {% if product.description != blank %}
-      <div class="product-description body-text">
-        {{ product.description | paragraphs }}
-      </div>
-    {% endif %}
+    <div class="product-description body-text" data-bc-hook="product-description">{%- if product.description != blank %}{{ product.description | paragraphs }}{% endif -%}</div>
 
     {% if theme.show_inventory_bars %}
       {% case product.status %}
