@@ -93,13 +93,23 @@ function enableAddButton(updated_price, original_price) {
 
   // Update the price display area with variant-specific pricing
   var priceValue = $('.price-value');
-  if (updated_price && priceValue.length) {
-    var showStrikethrough = themeOptions.showStrikethroughPricing && original_price && parseFloat(original_price) > parseFloat(updated_price);
-
-    if (showStrikethrough) {
-      priceValue.html('<s class="price-compare">' + formatMoney(original_price, true, true) + '</s> <span class="price-sale">' + formatMoney(updated_price, true, true) + '</span>');
+  if (priceValue.length) {
+    if (!updated_price) {
+      if (priceValue.data('original-html') !== undefined) {
+        priceValue.html(priceValue.data('original-html'));
+      }
     } else {
-      priceValue.html(formatMoney(updated_price, true, true));
+      if (priceValue.data('original-html') === undefined) {
+        priceValue.data('original-html', priceValue.html());
+      }
+
+      var showStrikethrough = themeOptions.showStrikethroughPricing && original_price && parseFloat(original_price) > parseFloat(updated_price);
+
+      if (showStrikethrough) {
+        priceValue.html('<s class="price-compare">' + formatMoney(original_price, true, true) + '</s> <span class="price-sale">' + formatMoney(updated_price, true, true) + '</span>');
+      } else {
+        priceValue.html(formatMoney(updated_price, true, true));
+      }
     }
   }
 
