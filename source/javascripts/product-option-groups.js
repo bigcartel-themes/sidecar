@@ -81,20 +81,30 @@ Array.prototype.count = function (filterMethod) {
 };
 
 $('.product_option_select').on('change',function() {
-  var option_price = $(this).find("option:selected").attr("data-price");
-  enableAddButton(option_price);
+  var selectedOption = $(this).find("option:selected");
+  var option_price = selectedOption.attr("data-price");
+  var original_price = selectedOption.attr("data-original-price");
+  enableAddButton(option_price, original_price);
 });
-function enableAddButton(updated_price) {
+function enableAddButton(updated_price, original_price) {
   var addButton = $('.add-to-cart-button');
   var addButtonTitle = addButton.attr('data-add-title');
   addButton.attr("disabled",false);
-  if (updated_price) {
-    priceTitle = ' - ' + formatMoney(updated_price, true, true);
+
+  // Update the price display area with variant-specific pricing
+  var priceValue = $('.price-value');
+  if (updated_price && priceValue.length) {
+    var showStrikethrough = themeOptions.showStrikethroughPricing && original_price && parseFloat(original_price) > parseFloat(updated_price);
+
+    if (showStrikethrough) {
+      priceValue.html('<s class="price-compare">' + formatMoney(original_price, true, true) + '</s> <span class="price-sale">' + formatMoney(updated_price, true, true) + '</span>');
+    } else {
+      priceValue.html(formatMoney(updated_price, true, true));
+    }
   }
-  else {
-    priceTitle = '';
-  }
-  addButton.find('.button-text').html(addButtonTitle + priceTitle);
+
+  // Button shows only title, no price
+  addButton.find('.button-text').html(addButtonTitle);
   updateInventoryMessage($('#option').val());
   showBnplMessaging(updated_price, { alignment: 'left', displayMode: 'grid', pageType: 'product' });
 }
@@ -244,6 +254,20 @@ function processProduct(product) {
         enableSelectOption($(element));
       }
     });
+    // Restore the original price display (decode HTML entities from escaped attribute)
+    var priceValue = $('.price-value');
+    if (priceValue.length && priceValue.attr('data-original-price')) {
+      var decodedHtml = $('<div>').html(priceValue.attr('data-original-price')).text();
+      // If the original contained HTML tags, restore them; otherwise just use decoded text
+      var originalAttr = priceValue.attr('data-original-price');
+      if (originalAttr.indexOf('&lt;') !== -1) {
+        // Contains escaped HTML - decode and set as HTML
+        priceValue.html($('<div>').html(originalAttr).html());
+      } else {
+        // Plain text price
+        priceValue.text(originalAttr);
+      }
+    }
     setInitialProductOptionStatuses(product);
   })
 }
@@ -455,7 +479,7 @@ function processAvailableDropdownOptions(product, changed_dropdown) {
     if (product_option) {
       if (!product_option.sold_out && product_option.id > 0) {
         $('#option').val(product_option.id);
-        enableAddButton(product_option.price);
+        enableAddButton(product_option.price, product_option.original_price);
         if (num_option_groups > 1) {
           $('.reset-selection-button-container').fadeIn('fast');
         }

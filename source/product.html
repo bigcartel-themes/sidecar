@@ -134,7 +134,20 @@
     {% capture product_status_class %}{% if product.status == 'active' and product.on_sale %}status-primary{% else %}status-secondary{% endif %}{% endcapture %}
     <div class="price">
       {% unless hide_price %}
-        {{ product | product_price: theme.money_format }}
+        {% assign show_strikethrough = false %}
+        {% if theme.show_strikethrough_pricing and product.variable_pricing == false and product.original_price > product.default_price %}
+          {% assign show_strikethrough = true %}
+        {% endif %}
+
+        {% capture original_price_html %}{% if show_strikethrough %}<s class="price-compare">{{ product.original_price | money: theme.money_format }}</s> <span class="price-sale">{{ product.default_price | money: theme.money_format }}</span>{% else %}{{ product | product_price: theme.money_format }}{% endif %}{% endcapture %}
+        <span class="price-value" data-original-price="{{ original_price_html | escape }}">
+          {% if show_strikethrough %}
+            <s class="price-compare">{{ product.original_price | money: theme.money_format }}</s>
+            <span class="price-sale">{{ product.default_price | money: theme.money_format }}</span>
+          {% else %}
+            {{ product | product_price: theme.money_format }}
+          {% endif %}
+        </span>
 
         {% if product.price_suffix != blank %}
           {% assign variable_price_shown = true %}
@@ -180,10 +193,25 @@
               {% for option_group in product.option_groups %}
                 <div class="select">
                   <div class="select-wrapper">
-                    <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
+                    <select data-unavailable-text="(Unavailable)" data-sold-text="({{ t['products.sold_out'] | downcase }})" data-group-id="{{ option_group.id }}" data-group-name="{{ option_group.name | escape }}" class="product_option_group" name="option_group[{{ option_group.id }}]" aria-label="Select {{ option_group.name | escape }}" required>
                       <option value="" disabled="disabled" selected>{{ option_group.name }}</option>
                       {% for value in option_group.values %}
-                        <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}</option>
+                        {% assign option_status_label = '' %}
+                        {% if product.option_groups.size == 1 and theme.show_sale_label_in_product_options %}
+                          {% for option in product.options %}
+                            {% for ogv in option.option_group_values %}
+                              {% if ogv.id == value.id %}
+                                {% if option.sold_out %}
+                                  {% assign option_status_label = t['products.sold_out'] | downcase %}
+                                {% elsif option.original_price > option.price %}
+                                  {% assign option_status_label = t['products.on_sale'] | downcase %}
+                                {% endif %}
+                                {% break %}
+                              {% endif %}
+                            {% endfor %}
+                          {% endfor %}
+                        {% endif %}
+                        <option value="{{ value.id }}" data-name="{{ value.name | escape }}">{{ value.name }}{% if option_status_label != blank %} ({{ option_status_label }}){% endif %}</option>
                       {% endfor %}
                     </select>
                     <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="14"><path d="M14 1h-1c0-1 0-1 0 0L7 6 1 1c0-1 0-1 0 0H0v1l7 6 7-6V1Z"></path></svg>
@@ -197,7 +225,7 @@
                 <select class="product_option_select" id="option" name="cart[add][id]" aria-label="{{ t['products.select_variant'] }}" required>
                   <option value="" disabled="disabled" selected>{{ t['products.select_variant'] }}</option>
                   {% for option in product.options %}
-                    <option value="{{ option.id }}" data-price="{{ option.price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }} {% if option.sold_out %} ({{ t['products.sold_out'] }}){% endif %}</option>
+                    <option value="{{ option.id }}" data-price="{{ option.price }}" data-original-price="{{ option.original_price }}"{% if option.sold_out %} disabled="disabled" disabled-type="sold-out"{% endif %}>{{ option.name }}{% if option.sold_out %} ({{ t['products.sold_out'] | downcase }}){% elsif option.original_price > option.price and theme.show_sale_label_in_product_options %} ({{ t['products.on_sale'] | downcase }}){% endif %}</option>
                   {% endfor %}
                 </select>
                 <svg aria-hidden="true" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="14"><path d="M14 1h-1c0-1 0-1 0 0L7 6 1 1c0-1 0-1 0 0H0v1l7 6 7-6V1Z"></path></svg>
@@ -333,7 +361,32 @@
                       {% endif %}
 
                       {% unless hide_price %}
-                        {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+                        {% assign show_strikethrough = false %}
+                        {% assign strikethrough_regular = nil %}
+                        {% assign strikethrough_sale = nil %}
+
+                        {% if theme.show_strikethrough_pricing %}
+                          {% if related_product.variable_pricing == false and related_product.original_price > related_product.default_price %}
+                            {% assign show_strikethrough = true %}
+                            {% assign strikethrough_regular = related_product.original_price %}
+                            {% assign strikethrough_sale = related_product.default_price %}
+                          {% elsif related_product.variable_pricing and theme.product_variable_pricing_display_format == "min_only" and related_product.min_original_price > related_product.min_price %}
+                            {% assign show_strikethrough = true %}
+                            {% assign strikethrough_regular = related_product.min_original_price %}
+                            {% assign strikethrough_sale = related_product.min_price %}
+                          {% elsif related_product.variable_pricing and theme.product_variable_pricing_display_format == "max_only" and related_product.max_original_price > related_product.max_price %}
+                            {% assign show_strikethrough = true %}
+                            {% assign strikethrough_regular = related_product.max_original_price %}
+                            {% assign strikethrough_sale = related_product.max_price %}
+                          {% endif %}
+                        {% endif %}
+
+                        {% if show_strikethrough %}
+                          <s class="price-compare">{{ strikethrough_regular | money: theme.money_format }}</s>
+                          <span class="price-sale">{{ strikethrough_sale | money: theme.money_format }}</span>
+                        {% else %}
+                          {{ related_product | product_price: theme.money_format, theme.product_variable_pricing_display_format }}
+                        {% endif %}
 
                         {% if related_product.price_suffix != blank %}
                           {% assign variable_price_shown = true %}
