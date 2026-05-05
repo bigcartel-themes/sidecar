@@ -171,10 +171,13 @@ processUpdate = (input, item_id, new_val, cart) => {
   if (new_val > 0) {
     for (itemIndex = 0; itemIndex < cart.items.length; itemIndex++) {
       if (cart.items[itemIndex].id == item_id) {
-        item_price = cart.items[itemIndex].price;
-        formatted_item_price = formatMoney(item_price, true, true);
-        let priceElement = document.querySelector('.cart-item-price__update[data-item-id="'+item_id+'"]');
-        htmlHighlight(priceElement,formatted_item_price);
+        var item = cart.items[itemIndex];
+        var item_price = item.price;
+        var priceElement = document.querySelector('.cart-item-price__update[data-item-id="'+item_id+'"]');
+
+        // Line total only shows sale price (no strikethrough - strikethrough is on unit price only)
+        var formattedPrice = formatMoney(item_price, true, true);
+        htmlHighlight(priceElement, formattedPrice);
       }
     }
   }
