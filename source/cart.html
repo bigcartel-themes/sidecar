@@ -46,9 +46,24 @@
               </a>
               <div class="option-name">
                 {% unless item.product.has_default_option %}
-                  {{ item.option.name }} - <span class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</span>
+                  {{ item.option.name }} -
+                  <span class="cart-item-unit-price">
+                    {% if theme.show_strikethrough_pricing and item.original_unit_price > item.unit_price %}
+                      <s class="price-compare">{{ item.original_unit_price | money: theme.money_format }}</s>
+                      <span class="price-sale">{{ item.unit_price | money: theme.money_format }}</span>
+                    {% else %}
+                      {{ item.unit_price | money: theme.money_format }}
+                    {% endif %}
+                  </span>
                 {% else %}
-                  <div class="cart-item-unit-price">{{ item.unit_price | money: theme.money_format }}</div>
+                  <div class="cart-item-unit-price">
+                    {% if theme.show_strikethrough_pricing and item.original_unit_price > item.unit_price %}
+                      <s class="price-compare">{{ item.original_unit_price | money: theme.money_format }}</s>
+                      <span class="price-sale">{{ item.unit_price | money: theme.money_format }}</span>
+                    {% else %}
+                      {{ item.unit_price | money: theme.money_format }}
+                    {% endif %}
+                  </div>
                 {% endunless %}
               </div>
             </div>

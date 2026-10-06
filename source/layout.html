@@ -458,6 +458,7 @@
         homepageSlideshowTransition: "{{ theme.homepage_slideshow_transition }}",
         homepageSlideshowLink: "{{ theme.homepage_slideshow_link }}",
         showBnplMessaging: {{ theme.show_bnpl_messaging }} && !themeFeatures.optOuts.includes("theme_bnpl_messaging"),
+        showStrikethroughPricing: {{ theme.show_strikethrough_pricing }},
       };
       const themeColors = {
         backgroundColor: '{{ theme.background_color }}',
