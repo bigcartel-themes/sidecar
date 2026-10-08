@@ -1,6 +1,6 @@
 {
   "name": "Sidecar",
-  "version": "2.15.5",
+  "version": "2.15.6",
   "images": [
     {
       "variable": "logo_image",
@@ -284,7 +284,7 @@
               "button_text_color": "#FFFFFF",
               "button_background_color": "#FF3E6C",
               "button_background_hover_color": "#FF6688",
-              "product_status_text_color_primary": "#1A2E44",
+              "product_status_text_color_primary": "#FF3E6C",
               "product_status_text_color_secondary": "#B8C4E8",
               "inventory_status_text_color": "#4ECDC4",
               "announcement_message_background_color": "#4ECDC4",
@@ -609,7 +609,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in your main navigation"
@@ -622,7 +623,8 @@
       "options": [
         ["Default (Sentence case)", "initial"],
         ["Uppercase", "uppercase"],
-        ["Lowercase", "lowercase"]
+        ["Lowercase", "lowercase"],
+        ["Titlecase", "capitalize"]
       ],
       "default": "initial",
       "description": "Controls the text case styling in the footer, excluding custom footer text"
